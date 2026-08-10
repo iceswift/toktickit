@@ -7,7 +7,7 @@
 | PR | Branch | Reviewer verdict |
 |----|--------|------------------|
 | [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Approved by @SupeemAFK |
-|    | feature/2-health-check |  |
+| [#6](https://github.com/iceswift/toktickit/pull/6) | feature/2-health-check | Awaiting review from @SupeemAFK |
 |    | feature/3-category-seed |  |
 |    | feature/4-category-list |  |
 
