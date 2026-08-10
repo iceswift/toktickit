@@ -6,7 +6,7 @@
 ## Pull Requests I authored (reviewed by my partner)
 | PR | Branch | Reviewer verdict |
 |----|--------|------------------|
-| [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Review comment received; formal approval pending |
+| [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Approved by @SupeemAFK |
 |    | feature/2-health-check |  |
 |    | feature/3-category-seed |  |
 |    | feature/4-category-list |  |
@@ -16,6 +16,10 @@ Reviewer comment I received: SupeemAFK cloned and tested the project foundation,
 How I responded: I thanked the reviewer, confirmed that the evidence was recorded in this document, and stated that I would wait for formal approval before merging.
 
 ![PR #5 peer review comment and author response](evidence/pr-5-peer-review.png)
+
+Formal approval was submitted by SupeemAFK before the pull request was merged.
+
+![PR #5 formal approval](evidence/pr-5-formal-approval.png)
 
 ## Pull Requests I reviewed for my partner
 My comment: <...>
