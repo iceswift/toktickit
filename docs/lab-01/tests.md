@@ -39,5 +39,9 @@ Verified on 10 August 2026 on `feature/2-health-check`:
 
 ![Phase 2 live health-check success](evidence/phase-2-health-online.png)
 
+Issue 2 was moved to **PR Review** after PR #6 was opened and the peer review was requested.
+
+![Phase 2 GitHub Project status](evidence/phase-2-project-board.png)
+
 The final Lab 1 test evidence will replace or supplement this setup evidence
 after all required features are implemented on `main`.
