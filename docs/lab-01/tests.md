@@ -62,5 +62,9 @@ Prisma Studio confirms that the database contains exactly the four required cate
 
 ![Phase 3 seeded categories in Prisma Studio](evidence/phase-3-category-seed.jpg)
 
+All Issue 3 acceptance criteria were checked after verification. The issue was then moved to **PR Review** when PR #7 was opened and the peer review was requested.
+
+![Phase 3 acceptance criteria and project status](evidence/phase-3-project-status.jpg)
+
 The final Lab 1 test evidence will replace or supplement this setup evidence
 after all required features are implemented on `main`.

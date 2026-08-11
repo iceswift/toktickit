@@ -8,7 +8,7 @@
 |----|--------|------------------|
 | [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Approved by @SupeemAFK |
 | [#6](https://github.com/iceswift/toktickit/pull/6) | feature/2-health-check | Approved by @SupeemAFK |
-|    | feature/3-category-seed |  |
+| [#7](https://github.com/iceswift/toktickit/pull/7) | feature/3-category-seed | Awaiting review from @SupeemAFK |
 |    | feature/4-category-list |  |
 
 Reviewer comment I received: SupeemAFK cloned and tested the project foundation, confirmed the frontend and backend builds, Vite and Express responses, PostgreSQL and Prisma checks, ignored files, and concluded, "Good works LGTM."
