@@ -25,9 +25,13 @@ Formal approval was submitted by SupeemAFK before the pull request was merged.
 
 SupeemAFK confirmed that the health API was implemented correctly in both the client and server and that all tests passed, concluding with "LGTM."
 
+How I responded: I thanked the reviewer for checking the implementation and test results and confirmed that the evidence was recorded in this document.
+
+![PR #6 peer review comment and author response](evidence/pr-6-peer-review.png)
+
 The reviewer then submitted a formal approval. GitHub recorded one approving review from a reviewer with write access.
 
-![PR #6 peer comment and formal approval](evidence/pr-6-peer-approval.png)
+![PR #6 formal approval](evidence/pr-6-formal-approval.png)
 
 ## Pull Requests I reviewed for my partner
 My comment: <...>
