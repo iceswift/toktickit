@@ -5,10 +5,10 @@ All test files live under server/tests/lab-01/ and client/tests/lab-01/.
 | # | Tool | Test | Result |
 |---|------|------|--------|
 | 1 | Supertest | GET /api/health returns 200, status=ok | Passed in Phase 2 |
-| 2 | Supertest | GET /api/categories returns 4 seeded categories in id order | |
+| 2 | Supertest | GET /api/categories returns 4 seeded categories in id order | Passed in Phase 4 |
 | 3 | Vitest | Heading renders | Passed in Phase 2 |
-| 4 | Vitest | Success state shows Online + category list | |
-| 5 | Vitest | Error state shows Offline + message | Passed for health API in Phase 2 |
+| 4 | Vitest | Success state shows Online + category list | Passed in Phase 4 |
+| 5 | Vitest | Error state shows Offline + message | Passed in Phases 2 and 4 |
 
 ## Phase 1 foundation verification
 
@@ -65,6 +65,25 @@ Prisma Studio confirms that the database contains exactly the four required cate
 All Issue 3 acceptance criteria were checked after verification. The issue was then moved to **PR Review** when PR #7 was opened and the peer review was requested.
 
 ![Phase 3 acceptance criteria and project status](evidence/phase-3-project-status.jpg)
+
+## Phase 4 category-list verification
+
+Verified on 11 August 2026 on `feature/4-category-list`:
+
+| Check | Result |
+|-------|--------|
+| Live `GET /api/categories` | HTTP 200 with the four seeded categories in ID order |
+| Prisma query | Reads `id` and `name` from PostgreSQL and orders by ascending `id` |
+| Server `npm test` | Passed: 2 Supertest files, 2 tests |
+| Client `npm test` | Passed: 1 Vitest file, 4 tests |
+| Loading UI | Displays a loading status while the request is pending |
+| Success UI | Displays Online and all four API-provided categories |
+| Error UI | Displays a useful Offline message when the request fails |
+| Server and client builds | Passed |
+
+The live React application displayed the category list returned by the Express and Prisma API.
+
+![Phase 4 live category-list success](evidence/phase-4-category-list.jpg)
 
 The final Lab 1 test evidence will replace or supplement this setup evidence
 after all required features are implemented on `main`.
