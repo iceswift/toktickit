@@ -8,7 +8,7 @@
 |----|--------|------------------|
 | [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Approved by @SupeemAFK |
 | [#6](https://github.com/iceswift/toktickit/pull/6) | feature/2-health-check | Approved by @SupeemAFK |
-| [#7](https://github.com/iceswift/toktickit/pull/7) | feature/3-category-seed | Awaiting review from @SupeemAFK |
+| [#7](https://github.com/iceswift/toktickit/pull/7) | feature/3-category-seed | Approved by @SupeemAFK |
 |    | feature/4-category-list |  |
 
 Reviewer comment I received: SupeemAFK cloned and tested the project foundation, confirmed the frontend and backend builds, Vite and Express responses, PostgreSQL and Prisma checks, ignored files, and concluded, "Good works LGTM."
@@ -41,7 +41,9 @@ How I responded: I explained that I ran `npm run prisma:seed` from the `server` 
 
 ![PR #7 reviewer question and author response](evidence/pr-7-peer-review.jpg)
 
-Formal approval is still pending. PR #7 must not be merged until the reviewer submits an approval.
+SupeemAFK later confirmed that the schema and seed were valid, concluding with "LGTM," and submitted a formal approval. GitHub recorded one approving review from a reviewer with write access.
+
+![PR #7 formal approval](evidence/pr-7-formal-approval.jpg)
 
 ## Pull Requests I reviewed for my partner
 My comment: <...>
