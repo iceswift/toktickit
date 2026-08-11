@@ -85,5 +85,9 @@ The live React application displayed the category list returned by the Express a
 
 ![Phase 4 live category-list success](evidence/phase-4-category-list.jpg)
 
+All Issue 4 acceptance criteria were checked after verification. The issue was then moved to **PR Review** when PR #8 was opened and the peer review was requested.
+
+![Phase 4 acceptance criteria and project status](evidence/phase-4-project-status.jpg)
+
 The final Lab 1 test evidence will replace or supplement this setup evidence
 after all required features are implemented on `main`.
