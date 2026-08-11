@@ -33,6 +33,16 @@ The reviewer then submitted a formal approval. GitHub recorded one approving rev
 
 ![PR #6 formal approval](evidence/pr-6-formal-approval.png)
 
+### PR #7 - Category model and seed
+
+SupeemAFK asked which command was used to run the category seed.
+
+How I responded: I explained that I ran `npm run prisma:seed` from the `server` directory twice, and then verified that the database still contained four rows with four distinct category names.
+
+![PR #7 reviewer question and author response](evidence/pr-7-peer-review.jpg)
+
+Formal approval is still pending. PR #7 must not be merged until the reviewer submits an approval.
+
 ## Pull Requests I reviewed for my partner
 My comment: <...>
 Partner's response: <...>
