@@ -1,20 +1,22 @@
 import { useState } from "react";
-import { checkHealth } from "./api.js";
+import { Category, checkSystem } from "./api.js";
 
-// Issue 2 introduces these health-check states. Issue 4 will extend the
-// success state with the category list.
 type UiState = "idle" | "loading" | "success" | "error";
 
 export default function App() {
   const [state, setState] = useState<UiState>("idle");
+  const [categories, setCategories] = useState<Category[]>([]);
 
   async function handleCheck() {
     setState("loading");
+    setCategories([]);
 
     try {
-      await checkHealth();
+      const result = await checkSystem();
+      setCategories(result.categories);
       setState("success");
     } catch {
+      setCategories([]);
       setState("error");
     }
   }
@@ -26,19 +28,30 @@ export default function App() {
       </h1>
 
       <button className="btn btn-success" onClick={handleCheck} disabled={state === "loading"}>
-        {state === "loading" ? "Loading…" : "Check System"}
+        {state === "loading" ? "Loading..." : "Check System"}
       </button>
 
       {state === "loading" && (
         <p className="mt-4 text-secondary" role="status">
-          Checking system status...
+          Checking system status and loading categories...
         </p>
       )}
 
       {state === "success" && (
-        <div className="alert alert-success mt-4" role="status">
-          <strong>System Status:</strong> Online
-        </div>
+        <section className="mt-4" aria-labelledby="category-heading">
+          <div className="alert alert-success" role="status">
+            <strong>System Status:</strong> Online
+          </div>
+
+          <h2 id="category-heading" className="h5 mt-4">IT Request Categories</h2>
+          <ul className="list-group mt-3">
+            {categories.map((category) => (
+              <li className="list-group-item" key={category.id}>
+                {category.name}
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
 
       {state === "error" && (
