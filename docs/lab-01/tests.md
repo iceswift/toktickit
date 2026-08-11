@@ -39,9 +39,32 @@ Verified on 10 August 2026 on `feature/2-health-check`:
 
 ![Phase 2 live health-check success](evidence/phase-2-health-online.png)
 
-Issue 2 was moved to **PR Review** after PR #6 was opened and the peer review was requested.
+Issue 2 moved through **PR Review** and was closed as **Done** after PR #6 received formal approval and was merged into `lab1-staging`.
 
 ![Phase 2 GitHub Project status](evidence/phase-2-project-board.png)
+
+## Phase 3 category database verification
+
+Verified on 11 August 2026 on `feature/3-category-seed`:
+
+| Check | Result |
+|-------|--------|
+| Prisma migration | Created the `Category` table with `id`, unique `name`, and `createdAt` |
+| First seed run | Inserted Account and Access, Hardware, Software, and Network |
+| Second seed run | Completed successfully without creating duplicate rows |
+| Database query | 4 rows and 4 distinct names |
+| Server `npm test` | Passed: 1 test; 1 future Issue 4 test remains TODO |
+| Client `npm test` | Passed: 3 tests; 2 future Issue 4 tests remain TODO |
+| Server and client builds | Passed |
+| Credentials check | Local `server/.env` remains ignored; only `.env.example` is tracked |
+
+Prisma Studio confirms that the database contains exactly the four required categories after the seed was run twice.
+
+![Phase 3 seeded categories in Prisma Studio](evidence/phase-3-category-seed.jpg)
+
+All Issue 3 acceptance criteria were checked after verification. The issue was then moved to **PR Review** when PR #7 was opened and the peer review was requested.
+
+![Phase 3 acceptance criteria and project status](evidence/phase-3-project-status.jpg)
 
 The final Lab 1 test evidence will replace or supplement this setup evidence
 after all required features are implemented on `main`.
