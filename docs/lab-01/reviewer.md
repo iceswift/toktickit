@@ -7,7 +7,7 @@
 | PR | Branch | Reviewer verdict |
 |----|--------|------------------|
 | [#5](https://github.com/iceswift/toktickit/pull/5) | feature/1-project-foundation | Approved by @SupeemAFK |
-| [#6](https://github.com/iceswift/toktickit/pull/6) | feature/2-health-check | Awaiting review from @SupeemAFK |
+| [#6](https://github.com/iceswift/toktickit/pull/6) | feature/2-health-check | Approved by @SupeemAFK |
 |    | feature/3-category-seed |  |
 |    | feature/4-category-list |  |
 
@@ -20,6 +20,14 @@ How I responded: I thanked the reviewer, confirmed that the evidence was recorde
 Formal approval was submitted by SupeemAFK before the pull request was merged.
 
 ![PR #5 formal approval](evidence/pr-5-formal-approval.png)
+
+### PR #6 - API health check
+
+SupeemAFK confirmed that the health API was implemented correctly in both the client and server and that all tests passed, concluding with "LGTM."
+
+The reviewer then submitted a formal approval. GitHub recorded one approving review from a reviewer with write access.
+
+![PR #6 peer comment and formal approval](evidence/pr-6-peer-approval.png)
 
 ## Pull Requests I reviewed for my partner
 My comment: <...>
