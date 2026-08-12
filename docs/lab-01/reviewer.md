@@ -1,7 +1,7 @@
 # Lab 1 — Peer Review Record
 
-**Author:** Suwiwat Sinsomboon — <student id> — GitHub: @iceswift
-**Peer reviewer:** <partner name> — <student id> — GitHub: [@SupeemAFK](https://github.com/SupeemAFK)
+**Author:** Suwiwat Sinsomboon — 67070503444 — GitHub: [@iceswift](https://github.com/iceswift)
+**Peer reviewer:** Peemmapat Sripongsai — 67070503436 — GitHub: [@SupeemAFK](https://github.com/SupeemAFK)
 
 ## Pull Requests I authored (reviewed by my partner)
 | PR | Branch | Reviewer verdict |
