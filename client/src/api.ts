@@ -30,8 +30,27 @@ export async function checkHealth(): Promise<HealthStatus> {
   return data as HealthStatus;
 }
 
-// Issue 4 will combine checkHealth() with the category request.
 export async function checkSystem(): Promise<SystemStatus> {
-  // TODO(Issue 4): fetch categories and return the combined system status.
-  throw new Error("checkSystem not implemented yet");
+  await checkHealth();
+
+  const response = await fetch(`${API_URL}/api/categories`);
+  if (!response.ok) {
+    throw new Error("The TokTickIT category request failed.");
+  }
+
+  const data = (await response.json()) as unknown;
+  if (
+    !Array.isArray(data) ||
+    !data.every(
+      (category) =>
+        typeof category === "object" &&
+        category !== null &&
+        typeof category.id === "number" &&
+        typeof category.name === "string",
+    )
+  ) {
+    throw new Error("The TokTickIT API returned invalid category data.");
+  }
+
+  return { online: true, categories: data as Category[] };
 }
