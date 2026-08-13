@@ -60,6 +60,7 @@ All feature PRs targeted `lab1-staging` and received formal approval from the pe
 |----|---------|---------------|
 | [MeldyRose #6](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/6) | Project foundation | Approved after revisions |
 | [MeldyRose #7](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/7) | API health check | Approved after one revision |
+| [MeldyRose #8](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/8) | Category model and seed | Approved after one revision |
 
 ### MeldyRose PR #6 - Project foundation
 
@@ -84,3 +85,15 @@ All feature PRs targeted `lab1-staging` and received formal approval from the pe
 ![Changes requested on MeldyRose PR #7](evidence/partner-pr-7-request-changes.jpg)
 
 ![Formal approval of MeldyRose PR #7](evidence/partner-pr-7-formal-approval.jpg)
+
+### MeldyRose PR #8 - Category model and seed
+
+**My review:** I fetched `feature/3-category-seed`, checked the Category model and migration, ran the server build, and seeded the database twice. The four required category names remained unique, but a fresh `prisma migrate dev` failed with Prisma P1003 because the configuration required a separate shadow database that the setup instructions did not create. I requested removal of the unnecessary shadow configuration or complete setup instructions for it.
+
+**Partner response:** MeldyRose pushed commit `7ff60d8`, removed the explicit `shadowDatabaseUrl` and `SHADOW_DATABASE_URL` configuration, and replied on the same PR.
+
+**Final result:** I retested the updated branch with a fresh PostgreSQL database. Prisma validation, generation, and migration passed without `SHADOW_DATABASE_URL`; running the seed twice still produced exactly four unique required categories; the server build and existing health test passed. I then formally approved the PR.
+
+![Changes requested and partner response on MeldyRose PR #8](evidence/partner-pr-8-request-changes.png)
+
+![Formal approval of MeldyRose PR #8](evidence/partner-pr-8-formal-approval.png)
