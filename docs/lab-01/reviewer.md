@@ -61,6 +61,7 @@ All feature PRs targeted `lab1-staging` and received formal approval from the pe
 | [MeldyRose #6](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/6) | Project foundation | Approved after revisions |
 | [MeldyRose #7](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/7) | API health check | Approved after one revision |
 | [MeldyRose #8](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/8) | Category model and seed | Approved after one revision |
+| [MeldyRose #9](https://github.com/MeldyRose/TokTickIT-Individual-Sprints/pull/9) | Display category list | Approved after one revision |
 
 ### MeldyRose PR #6 - Project foundation
 
@@ -97,3 +98,15 @@ All feature PRs targeted `lab1-staging` and received formal approval from the pe
 ![Changes requested and partner response on MeldyRose PR #8](evidence/partner-pr-8-request-changes.png)
 
 ![Formal approval of MeldyRose PR #8](evidence/partner-pr-8-formal-approval.png)
+
+### MeldyRose PR #9 - Display category list
+
+**My review:** I tested commit `b0037b5` against Issue 4 and the required final working result. The database migration, idempotent seed, API integration, automated tests, and builds passed. However, the success UI displayed `Status: Online` and omitted the required `Supported Request Categories` label, so I requested those two labels and a Vitest assertion.
+
+**Partner response:** MeldyRose pushed commit `743d150`, changed the success label to `System Status: Online`, added `Supported Request Categories:`, updated the UI test, replied on the same PR, and requested another review.
+
+**Final result:** I fetched the latest commit, removed stale generated JavaScript from the temporary test clone, and reran the client tests from a clean generated state. All 3 client tests and the production build passed. Because no backend or database files changed, the previously passing server tests, migration, and idempotent seed remained valid. I then formally approved the PR.
+
+![Changes requested and partner response on MeldyRose PR #9](evidence/partner-pr-9-request-changes.png)
+
+![Formal approval of MeldyRose PR #9](evidence/partner-pr-9-formal-approval.png)

@@ -17,7 +17,7 @@ All automated tests are stored in the required `tests/lab-01/` folders:
 
 ## Final integrated verification
 
-Verified on 12 August 2026 on `feature/Lab1Doc`, which is based on the completed `lab1-staging` code after PR #8 was merged.
+Verified on 15 August 2026 on the final `main` commit `1912dc1` after PR #10 merged `lab1-staging` into `main`.
 
 ### Environment preparation
 
@@ -38,7 +38,7 @@ The seed completed successfully with: `Seeded 4 IT request categories.`
 | `server/` | `npm run build` | Passed: TypeScript build |
 | `client/` | `npm run build` | Passed: TypeScript and Vite production build |
 
-For the submission report, these same commands will be rerun on the final `main` branch and their passing terminal output will be shown in Answer Part 2.
+The passing output from these commands is reproduced in Answer Part 2 of the submission report.
 
 ## Functional evidence
 
