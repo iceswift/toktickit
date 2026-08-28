@@ -5,6 +5,12 @@ export interface Category {
   name: string;
 }
 
+export interface DevelopmentRequester {
+  id: number;
+  displayName: string;
+  email: string;
+}
+
 export interface HealthStatus {
   status: "ok";
   service: "TokTickIT API";
@@ -53,4 +59,20 @@ export async function checkSystem(): Promise<SystemStatus> {
   }
 
   return { online: true, categories: data as Category[] };
+}
+
+export async function getDevelopmentRequesters(): Promise<DevelopmentRequester[]> {
+  const response = await fetch(`${API_URL}/api/development-requesters`);
+  if (!response.ok) throw new Error("The TokTickIT development requester request failed.");
+
+  const data = (await response.json()) as unknown;
+  if (!Array.isArray(data) || !data.every(
+    (requester) => typeof requester === "object" && requester !== null &&
+      typeof requester.id === "number" && typeof requester.displayName === "string" &&
+      typeof requester.email === "string",
+  )) {
+    throw new Error("The TokTickIT API returned invalid requester data.");
+  }
+
+  return data as DevelopmentRequester[];
 }
