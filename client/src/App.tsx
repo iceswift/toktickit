@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Category, checkSystem, DevelopmentRequester, getDevelopmentRequesters } from "./api.js";
+import { CreateTicketForm } from "./CreateTicketForm.js";
 
 type LoadState = "loading" | "ready" | "error";
 type SystemState = "idle" | "loading" | "success" | "error";
@@ -97,14 +98,15 @@ export default function App() {
 
   return (
     <main>
-      <nav className="navbar navbar-dark bg-success px-3" aria-label="Application navigation">
+      <nav className="navbar navbar-dark bg-success px-3 gap-3" aria-label="Application navigation">
         <span className="navbar-brand mb-0 h1">TokTickIT</span>
-        <span className="text-white">Requester: {selectedRequester.displayName}</span>
+        <button className="btn btn-success border border-light" aria-current="page">Create Ticket</button>
+        <button className="btn btn-success" disabled>My Tickets</button>
+        <span className="text-white ms-auto">Requester: {selectedRequester.displayName}</span>
         <button className="btn btn-outline-light btn-sm" onClick={changeRequester}>Change Requester</button>
       </nav>
-      <section className="container py-5" style={{ maxWidth: 720 }}>
-        <h1 className="h3">Requester context ready</h1>
-        <p className="text-secondary">Create Ticket and My Tickets will be delivered in upcoming Lab 2 phases.</p>
+      <section className="container py-5" style={{ maxWidth: 900 }}>
+        <CreateTicketForm requester={selectedRequester} />
       </section>
     </main>
   );

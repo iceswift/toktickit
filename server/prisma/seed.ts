@@ -15,6 +15,16 @@ const developmentRequesters = [
   { displayName: "Former Requester", email: "former.requester@example.test", isActive: false },
 ] as const;
 
+const relatedSystems = [
+  "Campus Wi-Fi",
+  "Corporate Laptop",
+  "Email",
+  "Grade Submission App",
+  "LEB2 App",
+  "Printer",
+  "VPN",
+] as const;
+
 // Issue 3 — seed the four supported categories.
 // The four names are: Account and Access, Hardware, Software, Network.
 // Requirement: running the seed twice must NOT create duplicates.
@@ -25,8 +35,16 @@ async function main() {
   for (const name of categoryNames) {
     await prisma.category.upsert({
       where: { name },
-      update: {},
-      create: { name },
+      update: { isActive: true },
+      create: { name, isActive: true },
+    });
+  }
+
+  for (const name of relatedSystems) {
+    await prisma.relatedSystem.upsert({
+      where: { name },
+      update: { isActive: true },
+      create: { name, isActive: true },
     });
   }
 
@@ -38,7 +56,7 @@ async function main() {
     });
   }
 
-  console.log(`Seeded ${categoryNames.length} IT request categories and ${developmentRequesters.length} development requesters.`);
+  console.log(`Seeded ${categoryNames.length} IT request categories, ${relatedSystems.length} related systems, and ${developmentRequesters.length} development requesters.`);
 }
 
 main()

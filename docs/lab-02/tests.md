@@ -11,15 +11,15 @@ implemented and refactored until green.
 
 | ID | Type | AC | What it tests | Expected result | Planned file | Final |
 |---|---|---|---|---|---|---|
-| UNIT-01 | Unit | AC-03 | Ticket Number generator | Required format; collision retry | `server/tests/lab-02/ticket-number.test.ts` | Pending |
+| UNIT-01 | Unit | AC-03 | Ticket Number generator | Required format; fresh retry candidate | `server/tests/lab-02/ticket-number.test.ts` | Pass |
 | API-01 | API | AC-01 | Active Requester list | Active only; inactive excluded | `server/tests/lab-02/development-requesters.api.test.ts` | Pass |
-| API-02 | API | AC-03, AC-04 | Valid/invalid Ticket creation | 201 or field-level 400; persisted ownership | `server/tests/lab-02/create-ticket.api.test.ts` | Pending |
-| API-03 | API | AC-05 | Create/reference failure safety | Safe error; no false success | `server/tests/lab-02/create-ticket.api.test.ts` | Pending |
+| API-02 | API | AC-03, AC-04 | Valid/invalid Ticket creation | 201 or field-level 400; persisted ownership | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
+| API-03 | API | AC-05 | Create/reference failure safety | Safe field errors; no false success | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
 | API-04 | API | AC-06 | Owned list query | Search/filter/sort/page metadata only for owner | `server/tests/lab-02/my-tickets.api.test.ts` | Pending |
 | API-05 | API | AC-07, AC-08 | Detail ownership | Owner gets 200; other requester gets 404 | `server/tests/lab-02/ticket-detail.api.test.ts` | Pending |
 | API-06 | API | AC-09, AC-10 | Attachment lifecycle | Limits, upload, soft removal, blocked download | `server/tests/lab-02/attachments.api.test.ts` | Pending |
 | UI-01 | UI | AC-01, AC-02 | Requester selector states | Loading, active options, empty/failure, guard | `client/tests/lab-02/DevelopmentRequester.test.tsx` | Pass |
-| UI-02 | UI | AC-03, AC-04, AC-05 | Create Ticket states | Validation, busy, success number, retained error form | `client/tests/lab-02/CreateTicket.test.tsx` | Pending |
+| UI-02 | UI | AC-03, AC-04, AC-05 | Create Ticket states | Validation, busy, success number, retained error form | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
 | UI-03 | UI | AC-06 | My Tickets states | Search/filter/sort/page, empty/no-results/failure | `client/tests/lab-02/MyTickets.test.tsx` | Pending |
 | UI-04 | UI | AC-08, AC-10 | Detail/attachment states | Read-only fields, removal reason, removed display | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pending |
 | STYLE-01 | UI style | AC-04, AC-11 | Required labels/states/classes | Required marker, field message, busy/disabled state | `client/tests/lab-02/ZenGreenStyle.test.tsx` | Pending |
@@ -76,6 +76,14 @@ Phase 2 results:
 - `server && npm run prisma:seed`: succeeded twice, confirming the seed is safe
   to rerun.
 - `server && npm test`: 3 API tests passed, including API-01 against PostgreSQL.
+
+Phase 3 results:
+
+- `server && npx prisma migrate deploy`: applied the Ticket and Related System migration.
+- `server && npm run prisma:seed`: seeded active Categories and seven Related Systems safely.
+- `server && npm test`: 7 tests passed, including Ticket Number and create-ticket API coverage.
+- `client && npm test`: 8 tests passed, including Create Ticket validation and backend-number confirmation.
+- `client && npm run build` and `server && npm run build`: passed.
 
 ## 7. Known Limitations or Deferred Tests
 
