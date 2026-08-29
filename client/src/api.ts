@@ -11,6 +11,42 @@ export interface DevelopmentRequester {
   email: string;
 }
 
+export interface RelatedSystem {
+  id: number;
+  name: string;
+}
+
+export type RequestedPriority = "LOW" | "MEDIUM" | "HIGH";
+
+export interface CreateTicketInput {
+  categoryId: number;
+  relatedSystemId: number;
+  summary: string;
+  requestedPriority: RequestedPriority;
+  description: string;
+}
+
+export interface Ticket {
+  id: number;
+  ticketNumber: string;
+  requesterId: number;
+  categoryId: number;
+  relatedSystemId: number;
+  summary: string;
+  description: string;
+  requestedPriority: RequestedPriority;
+  itPriority: "NOT_SET";
+  currentStatus: "NEW";
+  createdAt: string;
+  updatedAt: string;
+}
+
+export class ApiError extends Error {
+  constructor(message: string, public readonly fields: Record<string, string> = {}) {
+    super(message);
+  }
+}
+
 export interface HealthStatus {
   status: "ok";
   service: "TokTickIT API";
@@ -75,4 +111,39 @@ export async function getDevelopmentRequesters(): Promise<DevelopmentRequester[]
   }
 
   return data as DevelopmentRequester[];
+}
+
+async function getReferenceData(path: string, label: string): Promise<{ id: number; name: string }[]> {
+  const response = await fetch(`${API_URL}${path}`);
+  if (!response.ok) throw new Error(`The TokTickIT ${label} request failed.`);
+  const data = await response.json() as unknown;
+  if (!Array.isArray(data) || !data.every((item) => typeof item === "object" && item !== null && typeof item.id === "number" && typeof item.name === "string")) {
+    throw new Error(`The TokTickIT API returned invalid ${label} data.`);
+  }
+  return data as { id: number; name: string }[];
+}
+
+export async function getCategories(): Promise<Category[]> {
+  return getReferenceData("/api/categories", "category") as Promise<Category[]>;
+}
+
+export async function getRelatedSystems(): Promise<RelatedSystem[]> {
+  return getReferenceData("/api/related-systems", "related system") as Promise<RelatedSystem[]>;
+}
+
+export async function createTicket(requesterId: number, input: CreateTicketInput): Promise<Ticket> {
+  const response = await fetch(`${API_URL}/api/tickets`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Development-Requester-Id": String(requesterId),
+    },
+    body: JSON.stringify(input),
+  });
+  const data = await response.json().catch(() => ({})) as { error?: string; fields?: Record<string, string> } & Partial<Ticket>;
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to create the Ticket.", data.fields ?? {});
+  if (typeof data.id !== "number" || typeof data.ticketNumber !== "string" || typeof data.requesterId !== "number") {
+    throw new Error("The TokTickIT API returned an invalid Ticket.");
+  }
+  return data as Ticket;
 }
