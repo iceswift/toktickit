@@ -56,6 +56,8 @@ app.get("/api/development-requesters", async (_req: Request, res: Response) => {
 });
 
 const priorities = new Set(["LOW", "MEDIUM", "HIGH"]);
+const ticketSortFields = new Set(["createdAt", "updatedAt", "ticketNumber", "requestedPriority"]);
+const ticketStatuses = new Set(["NEW"]);
 
 function getFields(body: unknown): Record<string, string> {
   const fields: Record<string, string> = {};
@@ -124,6 +126,85 @@ app.post("/api/tickets", async (req: Request, res: Response) => {
     res.status(409).json({ error: "Unable to allocate a unique Ticket Number. Please try again." });
   } catch {
     res.status(500).json({ error: "Unable to complete the request." });
+  }
+});
+
+function parsePositiveInteger(value: unknown): number | undefined {
+  if (typeof value !== "string" || !/^\d+$/.test(value)) return undefined;
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : undefined;
+}
+
+app.get("/api/tickets", async (req: Request, res: Response) => {
+  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const query = req.query;
+  const search = typeof query.search === "string" ? query.search.trim() : "";
+  const categoryId = query.categoryId === undefined ? undefined : parsePositiveInteger(query.categoryId);
+  const page = query.page === undefined ? 1 : parsePositiveInteger(query.page);
+  const pageSize = query.pageSize === undefined ? 10 : parsePositiveInteger(query.pageSize);
+  const sortBy = query.sortBy === undefined ? "createdAt" : query.sortBy;
+  const sortOrder = query.sortOrder === undefined ? "desc" : query.sortOrder;
+  const requestedPriority = query.requestedPriority;
+  const currentStatus = query.currentStatus;
+
+  const invalid =
+    (query.search !== undefined && typeof query.search !== "string") ||
+    search.length > 120 ||
+    (query.categoryId !== undefined && categoryId === undefined) ||
+    page === undefined ||
+    pageSize === undefined ||
+    ![10, 20, 50].includes(pageSize) ||
+    typeof sortBy !== "string" || !ticketSortFields.has(sortBy) ||
+    typeof sortOrder !== "string" || !["asc", "desc"].includes(sortOrder) ||
+    (requestedPriority !== undefined && (typeof requestedPriority !== "string" || !priorities.has(requestedPriority))) ||
+    (currentStatus !== undefined && (typeof currentStatus !== "string" || !ticketStatuses.has(currentStatus)));
+
+  if (invalid) {
+    res.status(400).json({ error: "One or more list query values are invalid." });
+    return;
+  }
+
+  try {
+    const prisma = getPrisma();
+    const requester = await prisma.developmentRequester.findFirst({ where: { id: requesterId, isActive: true }, select: { id: true } });
+    if (!requester) {
+      res.status(404).json({ error: "The requested resource was not found." });
+      return;
+    }
+
+    if (categoryId !== undefined) {
+      const category = await prisma.category.findFirst({ where: { id: categoryId, isActive: true }, select: { id: true } });
+      if (!category) {
+        res.status(400).json({ error: "One or more list query values are invalid." });
+        return;
+      }
+    }
+
+    const where = {
+      requesterId: requester.id,
+      ...(categoryId === undefined ? {} : { categoryId }),
+      ...(requestedPriority === undefined ? {} : { requestedPriority: requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
+      ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" }),
+      ...(search === "" ? {} : {
+        OR: [
+          { ticketNumber: { contains: search, mode: "insensitive" as const } },
+          { summary: { contains: search, mode: "insensitive" as const } },
+        ],
+      }),
+    };
+    const totalItems = await prisma.ticket.count({ where });
+    const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+    const items = await prisma.ticket.findMany({
+      where,
+      include: { category: { select: { id: true, name: true } } },
+      orderBy: [{ [sortBy]: sortOrder }, { id: "desc" }],
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    });
+
+    res.status(200).json({ items, page, pageSize, totalItems, totalPages });
+  } catch {
+    res.status(500).json({ error: "Unable to retrieve Tickets." });
   }
 });
 

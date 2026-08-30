@@ -41,6 +41,29 @@ export interface Ticket {
   updatedAt: string;
 }
 
+export interface TicketListItem extends Ticket {
+  category: Category;
+}
+
+export interface TicketListResult {
+  items: TicketListItem[];
+  page: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+}
+
+export interface MyTicketsQuery {
+  search?: string;
+  categoryId?: number;
+  requestedPriority?: RequestedPriority;
+  currentStatus?: "NEW";
+  sortBy?: "createdAt" | "updatedAt" | "ticketNumber" | "requestedPriority";
+  sortOrder?: "asc" | "desc";
+  page?: number;
+  pageSize?: 10 | 20 | 50;
+}
+
 export class ApiError extends Error {
   constructor(message: string, public readonly fields: Record<string, string> = {}) {
     super(message);
@@ -146,4 +169,20 @@ export async function createTicket(requesterId: number, input: CreateTicketInput
     throw new Error("The TokTickIT API returned an invalid Ticket.");
   }
   return data as Ticket;
+}
+
+export async function getMyTickets(requesterId: number, query: MyTicketsQuery): Promise<TicketListResult> {
+  const parameters = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) {
+    if (value !== undefined && value !== "") parameters.set(key, String(value));
+  }
+  const response = await fetch(`${API_URL}/api/tickets?${parameters.toString()}`, {
+    headers: { "X-Development-Requester-Id": String(requesterId) },
+  });
+  const data = await response.json().catch(() => ({})) as Partial<TicketListResult> & { error?: string };
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve Tickets.");
+  if (!Array.isArray(data.items) || typeof data.page !== "number" || typeof data.pageSize !== "number" || typeof data.totalItems !== "number" || typeof data.totalPages !== "number") {
+    throw new Error("The TokTickIT API returned an invalid Ticket list.");
+  }
+  return data as TicketListResult;
 }
