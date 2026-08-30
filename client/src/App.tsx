@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Category, checkSystem, DevelopmentRequester, getDevelopmentRequesters } from "./api.js";
 import { CreateTicketForm } from "./CreateTicketForm.js";
 import { MyTickets } from "./MyTickets.js";
+import { RequesterTicketDetail } from "./RequesterTicketDetail.js";
 
 type LoadState = "loading" | "ready" | "error";
 type SystemState = "idle" | "loading" | "success" | "error";
@@ -20,7 +21,8 @@ export default function App() {
   const [isInApp, setIsInApp] = useState(false);
   const [systemState, setSystemState] = useState<SystemState>("idle");
   const [categories, setCategories] = useState<Category[]>([]);
-  const [activePage, setActivePage] = useState<"create" | "tickets">("create");
+  const [activePage, setActivePage] = useState<"create" | "tickets" | "detail">("create");
+  const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -57,6 +59,7 @@ export default function App() {
     setSelectedId(null);
     setIsInApp(false);
     setActivePage("create");
+    setSelectedTicketId(null);
   }
 
   async function handleCheck() {
@@ -104,12 +107,12 @@ export default function App() {
       <nav className="navbar navbar-dark bg-success px-3 gap-3" aria-label="Application navigation">
         <span className="navbar-brand mb-0 h1">TokTickIT</span>
         <button className={`btn btn-success ${activePage === "create" ? "border border-light" : ""}`} aria-current={activePage === "create" ? "page" : undefined} onClick={() => setActivePage("create")}>Create Ticket</button>
-        <button className={`btn btn-success ${activePage === "tickets" ? "border border-light" : ""}`} aria-current={activePage === "tickets" ? "page" : undefined} onClick={() => setActivePage("tickets")}>My Tickets</button>
+        <button className={`btn btn-success ${activePage === "tickets" || activePage === "detail" ? "border border-light" : ""}`} aria-current={activePage === "tickets" || activePage === "detail" ? "page" : undefined} onClick={() => setActivePage("tickets")}>My Tickets</button>
         <span className="text-white ms-auto">Requester: {selectedRequester.displayName}</span>
         <button className="btn btn-outline-light btn-sm" onClick={changeRequester}>Change Requester</button>
       </nav>
       <section className="container py-5" style={{ maxWidth: 900 }}>
-        {activePage === "create" ? <CreateTicketForm requester={selectedRequester} /> : <MyTickets requester={selectedRequester} onCreateTicket={() => setActivePage("create")} />}
+        {activePage === "create" ? <CreateTicketForm requester={selectedRequester} /> : activePage === "tickets" ? <MyTickets requester={selectedRequester} onCreateTicket={() => setActivePage("create")} onOpenTicket={(ticketId) => { setSelectedTicketId(ticketId); setActivePage("detail"); }} /> : selectedTicketId && <RequesterTicketDetail requester={selectedRequester} ticketId={selectedTicketId} onBack={() => setActivePage("tickets")} />}
       </section>
     </main>
   );
