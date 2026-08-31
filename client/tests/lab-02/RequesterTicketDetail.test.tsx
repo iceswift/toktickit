@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import { RequesterTicketDetail } from "../../src/RequesterTicketDetail.js";
@@ -35,5 +35,25 @@ describe("RequesterTicketDetail", () => {
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/unavailable or you do not have access/);
     expect(screen.queryByText(ticket.summary)).not.toBeInTheDocument();
+  });
+
+  it("uploads an allowed Attachment and requires a reason before soft removal", async () => {
+    const attachment = { id: 31, originalFilename: "evidence.pdf", mimeType: "application/pdf", byteSize: 24, uploadedAt: "2026-08-30T10:00:00.000Z", removedAt: null, removalReason: null };
+    vi.spyOn(api, "getTicketDetail").mockResolvedValue({ ...ticket, attachments: [attachment] });
+    const uploadSpy = vi.spyOn(api, "uploadTicketAttachment").mockResolvedValue(attachment);
+    const removeSpy = vi.spyOn(api, "removeAttachment").mockResolvedValue();
+    render(<RequesterTicketDetail requester={requester} ticketId={ticket.id} onBack={vi.fn()} />);
+
+    await screen.findByText("evidence.pdf");
+    const file = new File(["%PDF-1.4"], "evidence.pdf", { type: "application/pdf" });
+    fireEvent.change(screen.getByLabelText("Add attachment"), { target: { files: [file] } });
+    await userEvent.click(screen.getByRole("button", { name: "Upload attachment" }));
+    expect(uploadSpy).toHaveBeenCalledWith(requester.id, ticket.id, file);
+    expect(await screen.findByText("Attachment uploaded.")).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: "Remove" }));
+    await userEvent.type(screen.getByLabelText("Removal reason"), "The file is obsolete.");
+    await userEvent.click(screen.getByRole("button", { name: "Confirm removal" }));
+    expect(removeSpy).toHaveBeenCalledWith(requester.id, attachment.id, "The file is obsolete.");
   });
 });
