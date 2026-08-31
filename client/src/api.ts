@@ -53,6 +53,12 @@ export interface TicketListResult {
   totalPages: number;
 }
 
+export interface TicketDetail extends Ticket {
+  category: Category;
+  relatedSystem: RelatedSystem;
+  attachments: Array<{ id: number; originalFilename: string; mimeType: string; byteSize: number; uploadedAt: string; removedAt: string | null; removalReason: string | null }>;
+}
+
 export interface MyTicketsQuery {
   search?: string;
   categoryId?: number;
@@ -185,4 +191,14 @@ export async function getMyTickets(requesterId: number, query: MyTicketsQuery): 
     throw new Error("The TokTickIT API returned an invalid Ticket list.");
   }
   return data as TicketListResult;
+}
+
+export async function getTicketDetail(requesterId: number, ticketId: number): Promise<TicketDetail> {
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}`, { headers: { "X-Development-Requester-Id": String(requesterId) } });
+  const data = await response.json().catch(() => ({})) as Partial<TicketDetail> & { error?: string };
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve the Ticket.");
+  if (typeof data.id !== "number" || typeof data.ticketNumber !== "string" || !data.category || !data.relatedSystem || !Array.isArray(data.attachments)) {
+    throw new Error("The TokTickIT API returned an invalid Ticket detail.");
+  }
+  return data as TicketDetail;
 }

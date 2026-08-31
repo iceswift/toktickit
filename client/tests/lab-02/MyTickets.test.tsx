@@ -20,7 +20,7 @@ describe("My Tickets", () => {
 
   it("shows owned Ticket data and sends search/filter query controls", async () => {
     const listSpy = vi.spyOn(api, "getMyTickets").mockResolvedValue({ items: [ticket], page: 1, pageSize: 10, totalItems: 1, totalPages: 1 });
-    render(<MyTickets requester={requester} onCreateTicket={vi.fn()} />);
+    render(<MyTickets requester={requester} onCreateTicket={vi.fn()} onOpenTicket={vi.fn()} />);
 
     expect((await screen.findAllByText(ticket.ticketNumber)).length).toBeGreaterThan(0);
     await userEvent.type(screen.getByLabelText("Search"), "VPN");
@@ -30,7 +30,7 @@ describe("My Tickets", () => {
 
   it("distinguishes an empty Ticket list from no matching results", async () => {
     const listSpy = vi.spyOn(api, "getMyTickets").mockResolvedValue({ items: [], page: 1, pageSize: 10, totalItems: 0, totalPages: 1 });
-    render(<MyTickets requester={requester} onCreateTicket={vi.fn()} />);
+    render(<MyTickets requester={requester} onCreateTicket={vi.fn()} onOpenTicket={vi.fn()} />);
 
     expect(await screen.findByText(/No Tickets yet/)).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText("Search"), "missing");

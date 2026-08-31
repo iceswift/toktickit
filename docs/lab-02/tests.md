@@ -16,12 +16,13 @@ implemented and refactored until green.
 | API-02 | API | AC-03, AC-04 | Valid/invalid Ticket creation | 201 or field-level 400; persisted ownership | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
 | API-03 | API | AC-05 | Create/reference failure safety | Safe field errors; no false success | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
 | API-04 | API | AC-06 | Owned list query | Search/filter/sort/page metadata only for owner | `server/tests/lab-02/my-tickets.api.test.ts` | Pass |
-| API-05 | API | AC-07, AC-08 | Detail ownership | Owner gets 200; other requester gets 404 | `server/tests/lab-02/ticket-detail.api.test.ts` | Pending |
+| API-05 | API | AC-07, AC-08 | Detail ownership | Owner gets 200; other requester gets the same safe 404 | `server/tests/lab-02/ticket-detail.api.test.ts` | Pass |
 | API-06 | API | AC-09, AC-10 | Attachment lifecycle | Limits, upload, soft removal, blocked download | `server/tests/lab-02/attachments.api.test.ts` | Pending |
 | UI-01 | UI | AC-01, AC-02 | Requester selector states | Loading, active options, empty/failure, guard | `client/tests/lab-02/DevelopmentRequester.test.tsx` | Pass |
 | UI-02 | UI | AC-03, AC-04, AC-05 | Create Ticket states | Validation, busy, success number, retained error form | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
 | UI-03 | UI | AC-06 | My Tickets states | Search/filter/sort/page, empty/no-results/failure | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
-| UI-04 | UI | AC-08, AC-10 | Detail/attachment states | Read-only fields, removal reason, removed display | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pending |
+| UI-04 | UI | AC-08 | Detail states | Read-only owned fields, back navigation, and no-data error state | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
+| UI-05 | UI | AC-10 | Attachment lifecycle states | Removal reason and removed display | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pending |
 | STYLE-01 | UI style | AC-04, AC-11 | Required labels/states/classes | Required marker, field message, busy/disabled state | `client/tests/lab-02/ZenGreenStyle.test.tsx` | Pending |
 | RESP-01 | Responsive | AC-11 | Three viewport layouts | No overflow/clipping; usable controls | `e2e/lab-02/responsive.spec.ts` | Pending |
 | E2E-01 | E2E | AC-01, AC-03, AC-06, AC-08 | Requester creates then finds/opens Ticket | Official number persists for correct owner | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pending |
@@ -40,7 +41,7 @@ implemented and refactored until green.
 | AC-07 | API-05, E2E-02 |
 | AC-08 | API-05, UI-04, E2E-01 |
 | AC-09 | API-06, E2E-02 |
-| AC-10 | API-06, UI-04, E2E-02 |
+| AC-10 | API-06, UI-05, E2E-02 |
 | AC-11 | STYLE-01, RESP-01 |
 | AC-12 | All planned automated tests |
 
@@ -89,6 +90,14 @@ Phase 4 results:
 
 - `server && npm test`: 9 tests passed, including owned-list search, filter, sort, pagination metadata, and invalid-query coverage.
 - `client && npm test`: 10 tests passed, including My Tickets search query and distinct empty/no-results states.
+- `client && npm run build` and `server && npm run build`: passed.
+
+Phase 5 results:
+
+- `server && npm test`: 11 tests passed, including owner-scoped detail, invalid ID,
+  missing Ticket, and cross-requester safe-404 coverage.
+- `client && npm test`: 12 tests passed, including read-only detail rendering,
+  back navigation, and a non-disclosing error state.
 - `client && npm run build` and `server && npm run build`: passed.
 
 ## 7. Known Limitations or Deferred Tests

@@ -208,4 +208,37 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
+  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const ticketId = Number(req.params.ticketId);
+  if (!Number.isSafeInteger(ticketId) || ticketId <= 0) {
+    res.status(404).json({ error: "The requested resource was not found." });
+    return;
+  }
+
+  try {
+    const prisma = getPrisma();
+    const requester = await prisma.developmentRequester.findFirst({ where: { id: requesterId, isActive: true }, select: { id: true } });
+    if (!requester) {
+      res.status(404).json({ error: "The requested resource was not found." });
+      return;
+    }
+    const ticket = await prisma.ticket.findFirst({
+      where: { id: ticketId, requesterId: requester.id },
+      include: {
+        category: { select: { id: true, name: true } },
+        relatedSystem: { select: { id: true, name: true } },
+        attachments: { orderBy: { uploadedAt: "asc" } },
+      },
+    });
+    if (!ticket) {
+      res.status(404).json({ error: "The requested resource was not found." });
+      return;
+    }
+    res.status(200).json(ticket);
+  } catch {
+    res.status(500).json({ error: "Unable to retrieve the Ticket." });
+  }
+});
+
 export default app;
