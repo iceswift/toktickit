@@ -53,10 +53,20 @@ export interface TicketListResult {
   totalPages: number;
 }
 
+export interface AttachmentMetadata {
+  id: number;
+  originalFilename: string;
+  mimeType: string;
+  byteSize: number;
+  uploadedAt: string;
+  removedAt: string | null;
+  removalReason: string | null;
+}
+
 export interface TicketDetail extends Ticket {
   category: Category;
   relatedSystem: RelatedSystem;
-  attachments: Array<{ id: number; originalFilename: string; mimeType: string; byteSize: number; uploadedAt: string; removedAt: string | null; removalReason: string | null }>;
+  attachments: AttachmentMetadata[];
 }
 
 export interface MyTicketsQuery {
@@ -201,4 +211,31 @@ export async function getTicketDetail(requesterId: number, ticketId: number): Pr
     throw new Error("The TokTickIT API returned an invalid Ticket detail.");
   }
   return data as TicketDetail;
+}
+
+export async function uploadTicketAttachment(requesterId: number, ticketId: number, file: File): Promise<AttachmentMetadata> {
+  const body = new FormData();
+  body.append("file", file);
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}/attachments`, { method: "POST", headers: { "X-Development-Requester-Id": String(requesterId) }, body });
+  const data = await response.json().catch(() => ({})) as Partial<AttachmentMetadata> & { error?: string };
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to upload the attachment.");
+  if (typeof data.id !== "number" || typeof data.originalFilename !== "string") throw new Error("The TokTickIT API returned invalid attachment data.");
+  return data as AttachmentMetadata;
+}
+
+export async function removeAttachment(requesterId: number, attachmentId: number, reason: string): Promise<void> {
+  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}`, { method: "DELETE", headers: { "Content-Type": "application/json", "X-Development-Requester-Id": String(requesterId) }, body: JSON.stringify({ reason }) });
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({})) as { error?: string };
+    throw new ApiError(data.error ?? "Unable to remove the attachment.");
+  }
+}
+
+export async function downloadAttachment(requesterId: number, attachmentId: number): Promise<Blob> {
+  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}/download`, { headers: { "X-Development-Requester-Id": String(requesterId) } });
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({})) as { error?: string };
+    throw new ApiError(data.error ?? "Attachment download is unavailable.");
+  }
+  return response.blob();
 }

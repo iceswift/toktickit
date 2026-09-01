@@ -17,12 +17,12 @@ implemented and refactored until green.
 | API-03 | API | AC-05 | Create/reference failure safety | Safe field errors; no false success | `server/tests/lab-02/create-ticket.api.test.ts` | Pass |
 | API-04 | API | AC-06 | Owned list query | Search/filter/sort/page metadata only for owner | `server/tests/lab-02/my-tickets.api.test.ts` | Pass |
 | API-05 | API | AC-07, AC-08 | Detail ownership | Owner gets 200; other requester gets the same safe 404 | `server/tests/lab-02/ticket-detail.api.test.ts` | Pass |
-| API-06 | API | AC-09, AC-10 | Attachment lifecycle | Limits, upload, soft removal, blocked download | `server/tests/lab-02/attachments.api.test.ts` | Pending |
+| API-06 | API | AC-07, AC-09, AC-10 | Attachment lifecycle | Allowed upload, true type check, active-file limit, owner-only access, soft removal, blocked download | `server/tests/lab-02/attachments.api.test.ts` | Pass |
 | UI-01 | UI | AC-01, AC-02 | Requester selector states | Loading, active options, empty/failure, guard | `client/tests/lab-02/DevelopmentRequester.test.tsx` | Pass |
 | UI-02 | UI | AC-03, AC-04, AC-05 | Create Ticket states | Validation, busy, success number, retained error form | `client/tests/lab-02/CreateTicket.test.tsx` | Pass |
 | UI-03 | UI | AC-06 | My Tickets states | Search/filter/sort/page, empty/no-results/failure | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
 | UI-04 | UI | AC-08 | Detail states | Read-only owned fields, back navigation, and no-data error state | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
-| UI-05 | UI | AC-10 | Attachment lifecycle states | Removal reason and removed display | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pending |
+| UI-05 | UI | AC-09, AC-10 | Attachment lifecycle states | File selection/upload state, removal reason, and removal confirmation | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
 | STYLE-01 | UI style | AC-04, AC-11 | Required labels/states/classes | Required marker, field message, busy/disabled state | `client/tests/lab-02/ZenGreenStyle.test.tsx` | Pending |
 | RESP-01 | Responsive | AC-11 | Three viewport layouts | No overflow/clipping; usable controls | `e2e/lab-02/responsive.spec.ts` | Pending |
 | E2E-01 | E2E | AC-01, AC-03, AC-06, AC-08 | Requester creates then finds/opens Ticket | Official number persists for correct owner | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pending |
@@ -98,6 +98,15 @@ Phase 5 results:
   missing Ticket, and cross-requester safe-404 coverage.
 - `client && npm test`: 12 tests passed, including read-only detail rendering,
   back navigation, and a non-disclosing error state.
+- `client && npm run build` and `server && npm run build`: passed.
+
+Phase 6 results:
+
+- `server && npm test`: 16 tests passed, including permitted upload, oversized and content/type
+  validation, max-five rejection, owner-only metadata access, soft removal, and
+  blocked download.
+- `client && npm test`: 13 tests passed, including file selection/upload state
+  and removal confirmation with a reason.
 - `client && npm run build` and `server && npm run build`: passed.
 
 ## 7. Known Limitations or Deferred Tests
