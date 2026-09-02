@@ -23,10 +23,10 @@ implemented and refactored until green.
 | UI-03 | UI | AC-06 | My Tickets states | Search/filter/sort/page, empty/no-results/failure | `client/tests/lab-02/MyTickets.test.tsx` | Pass |
 | UI-04 | UI | AC-08 | Detail states | Read-only owned fields, back navigation, and no-data error state | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
 | UI-05 | UI | AC-09, AC-10 | Attachment lifecycle states | File selection/upload state, removal reason, and removal confirmation | `client/tests/lab-02/RequesterTicketDetail.test.tsx` | Pass |
-| STYLE-01 | UI style | AC-04, AC-11 | Required labels/states/classes | Required marker, field message, busy/disabled state | `client/tests/lab-02/ZenGreenStyle.test.tsx` | Pending |
-| RESP-01 | Responsive | AC-11 | Three viewport layouts | No overflow/clipping; usable controls | `e2e/lab-02/responsive.spec.ts` | Pending |
-| E2E-01 | E2E | AC-01, AC-03, AC-06, AC-08 | Requester creates then finds/opens Ticket | Official number persists for correct owner | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pending |
-| E2E-02 | E2E | AC-07, AC-09, AC-10 | Multi-requester and Attachment lifecycle | Cross-owner access blocked; removal blocks download | `e2e/lab-02/requester-ticket-flow.spec.ts` | Pending |
+| STYLE-01 | UI style | AC-04, AC-11 | Required labels/states/classes | Required marker, field message, busy/disabled state | `client/tests/lab-02/ZenGreenStyle.test.tsx` | Pass |
+| RESP-01 | Responsive | AC-11 | Three viewport layouts | No overflow/clipping; usable controls | `client/e2e/lab-02/responsive.spec.ts` | Pass |
+| E2E-01 | E2E | AC-01, AC-03, AC-06, AC-08 | Requester creates then finds/opens Ticket | Official number persists for correct owner | `client/e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
+| E2E-02 | E2E | AC-07, AC-09, AC-10 | Multi-requester and Attachment lifecycle | Cross-owner access blocked; removal blocks download | `client/e2e/lab-02/requester-ticket-flow.spec.ts` | Pass |
 
 ## 3. Acceptance-Criterion Traceability
 
@@ -61,7 +61,7 @@ cd server && npm test
 cd client && npm test
 cd client && npm run build
 cd server && npm run build
-# Phase 7 adds the documented Playwright E2E command.
+cd client && npm run test:e2e
 ```
 
 ## 6. Final Results
@@ -107,6 +107,17 @@ Phase 6 results:
   blocked download.
 - `client && npm test`: 13 tests passed, including file selection/upload state
   and removal confirmation with a reason.
+- `client && npm run build` and `server && npm run build`: passed.
+
+Phase 7 results:
+
+- `server && npm test`: 16 tests passed across health, reference data, Ticket
+  creation/list/detail, and Attachment lifecycle coverage.
+- `client && npm test`: 14 tests passed, including Zen Green required-field,
+  Bootstrap class, and disabled-safe submit conventions.
+- `client && npm run test:e2e`: 3 Playwright tests passed: requester create →
+  search → detail, cross-requester protection plus Attachment upload/removal,
+  and My Tickets at desktop (1280 px), tablet (820 px), and mobile (390 px).
 - `client && npm run build` and `server && npm run build`: passed.
 
 ## 7. Known Limitations or Deferred Tests

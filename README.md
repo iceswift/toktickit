@@ -96,12 +96,15 @@ Run these commands from either `client/` or `server/` as appropriate:
 npm run dev
 npm run build
 npm test
+npm run test:e2e
 ```
 
-The backend tests use Vitest and Supertest for the health and category APIs.
-The frontend tests use Vitest and Testing Library for the heading, loading,
-success, and error states. Lab 1 test files are stored under each package's
-`tests/lab-01/` directory.
+The backend tests use Vitest and Supertest. The frontend tests use Vitest and
+Testing Library. Lab 2 also uses Playwright for the requester happy path,
+ownership protection, Attachment lifecycle, and desktop/tablet/mobile visual
+checks. Start Docker/PostgreSQL first, then run `npm run test:e2e` from
+`client/`. Test files are organized under each package's `tests/lab-01/`,
+`tests/lab-02/`, and `e2e/lab-02/` directories.
 
 ## GitHub workflow
 
