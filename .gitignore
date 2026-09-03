@@ -7,8 +7,11 @@ node_modules/
 # build output
 dist/
 build/
+client/test-results/
+client/playwright-report/
 # prisma
 server/prisma/*.db
+server/uploads/
 # logs & OS
 *.log
 .DS_Store
