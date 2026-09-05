@@ -2,10 +2,10 @@
 
 ## 1. Test Strategy
 
-Tests are planned from the approved specification before implementation. Unit,
+Tests were planned from the approved specification before implementation. Unit,
 API, UI component, UI style, responsive/visual, and E2E tests collectively cover
-every Acceptance Criterion. Tests will be written failing where practical, then
-implemented and refactored until green.
+every Acceptance Criterion. Where practical, tests were written to expose the
+required behavior before implementation and then kept green through refactoring.
 
 ## 2. Planned Tests
 
@@ -54,7 +54,8 @@ empty/no-results states, no clipping, no overlap, and no horizontal page overflo
 
 ## 5. Test Commands
 
-Final commands will be confirmed against the implemented toolchain:
+The following commands were run against the final local implementation on
+5 September 2026:
 
 ```bash
 cd server && npm test
@@ -119,6 +120,26 @@ Phase 7 results:
   search → detail, cross-requester protection plus Attachment upload/removal,
   and My Tickets at desktop (1280 px), tablet (820 px), and mobile (390 px).
 - `client && npm run build` and `server && npm run build`: passed.
+
+## 6.1 Final Verification Snapshot (5 September 2026)
+
+The final full-suite run reconfirmed the delivered behavior after the release
+evidence was assembled:
+
+- `server && npm test`: **8 test files / 16 tests passed**. This includes
+  requester selection, Ticket creation, owner-scoped list/detail access, and
+  Attachment validation, soft removal, and blocked download.
+- `client && npm test`: **6 test files / 14 tests passed**. This includes
+  field validation, safe API failure presentation, requester selection,
+  Ticket list states, read-only detail, Attachment controls, and Zen Green
+  form conventions.
+- `client && npm run test:e2e`: **3 Playwright tests passed**. The flows cover
+  requester create → search → owned detail, cross-owner protection plus
+  Attachment removal, and responsive use at desktop, tablet, and mobile.
+- `server && npm run build` and `client && npm run build`: both passed.
+
+The report reproduces this final verification output and links each test area
+to the planned file paths above; it is not based only on an earlier phase run.
 
 ## 7. Known Limitations or Deferred Tests
 
