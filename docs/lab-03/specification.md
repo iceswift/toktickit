@@ -87,6 +87,11 @@ model. Backend checks use the current authenticated session for every row above.
   are stored only as bcrypt hashes.
 - BR-02: Invalid credentials and inactive accounts return safe messages that do
   not disclose extra account information.
+- BR-02a: The login endpoint permits at most five failed attempts for the same
+  normalized email and source IP in a rolling 15-minute window. Further attempts
+  receive the same safe `401` response until the window expires; a successful
+  login clears that pair's failure counter. This is rate limiting, not an
+  account-lock workflow.
 - BR-03: A `mustChangePassword` User cannot use normal application endpoints or
   screens until a valid replacement password is saved.
 - BR-04: Authentication uses a random opaque session token in an HttpOnly,
@@ -103,7 +108,9 @@ model. Backend checks use the current authenticated session for every row above.
 - BR-08: Requesters and IT Staff may post Public Comments; these are visible to
   the Ticket Requester, IT Staff, and Administrators. Internal Notes are created
   by IT Staff and visible only to IT Staff and Administrators. Both are
-  append-only, backend-authored, timestamped, and reject blank content.
+  append-only, backend-authored, timestamped, and reject blank content. After
+  trimming, content is limited to 2,000 Unicode characters and is rendered as
+  escaped plain text (never trusted HTML).
 - BR-09: A Requester may record `problemAppearsResolvedAt`; this does not change
   formal status to Resolved or Closed. Only IT Staff perform formal transitions.
 - BR-10: A Ticket has zero or one active IT Staff or Administrator owner. Claim

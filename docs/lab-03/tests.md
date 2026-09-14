@@ -5,12 +5,13 @@ This plan is written before implementation. Each Acceptance Criterion has planne
 | ID | Type | AC | Planned behavior | Planned file |
 |---|---|---|---|---|
 | UNIT-01 | unit | AC-01/06 | password policy, single-role guard, and allowed status-transition helper accept valid input and reject forbidden values | `server/tests/lab-03/auth-policy.test.ts` |
-| API-01 | API | AC-01 | valid, invalid, and inactive login; safe session response | `server/tests/lab-03/auth.api.test.ts` |
+| API-01 | API | AC-01 | valid, invalid, inactive, and rate-limited login; safe session response with no account disclosure | `server/tests/lab-03/auth.api.test.ts` |
 | API-02 | API | AC-02/03 | password change, logout, expired/revoked session | `server/tests/lab-03/auth.api.test.ts` |
 | API-03 | API/security | AC-04 | forged requester ID, cross-owner Ticket/Attachment, note privacy | `server/tests/lab-03/authorization.api.test.ts` |
 | API-04 | API | AC-05 | queue search/filter/sort/page and invalid query | `server/tests/lab-03/staff-queue.api.test.ts` |
 | API-05 | API | AC-06 | claim/reassign, IT Priority, legal/illegal status transitions | `server/tests/lab-03/staff-ticket-detail.api.test.ts` |
 | API-06 | API/security | AC-07 | Public Comment visibility; Internal Note role denial | `server/tests/lab-03/comments-notes.api.test.ts` |
+| API-06a | API/security | AC-07 | blank/overlength Comment and Note rejection; escaped plain-text rendering contract | `server/tests/lab-03/comments-notes.api.test.ts` |
 | API-07 | API | AC-08 | User list/create/edit, duplicate email, self/last-Admin safeguards | `server/tests/lab-03/users-admin.api.test.ts` |
 | API-08 | migration/regression | AC-09 | Lab 2 Requester/Ticket/Attachment records survive migration | `server/tests/lab-03/migration-regression.api.test.ts` |
 | UI-01 | UI | AC-01/02 | Login and Change Password validation, busy, safe failure | `client/tests/lab-03/Login.test.tsx`, `ChangePassword.test.tsx` |
