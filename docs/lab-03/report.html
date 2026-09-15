@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TokTickIT — Lab 3 Report</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    :root { --green: #176b4d; --ink: #19332a; --muted: #5c6f67; --line: #c9d7d0; --wash: #f2f8f5; }
+    * { box-sizing: border-box; }
+    body { color: var(--ink); font: 10.5pt/1.55 Arial, sans-serif; margin: 0; }
+    h1, h2, h3 { color: var(--green); line-height: 1.2; }
+    h1 { font-size: 26pt; margin: 0 0 8px; }
+    h2 { border-bottom: 2px solid var(--green); font-size: 16pt; margin: 28px 0 12px; padding-bottom: 5px; }
+    h3 { font-size: 12pt; margin: 18px 0 7px; }
+    p, li { margin: 5px 0; }
+    a { color: #115a41; }
+    .cover { align-items: center; display: flex; min-height: 245mm; padding: 28mm 12mm; }
+    .cover-card { border-left: 8px solid var(--green); padding: 12mm; }
+    .subtitle { color: var(--muted); font-size: 13pt; margin: 0; }
+    .meta { border-collapse: collapse; margin-top: 24mm; width: 100%; }
+    .meta th, .meta td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; }
+    .meta th { color: var(--muted); font-weight: 600; width: 38%; }
+    .page-break { break-before: page; page-break-before: always; }
+    .toc { background: var(--wash); border-radius: 6px; padding: 12px 18px; }
+    .evidence { background: var(--wash); border-left: 4px solid var(--green); margin: 12px 0; padding: 9px 12px; }
+    figure { break-inside: avoid; margin: 16px 0; }
+    figure img { border: 1px solid var(--line); display: block; height: auto; max-width: 100%; }
+    figcaption { color: var(--muted); font-size: 9pt; margin-top: 6px; }
+    .pending { color: var(--muted); font-style: italic; }
+    .footer-note { color: var(--muted); font-size: 8.5pt; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="cover-card">
+      <p class="subtitle">CPE334 Software Engineering Laboratory</p>
+      <h1>TokTickIT<br>Lab 3 Report</h1>
+      <p class="subtitle">Authentication, role-based ticket operations, administration, quality assurance, and release evidence.</p>
+      <table class="meta">
+        <tr><th>Student</th><td>Suwiwat Sinsomboon</td></tr>
+        <tr><th>Repository</th><td>iceswift/toktickit</td></tr>
+        <tr><th>Report status</th><td>Living source — evidence is added as each phase is verified.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <main class="page-break">
+    <h2>Contents</h2>
+    <nav class="toc">
+      <ol>
+        <li>Answer Part 1: Workflow, repository, and evidence</li>
+        <li>Answer Part 2: Specification and Definition of Done</li>
+        <li>Answer Part 3: Test evidence</li>
+        <li>Answer Part 4: AI use and reflection</li>
+        <li>Answer Part 5: Login evidence</li>
+        <li>Answer Part 6: IT Staff queue evidence</li>
+        <li>Answer Part 7: IT Staff detail and authorization evidence</li>
+        <li>Answer Part 8: Administrator user-management evidence</li>
+        <li>Answer Part 9: Zen Green UI and responsive evidence</li>
+      </ol>
+    </nav>
+
+    <h2>Answer Part 1: Git Use with Engineering Workflow</h2>
+    <h3>Phase 1: Project Setup and Engineering Contract</h3>
+    <ul>
+      <li>Issue <a href="https://github.com/iceswift/toktickit/issues/31">#31</a> defined the Phase 1 scope and acceptance criteria.</li>
+      <li>Feature branch <code>feature/lab3-1-engineering-contract</code> was reviewed through <a href="https://github.com/iceswift/toktickit/pull/32">PR #32</a> into <code>lab3-staging</code>.</li>
+      <li><code>Richyboy170</code> approved and merged PR #32. The merge commit is <code>42079a7</code>.</li>
+      <li>The Issue Development panel directly lists the merged PR, and GitHub Project automation moved the closed Issue from <code>Started</code> to <code>Done</code>.</li>
+    </ul>
+    <div class="evidence"><strong>Evidence rule:</strong> captions identify the exact requirement demonstrated; a screenshot is not used if it is incomplete or unreadable.</div>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/issue-31-closed-done-development.png" alt="GitHub Issue 31 shown as Closed, with the Project status Done and PR 32 listed in Development">
+      <figcaption><strong>Figure 1.</strong> Phase 1 final workflow evidence. Issue #31 is Closed; its Kanban status is Done; and the Development panel lists merged PR #32. This proves the required direct Issue–PR linkage and final workflow-board state.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/pr-32-approved-merged-development.png" alt="GitHub PR 32 showing Richyboy170 approval, reviewer merge into lab3-staging, and the direct Issue 31 Development link">
+      <figcaption><strong>Figure 2.</strong> PR #32 shows reviewer Richyboy170's approval and reviewer-performed merge into <code>lab3-staging</code>. The right Development panel links Issue #31 directly. This proves the peer-review and reviewer-merge requirements.</figcaption>
+    </figure>
+
+    <h3>Evidence register and final-completion check</h3>
+    <p>The records above are verified Phase 1 facts. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The reviewed <code>docs/lab-03/reviewer.md</code> records the Phase 1 approval and merge.</p>
+
+    <h2>Answer Part 2: Specification and Definition of Done</h2>
+    <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation.</p>
+
+    <h2>Answer Part 3: Test DD and Traceability</h2>
+    <p class="pending">Pending: complete passing results from <code>main</code> for unit, API, UI, authorization, migration/regression, and E2E testing.</p>
+
+    <h2>Answer Part 4: AI Use and Reflection</h2>
+    <p>The maintained prompt log and the student reflection are in <code>docs/lab-03/ai-use.md</code>. This section will be rendered into the final PDF after all verification notes are complete.</p>
+
+    <h2>Answer Part 5: Working Login and Password Change UI</h2><p class="pending">Pending Phase 3 implementation and verification.</p>
+    <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2><p class="pending">Pending Phase 5 implementation and verification.</p>
+    <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2><p class="pending">Pending Phase 6 implementation and verification.</p>
+    <h2>Answer Part 8: Working Administrator User Management UI</h2><p class="pending">Pending Phase 7 implementation and verification.</p>
+    <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2><p class="pending">Pending responsive UI work and desktop/tablet/mobile evidence.</p>
+
+    <p class="footer-note">This HTML file is the source of the final PDF. It is deliberately retained until the final PDF has been rendered and checked.</p>
+  </main>
+</body>
+</html>
