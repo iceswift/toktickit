@@ -192,6 +192,9 @@ navigation, and responsive rules are in [ui-spec.md](ui-spec.md).
 
 - Local development accounts use documented test-only initial passwords; no real
   secrets or personal passwords are stored in Git.
+- The local-only seed and migrated-user initial password is `Lab3Initial!2026`.
+  It is bcrypt-hashed before storage, is never used outside local development,
+  and every seeded account must change it at first login.
 - Password validation requires 12-128 characters including upper, lower, number,
   and symbol; confirmation must match.
 - Sessions expire after eight hours and are invalidated by logout, deactivation,

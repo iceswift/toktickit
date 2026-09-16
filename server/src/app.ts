@@ -114,12 +114,15 @@ app.post("/api/tickets", async (req: Request, res: Response) => {
   try {
     const prisma = getPrisma();
     const [requester, category, relatedSystem] = await Promise.all([
-      prisma.developmentRequester.findFirst({ where: { id: requesterId, isActive: true }, select: { id: true } }),
+      prisma.developmentRequester.findFirst({
+        where: { id: requesterId, isActive: true },
+        select: { id: true, migratedUser: { select: { id: true } } },
+      }),
       prisma.category.findFirst({ where: { id: body.categoryId, isActive: true }, select: { id: true } }),
       prisma.relatedSystem.findFirst({ where: { id: body.relatedSystemId, isActive: true }, select: { id: true } }),
     ]);
 
-    if (!requester || !category || !relatedSystem) {
+    if (!requester || !requester.migratedUser || !category || !relatedSystem) {
       res.status(404).json({ error: "The selected requester or reference data is unavailable." });
       return;
     }
@@ -130,6 +133,7 @@ app.post("/api/tickets", async (req: Request, res: Response) => {
           data: {
             ticketNumber: generateTicketNumber(),
             requesterId: requester.id,
+            requesterUserId: requester.migratedUser.id,
             categoryId: category.id,
             relatedSystemId: relatedSystem.id,
             summary: body.summary.trim(),
@@ -359,12 +363,28 @@ app.delete("/api/attachments/:attachmentId", async (req: Request, res: Response)
     return;
   }
   try {
-    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterId, requester: { isActive: true } } }, select: { id: true } });
+    const requester = await getPrisma().developmentRequester.findFirst({
+      where: { id: requesterId, isActive: true },
+      select: { id: true, migratedUser: { select: { id: true } } },
+    });
+    if (!requester?.migratedUser) {
+      res.status(404).json(notFoundMessage);
+      return;
+    }
+    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterId: requester.id, requester: { isActive: true } } }, select: { id: true } });
     if (!attachment) {
       res.status(404).json(notFoundMessage);
       return;
     }
-    await getPrisma().attachment.update({ where: { id: attachment.id }, data: { removedAt: new Date(), removalReason: reason, removedByRequesterId: requesterId } });
+    await getPrisma().attachment.update({
+      where: { id: attachment.id },
+      data: {
+        removedAt: new Date(),
+        removalReason: reason,
+        removedByRequesterId: requester.id,
+        removedByUserId: requester.migratedUser.id,
+      },
+    });
     res.status(204).send();
   } catch {
     res.status(500).json({ error: "Unable to complete the request." });
