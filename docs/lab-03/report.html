@@ -79,8 +79,19 @@
       <figcaption><strong>Figure 2.</strong> PR #32 shows reviewer Richyboy170's approval and reviewer-performed merge into <code>lab3-staging</code>. The right Development panel links Issue #31 directly. This proves the peer-review and reviewer-merge requirements.</figcaption>
     </figure>
 
+    <h3>Phase 4: Authenticated Requester Workflow — review checkpoint</h3>
+    <p><a href="https://github.com/iceswift/toktickit/issues/40">Issue #40</a> is linked directly through GitHub Development to <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a>. The feature branch targets <code>lab3-staging</code>; the Kanban Issue status is <code>PR Review</code>. Review was requested from <code>Richyboy170</code>. As captured, PR #41 remained open and had not yet been approved or merged. The author must not merge it.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/issue-40-pr-review-development.png" alt="Open Issue 40 with acceptance criteria, Kanban status PR Review, and PR 41 in the Development panel">
+      <figcaption><strong>Figure 3.</strong> Phase 4 Issue #40 shows the <code>PR Review</code> board state and the direct Development link to PR #41, proving Issue–PR traceability at the review checkpoint. This is not final Done evidence.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-review-requested-development.png" alt="Open PR 41 into lab3-staging with Richyboy170 requested as reviewer and Issue 40 linked in Development">
+      <figcaption><strong>Figure 4.</strong> Open PR #41 targets <code>lab3-staging</code> from the Phase 4 feature branch, shows the request for review by <code>Richyboy170</code>, and links Issue #40. Approval and reviewer merge remain pending.</figcaption>
+    </figure>
+
     <h3>Evidence register and final-completion check</h3>
-    <p>The records above are verified Phase 1 facts. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The reviewed <code>docs/lab-03/reviewer.md</code> records the Phase 1 approval and merge.</p>
+    <p>The records above are verified Phase 1 facts and a Phase 4 review checkpoint. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The <code>docs/lab-03/reviewer.md</code> record distinguishes completed review from pending review.</p>
 
     <h2>Answer Part 2: Specification and Definition of Done</h2>
     <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation.</p>
@@ -90,15 +101,15 @@
     <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and owner-preserving regression. The migrated User session—not a client-selected requester ID—determines ownership.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
-      <figcaption><strong>Figure 3.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>
+      <figcaption><strong>Figure 5.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>
     </figure>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-create-ticket.png" alt="Create Ticket form with requester name Amina Rahman populated from her authenticated session">
-      <figcaption><strong>Figure 4.</strong> Phase 4 Create Ticket form: the Requester field is read-only and populated from the authenticated User, proving the UI no longer permits manual requester identity selection (AC-04, AC-09).</figcaption>
+      <figcaption><strong>Figure 6.</strong> Phase 4 Create Ticket form: the Requester field is read-only and populated from the authenticated User, proving the UI no longer permits manual requester identity selection (AC-04, AC-09).</figcaption>
     </figure>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-ticket-detail.png" alt="Authenticated requester Ticket Detail displaying Amina Rahman as requester with read-only ticket data">
-      <figcaption><strong>Figure 5.</strong> Phase 4 Ticket Detail: the owned Ticket remains readable after migration, with requester identity from the session. The backend authorization tests separately prove that another requester receives safe 404 responses (AC-04, AC-09).</figcaption>
+      <figcaption><strong>Figure 7.</strong> Phase 4 Ticket Detail: the owned Ticket remains readable after migration, with requester identity from the session. The backend authorization tests separately prove that another requester receives safe 404 responses (AC-04, AC-09).</figcaption>
     </figure>
 
     <h2>Answer Part 4: AI Use and Reflection</h2>
@@ -108,11 +119,11 @@
     <p>Phase 3 authentication was peer-reviewed in <a href="https://github.com/iceswift/toktickit/pull/39">PR #39</a>. Phase 4 browser verification confirmed that a requester using an initial password reaches the forced password-change screen before the requester shell; logout returns to Sign in. The formal final-main test output is still pending.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-03-auth/login-form.png" alt="TokTickIT sign-in form with email and password inputs">
-      <figcaption><strong>Figure 6.</strong> Login UI with email/password inputs, supporting the working authentication entry requirement (AC-01).</figcaption>
+      <figcaption><strong>Figure 8.</strong> Login UI with email/password inputs, supporting the working authentication entry requirement (AC-01).</figcaption>
     </figure>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/first-login-gate.png" alt="First-login requester session is shown the mandatory change-password screen instead of the requester shell">
-      <figcaption><strong>Figure 7.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
+      <figcaption><strong>Figure 9.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
     </figure>
     <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2><p class="pending">Pending Phase 5 implementation and verification.</p>
     <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2><p class="pending">Pending Phase 6 implementation and verification.</p>
