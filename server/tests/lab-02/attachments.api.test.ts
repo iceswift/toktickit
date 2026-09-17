@@ -16,7 +16,7 @@ const pdfBytes = Buffer.from("%PDF-1.4\nTokTickIT attachment test\n%%EOF");
 
 beforeAll(async () => {
   const prisma = getPrisma();
-  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, orderBy: { id: "asc" }, take: 2 });
+  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, include: { migratedUser: { select: { id: true } } }, orderBy: { id: "asc" }, take: 2 });
   const category = await prisma.category.findFirstOrThrow({ where: { isActive: true } });
   const relatedSystem = await prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } });
   ownerId = requesters[0].id;
@@ -26,8 +26,8 @@ beforeAll(async () => {
   otherAgent = await requesterSession(emails[1]);
   const ticket = await prisma.ticket.upsert({
     where: { ticketNumber: "TKT-20990101-ATTACH001" },
-    update: { requesterId: ownerId, categoryId: category.id, relatedSystemId: relatedSystem.id },
-    create: { ticketNumber: "TKT-20990101-ATTACH001", requesterId: ownerId, categoryId: category.id, relatedSystemId: relatedSystem.id, summary: "Attachment lifecycle API test", description: "A sufficiently detailed Ticket description for Attachment lifecycle API tests.", requestedPriority: "LOW" },
+    update: { requesterId: ownerId, requesterUserId: requesters[0].migratedUser!.id, categoryId: category.id, relatedSystemId: relatedSystem.id },
+    create: { ticketNumber: "TKT-20990101-ATTACH001", requesterId: ownerId, requesterUserId: requesters[0].migratedUser!.id, categoryId: category.id, relatedSystemId: relatedSystem.id, summary: "Attachment lifecycle API test", description: "A sufficiently detailed Ticket description for Attachment lifecycle API tests.", requestedPriority: "LOW" },
   });
   ticketId = ticket.id;
   const existing = await prisma.attachment.findMany({ where: { ticketId }, select: { storageKey: true } });

@@ -13,7 +13,7 @@ let email: string;
 
 beforeAll(async () => {
   const prisma = getPrisma();
-  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, orderBy: { id: "asc" }, take: 2 });
+  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, include: { migratedUser: { select: { id: true } } }, orderBy: { id: "asc" }, take: 2 });
   const category = await prisma.category.findFirstOrThrow({ where: { isActive: true } });
   const relatedSystem = await prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } });
   requesterA = requesters[0].id;
@@ -24,11 +24,13 @@ beforeAll(async () => {
   agent = await requesterSession(requesters[0].email);
   await prisma.ticket.createMany({
     data: [
-      { ticketNumber: "TKT-20990101-OWNERA001", requesterId: requesterA, categoryId, relatedSystemId, summary: "Requester A searchable Ticket", description: "A sufficiently detailed Ticket description for the first requester.", requestedPriority: "HIGH" },
-      { ticketNumber: "TKT-20990101-OWNERB001", requesterId: requesterB, categoryId, relatedSystemId, summary: "Requester B private Ticket", description: "A sufficiently detailed Ticket description for the second requester.", requestedPriority: "LOW" },
+      { ticketNumber: "TKT-20990101-OWNERA001", requesterId: requesterA, requesterUserId: requesters[0].migratedUser!.id, categoryId, relatedSystemId, summary: "Requester A searchable Ticket", description: "A sufficiently detailed Ticket description for the first requester.", requestedPriority: "HIGH" },
+      { ticketNumber: "TKT-20990101-OWNERB001", requesterId: requesterB, requesterUserId: requesters[1].migratedUser!.id, categoryId, relatedSystemId, summary: "Requester B private Ticket", description: "A sufficiently detailed Ticket description for the second requester.", requestedPriority: "LOW" },
     ],
     skipDuplicates: true,
   });
+  await prisma.ticket.update({ where: { ticketNumber: "TKT-20990101-OWNERA001" }, data: { requesterUserId: requesters[0].migratedUser!.id } });
+  await prisma.ticket.update({ where: { ticketNumber: "TKT-20990101-OWNERB001" }, data: { requesterUserId: requesters[1].migratedUser!.id } });
 });
 afterAll(async () => { if (email) await restoreRequesterSession(email); });
 

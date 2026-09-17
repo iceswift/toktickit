@@ -80,14 +80,14 @@
     </figure>
 
     <h3>Phase 4: Authenticated Requester Workflow — review checkpoint</h3>
-    <p><a href="https://github.com/iceswift/toktickit/issues/40">Issue #40</a> is linked directly through GitHub Development to <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a>. The feature branch targets <code>lab3-staging</code>; the Kanban Issue status is <code>PR Review</code>. Review was requested from <code>Richyboy170</code>. As captured, PR #41 remained open and had not yet been approved or merged. The author must not merge it.</p>
+    <p><a href="https://github.com/iceswift/toktickit/issues/40">Issue #40</a> is linked directly through GitHub Development to <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a>. The feature branch targets <code>lab3-staging</code>; the Kanban Issue status is <code>PR Review</code>. <code>Richyboy170</code> approved the initial changes and left four technical suggestions in one review comment. The follow-up code addresses those suggestions on the same feature branch; reviewer re-check and reviewer-performed merge are still pending.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/issue-40-pr-review-development.png" alt="Open Issue 40 with acceptance criteria, Kanban status PR Review, and PR 41 in the Development panel">
       <figcaption><strong>Figure 3.</strong> Phase 4 Issue #40 shows the <code>PR Review</code> board state and the direct Development link to PR #41, proving Issue–PR traceability at the review checkpoint. This is not final Done evidence.</figcaption>
     </figure>
     <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-review-requested-development.png" alt="Open PR 41 into lab3-staging with Richyboy170 requested as reviewer and Issue 40 linked in Development">
-      <figcaption><strong>Figure 4.</strong> Open PR #41 targets <code>lab3-staging</code> from the Phase 4 feature branch, shows the request for review by <code>Richyboy170</code>, and links Issue #40. Approval and reviewer merge remain pending.</figcaption>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-initial-approval-feedback.png" alt="Open PR 41 into lab3-staging showing Richyboy170's initial approval and review comment, with Issue 40 in Development">
+      <figcaption><strong>Figure 4.</strong> PR #41 shows <code>Richyboy170</code>'s initial approval and technical review comment, while the right Development panel links Issue #40. The author is addressing the comment on the same branch; this image does not claim a final reviewer merge.</figcaption>
     </figure>
 
     <h3>Evidence register and final-completion check</h3>
@@ -97,8 +97,8 @@
     <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation.</p>
 
     <h2>Answer Part 3: Test DD and Traceability</h2>
-    <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> server API/unit/regression tests passed 25/25, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were reported up to date. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
-    <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and owner-preserving regression. The migrated User session—not a client-selected requester ID—determines ownership.</p>
+    <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> after addressing peer-review feedback, server API/unit/regression tests passed 27/27, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were previously reported up to date; this review-fix run did not rerun migration status. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
+    <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and deliberately mismatched legacy/migrated ownership. The authenticated <code>User.id</code> and <code>Ticket.requesterUserId</code> determine ownership; legacy requester IDs remain only as compatibility/audit fields. Test cleanup also revokes helper-created sessions.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
       <figcaption><strong>Figure 5.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>

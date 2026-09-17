@@ -13,7 +13,7 @@ let emails: string[] = [];
 
 beforeAll(async () => {
   const prisma = getPrisma();
-  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, orderBy: { id: "asc" }, take: 2 });
+  const requesters = await prisma.developmentRequester.findMany({ where: { isActive: true }, include: { migratedUser: { select: { id: true } } }, orderBy: { id: "asc" }, take: 2 });
   const category = await prisma.category.findFirstOrThrow({ where: { isActive: true } });
   const relatedSystem = await prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } });
   ownerId = requesters[0].id;
@@ -23,9 +23,9 @@ beforeAll(async () => {
   otherAgent = await requesterSession(emails[1]);
   const ticket = await prisma.ticket.upsert({
     where: { ticketNumber: "TKT-20990101-DETAIL001" },
-    update: { requesterId: ownerId, categoryId: category.id, relatedSystemId: relatedSystem.id },
+    update: { requesterId: ownerId, requesterUserId: requesters[0].migratedUser!.id, categoryId: category.id, relatedSystemId: relatedSystem.id },
     create: {
-      ticketNumber: "TKT-20990101-DETAIL001", requesterId: ownerId, categoryId: category.id, relatedSystemId: relatedSystem.id,
+      ticketNumber: "TKT-20990101-DETAIL001", requesterId: ownerId, requesterUserId: requesters[0].migratedUser!.id, categoryId: category.id, relatedSystemId: relatedSystem.id,
       summary: "Requester-owned Ticket detail", description: "A sufficiently detailed description for a requester-owned Ticket detail test.", requestedPriority: "MEDIUM",
     },
   });
