@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import { RequesterTicketDetail } from "../../src/RequesterTicketDetail.js";
 
-const requester = { id: 1, displayName: "Amina Rahman", email: "amina.rahman@example.test" };
+const requester = { id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER" as const, mustChangePassword: false };
 const ticket = {
   id: 8, ticketNumber: "TKT-20260830-AB12CD34", requesterId: 1, categoryId: 1, relatedSystemId: 2,
   summary: "VPN disconnects during online exam", description: "The VPN disconnects after approximately five minutes during the online exam.",
@@ -48,12 +48,12 @@ describe("RequesterTicketDetail", () => {
     const file = new File(["%PDF-1.4"], "evidence.pdf", { type: "application/pdf" });
     fireEvent.change(screen.getByLabelText("Add attachment"), { target: { files: [file] } });
     await userEvent.click(screen.getByRole("button", { name: "Upload attachment" }));
-    expect(uploadSpy).toHaveBeenCalledWith(requester.id, ticket.id, file);
+    expect(uploadSpy).toHaveBeenCalledWith(ticket.id, file);
     expect(await screen.findByText("Attachment uploaded.")).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("button", { name: "Remove" }));
     await userEvent.type(screen.getByLabelText("Removal reason"), "The file is obsolete.");
     await userEvent.click(screen.getByRole("button", { name: "Confirm removal" }));
-    expect(removeSpy).toHaveBeenCalledWith(requester.id, attachment.id, "The file is obsolete.");
+    expect(removeSpy).toHaveBeenCalledWith(attachment.id, "The file is obsolete.");
   });
 });

@@ -7,18 +7,19 @@ import App from "../../src/App.js";
 describe("App", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    vi.spyOn(api, "getCurrentUser").mockRejectedValue(new api.ApiError("Not signed in"));
   });
 
-  it("renders the TokTickIT heading", () => {
+  it("renders the TokTickIT heading", async () => {
     render(<App />);
-    expect(screen.getByText(/TokTickIT/i)).toBeInTheDocument();
+    expect(await screen.findByText(/TokTickIT/i)).toBeInTheDocument();
   });
 
   it("shows a loading state while the API request is pending", async () => {
     vi.spyOn(api, "checkSystem").mockReturnValue(new Promise(() => undefined));
 
     render(<App />);
-    await userEvent.click(screen.getByRole("button", { name: "Check System" }));
+    await userEvent.click(await screen.findByRole("button", { name: "Check System" }));
 
     expect(screen.getByRole("status")).toHaveTextContent(
       "Checking system status and loading categories",
@@ -37,7 +38,7 @@ describe("App", () => {
     });
 
     render(<App />);
-    await userEvent.click(screen.getByRole("button", { name: "Check System" }));
+    await userEvent.click(await screen.findByRole("button", { name: "Check System" }));
 
     expect(await screen.findByText("Online")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "IT Request Categories" })).toBeInTheDocument();
@@ -51,7 +52,7 @@ describe("App", () => {
     vi.spyOn(api, "checkSystem").mockRejectedValue(new Error("Network error"));
 
     render(<App />);
-    await userEvent.click(screen.getByRole("button", { name: "Check System" }));
+    await userEvent.click(await screen.findByRole("button", { name: "Check System" }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent("System Status: Offline");
     expect(screen.getByRole("alert")).toHaveTextContent("Unable to reach the TokTickIT API");

@@ -1,11 +1,15 @@
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { app } from "../../src/app.js";
 import { getPrisma } from "../../src/prisma.js";
+import { requesterSession, restoreRequesterSession } from "../lab-03/requester-session.js";
 
 let ownerId: number;
 let otherRequesterId: number;
 let detailTicketId: number;
+let ownerAgent: ReturnType<typeof request.agent>;
+let otherAgent: ReturnType<typeof request.agent>;
+let emails: string[] = [];
 
 beforeAll(async () => {
   const prisma = getPrisma();
@@ -14,6 +18,9 @@ beforeAll(async () => {
   const relatedSystem = await prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } });
   ownerId = requesters[0].id;
   otherRequesterId = requesters[1].id;
+  emails = requesters.map((requester) => requester.email);
+  ownerAgent = await requesterSession(emails[0]);
+  otherAgent = await requesterSession(emails[1]);
   const ticket = await prisma.ticket.upsert({
     where: { ticketNumber: "TKT-20990101-DETAIL001" },
     update: { requesterId: ownerId, categoryId: category.id, relatedSystemId: relatedSystem.id },
@@ -24,10 +31,11 @@ beforeAll(async () => {
   });
   detailTicketId = ticket.id;
 });
+afterAll(async () => { await Promise.all(emails.map(restoreRequesterSession)); });
 
 describe("GET /api/tickets/:ticketId", () => {
   it("returns the full read-only Ticket detail for its owner", async () => {
-    const response = await request(app).get(`/api/tickets/${detailTicketId}`).set("X-Development-Requester-Id", String(ownerId));
+    const response = await ownerAgent.get(`/api/tickets/${detailTicketId}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toMatchObject({
@@ -39,9 +47,9 @@ describe("GET /api/tickets/:ticketId", () => {
 
   it("uses the same safe 404 response for another Requester, invalid IDs, and missing Tickets", async () => {
     const expected = { error: "The requested resource was not found." };
-    const otherRequester = await request(app).get(`/api/tickets/${detailTicketId}`).set("X-Development-Requester-Id", String(otherRequesterId));
-    const invalidId = await request(app).get("/api/tickets/not-a-ticket").set("X-Development-Requester-Id", String(ownerId));
-    const missing = await request(app).get("/api/tickets/999999999").set("X-Development-Requester-Id", String(ownerId));
+    const otherRequester = await otherAgent.get(`/api/tickets/${detailTicketId}`);
+    const invalidId = await ownerAgent.get("/api/tickets/not-a-ticket");
+    const missing = await ownerAgent.get("/api/tickets/999999999");
 
     expect(otherRequester.status).toBe(404); expect(otherRequester.body).toEqual(expected);
     expect(invalidId.status).toBe(404); expect(invalidId.body).toEqual(expected);

@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import { CreateTicketForm } from "../../src/CreateTicketForm.js";
 
-const requester = { id: 1, displayName: "Amina Rahman", email: "amina.rahman@example.test" };
+const requester = { id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER" as const, mustChangePassword: false };
 
 describe("Create Ticket", () => {
   beforeEach(() => {

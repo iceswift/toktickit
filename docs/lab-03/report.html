@@ -86,12 +86,34 @@
     <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation.</p>
 
     <h2>Answer Part 3: Test DD and Traceability</h2>
-    <p class="pending">Pending: complete passing results from <code>main</code> for unit, API, UI, authorization, migration/regression, and E2E testing.</p>
+    <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> server API/unit/regression tests passed 25/25, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were reported up to date. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
+    <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and owner-preserving regression. The migrated User session—not a client-selected requester ID—determines ownership.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
+      <figcaption><strong>Figure 3.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-create-ticket.png" alt="Create Ticket form with requester name Amina Rahman populated from her authenticated session">
+      <figcaption><strong>Figure 4.</strong> Phase 4 Create Ticket form: the Requester field is read-only and populated from the authenticated User, proving the UI no longer permits manual requester identity selection (AC-04, AC-09).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-ticket-detail.png" alt="Authenticated requester Ticket Detail displaying Amina Rahman as requester with read-only ticket data">
+      <figcaption><strong>Figure 5.</strong> Phase 4 Ticket Detail: the owned Ticket remains readable after migration, with requester identity from the session. The backend authorization tests separately prove that another requester receives safe 404 responses (AC-04, AC-09).</figcaption>
+    </figure>
 
     <h2>Answer Part 4: AI Use and Reflection</h2>
     <p>The maintained prompt log and the student reflection are in <code>docs/lab-03/ai-use.md</code>. This section will be rendered into the final PDF after all verification notes are complete.</p>
 
-    <h2>Answer Part 5: Working Login and Password Change UI</h2><p class="pending">Pending Phase 3 implementation and verification.</p>
+    <h2>Answer Part 5: Working Login and Password Change UI</h2>
+    <p>Phase 3 authentication was peer-reviewed in <a href="https://github.com/iceswift/toktickit/pull/39">PR #39</a>. Phase 4 browser verification confirmed that a requester using an initial password reaches the forced password-change screen before the requester shell; logout returns to Sign in. The formal final-main test output is still pending.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-03-auth/login-form.png" alt="TokTickIT sign-in form with email and password inputs">
+      <figcaption><strong>Figure 6.</strong> Login UI with email/password inputs, supporting the working authentication entry requirement (AC-01).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/first-login-gate.png" alt="First-login requester session is shown the mandatory change-password screen instead of the requester shell">
+      <figcaption><strong>Figure 7.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
+    </figure>
     <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2><p class="pending">Pending Phase 5 implementation and verification.</p>
     <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2><p class="pending">Pending Phase 6 implementation and verification.</p>
     <h2>Answer Part 8: Working Administrator User Management UI</h2><p class="pending">Pending Phase 7 implementation and verification.</p>

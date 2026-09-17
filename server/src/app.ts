@@ -49,6 +49,19 @@ app.get("/auth/me", async (req, res) => {
   return res.status(200).json({ user });
 });
 
+// Requester ownership always comes from the authenticated User.
+app.use(["/api/tickets", "/api/attachments"], async (req, res, next) => {
+  try {
+    const user = await currentUser(req);
+    if (!user) return res.status(401).json({ error: "Authentication is required." });
+    if (user.role !== "REQUESTER" || user.mustChangePassword) return res.status(403).json({ error: "Requester access is required." });
+    const mapped = await getPrisma().user.findUnique({ where: { id: user.id }, select: { developmentRequesterId: true } });
+    if (!mapped?.developmentRequesterId) return res.status(404).json(notFoundMessage);
+    res.locals.requesterId = mapped.developmentRequesterId;
+    return next();
+  } catch { return res.status(500).json({ error: "Unable to complete the request." }); }
+});
+
 app.get("/api/categories", async (_req: Request, res: Response) => {
   try {
     const categories = await getPrisma().category.findMany({
@@ -77,23 +90,9 @@ app.get("/api/related-systems", async (_req: Request, res: Response) => {
   }
 });
 
-app.get("/api/development-requesters", async (_req: Request, res: Response) => {
-  try {
-    const requesters = await getPrisma().developmentRequester.findMany({
-      where: { isActive: true },
-      select: { id: true, displayName: true, email: true },
-      orderBy: { displayName: "asc" },
-    });
-
-    res.status(200).json(requesters);
-  } catch {
-    res.status(500).json({ error: "Unable to retrieve development requesters." });
-  }
-});
-
 const priorities = new Set(["LOW", "MEDIUM", "HIGH"]);
 const ticketSortFields = new Set(["createdAt", "updatedAt", "ticketNumber", "requestedPriority"]);
-const ticketStatuses = new Set(["NEW"]);
+const ticketStatuses = new Set(["NEW", "OPEN", "IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CLOSED", "REOPENED", "CANCELLED"]);
 
 function getFields(body: unknown): Record<string, string> {
   const fields: Record<string, string> = {};
@@ -110,7 +109,7 @@ function getFields(body: unknown): Record<string, string> {
 }
 
 app.post("/api/tickets", async (req: Request, res: Response) => {
-  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const fields = getFields(req.body);
   if (Object.keys(fields).length > 0) {
     res.status(400).json({ error: "Please correct the highlighted fields.", fields });
@@ -176,7 +175,7 @@ function parsePositiveInteger(value: unknown): number | undefined {
 }
 
 app.get("/api/tickets", async (req: Request, res: Response) => {
-  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const query = req.query;
   const search = typeof query.search === "string" ? query.search.trim() : "";
   const categoryId = query.categoryId === undefined ? undefined : parsePositiveInteger(query.categoryId);
@@ -224,7 +223,7 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
       requesterId: requester.id,
       ...(categoryId === undefined ? {} : { categoryId }),
       ...(requestedPriority === undefined ? {} : { requestedPriority: requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
-      ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" }),
+      ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }),
       ...(search === "" ? {} : {
         OR: [
           { ticketNumber: { contains: search, mode: "insensitive" as const } },
@@ -249,7 +248,7 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
 });
 
 app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
   if (!requesterId || !ticketId) {
     res.status(404).json(notFoundMessage);
@@ -282,7 +281,7 @@ app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
 });
 
 app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
   if (!requesterId || !ticketId) {
     res.status(404).json(notFoundMessage);
@@ -320,7 +319,7 @@ app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req
 });
 
 app.get("/api/tickets/:ticketId/attachments", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
   if (!requesterId || !ticketId) {
     res.status(404).json(notFoundMessage);
@@ -341,7 +340,7 @@ app.get("/api/tickets/:ticketId/attachments", async (req: Request, res: Response
 });
 
 app.get("/api/attachments/:attachmentId/download", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const attachmentId = parseRequesterOrResourceId(req.params.attachmentId);
   if (!requesterId || !attachmentId) {
     res.status(404).json(notFoundMessage);
@@ -365,7 +364,7 @@ app.get("/api/attachments/:attachmentId/download", async (req: Request, res: Res
 });
 
 app.delete("/api/attachments/:attachmentId", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterId = Number(res.locals.requesterId);
   const attachmentId = parseRequesterOrResourceId(req.params.attachmentId);
   const reason = typeof req.body?.reason === "string" ? req.body.reason.trim() : "";
   if (!requesterId || !attachmentId) {

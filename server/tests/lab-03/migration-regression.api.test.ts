@@ -2,6 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import request from "supertest";
 import { app } from "../../src/app.js";
+import { requesterSession, restoreRequesterSession } from "./requester-session.js";
 
 const prisma = new PrismaClient();
 
@@ -62,9 +63,9 @@ describe("Lab 3 user migration and seed regression", () => {
       prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } }),
     ]);
 
-    const response = await request(app)
+    const agent = await requesterSession(requester.email);
+    const response = await agent
       .post("/api/tickets")
-      .set("X-Development-Requester-Id", String(requester.id))
       .send({
         categoryId: category.id,
         relatedSystemId: relatedSystem.id,
@@ -82,5 +83,6 @@ describe("Lab 3 user migration and seed regression", () => {
     expect(createdTicket.requesterUserId).toBe(requester.migratedUser?.id);
 
     await prisma.ticket.delete({ where: { id: response.body.id } });
+    await restoreRequesterSession(requester.email);
   });
 });

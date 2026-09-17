@@ -1,14 +1,8 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL ?? (typeof window !== "undefined" && window.location.hostname === "127.0.0.1" ? "http://127.0.0.1:3000" : "http://localhost:3000");
 
 export interface Category {
   id: number;
   name: string;
-}
-
-export interface DevelopmentRequester {
-  id: number;
-  displayName: string;
-  email: string;
 }
 
 export interface RelatedSystem {
@@ -17,6 +11,8 @@ export interface RelatedSystem {
 }
 
 export type RequestedPriority = "LOW" | "MEDIUM" | "HIGH";
+export type TicketStatus = "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED";
+export type ITPriority = "NOT_SET" | "LOW" | "MEDIUM" | "HIGH" | "URGENT";
 
 export interface CreateTicketInput {
   categoryId: number;
@@ -35,8 +31,8 @@ export interface Ticket {
   summary: string;
   description: string;
   requestedPriority: RequestedPriority;
-  itPriority: "NOT_SET";
-  currentStatus: "NEW";
+  itPriority: ITPriority;
+  currentStatus: TicketStatus;
   createdAt: string;
   updatedAt: string;
 }
@@ -73,7 +69,7 @@ export interface MyTicketsQuery {
   search?: string;
   categoryId?: number;
   requestedPriority?: RequestedPriority;
-  currentStatus?: "NEW";
+  currentStatus?: TicketStatus;
   sortBy?: "createdAt" | "updatedAt" | "ticketNumber" | "requestedPriority";
   sortOrder?: "asc" | "desc";
   page?: number;
@@ -180,22 +176,6 @@ export async function checkSystem(): Promise<SystemStatus> {
   return { online: true, categories: data as Category[] };
 }
 
-export async function getDevelopmentRequesters(): Promise<DevelopmentRequester[]> {
-  const response = await fetch(`${API_URL}/api/development-requesters`);
-  if (!response.ok) throw new Error("The TokTickIT development requester request failed.");
-
-  const data = (await response.json()) as unknown;
-  if (!Array.isArray(data) || !data.every(
-    (requester) => typeof requester === "object" && requester !== null &&
-      typeof requester.id === "number" && typeof requester.displayName === "string" &&
-      typeof requester.email === "string",
-  )) {
-    throw new Error("The TokTickIT API returned invalid requester data.");
-  }
-
-  return data as DevelopmentRequester[];
-}
-
 async function getReferenceData(path: string, label: string): Promise<{ id: number; name: string }[]> {
   const response = await fetch(`${API_URL}${path}`);
   if (!response.ok) throw new Error(`The TokTickIT ${label} request failed.`);
@@ -214,13 +194,13 @@ export async function getRelatedSystems(): Promise<RelatedSystem[]> {
   return getReferenceData("/api/related-systems", "related system") as Promise<RelatedSystem[]>;
 }
 
-export async function createTicket(requesterId: number, input: CreateTicketInput): Promise<Ticket> {
+export async function createTicket(input: CreateTicketInput): Promise<Ticket> {
   const response = await fetch(`${API_URL}/api/tickets`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Development-Requester-Id": String(requesterId),
     },
+    credentials: "include",
     body: JSON.stringify(input),
   });
   const data = await response.json().catch(() => ({})) as { error?: string; fields?: Record<string, string> } & Partial<Ticket>;
@@ -231,14 +211,12 @@ export async function createTicket(requesterId: number, input: CreateTicketInput
   return data as Ticket;
 }
 
-export async function getMyTickets(requesterId: number, query: MyTicketsQuery): Promise<TicketListResult> {
+export async function getMyTickets(query: MyTicketsQuery): Promise<TicketListResult> {
   const parameters = new URLSearchParams();
   for (const [key, value] of Object.entries(query)) {
     if (value !== undefined && value !== "") parameters.set(key, String(value));
   }
-  const response = await fetch(`${API_URL}/api/tickets?${parameters.toString()}`, {
-    headers: { "X-Development-Requester-Id": String(requesterId) },
-  });
+  const response = await fetch(`${API_URL}/api/tickets?${parameters.toString()}`, { credentials: "include" });
   const data = await response.json().catch(() => ({})) as Partial<TicketListResult> & { error?: string };
   if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve Tickets.");
   if (!Array.isArray(data.items) || typeof data.page !== "number" || typeof data.pageSize !== "number" || typeof data.totalItems !== "number" || typeof data.totalPages !== "number") {
@@ -247,8 +225,8 @@ export async function getMyTickets(requesterId: number, query: MyTicketsQuery): 
   return data as TicketListResult;
 }
 
-export async function getTicketDetail(requesterId: number, ticketId: number): Promise<TicketDetail> {
-  const response = await fetch(`${API_URL}/api/tickets/${ticketId}`, { headers: { "X-Development-Requester-Id": String(requesterId) } });
+export async function getTicketDetail(ticketId: number): Promise<TicketDetail> {
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}`, { credentials: "include" });
   const data = await response.json().catch(() => ({})) as Partial<TicketDetail> & { error?: string };
   if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve the Ticket.");
   if (typeof data.id !== "number" || typeof data.ticketNumber !== "string" || !data.category || !data.relatedSystem || !Array.isArray(data.attachments)) {
@@ -257,26 +235,26 @@ export async function getTicketDetail(requesterId: number, ticketId: number): Pr
   return data as TicketDetail;
 }
 
-export async function uploadTicketAttachment(requesterId: number, ticketId: number, file: File): Promise<AttachmentMetadata> {
+export async function uploadTicketAttachment(ticketId: number, file: File): Promise<AttachmentMetadata> {
   const body = new FormData();
   body.append("file", file);
-  const response = await fetch(`${API_URL}/api/tickets/${ticketId}/attachments`, { method: "POST", headers: { "X-Development-Requester-Id": String(requesterId) }, body });
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}/attachments`, { method: "POST", credentials: "include", body });
   const data = await response.json().catch(() => ({})) as Partial<AttachmentMetadata> & { error?: string };
   if (!response.ok) throw new ApiError(data.error ?? "Unable to upload the attachment.");
   if (typeof data.id !== "number" || typeof data.originalFilename !== "string") throw new Error("The TokTickIT API returned invalid attachment data.");
   return data as AttachmentMetadata;
 }
 
-export async function removeAttachment(requesterId: number, attachmentId: number, reason: string): Promise<void> {
-  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}`, { method: "DELETE", headers: { "Content-Type": "application/json", "X-Development-Requester-Id": String(requesterId) }, body: JSON.stringify({ reason }) });
+export async function removeAttachment(attachmentId: number, reason: string): Promise<void> {
+  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}`, { method: "DELETE", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason }) });
   if (!response.ok) {
     const data = await response.json().catch(() => ({})) as { error?: string };
     throw new ApiError(data.error ?? "Unable to remove the attachment.");
   }
 }
 
-export async function downloadAttachment(requesterId: number, attachmentId: number): Promise<Blob> {
-  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}/download`, { headers: { "X-Development-Requester-Id": String(requesterId) } });
+export async function downloadAttachment(attachmentId: number): Promise<Blob> {
+  const response = await fetch(`${API_URL}/api/attachments/${attachmentId}/download`, { credentials: "include" });
   if (!response.ok) {
     const data = await response.json().catch(() => ({})) as { error?: string };
     throw new ApiError(data.error ?? "Attachment download is unavailable.");

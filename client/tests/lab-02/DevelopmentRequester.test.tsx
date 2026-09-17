@@ -4,33 +4,46 @@ import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import App from "../../src/App.js";
 
-const requesters = [
-  { id: 1, displayName: "Amina Rahman", email: "amina.rahman@example.test" },
-  { id: 2, displayName: "Ben Carter", email: "ben.carter@example.test" },
-];
-
-describe("Development Requester selection", () => {
+describe("Authenticated requester identity replaces development selection", () => {
   beforeEach(() => {
     window.sessionStorage.clear();
     vi.restoreAllMocks();
+    vi.spyOn(api, "getCurrentUser").mockRejectedValue(new api.ApiError("Not signed in"));
   });
 
-  it("stores a selected requester for the application context", async () => {
-    vi.spyOn(api, "getDevelopmentRequesters").mockResolvedValue(requesters);
+  it("requires login and never offers a Development Requester selector", async () => {
     render(<App />);
-
-    const select = await screen.findByLabelText("Development Requester");
-    await userEvent.selectOptions(select, "2");
-    await userEvent.click(screen.getByRole("button", { name: "Continue" }));
-
-    expect(screen.getByText("Requester: Ben Carter")).toBeInTheDocument();
-    expect(window.sessionStorage.getItem("toktickit.developmentRequesterId")).toBe("2");
+    expect(await screen.findByRole("heading", { name: "Sign in" })).toBeInTheDocument();
+    expect(screen.queryByLabelText("Development Requester")).not.toBeInTheDocument();
+    expect(window.sessionStorage.getItem("toktickit.developmentRequesterId")).toBeNull();
   });
 
-  it("shows a safe failure message when requesters cannot load", async () => {
-    vi.spyOn(api, "getDevelopmentRequesters").mockRejectedValue(new Error("Network error"));
+  it("uses the authenticated User for the requester shell", async () => {
+    vi.spyOn(api, "login").mockResolvedValue({ id: 2, name: "Ben Carter", email: "ben.carter@example.test", role: "REQUESTER", mustChangePassword: false });
+    vi.spyOn(api, "getCategories").mockResolvedValue([]);
+    vi.spyOn(api, "getMyTickets").mockResolvedValue({ items: [], page: 1, pageSize: 10, totalItems: 0, totalPages: 0 });
     render(<App />);
+    await userEvent.type(await screen.findByLabelText("Email"), "ben.carter@example.test");
+    await userEvent.type(screen.getByLabelText("Password"), "Password!2026");
+    await userEvent.click(screen.getByRole("button", { name: "Sign in" }));
+    expect(await screen.findByText("Ben Carter · Requester")).toBeInTheDocument();
+    expect(screen.queryByLabelText("Development Requester")).not.toBeInTheDocument();
+    expect(window.sessionStorage.getItem("toktickit.developmentRequesterId")).toBeNull();
+  });
 
-    expect(await screen.findByText(/Unable to load Development Requesters/)).toBeInTheDocument();
+  it("restores an existing requester session without another identity choice", async () => {
+    vi.spyOn(api, "getCurrentUser").mockResolvedValue({ id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER", mustChangePassword: false });
+    vi.spyOn(api, "getCategories").mockResolvedValue([]);
+    vi.spyOn(api, "getMyTickets").mockResolvedValue({ items: [], page: 1, pageSize: 10, totalItems: 0, totalPages: 0 });
+    render(<App />);
+    expect(await screen.findByText("Amina Rahman · Requester")).toBeInTheDocument();
+    expect(screen.queryByLabelText("Development Requester")).not.toBeInTheDocument();
+  });
+
+  it("blocks the requester shell until the first password change", async () => {
+    vi.spyOn(api, "getCurrentUser").mockResolvedValue({ id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER", mustChangePassword: true });
+    render(<App />);
+    expect(await screen.findByRole("heading", { name: "Change password" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "My Tickets" })).not.toBeInTheDocument();
   });
 });

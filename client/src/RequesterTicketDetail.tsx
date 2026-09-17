@@ -1,10 +1,10 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { AttachmentMetadata, DevelopmentRequester, downloadAttachment, getTicketDetail, removeAttachment, TicketDetail, uploadTicketAttachment } from "./api.js";
+import { AttachmentMetadata, AuthUser, downloadAttachment, getTicketDetail, removeAttachment, TicketDetail, uploadTicketAttachment } from "./api.js";
 
 function label(value: string) { return value.charAt(0) + value.slice(1).toLowerCase().replace("_", " "); }
 function formatDate(value: string) { return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)); }
 
-export function RequesterTicketDetail({ requester, ticketId, onBack }: { requester: DevelopmentRequester; ticketId: number; onBack: () => void }) {
+export function RequesterTicketDetail({ requester, ticketId, onBack }: { requester: AuthUser; ticketId: number; onBack: () => void }) {
   const [ticket, setTicket] = useState<TicketDetail | null>(null);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
   const [refreshKey, setRefreshKey] = useState(0);
@@ -16,22 +16,22 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
   useEffect(() => {
     let active = true;
     setState("loading");
-    void getTicketDetail(requester.id, ticketId).then((loaded) => { if (active) { setTicket(loaded); setState("ready"); } }).catch(() => { if (active) setState("error"); });
+    void getTicketDetail(ticketId).then((loaded) => { if (active) { setTicket(loaded); setState("ready"); } }).catch(() => { if (active) setState("error"); });
     return () => { active = false; };
-  }, [requester.id, ticketId, refreshKey]);
+  }, [ticketId, refreshKey]);
 
   async function handleUpload(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!file) { setAttachmentError("Choose a JPG, PNG, WEBP, or PDF file first."); return; }
     setUploadState("busy"); setAttachmentError("");
-    try { await uploadTicketAttachment(requester.id, ticketId, file); setFile(null); setUploadState("success"); setRefreshKey((key) => key + 1); }
+    try { await uploadTicketAttachment(ticketId, file); setFile(null); setUploadState("success"); setRefreshKey((key) => key + 1); }
     catch (error) { setUploadState("error"); setAttachmentError(error instanceof Error ? error.message : "Unable to upload the attachment."); }
   }
 
   async function handleDownload(attachment: AttachmentMetadata) {
     setAttachmentError("");
     try {
-      const blob = await downloadAttachment(requester.id, attachment.id);
+      const blob = await downloadAttachment(attachment.id);
       const url = URL.createObjectURL(blob); const link = document.createElement("a");
       link.href = url; link.download = attachment.originalFilename; link.click(); URL.revokeObjectURL(url);
     } catch (error) { setAttachmentError(error instanceof Error ? error.message : "Attachment download is unavailable."); }
@@ -42,7 +42,7 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
     if (!removing) return;
     if (removalReason.trim().length < 5 || removalReason.trim().length > 250) { setAttachmentError("Removal reason must be 5 to 250 characters."); return; }
     setAttachmentError("");
-    try { await removeAttachment(requester.id, removing.id, removalReason.trim()); setRemoving(null); setRemovalReason(""); setRefreshKey((key) => key + 1); }
+    try { await removeAttachment(removing.id, removalReason.trim()); setRemoving(null); setRemovalReason(""); setRefreshKey((key) => key + 1); }
     catch (error) { setAttachmentError(error instanceof Error ? error.message : "Unable to remove the attachment."); }
   }
 
@@ -51,7 +51,7 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
     {state === "loading" && <p role="status" className="text-secondary">Loading Ticket details...</p>}
     {state === "error" && <div className="alert alert-danger" role="alert">Ticket details are unavailable or you do not have access to this Ticket.</div>}
     {state === "ready" && ticket && <><div className="d-flex flex-wrap justify-content-between gap-3 mb-4"><div><h1 className="h3 mb-1" id="ticket-detail-heading">{ticket.ticketNumber}</h1><p className="text-secondary mb-0">Requester Ticket Detail — read-only in Lab 2.</p></div><div><span className="badge text-bg-success me-2">{label(ticket.currentStatus)}</span><span className="badge text-bg-secondary">Requested {label(ticket.requestedPriority)}</span></div></div>
-      <section className="card shadow-sm" aria-label="Read-only Ticket information"><div className="card-body"><dl className="row mb-0"><dt className="col-sm-3">Requester</dt><dd className="col-sm-9">{requester.displayName}</dd><dt className="col-sm-3">Summary</dt><dd className="col-sm-9">{ticket.summary}</dd><dt className="col-sm-3">Category</dt><dd className="col-sm-9">{ticket.category.name}</dd><dt className="col-sm-3">Related System</dt><dd className="col-sm-9">{ticket.relatedSystem.name}</dd><dt className="col-sm-3">Requested Priority</dt><dd className="col-sm-9">{label(ticket.requestedPriority)}</dd><dt className="col-sm-3">IT Priority</dt><dd className="col-sm-9">{label(ticket.itPriority)}</dd><dt className="col-sm-3">Current Status</dt><dd className="col-sm-9">{label(ticket.currentStatus)}</dd><dt className="col-sm-3">Created</dt><dd className="col-sm-9">{formatDate(ticket.createdAt)}</dd><dt className="col-sm-3">Last Updated</dt><dd className="col-sm-9">{formatDate(ticket.updatedAt)}</dd><dt className="col-sm-3">Description</dt><dd className="col-sm-9" style={{ whiteSpace: "pre-wrap" }}>{ticket.description}</dd></dl></div></section>
+      <section className="card shadow-sm" aria-label="Read-only Ticket information"><div className="card-body"><dl className="row mb-0"><dt className="col-sm-3">Requester</dt><dd className="col-sm-9">{requester.name}</dd><dt className="col-sm-3">Summary</dt><dd className="col-sm-9">{ticket.summary}</dd><dt className="col-sm-3">Category</dt><dd className="col-sm-9">{ticket.category.name}</dd><dt className="col-sm-3">Related System</dt><dd className="col-sm-9">{ticket.relatedSystem.name}</dd><dt className="col-sm-3">Requested Priority</dt><dd className="col-sm-9">{label(ticket.requestedPriority)}</dd><dt className="col-sm-3">IT Priority</dt><dd className="col-sm-9">{label(ticket.itPriority)}</dd><dt className="col-sm-3">Current Status</dt><dd className="col-sm-9">{label(ticket.currentStatus)}</dd><dt className="col-sm-3">Created</dt><dd className="col-sm-9">{formatDate(ticket.createdAt)}</dd><dt className="col-sm-3">Last Updated</dt><dd className="col-sm-9">{formatDate(ticket.updatedAt)}</dd><dt className="col-sm-3">Description</dt><dd className="col-sm-9" style={{ whiteSpace: "pre-wrap" }}>{ticket.description}</dd></dl></div></section>
       <section className="card shadow-sm mt-4" aria-labelledby="attachments-heading"><div className="card-body"><h2 className="h5" id="attachments-heading">Attachments</h2>
         <form onSubmit={handleUpload} className="border rounded p-3 mb-3"><label className="form-label" htmlFor="attachment-file">Add attachment</label><input className="form-control" id="attachment-file" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" onChange={(event) => { setFile(event.target.files?.[0] ?? null); setUploadState("idle"); setAttachmentError(""); }} /><div className="form-text">JPG, PNG, WEBP, or PDF; up to 5 MB; maximum five active files.</div><button className="btn btn-success mt-3" disabled={!file || uploadState === "busy"}>{uploadState === "busy" ? "Uploading..." : "Upload attachment"}</button>{uploadState === "success" && <p className="text-success mb-0 mt-2" role="status">Attachment uploaded.</p>}</form>
         {attachmentError && <div className="alert alert-danger" role="alert">{attachmentError}</div>}
