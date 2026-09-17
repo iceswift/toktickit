@@ -96,6 +96,50 @@ export interface SystemStatus {
   categories: Category[];
 }
 
+export type UserRole = "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR";
+
+export interface AuthUser {
+  id: number;
+  name: string;
+  email: string;
+  role: UserRole;
+  mustChangePassword: boolean;
+}
+
+async function readAuthResponse(response: Response): Promise<AuthUser> {
+  const data = await response.json().catch(() => ({})) as { error?: string; user?: AuthUser };
+  if (!response.ok || !data.user) throw new ApiError(data.error ?? "Authentication could not be completed.");
+  return data.user;
+}
+
+export async function login(email: string, password: string): Promise<AuthUser> {
+  const response = await fetch(`${API_URL}/auth/login`, {
+    method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include",
+    body: JSON.stringify({ email, password }),
+  });
+  return readAuthResponse(response);
+}
+
+export async function getCurrentUser(): Promise<AuthUser> {
+  return readAuthResponse(await fetch(`${API_URL}/auth/me`, { credentials: "include" }));
+}
+
+export async function logout(): Promise<void> {
+  const response = await fetch(`${API_URL}/auth/logout`, { method: "POST", credentials: "include" });
+  if (!response.ok) throw new ApiError("Logout could not be completed.");
+}
+
+export async function changePassword(currentPassword: string, newPassword: string, confirmation: string): Promise<void> {
+  const response = await fetch(`${API_URL}/auth/change-password`, {
+    method: "POST", headers: { "Content-Type": "application/json" }, credentials: "include",
+    body: JSON.stringify({ currentPassword, newPassword, confirmation }),
+  });
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({})) as { error?: string };
+    throw new ApiError(data.error ?? "Password could not be changed.");
+  }
+}
+
 export async function checkHealth(): Promise<HealthStatus> {
   const response = await fetch(`${API_URL}/api/health`);
 

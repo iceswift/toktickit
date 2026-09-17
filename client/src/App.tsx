@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { Category, checkSystem, DevelopmentRequester, getDevelopmentRequesters } from "./api.js";
+import { AuthUser, Category, checkSystem, DevelopmentRequester, getDevelopmentRequesters } from "./api.js";
+import { ChangePassword } from "./ChangePassword.js";
 import { CreateTicketForm } from "./CreateTicketForm.js";
+import { Login } from "./Login.js";
 import { MyTickets } from "./MyTickets.js";
 import { RequesterTicketDetail } from "./RequesterTicketDetail.js";
 
@@ -15,6 +17,7 @@ function getStoredRequesterId(): number | null {
 }
 
 export default function App() {
+  const [authenticatedUser, setAuthenticatedUser] = useState<AuthUser | null>(null);
   const [state, setState] = useState<LoadState>("loading");
   const [requesters, setRequesters] = useState<DevelopmentRequester[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(getStoredRequesterId);
@@ -23,6 +26,24 @@ export default function App() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [activePage, setActivePage] = useState<"create" | "tickets" | "detail">("create");
   const [selectedTicketId, setSelectedTicketId] = useState<number | null>(null);
+
+  // Authentication screens are exposed on their own routes during Phase 3.
+  // The existing requester selector stays intact until Phase 4 migrates its identity flow.
+  if (window.location.pathname === "/login" && !authenticatedUser) {
+    return <Login onAuthenticated={(user) => {
+      setAuthenticatedUser(user);
+      if (user.mustChangePassword) window.history.replaceState(null, "", "/change-password");
+    }} />;
+  }
+  if (window.location.pathname === "/change-password") {
+    return <ChangePassword onComplete={() => { setAuthenticatedUser(null); window.history.replaceState(null, "", "/login"); }} />;
+  }
+  if (authenticatedUser) {
+    return <main className="container py-5" style={{ maxWidth: 640 }}><div className="alert alert-success" role="status">
+      <h1 className="h4">Signed in as {authenticatedUser.name}</h1>
+      <p className="mb-0">Authentication is active. Role-specific ticket screens are delivered in the following Lab 3 phases.</p>
+    </div></main>;
+  }
 
   useEffect(() => {
     let active = true;

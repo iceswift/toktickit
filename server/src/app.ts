@@ -4,11 +4,16 @@ import multer from "multer";
 import { getPrisma } from "./prisma.js";
 import { generateTicketNumber } from "./ticket-number.js";
 import { isPermittedAttachment, MAX_ATTACHMENT_BYTES, readStoredAttachment, removeStoredAttachment, storeAttachment } from "./attachment-storage.js";
+import { changePassword, currentUser, login, logout } from "./auth.js";
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
 
-app.use(cors());
+// Authentication uses an HttpOnly cookie. Credentialed browser requests need a
+// concrete allowed origin rather than CORS's wildcard default. Vite may use
+// either localhost or 127.0.0.1 during local verification.
+const clientOrigins = new Set([process.env.CLIENT_ORIGIN ?? "http://localhost:5173", "http://127.0.0.1:5173"]);
+app.use(cors({ origin: (origin, callback) => callback(null, !origin || clientOrigins.has(origin)), credentials: true }));
 app.use(express.json());
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: MAX_ATTACHMENT_BYTES, files: 1 } });
@@ -33,6 +38,15 @@ function attachmentMetadata(attachment: { id: number; originalFilename: string; 
 
 app.get("/api/health", (_req: Request, res: Response) => {
   res.status(200).json({ status: "ok", service: "TokTickIT API" });
+});
+
+app.post("/auth/login", (req, res) => { void login(req, res); });
+app.post("/auth/logout", (req, res) => { void logout(req, res); });
+app.post("/auth/change-password", (req, res) => { void changePassword(req, res); });
+app.get("/auth/me", async (req, res) => {
+  const user = await currentUser(req);
+  if (!user) return res.status(401).json({ error: "Authentication is required." });
+  return res.status(200).json({ user });
 });
 
 app.get("/api/categories", async (_req: Request, res: Response) => {
