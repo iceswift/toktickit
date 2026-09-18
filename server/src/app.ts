@@ -5,6 +5,7 @@ import { getPrisma } from "./prisma.js";
 import { generateTicketNumber } from "./ticket-number.js";
 import { isPermittedAttachment, MAX_ATTACHMENT_BYTES, readStoredAttachment, removeStoredAttachment, storeAttachment } from "./attachment-storage.js";
 import { changePassword, currentUser, login, logout } from "./auth.js";
+import { requireRequesterSession } from "./requester-session.js";
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -49,6 +50,8 @@ app.get("/auth/me", async (req, res) => {
   return res.status(200).json({ user });
 });
 
+app.use(["/api/tickets", "/api/attachments"], requireRequesterSession);
+
 app.get("/api/categories", async (_req: Request, res: Response) => {
   try {
     const categories = await getPrisma().category.findMany({
@@ -77,23 +80,9 @@ app.get("/api/related-systems", async (_req: Request, res: Response) => {
   }
 });
 
-app.get("/api/development-requesters", async (_req: Request, res: Response) => {
-  try {
-    const requesters = await getPrisma().developmentRequester.findMany({
-      where: { isActive: true },
-      select: { id: true, displayName: true, email: true },
-      orderBy: { displayName: "asc" },
-    });
-
-    res.status(200).json(requesters);
-  } catch {
-    res.status(500).json({ error: "Unable to retrieve development requesters." });
-  }
-});
-
 const priorities = new Set(["LOW", "MEDIUM", "HIGH"]);
 const ticketSortFields = new Set(["createdAt", "updatedAt", "ticketNumber", "requestedPriority"]);
-const ticketStatuses = new Set(["NEW"]);
+const ticketStatuses = new Set(["NEW", "OPEN", "IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CLOSED", "REOPENED", "CANCELLED"]);
 
 function getFields(body: unknown): Record<string, string> {
   const fields: Record<string, string> = {};
@@ -110,7 +99,7 @@ function getFields(body: unknown): Record<string, string> {
 }
 
 app.post("/api/tickets", async (req: Request, res: Response) => {
-  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const fields = getFields(req.body);
   if (Object.keys(fields).length > 0) {
     res.status(400).json({ error: "Please correct the highlighted fields.", fields });
@@ -129,7 +118,7 @@ app.post("/api/tickets", async (req: Request, res: Response) => {
     const prisma = getPrisma();
     const [requester, category, relatedSystem] = await Promise.all([
       prisma.developmentRequester.findFirst({
-        where: { id: requesterId, isActive: true },
+        where: { isActive: true, migratedUser: { is: { id: requesterUserId, isActive: true } } },
         select: { id: true, migratedUser: { select: { id: true } } },
       }),
       prisma.category.findFirst({ where: { id: body.categoryId, isActive: true }, select: { id: true } }),
@@ -147,7 +136,7 @@ app.post("/api/tickets", async (req: Request, res: Response) => {
           data: {
             ticketNumber: generateTicketNumber(),
             requesterId: requester.id,
-            requesterUserId: requester.migratedUser.id,
+            requesterUserId,
             categoryId: category.id,
             relatedSystemId: relatedSystem.id,
             summary: body.summary.trim(),
@@ -176,7 +165,7 @@ function parsePositiveInteger(value: unknown): number | undefined {
 }
 
 app.get("/api/tickets", async (req: Request, res: Response) => {
-  const requesterId = Number(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const query = req.query;
   const search = typeof query.search === "string" ? query.search.trim() : "";
   const categoryId = query.categoryId === undefined ? undefined : parsePositiveInteger(query.categoryId);
@@ -206,12 +195,6 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
 
   try {
     const prisma = getPrisma();
-    const requester = await prisma.developmentRequester.findFirst({ where: { id: requesterId, isActive: true }, select: { id: true } });
-    if (!requester) {
-      res.status(404).json({ error: "The requested resource was not found." });
-      return;
-    }
-
     if (categoryId !== undefined) {
       const category = await prisma.category.findFirst({ where: { id: categoryId, isActive: true }, select: { id: true } });
       if (!category) {
@@ -221,10 +204,10 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
     }
 
     const where = {
-      requesterId: requester.id,
+      requesterUserId,
       ...(categoryId === undefined ? {} : { categoryId }),
       ...(requestedPriority === undefined ? {} : { requestedPriority: requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
-      ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" }),
+      ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }),
       ...(search === "" ? {} : {
         OR: [
           { ticketNumber: { contains: search, mode: "insensitive" as const } },
@@ -249,22 +232,17 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
 });
 
 app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
-  if (!requesterId || !ticketId) {
+  if (!requesterUserId || !ticketId) {
     res.status(404).json(notFoundMessage);
     return;
   }
 
   try {
     const prisma = getPrisma();
-    const requester = await prisma.developmentRequester.findFirst({ where: { id: requesterId, isActive: true }, select: { id: true } });
-    if (!requester) {
-      res.status(404).json(notFoundMessage);
-      return;
-    }
     const ticket = await prisma.ticket.findFirst({
-      where: { id: ticketId, requesterId: requester.id },
+      where: { id: ticketId, requesterUserId },
       include: {
         category: { select: { id: true, name: true } },
         relatedSystem: { select: { id: true, name: true } },
@@ -282,9 +260,9 @@ app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
 });
 
 app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
-  if (!requesterId || !ticketId) {
+  if (!requesterUserId || !ticketId) {
     res.status(404).json(notFoundMessage);
     return;
   }
@@ -300,7 +278,7 @@ app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req
   let storageKey: string | null = null;
   try {
     const prisma = getPrisma();
-    const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterId, requester: { isActive: true } }, select: { id: true } });
+    const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterUserId }, select: { id: true } });
     if (!ticket) {
       res.status(404).json(notFoundMessage);
       return;
@@ -320,15 +298,15 @@ app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req
 });
 
 app.get("/api/tickets/:ticketId/attachments", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const ticketId = parseRequesterOrResourceId(req.params.ticketId);
-  if (!requesterId || !ticketId) {
+  if (!requesterUserId || !ticketId) {
     res.status(404).json(notFoundMessage);
     return;
   }
   try {
     const prisma = getPrisma();
-    const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterId, requester: { isActive: true } }, select: { id: true } });
+    const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterUserId }, select: { id: true } });
     if (!ticket) {
       res.status(404).json(notFoundMessage);
       return;
@@ -341,14 +319,14 @@ app.get("/api/tickets/:ticketId/attachments", async (req: Request, res: Response
 });
 
 app.get("/api/attachments/:attachmentId/download", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const attachmentId = parseRequesterOrResourceId(req.params.attachmentId);
-  if (!requesterId || !attachmentId) {
+  if (!requesterUserId || !attachmentId) {
     res.status(404).json(notFoundMessage);
     return;
   }
   try {
-    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterId, requester: { isActive: true } } } });
+    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterUserId } } });
     if (!attachment) {
       res.status(404).json(notFoundMessage);
       return;
@@ -365,10 +343,10 @@ app.get("/api/attachments/:attachmentId/download", async (req: Request, res: Res
 });
 
 app.delete("/api/attachments/:attachmentId", async (req: Request, res: Response) => {
-  const requesterId = parseRequesterOrResourceId(req.header("X-Development-Requester-Id"));
+  const requesterUserId = Number(res.locals.requesterUserId);
   const attachmentId = parseRequesterOrResourceId(req.params.attachmentId);
   const reason = typeof req.body?.reason === "string" ? req.body.reason.trim() : "";
-  if (!requesterId || !attachmentId) {
+  if (!requesterUserId || !attachmentId) {
     res.status(404).json(notFoundMessage);
     return;
   }
@@ -377,26 +355,22 @@ app.delete("/api/attachments/:attachmentId", async (req: Request, res: Response)
     return;
   }
   try {
-    const requester = await getPrisma().developmentRequester.findFirst({
-      where: { id: requesterId, isActive: true },
-      select: { id: true, migratedUser: { select: { id: true } } },
-    });
-    if (!requester?.migratedUser) {
-      res.status(404).json(notFoundMessage);
-      return;
-    }
-    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterId: requester.id, requester: { isActive: true } } }, select: { id: true } });
+    const attachment = await getPrisma().attachment.findFirst({ where: { id: attachmentId, removedAt: null, ticket: { requesterUserId } }, select: { id: true } });
     if (!attachment) {
       res.status(404).json(notFoundMessage);
       return;
     }
+    const requester = await getPrisma().developmentRequester.findFirst({
+      where: { migratedUser: { is: { id: requesterUserId } } },
+      select: { id: true },
+    });
     await getPrisma().attachment.update({
       where: { id: attachment.id },
       data: {
         removedAt: new Date(),
         removalReason: reason,
-        removedByRequesterId: requester.id,
-        removedByUserId: requester.migratedUser.id,
+        removedByRequesterId: requester?.id ?? null,
+        removedByUserId: requesterUserId,
       },
     });
     res.status(204).send();

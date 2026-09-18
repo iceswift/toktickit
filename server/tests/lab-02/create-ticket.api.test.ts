@@ -1,11 +1,14 @@
-import { beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { app } from "../../src/app.js";
 import { getPrisma } from "../../src/prisma.js";
+import { requesterSession, restoreRequesterSession } from "../lab-03/requester-session.js";
 
 let requesterId: number;
 let categoryId: number;
 let relatedSystemId: number;
+let agent: ReturnType<typeof request.agent>;
+let email: string;
 
 beforeAll(async () => {
   const prisma = getPrisma();
@@ -13,15 +16,17 @@ beforeAll(async () => {
   const category = await prisma.category.findFirstOrThrow({ where: { isActive: true } });
   const relatedSystem = await prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } });
   requesterId = requester.id;
+  email = requester.email;
   categoryId = category.id;
   relatedSystemId = relatedSystem.id;
+  agent = await requesterSession(requester.email);
 });
+afterAll(async () => { if (email) await restoreRequesterSession(email); });
 
 describe("POST /api/tickets", () => {
   it("creates a Ticket for the selected requester with backend-generated values", async () => {
-    const response = await request(app)
+    const response = await agent
       .post("/api/tickets")
-      .set("X-Development-Requester-Id", String(requesterId))
       .send({
         categoryId,
         relatedSystemId,
@@ -43,9 +48,8 @@ describe("POST /api/tickets", () => {
   });
 
   it("returns safe field errors and does not create a Ticket for invalid input", async () => {
-    const response = await request(app)
+    const response = await agent
       .post("/api/tickets")
-      .set("X-Development-Requester-Id", String(requesterId))
       .send({
         categoryId: 0,
         relatedSystemId: "invalid",

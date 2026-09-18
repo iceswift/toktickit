@@ -1,14 +1,11 @@
 import { Buffer } from "node:buffer";
-import { expect, test } from "@playwright/test";
+import { expect, request as playwrightRequest, test } from "@playwright/test";
+import { setRequesterPasswordGate, signInApi, signInRequester } from "../requester-auth.js";
 
 const apiBaseUrl = "http://127.0.0.1:3000/api";
 
-async function selectRequester(page: import("@playwright/test").Page, name: string) {
-  await page.goto("/");
-  await page.getByLabel("Development Requester").selectOption({ label: name });
-  await page.getByRole("button", { name: "Continue" }).click();
-  await expect(page.getByRole("heading", { name: "Create Ticket" })).toBeVisible();
-}
+test.beforeAll(() => setRequesterPasswordGate(false));
+test.afterAll(() => setRequesterPasswordGate(true));
 
 async function createTicket(page: import("@playwright/test").Page, summary: string) {
   await page.getByLabel("Category *").selectOption({ index: 1 });
@@ -22,7 +19,9 @@ async function createTicket(page: import("@playwright/test").Page, summary: stri
 }
 
 test("Requester creates, finds, and opens an owned Ticket", async ({ page }) => {
-  await selectRequester(page, "Amina Rahman");
+  await signInRequester(page);
+  await page.getByLabel("Application navigation").getByRole("button", { name: "Create Ticket" }).click();
+  await expect(page.getByRole("heading", { name: "Create Ticket" })).toBeVisible();
   const ticketNumber = await createTicket(page, "E2E searchable requester ticket");
   expect(ticketNumber).toBeTruthy();
 
@@ -37,17 +36,17 @@ test("Requester creates, finds, and opens an owned Ticket", async ({ page }) => 
 });
 
 test("cross-owner access is blocked while the owner can upload and remove an Attachment", async ({ page, request }) => {
-  await selectRequester(page, "Amina Rahman");
+  await signInRequester(page);
+  await page.getByLabel("Application navigation").getByRole("button", { name: "Create Ticket" }).click();
   const ticketNumber = await createTicket(page, "E2E attachment ownership ticket");
   expect(ticketNumber).toBeTruthy();
 
-  const requesters = await (await request.get(`${apiBaseUrl}/development-requesters`)).json();
-  const amina = requesters.find((requester: { displayName: string }) => requester.displayName === "Amina Rahman");
-  const ben = requesters.find((requester: { displayName: string }) => requester.displayName === "Ben Carter");
-  const tickets = await (await request.get(`${apiBaseUrl}/tickets`, { params: { search: ticketNumber! }, headers: { "X-Development-Requester-Id": String(amina.id) } })).json();
+  await signInApi(request, "amina.rahman@example.test");
+  const tickets = await (await request.get(`${apiBaseUrl}/tickets`, { params: { search: ticketNumber! } })).json();
   const ticketId = tickets.items[0].id;
-
-  await expect.poll(async () => (await request.get(`${apiBaseUrl}/tickets/${ticketId}`, { headers: { "X-Development-Requester-Id": String(ben.id) } })).status()).toBe(404);
+  const otherContext = await playwrightRequest.newContext();
+  await signInApi(otherContext, "ben.carter@example.test");
+  await expect.poll(async () => (await otherContext.get(`${apiBaseUrl}/tickets/${ticketId}`, { headers: { "X-Development-Requester-Id": "1" } })).status()).toBe(404);
 
   await page.getByLabel("Application navigation").getByRole("button", { name: "My Tickets" }).click();
   await page.getByLabel("Search").fill(ticketNumber!);
@@ -60,13 +59,14 @@ test("cross-owner access is blocked while the owner can upload and remove an Att
   await page.getByRole("button", { name: "Upload attachment" }).click();
   await expect(page.getByText("evidence.pdf")).toBeVisible();
 
-  const detail = await (await request.get(`${apiBaseUrl}/tickets/${ticketId}`, { headers: { "X-Development-Requester-Id": String(amina.id) } })).json();
+  const detail = await (await request.get(`${apiBaseUrl}/tickets/${ticketId}`)).json();
   const attachmentId = detail.attachments.find((attachment: { originalFilename: string }) => attachment.originalFilename === "evidence.pdf").id;
-  await expect.poll(async () => (await request.get(`${apiBaseUrl}/attachments/${attachmentId}/download`, { headers: { "X-Development-Requester-Id": String(ben.id) } })).status()).toBe(404);
+  await expect.poll(async () => (await otherContext.get(`${apiBaseUrl}/attachments/${attachmentId}/download`, { headers: { "X-Development-Requester-Id": "1" } })).status()).toBe(404);
 
   await page.getByRole("button", { name: "Remove" }).click();
   await page.getByLabel("Removal reason").fill("E2E cleanup");
   await page.getByRole("button", { name: "Confirm removal" }).click();
   await expect(page.getByText(/Removed .*E2E cleanup/)).toBeVisible();
-  await expect.poll(async () => (await request.get(`${apiBaseUrl}/attachments/${attachmentId}/download`, { headers: { "X-Development-Requester-Id": String(amina.id) } })).status()).toBe(404);
+  await expect.poll(async () => (await request.get(`${apiBaseUrl}/attachments/${attachmentId}/download`)).status()).toBe(404);
+  await otherContext.dispose();
 });

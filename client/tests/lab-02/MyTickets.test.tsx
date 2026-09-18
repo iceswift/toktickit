@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import { MyTickets } from "../../src/MyTickets.js";
 
-const requester = { id: 1, displayName: "Amina Rahman", email: "amina.rahman@example.test" };
+const requester = { id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER" as const, mustChangePassword: false };
 const ticket = {
   id: 8, ticketNumber: "TKT-20260830-AB12CD34", requesterId: 1, categoryId: 1, relatedSystemId: 2,
   summary: "VPN disconnects during online exam", description: "The VPN disconnects after approximately five minutes during the online exam.",
@@ -25,7 +25,7 @@ describe("My Tickets", () => {
     expect((await screen.findAllByText(ticket.ticketNumber)).length).toBeGreaterThan(0);
     await userEvent.type(screen.getByLabelText("Search"), "VPN");
     expect((await screen.findAllByText(ticket.ticketNumber)).length).toBeGreaterThan(0);
-    expect(listSpy).toHaveBeenLastCalledWith(1, expect.objectContaining({ search: "VPN", page: 1 }));
+    expect(listSpy).toHaveBeenLastCalledWith(expect.objectContaining({ search: "VPN", page: 1 }));
   });
 
   it("distinguishes an empty Ticket list from no matching results", async () => {
@@ -35,6 +35,6 @@ describe("My Tickets", () => {
     expect(await screen.findByText(/No Tickets yet/)).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText("Search"), "missing");
     expect(await screen.findByText(/No matching Tickets/)).toBeInTheDocument();
-    expect(listSpy).toHaveBeenLastCalledWith(1, expect.objectContaining({ search: "missing" }));
+    expect(listSpy).toHaveBeenLastCalledWith(expect.objectContaining({ search: "missing" }));
   });
 });

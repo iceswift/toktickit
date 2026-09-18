@@ -11,7 +11,7 @@ describe("Zen Green form conventions", () => {
   });
 
   it("uses labelled required fields and a disabled-safe submit state", async () => {
-    render(<CreateTicketForm requester={{ id: 1, displayName: "Amina Rahman", email: "amina@example.test" }} />);
+    render(<CreateTicketForm requester={{ id: 1, name: "Amina Rahman", email: "amina@example.test", role: "REQUESTER", mustChangePassword: false }} />);
 
     expect(await screen.findByLabelText("Ticket Summary *")).toHaveClass("form-control");
     expect(screen.getByLabelText("Description *")).toHaveAttribute("maxlength", "2000");
