@@ -92,6 +92,16 @@ export interface SystemStatus {
   categories: Category[];
 }
 
+export interface StaffQueueItem extends TicketListItem {
+  requesterUser: { id: number; name: string } | null;
+  owner: { id: number; name: string; role: UserRole } | null;
+}
+export interface StaffQueueQuery {
+  search?: string; status?: TicketStatus; requestedPriority?: RequestedPriority; itPriority?: ITPriority;
+  sortBy?: "updatedAt" | "createdAt" | "ticketNumber" | "currentStatus" | "requestedPriority" | "itPriority";
+  sortOrder?: "asc" | "desc"; page?: number; pageSize?: 10 | 20 | 50;
+}
+
 export type UserRole = "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR";
 
 export interface AuthUser {
@@ -223,6 +233,16 @@ export async function getMyTickets(query: MyTicketsQuery): Promise<TicketListRes
     throw new Error("The TokTickIT API returned an invalid Ticket list.");
   }
   return data as TicketListResult;
+}
+
+export async function getStaffTickets(query: StaffQueueQuery): Promise<TicketListResult & { items: StaffQueueItem[] }> {
+  const parameters = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) if (value !== undefined && value !== "") parameters.set(key, String(value));
+  const response = await fetch(`${API_URL}/staff/tickets?${parameters.toString()}`, { credentials: "include" });
+  const data = await response.json().catch(() => ({})) as Partial<TicketListResult> & { error?: string };
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve the Ticket queue.");
+  if (!Array.isArray(data.items) || typeof data.page !== "number" || typeof data.pageSize !== "number" || typeof data.totalItems !== "number" || typeof data.totalPages !== "number") throw new Error("The TokTickIT API returned an invalid Ticket queue.");
+  return data as TicketListResult & { items: StaffQueueItem[] };
 }
 
 export async function getTicketDetail(ticketId: number): Promise<TicketDetail> {

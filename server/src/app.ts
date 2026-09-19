@@ -5,7 +5,7 @@ import { getPrisma } from "./prisma.js";
 import { generateTicketNumber } from "./ticket-number.js";
 import { isPermittedAttachment, MAX_ATTACHMENT_BYTES, readStoredAttachment, removeStoredAttachment, storeAttachment } from "./attachment-storage.js";
 import { changePassword, currentUser, login, logout } from "./auth.js";
-import { requireRequesterSession } from "./requester-session.js";
+import { requireRequesterSession, requireStaffQueueSession } from "./requester-session.js";
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -51,6 +51,7 @@ app.get("/auth/me", async (req, res) => {
 });
 
 app.use(["/api/tickets", "/api/attachments"], requireRequesterSession);
+app.use("/staff/tickets", requireStaffQueueSession);
 
 app.get("/api/categories", async (_req: Request, res: Response) => {
   try {
@@ -83,6 +84,8 @@ app.get("/api/related-systems", async (_req: Request, res: Response) => {
 const priorities = new Set(["LOW", "MEDIUM", "HIGH"]);
 const ticketSortFields = new Set(["createdAt", "updatedAt", "ticketNumber", "requestedPriority"]);
 const ticketStatuses = new Set(["NEW", "OPEN", "IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CLOSED", "REOPENED", "CANCELLED"]);
+const itPriorities = new Set(["NOT_SET", "LOW", "MEDIUM", "HIGH", "URGENT"]);
+const staffQueueSortFields = new Set(["updatedAt", "createdAt", "ticketNumber", "currentStatus", "requestedPriority", "itPriority"]);
 
 function getFields(body: unknown): Record<string, string> {
   const fields: Record<string, string> = {};
@@ -163,6 +166,49 @@ function parsePositiveInteger(value: unknown): number | undefined {
   const parsed = Number(value);
   return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : undefined;
 }
+
+app.get("/staff/tickets", async (req: Request, res: Response) => {
+  const query = req.query;
+  const search = typeof query.search === "string" ? query.search.trim() : "";
+  const ownerId = query.ownerId === undefined ? undefined : parsePositiveInteger(query.ownerId);
+  const page = query.page === undefined ? 1 : parsePositiveInteger(query.page);
+  const pageSize = query.pageSize === undefined ? 10 : parsePositiveInteger(query.pageSize);
+  const sortBy = query.sortBy === undefined ? "updatedAt" : query.sortBy;
+  const sortOrder = query.sortOrder === undefined ? "desc" : query.sortOrder;
+  const invalid =
+    (query.search !== undefined && typeof query.search !== "string") || search.length > 120 ||
+    (query.ownerId !== undefined && ownerId === undefined) || page === undefined || pageSize === undefined ||
+    ![10, 20, 50].includes(pageSize) || typeof sortBy !== "string" || !staffQueueSortFields.has(sortBy) ||
+    typeof sortOrder !== "string" || !["asc", "desc"].includes(sortOrder) ||
+    (query.status !== undefined && (typeof query.status !== "string" || !ticketStatuses.has(query.status))) ||
+    (query.requestedPriority !== undefined && (typeof query.requestedPriority !== "string" || !priorities.has(query.requestedPriority))) ||
+    (query.itPriority !== undefined && (typeof query.itPriority !== "string" || !itPriorities.has(query.itPriority)));
+  if (invalid) return res.status(400).json({ error: "One or more queue query values are invalid." });
+
+  try {
+    const where = {
+      ...(ownerId === undefined ? {} : { ownerUserId: ownerId }),
+      ...(query.status === undefined ? {} : { currentStatus: query.status as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }),
+      ...(query.requestedPriority === undefined ? {} : { requestedPriority: query.requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
+      ...(query.itPriority === undefined ? {} : { itPriority: query.itPriority as "NOT_SET" | "LOW" | "MEDIUM" | "HIGH" | "URGENT" }),
+      ...(search === "" ? {} : { OR: [{ ticketNumber: { contains: search, mode: "insensitive" as const } }, { summary: { contains: search, mode: "insensitive" as const } }] }),
+    };
+    const prisma = getPrisma();
+    const totalItems = await prisma.ticket.count({ where });
+    const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+    const items = await prisma.ticket.findMany({
+      where, orderBy: [{ [sortBy]: sortOrder }, { id: "desc" }], skip: (page - 1) * pageSize, take: pageSize,
+      include: {
+        requesterUser: { select: { id: true, name: true } },
+        owner: { select: { id: true, name: true, role: true } },
+        category: { select: { id: true, name: true } },
+      },
+    });
+    return res.status(200).json({ items, page, pageSize, totalItems, totalPages });
+  } catch {
+    return res.status(500).json({ error: "Unable to retrieve the Ticket queue." });
+  }
+});
 
 app.get("/api/tickets", async (req: Request, res: Response) => {
   const requesterUserId = Number(res.locals.requesterUserId);

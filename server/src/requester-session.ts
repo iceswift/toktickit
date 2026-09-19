@@ -13,3 +13,19 @@ export async function requireRequesterSession(req: Request, res: Response, next:
     return res.status(500).json({ error: "Unable to complete the request." });
   }
 }
+
+/** IT Staff operate the queue; Administrators may inspect it without mutating it. */
+export async function requireStaffQueueSession(req: Request, res: Response, next: NextFunction) {
+  try {
+    const user = await currentUser(req);
+    if (!user) return res.status(401).json({ error: "Authentication is required." });
+    if (user.mustChangePassword || (user.role !== "IT_STAFF" && user.role !== "ADMINISTRATOR")) {
+      return res.status(403).json({ error: "IT Staff or Administrator access is required." });
+    }
+    res.locals.staffUserId = user.id;
+    res.locals.staffRole = user.role;
+    return next();
+  } catch {
+    return res.status(500).json({ error: "Unable to complete the request." });
+  }
+}
