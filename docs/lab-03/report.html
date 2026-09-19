@@ -85,6 +85,9 @@
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/issue-40-pr-review-development.png" alt="Open Issue 40 with acceptance criteria, Kanban status PR Review, and PR 41 in the Development panel">
       <figcaption><strong>Figure 3.</strong> Phase 4 Issue #40 shows the <code>PR Review</code> board state and the direct Development link to PR #41, proving Issue–PR traceability at the review checkpoint. This is not final Done evidence.</figcaption>
     </figure>
+
+    <h3>Phase 5: IT Staff Ticket Queue — completed staging review</h3>
+    <p><a href="https://github.com/iceswift/toktickit/issues/43">Issue #43</a> defined the IT Staff queue contract and was implemented on <code>feature/lab3-5-it-staff-ticket-queue</code>. The feature PR, <a href="https://github.com/iceswift/toktickit/pull/44">#44</a>, targeted <code>lab3-staging</code>; its description referenced Issue #43 and GitHub recorded PR #44 in the Issue activity. The implementation provides <code>GET /staff/tickets</code> with authenticated IT Staff/Administrator access, validated search/filter/sort/page queries, pagination metadata, and a responsive queue UI. <code>Richyboy170</code> approved and merged PR #44 into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c"><code>f1f51c8</code></a>. After merge, Issue #43 was closed as completed and its Project status moved from <code>PR Review</code> to <code>Done</code>.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-initial-approval-feedback.png" alt="Open PR 41 into lab3-staging showing Richyboy170's initial approval and review comment, with Issue 40 in Development">
       <figcaption><strong>Figure 4.</strong> PR #41 shows <code>Richyboy170</code>'s initial approval and technical review comment, while the right Development panel links Issue #40. The author is addressing the comment on the same branch; this image does not claim a final reviewer merge.</figcaption>
@@ -95,13 +98,14 @@
     </figure>
 
     <h3>Evidence register and final-completion check</h3>
-    <p>The records above are verified Phase 1 facts and a Phase 4 review checkpoint. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The <code>docs/lab-03/reviewer.md</code> record distinguishes completed review from pending review.</p>
+    <p>The records above are verified Phase 1, Phase 4, and Phase 5 staging facts. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The <code>docs/lab-03/reviewer.md</code> record distinguishes completed review from pending review.</p>
 
     <h2>Answer Part 2: Specification and Definition of Done</h2>
     <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation.</p>
 
     <h2>Answer Part 3: Test DD and Traceability</h2>
     <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> after addressing peer-review feedback, server API/unit/regression tests passed 27/27, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were previously reported up to date; this review-fix run did not rerun migration status. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
+    <p><strong>Phase 5 focused verification (feature branch, not final-main evidence):</strong> the staff queue API suite passed 3/3; the StaffTicketQueue UI suite passed 2/2; and both server TypeScript and client production builds passed. <code>git diff --check</code> also passed. These checks cover queue authorization, validated query handling, search/filter/sort/pagination metadata, valid empty responses, and explicit UI empty/no-results states. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
     <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and deliberately mismatched legacy/migrated ownership. The authenticated <code>User.id</code> and <code>Ticket.requesterUserId</code> determine ownership; legacy requester IDs remain only as compatibility/audit fields. Test cleanup also revokes helper-created sessions.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
@@ -129,7 +133,8 @@
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/first-login-gate.png" alt="First-login requester session is shown the mandatory change-password screen instead of the requester shell">
       <figcaption><strong>Figure 10.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
     </figure>
-    <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2><p class="pending">Pending Phase 5 implementation and verification.</p>
+    <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2>
+    <p>Phase 5 delivers the queue for authenticated IT Staff, with Administrator read-only access. The UI exposes labelled search, status/requested-priority/IT-priority filters, sorting, pagination controls, a compact desktop table, responsive mobile cards, and explicit loading, empty, no-results, forbidden, and failure feedback. The server endpoint defaults to <code>updatedAt desc</code>, returns <code>items</code>, <code>page</code>, <code>pageSize</code>, <code>totalItems</code>, and <code>totalPages</code>, and accepts only page sizes 10, 20, or 50. Completion workflow evidence is recorded in Issue #43, PR #44, and <code>docs/lab-03/reviewer.md</code>.</p>
     <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2><p class="pending">Pending Phase 6 implementation and verification.</p>
     <h2>Answer Part 8: Working Administrator User Management UI</h2><p class="pending">Pending Phase 7 implementation and verification.</p>
     <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2><p class="pending">Pending responsive UI work and desktop/tablet/mobile evidence.</p>
