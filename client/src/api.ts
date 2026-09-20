@@ -96,6 +96,14 @@ export interface StaffQueueItem extends TicketListItem {
   requesterUser: { id: number; name: string } | null;
   owner: { id: number; name: string; role: UserRole } | null;
 }
+export interface StaffTicketDetail extends TicketDetail {
+  requesterUser: { id: number; name: string; email: string } | null;
+  owner: { id: number; name: string; role: UserRole } | null;
+  publicComments: TicketEntry[];
+  internalNotes: TicketEntry[];
+}
+export interface TicketOwner { id: number; name: string; role: UserRole; }
+export interface TicketEntry { id: number; ticketId: number; content: string; createdAt: string; author: { id: number; name: string; role: UserRole }; }
 export interface StaffQueueQuery {
   search?: string; status?: TicketStatus; requestedPriority?: RequestedPriority; itPriority?: ITPriority;
   sortBy?: "updatedAt" | "createdAt" | "ticketNumber" | "currentStatus" | "requestedPriority" | "itPriority";
@@ -244,6 +252,35 @@ export async function getStaffTickets(query: StaffQueueQuery): Promise<TicketLis
   if (!Array.isArray(data.items) || typeof data.page !== "number" || typeof data.pageSize !== "number" || typeof data.totalItems !== "number" || typeof data.totalPages !== "number") throw new Error("The TokTickIT API returned an invalid Ticket queue.");
   return data as TicketListResult & { items: StaffQueueItem[] };
 }
+
+async function staffTicketRequest(ticketId: number, path: string, method: string, body?: unknown): Promise<StaffTicketDetail | TicketEntry> {
+  const response = await fetch(`${API_URL}/staff/tickets/${ticketId}${path}`, { method, credentials: "include", headers: body === undefined ? undefined : { "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
+  const data = await response.json().catch(() => ({})) as StaffTicketDetail | TicketEntry | { error?: string };
+  if (!response.ok) throw new ApiError("error" in data && typeof data.error === "string" ? data.error : "Unable to update the Ticket.");
+  return data as StaffTicketDetail | TicketEntry;
+}
+
+export async function getStaffTicketDetail(ticketId: number): Promise<StaffTicketDetail> {
+  const response = await fetch(`${API_URL}/staff/tickets/${ticketId}`, { credentials: "include" });
+  const data = await response.json().catch(() => ({})) as Partial<StaffTicketDetail> & { error?: string };
+  if (!response.ok) throw new ApiError(data.error ?? "Unable to retrieve the Ticket.");
+  if (typeof data.id !== "number" || !data.category || !data.relatedSystem || !Array.isArray(data.publicComments) || !Array.isArray(data.internalNotes)) throw new Error("The TokTickIT API returned an invalid staff Ticket detail.");
+  return data as StaffTicketDetail;
+}
+
+export async function getStaffTicketOwners(): Promise<TicketOwner[]> {
+  const response = await fetch(`${API_URL}/staff/ticket-owners`, { credentials: "include" });
+  const data = await response.json().catch(() => ({})) as unknown;
+  if (!response.ok || !Array.isArray(data)) throw new ApiError("Unable to retrieve active Ticket Owners.");
+  return data as TicketOwner[];
+}
+
+export const claimStaffTicket = (ticketId: number) => staffTicketRequest(ticketId, "/owner", "PATCH", { ownerUserId: null }) as Promise<StaffTicketDetail>;
+export const assignStaffTicket = (ticketId: number, ownerUserId: number) => staffTicketRequest(ticketId, "/owner", "PATCH", { ownerUserId }) as Promise<StaffTicketDetail>;
+export const setStaffTicketPriority = (ticketId: number, itPriority: ITPriority) => staffTicketRequest(ticketId, "/it-priority", "PATCH", { itPriority }) as Promise<StaffTicketDetail>;
+export const setStaffTicketStatus = (ticketId: number, status: TicketStatus) => staffTicketRequest(ticketId, "/status", "PATCH", { status }) as Promise<StaffTicketDetail>;
+export const addStaffPublicComment = (ticketId: number, content: string) => staffTicketRequest(ticketId, "/public-comments", "POST", { content }) as Promise<TicketEntry>;
+export const addStaffInternalNote = (ticketId: number, content: string) => staffTicketRequest(ticketId, "/internal-notes", "POST", { content }) as Promise<TicketEntry>;
 
 export async function getTicketDetail(ticketId: number): Promise<TicketDetail> {
   const response = await fetch(`${API_URL}/api/tickets/${ticketId}`, { credentials: "include" });

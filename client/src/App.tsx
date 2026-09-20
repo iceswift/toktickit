@@ -6,6 +6,7 @@ import { Login } from "./Login.js";
 import { MyTickets } from "./MyTickets.js";
 import { RequesterTicketDetail } from "./RequesterTicketDetail.js";
 import { StaffTicketQueue } from "./StaffTicketQueue.js";
+import { StaffTicketDetail } from "./StaffTicketDetail.js";
 
 export default function App() {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -22,7 +23,7 @@ export default function App() {
     try { await logout(); setUser(null); }
     catch { setSessionError("Logout could not be completed. Please try again."); }
   }
-  if (user.role !== "REQUESTER") return <main><nav className="navbar navbar-dark bg-success px-3 gap-3" aria-label="Application navigation"><span className="navbar-brand mb-0 h1">TokTickIT</span><button className="btn btn-success border border-light" onClick={() => setPage("queue")}>Ticket Queue</button><span className="text-white ms-auto">{user.name} · {user.role === "IT_STAFF" ? "IT Staff" : "Administrator"}</span><button className="btn btn-outline-light btn-sm" onClick={() => void signOut()}>Logout</button></nav><section className="container py-5" style={{ maxWidth: 1100 }}>{sessionError && <div className="alert alert-danger" role="alert">{sessionError}</div>}<StaffTicketQueue /></section></main>;
+  if (user.role !== "REQUESTER") return <main><nav className="navbar navbar-dark bg-success px-3 gap-3" aria-label="Application navigation"><span className="navbar-brand mb-0 h1">TokTickIT</span><button className="btn btn-success border border-light" onClick={() => setPage("queue")}>Ticket Queue</button><span className="text-white ms-auto">{user.name} · {user.role === "IT_STAFF" ? "IT Staff" : "Administrator"}</span><button className="btn btn-outline-light btn-sm" onClick={() => void signOut()}>Logout</button></nav><section className="container py-5" style={{ maxWidth: 1100 }}>{sessionError && <div className="alert alert-danger" role="alert">{sessionError}</div>}{page === "detail" && ticketId ? <StaffTicketDetail ticketId={ticketId} user={user} onBack={() => setPage("queue")} /> : <StaffTicketQueue onOpenTicket={(id) => { setTicketId(id); setPage("detail"); }} />}</section></main>;
   return <main><nav className="navbar navbar-dark bg-success px-3 gap-3" aria-label="Application navigation">
     <span className="navbar-brand mb-0 h1">TokTickIT</span>
     <button className={`btn btn-success ${page === "create" ? "border border-light" : ""}`} onClick={() => setPage("create")}>Create Ticket</button>
