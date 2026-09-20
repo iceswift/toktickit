@@ -210,6 +210,130 @@ app.get("/staff/tickets", async (req: Request, res: Response) => {
   }
 });
 
+const staffTicketInclude = {
+  requesterUser: { select: { id: true, name: true, email: true } },
+  owner: { select: { id: true, name: true, role: true } },
+  category: { select: { id: true, name: true } },
+  relatedSystem: { select: { id: true, name: true } },
+  attachments: { orderBy: { uploadedAt: "asc" as const }, select: { id: true, originalFilename: true, mimeType: true, byteSize: true, uploadedAt: true, removedAt: true, removalReason: true } },
+  publicComments: { orderBy: { createdAt: "asc" as const }, include: { author: { select: { id: true, name: true, role: true } } } },
+  internalNotes: { orderBy: { createdAt: "asc" as const }, include: { author: { select: { id: true, name: true, role: true } } } },
+};
+
+function staffTicketId(req: Request): number | null {
+  return parseRequesterOrResourceId(req.params.ticketId);
+}
+
+function validEntryContent(body: unknown): string | null {
+  const content = typeof (body as { content?: unknown })?.content === "string" ? (body as { content: string }).content.trim() : "";
+  return content.length > 0 && content.length <= 2000 ? content : null;
+}
+
+const allowedStatusTransitions: Record<string, string[]> = {
+  NEW: ["OPEN", "IN_PROGRESS", "CANCELLED"],
+  OPEN: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
+  REOPENED: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
+  IN_PROGRESS: ["WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
+  WAITING_FOR_REQUESTER: ["IN_PROGRESS", "RESOLVED", "CANCELLED"],
+  RESOLVED: ["CLOSED", "REOPENED"],
+  CLOSED: ["REOPENED"],
+  CANCELLED: [],
+};
+
+app.get("/staff/tickets/:ticketId", async (req: Request, res: Response) => {
+  const ticketId = staffTicketId(req);
+  if (!ticketId) return res.status(404).json(notFoundMessage);
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, include: staffTicketInclude });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(200).json(ticket);
+  } catch { return res.status(500).json({ error: "Unable to retrieve the Ticket." }); }
+});
+
+app.get("/staff/ticket-owners", async (_req: Request, res: Response) => {
+  try {
+    return res.status(200).json(await getPrisma().user.findMany({
+      where: { isActive: true, role: { in: ["IT_STAFF", "ADMINISTRATOR"] } },
+      select: { id: true, name: true, role: true }, orderBy: [{ name: "asc" }, { id: "asc" }],
+    }));
+  } catch { return res.status(500).json({ error: "Unable to retrieve Ticket Owners." }); }
+});
+
+app.patch("/staff/tickets/:ticketId/owner", async (req: Request, res: Response) => {
+  if (res.locals.staffRole !== "IT_STAFF") return res.status(403).json({ error: "IT Staff access is required." });
+  const ticketId = staffTicketId(req);
+  const requestedOwnerId = (req.body as { ownerUserId?: unknown })?.ownerUserId;
+  if (!ticketId || (requestedOwnerId !== null && (!Number.isInteger(requestedOwnerId) || Number(requestedOwnerId) <= 0))) return res.status(400).json({ error: "Choose a valid active Ticket Owner." });
+  const ownerUserId = requestedOwnerId === null ? Number(res.locals.staffUserId) : Number(requestedOwnerId);
+  try {
+    const [ticket, owner] = await Promise.all([
+      getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true } }),
+      getPrisma().user.findFirst({ where: { id: ownerUserId, isActive: true, role: { in: ["IT_STAFF", "ADMINISTRATOR"] } }, select: { id: true } }),
+    ]);
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    if (!owner) return res.status(400).json({ error: "Choose a valid active Ticket Owner." });
+    return res.status(200).json(await getPrisma().ticket.update({ where: { id: ticketId }, data: { ownerUserId }, include: staffTicketInclude }));
+  } catch { return res.status(500).json({ error: "Unable to update Ticket ownership." }); }
+});
+
+app.patch("/staff/tickets/:ticketId/it-priority", async (req: Request, res: Response) => {
+  const ticketId = staffTicketId(req); const itPriority = (req.body as { itPriority?: unknown })?.itPriority;
+  if (!ticketId) return res.status(404).json(notFoundMessage);
+  if (typeof itPriority !== "string" || !itPriorities.has(itPriority)) return res.status(400).json({ error: "Choose a valid IT Priority." });
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(200).json(await getPrisma().ticket.update({ where: { id: ticketId }, data: { itPriority: itPriority as "NOT_SET" | "LOW" | "MEDIUM" | "HIGH" | "URGENT" }, include: staffTicketInclude }));
+  } catch { return res.status(500).json({ error: "Unable to update IT Priority." }); }
+});
+
+app.patch("/staff/tickets/:ticketId/status", async (req: Request, res: Response) => {
+  if (res.locals.staffRole !== "IT_STAFF") return res.status(403).json({ error: "IT Staff access is required." });
+  const ticketId = staffTicketId(req); const status = (req.body as { status?: unknown })?.status;
+  if (!ticketId) return res.status(404).json(notFoundMessage);
+  if (typeof status !== "string" || !ticketStatuses.has(status)) return res.status(400).json({ error: "Choose a valid Ticket status." });
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true, currentStatus: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    if (!allowedStatusTransitions[ticket.currentStatus].includes(status)) return res.status(409).json({ error: "That status transition is not permitted." });
+    return res.status(200).json(await getPrisma().ticket.update({ where: { id: ticketId }, data: { currentStatus: status as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }, include: staffTicketInclude }));
+  } catch { return res.status(500).json({ error: "Unable to update Ticket status." }); }
+});
+
+app.post("/staff/tickets/:ticketId/public-comments", async (req: Request, res: Response) => {
+  if (res.locals.staffRole !== "IT_STAFF") return res.status(403).json({ error: "IT Staff access is required." });
+  const ticketId = staffTicketId(req); const content = validEntryContent(req.body);
+  if (!ticketId) return res.status(404).json(notFoundMessage);
+  if (!content) return res.status(400).json({ error: "Comment content must be 1 to 2,000 characters." });
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(201).json(await getPrisma().publicComment.create({ data: { ticketId, authorId: Number(res.locals.staffUserId), content }, include: { author: { select: { id: true, name: true, role: true } } } }));
+  } catch { return res.status(500).json({ error: "Unable to add the Public Comment." }); }
+});
+
+app.get("/staff/tickets/:ticketId/internal-notes", async (req: Request, res: Response) => {
+  const ticketId = staffTicketId(req); if (!ticketId) return res.status(404).json(notFoundMessage);
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(200).json(await getPrisma().internalNote.findMany({ where: { ticketId }, orderBy: { createdAt: "asc" }, include: { author: { select: { id: true, name: true, role: true } } } }));
+  }
+  catch { return res.status(500).json({ error: "Unable to retrieve Internal Notes." }); }
+});
+
+app.post("/staff/tickets/:ticketId/internal-notes", async (req: Request, res: Response) => {
+  if (res.locals.staffRole !== "IT_STAFF") return res.status(403).json({ error: "IT Staff access is required." });
+  const ticketId = staffTicketId(req); const content = validEntryContent(req.body);
+  if (!ticketId) return res.status(404).json(notFoundMessage);
+  if (!content) return res.status(400).json({ error: "Internal Note content must be 1 to 2,000 characters." });
+  try {
+    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(201).json(await getPrisma().internalNote.create({ data: { ticketId, authorId: Number(res.locals.staffUserId), content }, include: { author: { select: { id: true, name: true, role: true } } } }));
+  } catch { return res.status(500).json({ error: "Unable to add the Internal Note." }); }
+});
+
 app.get("/api/tickets", async (req: Request, res: Response) => {
   const requesterUserId = Number(res.locals.requesterUserId);
   const query = req.query;

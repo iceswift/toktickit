@@ -55,6 +55,8 @@ model User {
   submittedTickets          Ticket[]              @relation("TicketRequesterUser")
   ownedTickets              Ticket[]              @relation("TicketOwner")
   removedFiles              Attachment[]          @relation("AttachmentRemovedByUser")
+  publicComments            PublicComment[]
+  internalNotes             InternalNote[]
   sessions                  AuthSession[]
 
   @@index([role, isActive])
@@ -105,10 +107,38 @@ model Ticket {
   category      Category              @relation(fields: [categoryId], references: [id])
   relatedSystem RelatedSystem         @relation(fields: [relatedSystemId], references: [id])
   attachments   Attachment[]
+  publicComments PublicComment[]
+  internalNotes  InternalNote[]
 
   @@index([requesterId, createdAt])
   @@index([requesterUserId, createdAt])
   @@index([ownerUserId, currentStatus])
+}
+
+model PublicComment {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int
+  authorId  Int
+  content   String    @db.VarChar(2000)
+  createdAt DateTime  @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorId], references: [id])
+
+  @@index([ticketId, createdAt])
+}
+
+model InternalNote {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int
+  authorId  Int
+  content   String    @db.VarChar(2000)
+  createdAt DateTime  @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorId], references: [id])
+
+  @@index([ticketId, createdAt])
 }
 
 model Attachment {
