@@ -29,3 +29,16 @@ export async function requireStaffQueueSession(req: Request, res: Response, next
     return res.status(500).json({ error: "Unable to complete the request." });
   }
 }
+
+/** Administrator operations are a separate backend boundary from IT Staff work. */
+export async function requireAdministratorSession(req: Request, res: Response, next: NextFunction) {
+  try {
+    const user = await currentUser(req);
+    if (!user) return res.status(401).json({ error: "Authentication is required." });
+    if (user.role !== "ADMINISTRATOR" || user.mustChangePassword) return res.status(403).json({ error: "Administrator access is required." });
+    res.locals.administratorUserId = user.id;
+    return next();
+  } catch {
+    return res.status(500).json({ error: "Unable to complete the request." });
+  }
+}

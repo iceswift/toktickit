@@ -119,6 +119,9 @@ export interface AuthUser {
   role: UserRole;
   mustChangePassword: boolean;
 }
+export interface ManagedUser { id: number; name: string; email: string; role: UserRole; isActive: boolean; mustChangePassword: boolean; }
+export async function getAdminUsers(search = "", role = ""): Promise<ManagedUser[]> { const p = new URLSearchParams(); if (search) p.set("search", search); if (role) p.set("role", role); const r = await fetch(`${API_URL}/admin/users?${p}`, { credentials: "include" }); const d = await r.json().catch(() => ({})); if (!r.ok || !Array.isArray(d)) throw new ApiError((d as { error?: string }).error ?? "Unable to retrieve users."); return d as ManagedUser[]; }
+export async function createAdminUser(input: { name: string; email: string; role: UserRole; active: boolean; initialPassword: string }): Promise<ManagedUser> { const r = await fetch(`${API_URL}/admin/users`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify(input) }); const d = await r.json().catch(() => ({})); if (!r.ok) throw new ApiError((d as { error?: string }).error ?? "Unable to create user."); return d as ManagedUser; }
 
 async function readAuthResponse(response: Response): Promise<AuthUser> {
   const data = await response.json().catch(() => ({})) as { error?: string; user?: AuthUser };
