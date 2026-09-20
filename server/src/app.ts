@@ -5,7 +5,8 @@ import { getPrisma } from "./prisma.js";
 import { generateTicketNumber } from "./ticket-number.js";
 import { isPermittedAttachment, MAX_ATTACHMENT_BYTES, readStoredAttachment, removeStoredAttachment, storeAttachment } from "./attachment-storage.js";
 import { changePassword, currentUser, login, logout } from "./auth.js";
-import { requireRequesterSession, requireStaffQueueSession } from "./requester-session.js";
+import { requireAdministratorSession, requireRequesterSession, requireStaffQueueSession } from "./requester-session.js";
+import { hash } from "bcryptjs";
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -52,6 +53,51 @@ app.get("/auth/me", async (req, res) => {
 
 app.use(["/api/tickets", "/api/attachments"], requireRequesterSession);
 app.use("/staff/tickets", requireStaffQueueSession);
+app.use("/admin/users", requireAdministratorSession);
+
+const userRoles = new Set(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"]);
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,128}$/;
+function userPayload(body: unknown, passwordRequired: boolean) {
+  const value = body as Record<string, unknown>; const fields: Record<string, string> = {};
+  const name = typeof value?.name === "string" ? value.name.trim() : ""; const email = typeof value?.email === "string" ? value.email.trim().toLowerCase() : "";
+  if (name.length < 2 || name.length > 120) fields.name = "Name must be 2 to 120 characters.";
+  if (!/^\S+@\S+\.\S+$/.test(email)) fields.email = "Enter a valid email address.";
+  if (typeof value?.role !== "string" || !userRoles.has(value.role)) fields.role = "Choose one permitted role.";
+  if (typeof value?.active !== "boolean") fields.active = "Choose an account status.";
+  const initialPassword = typeof value?.initialPassword === "string" ? value.initialPassword : "";
+  if (passwordRequired && !passwordPattern.test(initialPassword)) fields.initialPassword = "Password must be 12-128 characters with upper, lower, number, and symbol.";
+  return { fields, name, email, role: value?.role as "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR", active: value?.active as boolean, initialPassword };
+}
+
+app.get("/admin/users", async (req: Request, res: Response) => {
+  const search = typeof req.query.search === "string" ? req.query.search.trim() : ""; const role = req.query.role;
+  if (search.length > 120 || (role !== undefined && (typeof role !== "string" || !userRoles.has(role)))) return res.status(400).json({ error: "One or more user query values are invalid." });
+  try { return res.status(200).json(await getPrisma().user.findMany({ where: { ...(role ? { role: role as "REQUESTER" | "IT_STAFF" | "ADMINISTRATOR" } : {}), ...(search ? { OR: [{ name: { contains: search, mode: "insensitive" } }, { email: { contains: search, mode: "insensitive" } }] } : {}) }, select: { id: true, name: true, email: true, role: true, isActive: true, mustChangePassword: true }, orderBy: { name: "asc" } })); } catch { return res.status(500).json({ error: "Unable to retrieve users." }); }
+});
+
+app.post("/admin/users", async (req: Request, res: Response) => {
+  const input = userPayload(req.body, true); if (Object.keys(input.fields).length) return res.status(400).json({ error: "Please correct the highlighted fields.", fields: input.fields });
+  try { const existing = await getPrisma().user.findUnique({ where: { email: input.email }, select: { id: true } }); if (existing) return res.status(409).json({ error: "That email address is already in use." }); return res.status(201).json(await getPrisma().user.create({ data: { name: input.name, email: input.email, role: input.role, isActive: input.active, passwordHash: await hash(input.initialPassword, 12), mustChangePassword: true }, select: { id: true, name: true, email: true, role: true, isActive: true, mustChangePassword: true } })); } catch { return res.status(500).json({ error: "Unable to create the user." }); }
+});
+
+app.patch("/admin/users/:userId", async (req: Request, res: Response) => {
+  const userId = parseRequesterOrResourceId(req.params.userId); if (!userId) return res.status(404).json(notFoundMessage);
+  const input = userPayload(req.body, false); if (Object.keys(input.fields).length) return res.status(400).json({ error: "Please correct the highlighted fields.", fields: input.fields });
+  try {
+    const prisma = getPrisma(); const target = await prisma.user.findUnique({ where: { id: userId } });
+    if (!target) return res.status(404).json(notFoundMessage);
+    if (input.email !== target.email) { const duplicate = await prisma.user.findUnique({ where: { email: input.email }, select: { id: true } }); if (duplicate) return res.status(409).json({ error: "That email address is already in use." }); }
+    if (target.id === Number(res.locals.administratorUserId) && !input.active) return res.status(409).json({ error: "Administrators cannot deactivate their own account." });
+    if (target.role === "ADMINISTRATOR" && target.isActive && (!input.active || input.role !== "ADMINISTRATOR")) { const activeAdmins = await prisma.user.count({ where: { role: "ADMINISTRATOR", isActive: true } }); if (activeAdmins <= 1) return res.status(409).json({ error: "At least one active Administrator must remain." }); }
+    return res.status(200).json(await prisma.user.update({ where: { id: userId }, data: { name: input.name, email: input.email, role: input.role, isActive: input.active }, select: { id: true, name: true, email: true, role: true, isActive: true, mustChangePassword: true } }));
+  } catch { return res.status(500).json({ error: "Unable to update the user." }); }
+});
+
+app.post("/admin/users/:userId/initial-password", async (req: Request, res: Response) => {
+  const userId = parseRequesterOrResourceId(req.params.userId); const initialPassword = typeof req.body?.initialPassword === "string" ? req.body.initialPassword : "";
+  if (!userId) return res.status(404).json(notFoundMessage); if (!passwordPattern.test(initialPassword)) return res.status(400).json({ error: "Password must be 12-128 characters with upper, lower, number, and symbol." });
+  try { const user = await getPrisma().user.findUnique({ where: { id: userId }, select: { id: true } }); if (!user) return res.status(404).json(notFoundMessage); await getPrisma().$transaction([getPrisma().user.update({ where: { id: userId }, data: { passwordHash: await hash(initialPassword, 12), mustChangePassword: true } }), getPrisma().authSession.updateMany({ where: { userId, revokedAt: null }, data: { revokedAt: new Date() } })]); return res.status(204).send(); } catch { return res.status(500).json({ error: "Unable to reset the initial password." }); }
+});
 
 app.get("/api/categories", async (_req: Request, res: Response) => {
   try {
