@@ -31,7 +31,7 @@ beforeAll(async () => {
   });
   detailTicketId = ticket.id;
 });
-afterAll(async () => { await Promise.all(emails.map(restoreRequesterSession)); });
+afterAll(async () => { const prisma = getPrisma(); await prisma.publicComment.deleteMany({ where: { ticketId: detailTicketId, content: "The workaround helped me." } }); await prisma.ticket.update({ where: { id: detailTicketId }, data: { problemAppearsResolvedAt: null } }); await Promise.all(emails.map(restoreRequesterSession)); });
 
 describe("GET /api/tickets/:ticketId", () => {
   it("returns the full read-only Ticket detail for its owner", async () => {
@@ -41,8 +41,18 @@ describe("GET /api/tickets/:ticketId", () => {
     expect(response.body).toMatchObject({
       id: detailTicketId, requesterId: ownerId, ticketNumber: "TKT-20990101-DETAIL001",
       category: { id: expect.any(Number), name: expect.any(String) },
-      relatedSystem: { id: expect.any(Number), name: expect.any(String) }, attachments: expect.any(Array),
+      relatedSystem: { id: expect.any(Number), name: expect.any(String) }, attachments: expect.any(Array), publicComments: expect.any(Array), problemAppearsResolvedAt: null,
     });
+  });
+
+  it("allows only the owner to add Public Comments and record a non-final resolution indication", async () => {
+    const comment = await ownerAgent.post(`/api/tickets/${detailTicketId}/public-comments`).send({ content: "The workaround helped me." });
+    expect(comment.status).toBe(201); expect(comment.body).toMatchObject({ content: "The workaround helped me.", author: { id: expect.any(Number), role: "REQUESTER" } });
+    expect((await otherAgent.post(`/api/tickets/${detailTicketId}/public-comments`).send({ content: "Not my Ticket" })).status).toBe(404);
+    expect((await ownerAgent.post(`/api/tickets/${detailTicketId}/public-comments`).send({ content: " " })).status).toBe(400);
+    const indication = await ownerAgent.patch(`/api/tickets/${detailTicketId}/problem-appears-resolved`).send({ appearsResolved: true });
+    expect(indication.status).toBe(200); expect(indication.body.problemAppearsResolvedAt).toEqual(expect.any(String)); expect(indication.body.currentStatus).toBe("NEW");
+    expect((await otherAgent.patch(`/api/tickets/${detailTicketId}/problem-appears-resolved`).send({ appearsResolved: true })).status).toBe(404);
   });
 
   it("uses the same safe 404 response for another Requester, invalid IDs, and missing Tickets", async () => {

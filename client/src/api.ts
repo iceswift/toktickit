@@ -33,6 +33,7 @@ export interface Ticket {
   requestedPriority: RequestedPriority;
   itPriority: ITPriority;
   currentStatus: TicketStatus;
+  problemAppearsResolvedAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -63,6 +64,7 @@ export interface TicketDetail extends Ticket {
   category: Category;
   relatedSystem: RelatedSystem;
   attachments: AttachmentMetadata[];
+  publicComments: TicketEntry[];
 }
 
 export interface MyTicketsQuery {
@@ -295,6 +297,18 @@ export async function getTicketDetail(ticketId: number): Promise<TicketDetail> {
     throw new Error("The TokTickIT API returned an invalid Ticket detail.");
   }
   return data as TicketDetail;
+}
+
+export async function addRequesterPublicComment(ticketId: number, content: string): Promise<TicketEntry> {
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}/public-comments`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ content }) });
+  const data = await response.json().catch(() => ({})) as TicketEntry | { error?: string };
+  if (!response.ok) throw new ApiError("error" in data && data.error ? data.error : "Unable to add the Public Comment.");
+  return data as TicketEntry;
+}
+
+export async function setRequesterResolutionIndication(ticketId: number, appearsResolved: boolean): Promise<void> {
+  const response = await fetch(`${API_URL}/api/tickets/${ticketId}/problem-appears-resolved`, { method: "PATCH", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ appearsResolved }) });
+  if (!response.ok) { const data = await response.json().catch(() => ({})) as { error?: string }; throw new ApiError(data.error ?? "Unable to update the resolution indication."); }
 }
 
 export async function uploadTicketAttachment(ticketId: number, file: File): Promise<AttachmentMetadata> {

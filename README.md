@@ -1,13 +1,13 @@
 # TokTickIT
 
-TokTickIT is an IT service desk application developed for CPE334 Labs 1 and 2.
+TokTickIT is an IT service desk application developed for CPE334 Labs 1–3.
 This repository demonstrates a full-stack vertical slice using React, Express,
 Prisma, and PostgreSQL.
 
 Lab 2 adds a Requester-facing Ticketing MVP. A temporary Development Requester
 selection context can create Tickets, view only its own paginated My Tickets
 list, inspect an owned read-only detail screen, and manage permitted
-Attachments. It is a testing mechanism, not authentication.
+Attachments. Lab 3 replaces that temporary selector with authenticated Requester identity and adds secure sessions, role authorization, IT Staff operations, Administrator user management, Public Comments, private Internal Notes, and responsive QA coverage.
 
 ## Technology stack
 
@@ -15,6 +15,7 @@ Attachments. It is a testing mechanism, not authentication.
 - Backend: Node.js, Express, and TypeScript
 - Database: PostgreSQL with Prisma ORM
 - Testing: Vitest, Testing Library, and Supertest
+- Browser testing: Playwright
 
 ## Repository structure
 
@@ -84,9 +85,7 @@ toktickit/
 4. Open `http://localhost:5173` in a browser. The API listens on
    `http://localhost:3000`.
 
-The seed command is idempotent. Lab 2 includes the four required Categories,
-seven Related Systems, four active Development Requesters, and one inactive
-Requester that does not appear in the selector.
+The seed command is idempotent. It preserves the Lab 2 catalogue and creates the Lab 3 Requester, IT Staff, and Administrator accounts used by the documented test scenarios.
 
 ## REST endpoints
 
@@ -98,6 +97,10 @@ Requester that does not appear in the selector.
 - `GET /api/tickets` returns only the selected Requester's searchable,
   filterable, sortable, paginated Ticket list.
 - `GET /api/tickets/:ticketId` retrieves an owned Ticket Detail.
+- `POST /api/auth/login`, `POST /api/auth/change-password`, and `POST /api/auth/logout` implement the Lab 3 session lifecycle.
+- `GET /api/staff/tickets` and the protected Staff Ticket operations implement the role-protected queue and workflow.
+- `/api/admin/users` operations implement Administrator-only account management.
+- Requester and Staff Public Comment endpoints share requester-visible history; Internal Notes remain Staff/Administrator-only.
 - `POST /api/tickets/:ticketId/attachments`, `GET /api/tickets/:ticketId/attachments`,
   `GET /api/attachments/:attachmentId/download`, and `DELETE /api/attachments/:attachmentId`
   implement the permitted Attachment lifecycle.
@@ -113,21 +116,14 @@ npm test
 npm run test:e2e
 ```
 
-The backend tests use Vitest and Supertest. The frontend tests use Vitest and
-Testing Library. Lab 2 also uses Playwright for the requester happy path,
-ownership protection, Attachment lifecycle, and desktop/tablet/mobile visual
-checks. Start Docker/PostgreSQL first, then run `npm run test:e2e` from
-`client/`. Test files are organized under each package's `tests/lab-01/`,
-`tests/lab-02/`, and `e2e/lab-02/` directories.
+The backend tests use Vitest and Supertest. The frontend tests use Vitest and Testing Library. Playwright covers the Lab 2 requester regression plus Lab 3 authentication, logout, Staff workflow/privacy, Administrator lifecycle, and desktop/tablet/mobile checks. Start Docker/PostgreSQL first, then run `npm run test:e2e` from `client/`. Test files are organized by lab under `tests/` and `e2e/`.
 
 ## GitHub workflow
 
 - [Repository](https://github.com/iceswift/toktickit)
 - [TokTickIT Individual Sprints project](https://github.com/users/iceswift/projects/2)
 
-Lab 2 development uses feature branches that merge into `lab2-staging` through
-peer-reviewed Pull Requests. The completed staging branch is then merged into
-`main` through one peer-reviewed release Pull Request.
+Lab 3 development uses feature branches that merge into `lab3-staging` through peer-reviewed Pull Requests. The completed staging branch is then merged into `main` through one peer-reviewed release Pull Request.
 
 ## Environment files
 
