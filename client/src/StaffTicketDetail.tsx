@@ -1,17 +1,17 @@
 import { FormEvent, useEffect, useState } from "react";
-import { addStaffInternalNote, addStaffPublicComment, ApiError, assignStaffTicket, AuthUser, claimStaffTicket, getStaffTicketDetail, getStaffTicketOwners, ITPriority, setStaffTicketPriority, setStaffTicketStatus, StaffTicketDetail, TicketOwner, TicketStatus } from "./api.js";
+import { addStaffInternalNote, addStaffPublicComment, ApiError, assignStaffTicket, AuthUser, claimStaffTicket, getStaffTicketDetail, getStaffTicketOwners, ITPriority, setStaffTicketPriority, setStaffTicketStatus, StaffTicketDetail as StaffTicketDetailData, TicketOwner, TicketStatus } from "./api.js";
 
 const priorities: ITPriority[] = ["NOT_SET", "LOW", "MEDIUM", "HIGH", "URGENT"];
 const statuses: TicketStatus[] = ["NEW", "OPEN", "IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CLOSED", "REOPENED", "CANCELLED"];
 const label = (value: string) => value.toLowerCase().split("_").map((word) => word[0].toUpperCase() + word.slice(1)).join(" ");
 
 export function StaffTicketDetail({ ticketId, user, onBack }: { ticketId: number; user: AuthUser; onBack: () => void }) {
-  const [ticket, setTicket] = useState<StaffTicketDetail | null>(null); const [state, setState] = useState<"loading" | "ready" | "error">("loading");
+  const [ticket, setTicket] = useState<StaffTicketDetailData | null>(null); const [state, setState] = useState<"loading" | "ready" | "error">("loading");
   const [owners, setOwners] = useState<TicketOwner[]>([]);
   const [message, setMessage] = useState(""); const [publicComment, setPublicComment] = useState(""); const [internalNote, setInternalNote] = useState("");
   const refresh = () => { setState("loading"); void getStaffTicketDetail(ticketId).then((detail) => { setTicket(detail); setState("ready"); }).catch((error: unknown) => { setMessage(error instanceof Error ? error.message : "Unable to retrieve the Ticket."); setState("error"); }); };
   useEffect(() => { refresh(); void getStaffTicketOwners().then(setOwners).catch(() => setOwners([])); }, [ticketId]);
-  const act = async (work: () => Promise<StaffTicketDetail | unknown>, success: string) => { setMessage(""); try { const result = await work(); if (result && typeof result === "object" && "ticketNumber" in result) setTicket(result as StaffTicketDetail); else refresh(); setMessage(success); } catch (error) { setMessage(error instanceof ApiError ? error.message : "Unable to save the Ticket update."); } };
+  const act = async (work: () => Promise<StaffTicketDetailData | unknown>, success: string) => { setMessage(""); try { const result = await work(); if (result && typeof result === "object" && "ticketNumber" in result) setTicket(result as StaffTicketDetailData); else refresh(); setMessage(success); } catch (error) { setMessage(error instanceof ApiError ? error.message : "Unable to save the Ticket update."); } };
   const submitEntry = (event: FormEvent, kind: "public" | "internal") => { event.preventDefault(); const content = kind === "public" ? publicComment : internalNote; void act(() => kind === "public" ? addStaffPublicComment(ticketId, content) : addStaffInternalNote(ticketId, content), kind === "public" ? "Public Comment added." : "Internal Note added."); if (kind === "public") setPublicComment(""); else setInternalNote(""); };
   if (state === "loading") return <p role="status">Loading Ticket details...</p>;
   if (state === "error" || !ticket) return <><div className="alert alert-danger" role="alert">{message || "Unable to retrieve the Ticket."}</div><button className="btn btn-outline-success" onClick={onBack}>Back to queue</button></>;

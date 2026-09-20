@@ -110,6 +110,7 @@
     <p><strong>Phase 5 focused verification (feature branch, not final-main evidence):</strong> the staff queue API suite passed 3/3; the StaffTicketQueue UI suite passed 2/2; and both server TypeScript and client production builds passed. <code>git diff --check</code> also passed. These checks cover queue authorization, validated query handling, search/filter/sort/pagination metadata, valid empty responses, and explicit UI empty/no-results states. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
     <p><strong>Phase 6 focused verification (feature branch, not final-main evidence):</strong> the staff Ticket detail API suite passed 3/3 and the StaffTicketDetail UI suite passed 2/2, with both production builds passing. Coverage includes claim/reassignment, priority and status changes, Public Comments, private Internal Notes, and role boundaries.</p>
     <p><strong>Phase 7 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 37/37 and the complete client suite passed 25/25; both production builds and <code>git diff --check</code> passed. Focused coverage verifies anonymous/non-Administrator denial, list/search/filter/create/edit/password reset, duplicate email and invalid input rejection, self-deactivation protection, and responsive management actions. Final release evidence will still rerun the complete suite from <code>main</code>.</p>
+    <p><strong>Phase 8 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 38/38, the complete client suite passed 26/26, and the browser suite passed 8/8 across Lab 2 regression and Lab 3 workflows. Both production builds passed, and Prisma reported all 7 migrations applied. The audit added requester Public Comments and a non-final “problem appears resolved” indication required by FR-05/AC-07, then fixed mobile User Management overflow detected by Playwright. Final release evidence will rerun these checks from <code>main</code>.</p>
     <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and deliberately mismatched legacy/migrated ownership. The authenticated <code>User.id</code> and <code>Ticket.requesterUserId</code> determine ownership; legacy requester IDs remain only as compatibility/audit fields. Test cleanup also revokes helper-created sessions.</p>
     <figure>
       <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
@@ -143,7 +144,24 @@
     <p>Phase 6 provides authenticated IT Staff and Administrator Ticket detail access with claim/reassignment, IT Priority, validated lifecycle transitions, requester-visible Public Comments, and staff-only Internal Notes. The API enforces role boundaries and legal transitions; the responsive UI provides explicit success and safe failure feedback. Completion workflow evidence is recorded in Issue #46, PR #47, and <code>docs/lab-03/reviewer.md</code>.</p>
     <h2>Answer Part 8: Working Administrator User Management UI</h2>
     <p>Phase 7 provides an Administrator-only responsive user list with name/email search and role filtering, plus create and edit workflows for one role and Active status. Initial passwords must satisfy policy, are hashed, force a password change at next login, and reset operations revoke existing sessions. The API rejects duplicate email and invalid roles, prevents self-deactivation, and ensures at least one active Administrator remains. Non-Administrators are denied by the backend and never receive the navigation entry. Completion workflow evidence is recorded in Issue #48, PR #49, and <code>docs/lab-03/reviewer.md</code>.</p>
-    <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2><p class="pending">Pending responsive UI work and desktop/tablet/mobile evidence.</p>
+    <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2>
+    <p>The Phase 8 Playwright suite checks Login, Change Password, Ticket Queue, Staff Ticket Detail, and User Management at 1280×900 desktop, 820×900 tablet, and 390×844 mobile viewports. Every view passed a document-width assertion. The audit replaced the wide Administrator table with readable cards on mobile while retaining the desktop table. All 15 source screenshots are stored in <code>artifacts/lab-03/screenshots/phase-08-qa/</code>.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-mobile.png" alt="TokTickIT Login displayed at the mobile viewport without horizontal overflow">
+      <figcaption><strong>Figure 11.</strong> Mobile Login at 390×844. The Zen Green primary action, labelled fields, System Status control, and readable card layout remain within the viewport (AC-01, AC-10).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-tablet.png" alt="IT Staff Ticket Queue at tablet width with filters and operational Ticket rows">
+      <figcaption><strong>Figure 12.</strong> Tablet Ticket Queue at 820×900. Search, filters, sorting, Ticket metadata, and detail actions remain usable without document overflow (AC-05, AC-10).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-desktop.png" alt="IT Staff Ticket Detail showing ticket information controls Public Comments and private Internal Notes">
+      <figcaption><strong>Figure 13.</strong> Desktop Staff Detail. Operational controls, Public Comments, and the visually distinct private Internal Notes panel demonstrate the required workflow and privacy boundary (AC-06, AC-07).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-mobile.png" alt="Administrator User Management displayed as mobile user cards and a responsive Create user form">
+      <figcaption><strong>Figure 14.</strong> Mobile User Management after the Phase 8 QA correction. User records become stacked cards with edit/reset actions, followed by the single-column Create User form; the page passes the no-horizontal-overflow assertion (AC-08, AC-10).</figcaption>
+    </figure>
 
     <p class="footer-note">This HTML file is the source of the final PDF. It is deliberately retained until the final PDF has been rendered and checked.</p>
   </main>

@@ -463,6 +463,7 @@ app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
         category: { select: { id: true, name: true } },
         relatedSystem: { select: { id: true, name: true } },
         attachments: { orderBy: { uploadedAt: "asc" }, select: { id: true, originalFilename: true, mimeType: true, byteSize: true, uploadedAt: true, removedAt: true, removalReason: true } },
+        publicComments: { orderBy: { createdAt: "asc" }, include: { author: { select: { id: true, name: true, role: true } } } },
       },
     });
     if (!ticket) {
@@ -473,6 +474,28 @@ app.get("/api/tickets/:ticketId", async (req: Request, res: Response) => {
   } catch {
     res.status(500).json({ error: "Unable to retrieve the Ticket." });
   }
+});
+
+app.post("/api/tickets/:ticketId/public-comments", async (req: Request, res: Response) => {
+  const requesterUserId = Number(res.locals.requesterUserId); const ticketId = parseRequesterOrResourceId(req.params.ticketId); const content = validEntryContent(req.body);
+  if (!requesterUserId || !ticketId) return res.status(404).json(notFoundMessage);
+  if (!content) return res.status(400).json({ error: "Comment must contain 1 to 2,000 characters." });
+  try {
+    const prisma = getPrisma(); const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterUserId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(201).json(await prisma.publicComment.create({ data: { ticketId, authorId: requesterUserId, content }, include: { author: { select: { id: true, name: true, role: true } } } }));
+  } catch { return res.status(500).json({ error: "Unable to add the Public Comment." }); }
+});
+
+app.patch("/api/tickets/:ticketId/problem-appears-resolved", async (req: Request, res: Response) => {
+  const requesterUserId = Number(res.locals.requesterUserId); const ticketId = parseRequesterOrResourceId(req.params.ticketId);
+  if (!requesterUserId || !ticketId) return res.status(404).json(notFoundMessage);
+  if (typeof req.body?.appearsResolved !== "boolean") return res.status(400).json({ error: "Choose whether the problem appears resolved." });
+  try {
+    const prisma = getPrisma(); const ticket = await prisma.ticket.findFirst({ where: { id: ticketId, requesterUserId }, select: { id: true } });
+    if (!ticket) return res.status(404).json(notFoundMessage);
+    return res.status(200).json(await prisma.ticket.update({ where: { id: ticketId }, data: { problemAppearsResolvedAt: req.body.appearsResolved ? new Date() : null }, select: { id: true, problemAppearsResolvedAt: true, currentStatus: true } }));
+  } catch { return res.status(500).json({ error: "Unable to update the resolution indication." }); }
 });
 
 app.post("/api/tickets/:ticketId/attachments", upload.single("file"), async (req: Request, res: Response) => {

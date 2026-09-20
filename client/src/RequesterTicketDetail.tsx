@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { AttachmentMetadata, AuthUser, downloadAttachment, getTicketDetail, removeAttachment, TicketDetail, uploadTicketAttachment } from "./api.js";
+import { addRequesterPublicComment, AttachmentMetadata, AuthUser, downloadAttachment, getTicketDetail, removeAttachment, setRequesterResolutionIndication, TicketDetail, uploadTicketAttachment } from "./api.js";
 
 function label(value: string) { return value.charAt(0) + value.slice(1).toLowerCase().replace("_", " "); }
 function formatDate(value: string) { return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value)); }
@@ -13,6 +13,8 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
   const [attachmentError, setAttachmentError] = useState("");
   const [removing, setRemoving] = useState<AttachmentMetadata | null>(null);
   const [removalReason, setRemovalReason] = useState("");
+  const [publicComment, setPublicComment] = useState("");
+  const [interactionMessage, setInteractionMessage] = useState("");
   useEffect(() => {
     let active = true;
     setState("loading");
@@ -46,17 +48,32 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
     catch (error) { setAttachmentError(error instanceof Error ? error.message : "Unable to remove the attachment."); }
   }
 
+  async function handleComment(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault(); setInteractionMessage("");
+    try { await addRequesterPublicComment(ticketId, publicComment); setPublicComment(""); setInteractionMessage("Public Comment added."); setRefreshKey((key) => key + 1); }
+    catch (error) { setInteractionMessage(error instanceof Error ? error.message : "Unable to add the Public Comment."); }
+  }
+
+  async function updateResolution(appearsResolved: boolean) {
+    setInteractionMessage("");
+    try { await setRequesterResolutionIndication(ticketId, appearsResolved); setInteractionMessage(appearsResolved ? "Resolution indication saved. IT Staff will still control the formal Ticket status." : "Resolution indication cleared."); setRefreshKey((key) => key + 1); }
+    catch (error) { setInteractionMessage(error instanceof Error ? error.message : "Unable to update the resolution indication."); }
+  }
+
   return <section aria-labelledby="ticket-detail-heading">
     <button className="btn btn-outline-success mb-4" onClick={onBack}>Back to My Tickets</button>
     {state === "loading" && <p role="status" className="text-secondary">Loading Ticket details...</p>}
     {state === "error" && <div className="alert alert-danger" role="alert">Ticket details are unavailable or you do not have access to this Ticket.</div>}
-    {state === "ready" && ticket && <><div className="d-flex flex-wrap justify-content-between gap-3 mb-4"><div><h1 className="h3 mb-1" id="ticket-detail-heading">{ticket.ticketNumber}</h1><p className="text-secondary mb-0">Requester Ticket Detail — read-only in Lab 2.</p></div><div><span className="badge text-bg-success me-2">{label(ticket.currentStatus)}</span><span className="badge text-bg-secondary">Requested {label(ticket.requestedPriority)}</span></div></div>
+    {state === "ready" && ticket && <><div className="d-flex flex-wrap justify-content-between gap-3 mb-4"><div><h1 className="h3 mb-1" id="ticket-detail-heading">{ticket.ticketNumber}</h1><p className="text-secondary mb-0">Requester Ticket Detail</p></div><div><span className="badge text-bg-success me-2">{label(ticket.currentStatus)}</span><span className="badge text-bg-secondary">Requested {label(ticket.requestedPriority)}</span></div></div>
+      {interactionMessage && <div className={`alert ${interactionMessage.includes("added") || interactionMessage.includes("saved") || interactionMessage.includes("cleared") ? "alert-success" : "alert-danger"}`} role="status">{interactionMessage}</div>}
       <section className="card shadow-sm" aria-label="Read-only Ticket information"><div className="card-body"><dl className="row mb-0"><dt className="col-sm-3">Requester</dt><dd className="col-sm-9">{requester.name}</dd><dt className="col-sm-3">Summary</dt><dd className="col-sm-9">{ticket.summary}</dd><dt className="col-sm-3">Category</dt><dd className="col-sm-9">{ticket.category.name}</dd><dt className="col-sm-3">Related System</dt><dd className="col-sm-9">{ticket.relatedSystem.name}</dd><dt className="col-sm-3">Requested Priority</dt><dd className="col-sm-9">{label(ticket.requestedPriority)}</dd><dt className="col-sm-3">IT Priority</dt><dd className="col-sm-9">{label(ticket.itPriority)}</dd><dt className="col-sm-3">Current Status</dt><dd className="col-sm-9">{label(ticket.currentStatus)}</dd><dt className="col-sm-3">Created</dt><dd className="col-sm-9">{formatDate(ticket.createdAt)}</dd><dt className="col-sm-3">Last Updated</dt><dd className="col-sm-9">{formatDate(ticket.updatedAt)}</dd><dt className="col-sm-3">Description</dt><dd className="col-sm-9" style={{ whiteSpace: "pre-wrap" }}>{ticket.description}</dd></dl></div></section>
       <section className="card shadow-sm mt-4" aria-labelledby="attachments-heading"><div className="card-body"><h2 className="h5" id="attachments-heading">Attachments</h2>
         <form onSubmit={handleUpload} className="border rounded p-3 mb-3"><label className="form-label" htmlFor="attachment-file">Add attachment</label><input className="form-control" id="attachment-file" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" onChange={(event) => { setFile(event.target.files?.[0] ?? null); setUploadState("idle"); setAttachmentError(""); }} /><div className="form-text">JPG, PNG, WEBP, or PDF; up to 5 MB; maximum five active files.</div><button className="btn btn-success mt-3" disabled={!file || uploadState === "busy"}>{uploadState === "busy" ? "Uploading..." : "Upload attachment"}</button>{uploadState === "success" && <p className="text-success mb-0 mt-2" role="status">Attachment uploaded.</p>}</form>
         {attachmentError && <div className="alert alert-danger" role="alert">{attachmentError}</div>}
         {ticket.attachments.length === 0 ? <p className="mb-0 text-secondary">No attachments have been added.</p> : <ul className="list-group">{ticket.attachments.map((attachment) => <li className="list-group-item" key={attachment.id}><div className="d-flex flex-wrap justify-content-between gap-2"><div><strong>{attachment.originalFilename}</strong><div className="text-secondary small">{attachment.mimeType}, {attachment.byteSize} bytes, uploaded {formatDate(attachment.uploadedAt)}</div>{attachment.removedAt && <div className="text-danger small">Removed {formatDate(attachment.removedAt)}: {attachment.removalReason}</div>}</div>{attachment.removedAt ? <span className="badge text-bg-secondary align-self-start">Removed</span> : <div className="d-flex gap-2"><button type="button" className="btn btn-sm btn-outline-success" onClick={() => void handleDownload(attachment)}>Download</button><button type="button" className="btn btn-sm btn-outline-danger" onClick={() => { setRemoving(attachment); setRemovalReason(""); setAttachmentError(""); }}>Remove</button></div>}</div></li>)}</ul>}
         {removing && <form onSubmit={handleRemoval} className="border border-danger rounded p-3 mt-3" aria-label="Confirm attachment removal"><h3 className="h6">Remove {removing.originalFilename}</h3><label className="form-label" htmlFor="removal-reason">Removal reason</label><textarea className="form-control" id="removal-reason" value={removalReason} onChange={(event) => setRemovalReason(event.target.value)} minLength={5} maxLength={250} required /><div className="form-text">5 to 250 characters. This action blocks future downloads.</div><button className="btn btn-danger mt-3">Confirm removal</button><button type="button" className="btn btn-link mt-3" onClick={() => setRemoving(null)}>Cancel</button></form>}
-      </div></section></>}
+      </div></section>
+      <section className="card shadow-sm mt-4" aria-labelledby="public-comments-heading"><div className="card-body"><h2 className="h5" id="public-comments-heading">Public Comments</h2><p className="text-secondary">Visible to Requester, IT Staff, and Administrator.</p>{ticket.publicComments.length === 0 ? <p>No Public Comments yet.</p> : ticket.publicComments.map((entry) => <article className="border-bottom py-2" key={entry.id}><strong>{entry.author.name}</strong><small className="text-secondary ms-2">{formatDate(entry.createdAt)}</small><p className="mb-0" style={{ whiteSpace: "pre-wrap" }}>{entry.content}</p></article>)}<form className="mt-3" onSubmit={handleComment}><label className="form-label" htmlFor="requester-public-comment">Add Public Comment</label><textarea id="requester-public-comment" className="form-control" value={publicComment} maxLength={2000} onChange={(event) => setPublicComment(event.target.value)} required /><button className="btn btn-success mt-2">Post Public Comment</button></form></div></section>
+      <section className="card shadow-sm mt-4" aria-labelledby="resolution-heading"><div className="card-body"><h2 className="h5" id="resolution-heading">Problem appears resolved</h2><p>This indication informs IT Staff but does not change the formal Ticket status.</p><p className="fw-semibold">{ticket.problemAppearsResolvedAt ? `Indicated on ${formatDate(ticket.problemAppearsResolvedAt)}` : "Not indicated"}</p><button className={ticket.problemAppearsResolvedAt ? "btn btn-outline-secondary" : "btn btn-success"} onClick={() => void updateResolution(!ticket.problemAppearsResolvedAt)}>{ticket.problemAppearsResolvedAt ? "Clear indication" : "Mark problem as appearing resolved"}</button></div></section></>}
   </section>;
 }
