@@ -1,0 +1,19 @@
+import { mkdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { expect, test } from "@playwright/test";
+import { expectNoHorizontalOverflow, resetAccount, runDatabase, signIn } from "./helpers.js";
+
+const screenshotDirectory = fileURLToPath(new URL("../../../artifacts/lab-03/screenshots/phase-08-qa/", import.meta.url));
+const ticketNumber = "TKT-20991231-VISUAL00";
+const viewports = [{ name: "desktop", width: 1280, height: 900 }, { name: "tablet", width: 820, height: 900 }, { name: "mobile", width: 390, height: 844 }];
+
+test.beforeAll(() => { mkdirSync(screenshotDirectory, { recursive: true }); resetAccount("amina.rahman@example.test", true); resetAccount("iris.nattapong@example.test"); resetAccount("narin.admin@example.test"); runDatabase(`const u=await p.user.findUniqueOrThrow({where:{email:'amina.rahman@example.test'}});const d=await p.developmentRequester.findUniqueOrThrow({where:{email:'amina.rahman@example.test'}});const c=await p.category.findFirstOrThrow();const r=await p.relatedSystem.findFirstOrThrow();await p.ticket.upsert({where:{ticketNumber:'${ticketNumber}'},update:{requesterId:d.id,requesterUserId:u.id},create:{ticketNumber:'${ticketNumber}',requesterId:d.id,requesterUserId:u.id,categoryId:c.id,relatedSystemId:r.id,summary:'Responsive evidence Ticket',description:'Phase 8 visual evidence fixture.',requestedPriority:'MEDIUM'}});`); });
+test.afterAll(() => { runDatabase(`const t=await p.ticket.findUnique({where:{ticketNumber:'${ticketNumber}'}});if(t)await p.ticket.delete({where:{id:t.id}});`); resetAccount("amina.rahman@example.test", true); resetAccount("iris.nattapong@example.test", true); resetAccount("narin.admin@example.test", true); });
+
+test("major Lab 3 screens have no horizontal document overflow", async ({ browser }) => {
+  for (const viewport of viewports) {
+    const requesterContext = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } }); const requester = await requesterContext.newPage(); await requester.goto("/"); await expect(requester.getByRole("heading", { name: "Sign in" })).toBeVisible(); await expectNoHorizontalOverflow(requester); await requester.screenshot({ path: `${screenshotDirectory}login-${viewport.name}.png`, fullPage: true }); await signIn(requester, "amina.rahman@example.test"); await expect(requester.getByRole("heading", { name: "Change password" })).toBeVisible(); await expectNoHorizontalOverflow(requester); await requester.screenshot({ path: `${screenshotDirectory}change-password-${viewport.name}.png`, fullPage: true }); await requesterContext.close();
+    const staffContext = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } }); const staff = await staffContext.newPage(); await signIn(staff, "iris.nattapong@example.test"); await expect(staff.getByRole("heading", { name: "Ticket Queue" })).toBeVisible(); await expectNoHorizontalOverflow(staff); await staff.screenshot({ path: `${screenshotDirectory}queue-${viewport.name}.png`, fullPage: true }); await staff.getByLabel("Search").fill(ticketNumber); await staff.getByRole("button", { name: "Open" }).click(); await expect(staff.getByLabel("IT Staff Ticket Detail")).toBeVisible(); await expectNoHorizontalOverflow(staff); await staff.screenshot({ path: `${screenshotDirectory}staff-detail-${viewport.name}.png`, fullPage: true }); await staffContext.close();
+    const adminContext = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height } }); const admin = await adminContext.newPage(); await signIn(admin, "narin.admin@example.test"); await expect(admin.getByRole("heading", { name: "User Management" })).toBeVisible(); await expectNoHorizontalOverflow(admin); await admin.screenshot({ path: `${screenshotDirectory}user-management-${viewport.name}.png`, fullPage: true }); await adminContext.close();
+  }
+});

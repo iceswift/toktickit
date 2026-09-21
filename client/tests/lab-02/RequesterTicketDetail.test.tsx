@@ -4,13 +4,13 @@ import userEvent from "@testing-library/user-event";
 import * as api from "../../src/api.js";
 import { RequesterTicketDetail } from "../../src/RequesterTicketDetail.js";
 
-const requester = { id: 1, displayName: "Amina Rahman", email: "amina.rahman@example.test" };
+const requester = { id: 1, name: "Amina Rahman", email: "amina.rahman@example.test", role: "REQUESTER" as const, mustChangePassword: false };
 const ticket = {
   id: 8, ticketNumber: "TKT-20260830-AB12CD34", requesterId: 1, categoryId: 1, relatedSystemId: 2,
   summary: "VPN disconnects during online exam", description: "The VPN disconnects after approximately five minutes during the online exam.",
   requestedPriority: "HIGH" as const, itPriority: "NOT_SET" as const, currentStatus: "NEW" as const,
   createdAt: "2026-08-30T10:00:00.000Z", updatedAt: "2026-08-30T10:30:00.000Z",
-  category: { id: 1, name: "Network" }, relatedSystem: { id: 2, name: "Campus VPN" }, attachments: [],
+  category: { id: 1, name: "Network" }, relatedSystem: { id: 2, name: "Campus VPN" }, attachments: [], publicComments: [], problemAppearsResolvedAt: null,
 };
 
 describe("RequesterTicketDetail", () => {
@@ -24,9 +24,20 @@ describe("RequesterTicketDetail", () => {
     expect(await screen.findByText(ticket.ticketNumber)).toBeInTheDocument();
     expect(screen.getByText("Campus VPN")).toBeInTheDocument();
     expect(screen.getByText(/No attachments have been added/)).toBeInTheDocument();
-    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Add Public Comment")).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: /Back to My Tickets/ }));
     expect(onBack).toHaveBeenCalledOnce();
+  });
+
+  it("posts a Public Comment and records a non-final resolution indication", async () => {
+    const user = userEvent.setup(); vi.spyOn(api, "getTicketDetail").mockResolvedValue(ticket);
+    const addComment = vi.spyOn(api, "addRequesterPublicComment").mockResolvedValue({ id: 4, ticketId: ticket.id, content: "This now works.", createdAt: ticket.updatedAt, author: { id: 1, name: requester.name, role: "REQUESTER" } });
+    const indicate = vi.spyOn(api, "setRequesterResolutionIndication").mockResolvedValue();
+    render(<RequesterTicketDetail requester={requester} ticketId={ticket.id} onBack={vi.fn()} />); await screen.findByText(ticket.ticketNumber);
+    await user.type(screen.getByLabelText("Add Public Comment"), "This now works."); await user.click(screen.getByRole("button", { name: "Post Public Comment" }));
+    expect(addComment).toHaveBeenCalledWith(ticket.id, "This now works."); expect(await screen.findByText("Public Comment added.")).toBeInTheDocument();
+    await user.click(screen.getByRole("button", { name: "Mark problem as appearing resolved" }));
+    expect(indicate).toHaveBeenCalledWith(ticket.id, true); expect(await screen.findByText(/Resolution indication saved/)).toBeInTheDocument();
   });
 
   it("does not disclose Ticket data when the owner-scoped request fails", async () => {
@@ -48,12 +59,12 @@ describe("RequesterTicketDetail", () => {
     const file = new File(["%PDF-1.4"], "evidence.pdf", { type: "application/pdf" });
     fireEvent.change(screen.getByLabelText("Add attachment"), { target: { files: [file] } });
     await userEvent.click(screen.getByRole("button", { name: "Upload attachment" }));
-    expect(uploadSpy).toHaveBeenCalledWith(requester.id, ticket.id, file);
+    expect(uploadSpy).toHaveBeenCalledWith(ticket.id, file);
     expect(await screen.findByText("Attachment uploaded.")).toBeInTheDocument();
 
     await userEvent.click(screen.getByRole("button", { name: "Remove" }));
     await userEvent.type(screen.getByLabelText("Removal reason"), "The file is obsolete.");
     await userEvent.click(screen.getByRole("button", { name: "Confirm removal" }));
-    expect(removeSpy).toHaveBeenCalledWith(requester.id, attachment.id, "The file is obsolete.");
+    expect(removeSpy).toHaveBeenCalledWith(attachment.id, "The file is obsolete.");
   });
 });

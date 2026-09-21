@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TokTickIT — Lab 3 Report</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    :root { --green: #176b4d; --ink: #19332a; --muted: #5c6f67; --line: #c9d7d0; --wash: #f2f8f5; }
+    * { box-sizing: border-box; }
+    body { color: var(--ink); font: 10.5pt/1.55 Arial, sans-serif; margin: 0; }
+    h1, h2, h3 { color: var(--green); line-height: 1.2; }
+    h1 { font-size: 26pt; margin: 0 0 8px; }
+    h2 { border-bottom: 2px solid var(--green); font-size: 16pt; margin: 28px 0 12px; padding-bottom: 5px; }
+    h3 { font-size: 12pt; margin: 18px 0 7px; }
+    p, li { margin: 5px 0; }
+    a { color: #115a41; }
+    .cover { align-items: center; display: flex; min-height: 245mm; padding: 28mm 12mm; }
+    .cover-card { border-left: 8px solid var(--green); padding: 12mm; }
+    .subtitle { color: var(--muted); font-size: 13pt; margin: 0; }
+    .meta { border-collapse: collapse; margin-top: 24mm; width: 100%; }
+    .meta th, .meta td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; }
+    .meta th { color: var(--muted); font-weight: 600; width: 38%; }
+    .page-break { break-before: page; page-break-before: always; }
+    .toc { background: var(--wash); border-radius: 6px; padding: 12px 18px; }
+    .evidence { background: var(--wash); border-left: 4px solid var(--green); margin: 12px 0; padding: 9px 12px; }
+    figure { break-inside: avoid; margin: 16px 0; }
+    figure img { border: 1px solid var(--line); display: block; height: auto; max-width: 100%; }
+    figcaption { color: var(--muted); font-size: 9pt; margin-top: 6px; }
+    .pending { color: var(--muted); font-style: italic; }
+    .footer-note { color: var(--muted); font-size: 8.5pt; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="cover-card">
+      <p class="subtitle">CPE334 Software Engineering Laboratory</p>
+      <h1>TokTickIT<br>Lab 3 Report</h1>
+      <p class="subtitle">Authentication, role-based ticket operations, administration, quality assurance, and release evidence.</p>
+      <table class="meta">
+        <tr><th>Student</th><td>Suwiwat Sinsomboon</td></tr>
+        <tr><th>Repository</th><td>iceswift/toktickit</td></tr>
+        <tr><th>Report status</th><td>Living source — evidence is added as each phase is verified.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <main class="page-break">
+    <h2>Contents</h2>
+    <nav class="toc">
+      <ol>
+        <li>Answer Part 1: Workflow, repository, and evidence</li>
+        <li>Answer Part 2: Specification and Definition of Done</li>
+        <li>Answer Part 3: Test evidence</li>
+        <li>Answer Part 4: AI use and reflection</li>
+        <li>Answer Part 5: Login evidence</li>
+        <li>Answer Part 6: IT Staff queue evidence</li>
+        <li>Answer Part 7: IT Staff detail and authorization evidence</li>
+        <li>Answer Part 8: Administrator user-management evidence</li>
+        <li>Answer Part 9: Zen Green UI and responsive evidence</li>
+      </ol>
+    </nav>
+
+    <h2>Answer Part 1: Git Use with Engineering Workflow</h2>
+    <h3>Phase 1: Project Setup and Engineering Contract</h3>
+    <ul>
+      <li>Issue <a href="https://github.com/iceswift/toktickit/issues/31">#31</a> defined the Phase 1 scope and acceptance criteria.</li>
+      <li>Feature branch <code>feature/lab3-1-engineering-contract</code> was reviewed through <a href="https://github.com/iceswift/toktickit/pull/32">PR #32</a> into <code>lab3-staging</code>.</li>
+      <li><code>Richyboy170</code> approved and merged PR #32. The merge commit is <code>42079a7</code>.</li>
+      <li>The Issue Development panel directly lists the merged PR, and GitHub Project automation moved the closed Issue from <code>Started</code> to <code>Done</code>.</li>
+    </ul>
+    <div class="evidence"><strong>Evidence rule:</strong> captions identify the exact requirement demonstrated; a screenshot is not used if it is incomplete or unreadable.</div>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/issue-31-closed-done-development.png" alt="GitHub Issue 31 shown as Closed, with the Project status Done and PR 32 listed in Development">
+      <figcaption><strong>Figure 1.</strong> Phase 1 final workflow evidence. Issue #31 is Closed; its Kanban status is Done; and the Development panel lists merged PR #32. This proves the required direct Issue–PR linkage and final workflow-board state.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/pr-32-approved-merged-development.png" alt="GitHub PR 32 showing Richyboy170 approval, reviewer merge into lab3-staging, and the direct Issue 31 Development link">
+      <figcaption><strong>Figure 2.</strong> PR #32 shows reviewer Richyboy170's approval and reviewer-performed merge into <code>lab3-staging</code>. The right Development panel links Issue #31 directly. This proves the peer-review and reviewer-merge requirements.</figcaption>
+    </figure>
+
+    <h3>Phase 4: Authenticated Requester Workflow — completed staging review</h3>
+    <p><a href="https://github.com/iceswift/toktickit/issues/40">Issue #40</a> is linked directly through GitHub Development to <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a>. The feature branch targeted <code>lab3-staging</code>. <code>Richyboy170</code> approved the initial changes and left four technical suggestions in one review comment. The author addressed all four in commit <code>8c5d5b7</code>, replied on PR #41, and re-requested review. Richyboy170 then re-checked, approved, and merged PR #41 into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f"><code>d48c2c8</code></a>. After the acceptance criteria were confirmed, Issue #40 was closed as completed and its Project status was moved to <code>Done</code>.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/issue-40-pr-review-development.png" alt="Open Issue 40 with acceptance criteria, Kanban status PR Review, and PR 41 in the Development panel">
+      <figcaption><strong>Figure 3.</strong> Phase 4 Issue #40 shows the <code>PR Review</code> board state and the direct Development link to PR #41, proving Issue–PR traceability at the review checkpoint. This is not final Done evidence.</figcaption>
+    </figure>
+
+    <h3>Phase 5: IT Staff Ticket Queue — completed staging review</h3>
+    <p><a href="https://github.com/iceswift/toktickit/issues/43">Issue #43</a> defined the IT Staff queue contract and was implemented on <code>feature/lab3-5-it-staff-ticket-queue</code>. The feature PR, <a href="https://github.com/iceswift/toktickit/pull/44">#44</a>, targeted <code>lab3-staging</code>; its description referenced Issue #43 and GitHub recorded PR #44 in the Issue activity. The implementation provides <code>GET /staff/tickets</code> with authenticated IT Staff/Administrator access, validated search/filter/sort/page queries, pagination metadata, and a responsive queue UI. <code>Richyboy170</code> approved and merged PR #44 into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c"><code>f1f51c8</code></a>. After merge, Issue #43 was closed as completed and its Project status moved from <code>PR Review</code> to <code>Done</code>.</p>
+    <h3>Phases 6–7: Staff operations and Administrator management — completed staging review</h3>
+    <p><a href="https://github.com/iceswift/toktickit/pull/47">PR #47</a> delivered the IT Staff Ticket detail workflow and was reviewer-approved and merged into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/79cee7bf635d771c9935a8defd7fcd4068105844"><code>79cee7b</code></a>. <a href="https://github.com/iceswift/toktickit/pull/49">PR #49</a> then delivered Administrator User Management for <a href="https://github.com/iceswift/toktickit/issues/48">Issue #48</a>. Its Development panel directly links the Issue, <code>iceswift</code> is assigned, and <code>Richyboy170</code> approved the backend, UI, authorization safeguards, and test coverage before merging it into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/64afcd90fd9dd76dbe2e6ddddaf7d9ff37b8bb8d"><code>64afcd9</code></a>.</p>
+    <h3>Phase 8: QA and release readiness — completed staging review</h3>
+    <p><a href="https://github.com/iceswift/toktickit/issues/51">Issue #51</a> tracked the complete-suite audit, responsive evidence, documentation reconciliation, and release-readiness corrections. <code>Richyboy170</code> merged <a href="https://github.com/iceswift/toktickit/pull/52">PR #52</a> into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/e7d5820047bfb8932e12ef8e64ffb17b532786a6"><code>e7d5820</code></a>. Issue #51 was then closed as completed.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-initial-approval-feedback.png" alt="Open PR 41 into lab3-staging showing Richyboy170's initial approval and review comment, with Issue 40 in Development">
+      <figcaption><strong>Figure 4.</strong> PR #41 shows <code>Richyboy170</code>'s initial approval and technical review comment, while the right Development panel links Issue #40. The author is addressing the comment on the same branch; this image does not claim a final reviewer merge.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-review-reply-rerequest.png" alt="PR 41 shows the author's response to four review points and a renewed review request to Richyboy170, with merge still pending">
+      <figcaption><strong>Figure 5.</strong> The author replied to all four points in the review comment and requested another review from <code>Richyboy170</code> after commit <code>8c5d5b7</code>. The final re-check, approval, and reviewer-performed merge are recorded in <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a> and merge commit <a href="https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f"><code>d48c2c8</code></a>.</figcaption>
+    </figure>
+
+    <h3>Evidence register and final-completion check</h3>
+    <p>The records above are verified Phase 1 and Phase 4–8 staging facts. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The <code>docs/lab-03/reviewer.md</code> record distinguishes completed review from pending review.</p>
+
+    <h2>Answer Part 2: Specification and Definition of Done</h2>
+    <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation. <code>evidence-matrix.md</code> maps every AC to executable and visual evidence without mislabelling feature-branch results as final-main evidence.</p>
+
+    <h2>Answer Part 3: Test DD and Traceability</h2>
+    <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> after addressing peer-review feedback, server API/unit/regression tests passed 27/27, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were previously reported up to date; this review-fix run did not rerun migration status. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
+    <p><strong>Phase 5 focused verification (feature branch, not final-main evidence):</strong> the staff queue API suite passed 3/3; the StaffTicketQueue UI suite passed 2/2; and both server TypeScript and client production builds passed. <code>git diff --check</code> also passed. These checks cover queue authorization, validated query handling, search/filter/sort/pagination metadata, valid empty responses, and explicit UI empty/no-results states. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
+    <p><strong>Phase 6 focused verification (feature branch, not final-main evidence):</strong> the staff Ticket detail API suite passed 3/3 and the StaffTicketDetail UI suite passed 2/2, with both production builds passing. Coverage includes claim/reassignment, priority and status changes, Public Comments, private Internal Notes, and role boundaries.</p>
+    <p><strong>Phase 7 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 37/37 and the complete client suite passed 25/25; both production builds and <code>git diff --check</code> passed. Focused coverage verifies anonymous/non-Administrator denial, list/search/filter/create/edit/password reset, duplicate email and invalid input rejection, self-deactivation protection, and responsive management actions. Final release evidence will still rerun the complete suite from <code>main</code>.</p>
+    <p><strong>Phase 8 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 38/38, the complete client suite passed 26/26, and the browser suite passed 8/8 across Lab 2 regression and Lab 3 workflows. Both production builds passed, and Prisma reported all 7 migrations applied. The audit added requester Public Comments and a non-final “problem appears resolved” indication required by FR-05/AC-07, then fixed mobile User Management overflow detected by Playwright. Final release evidence will rerun these checks from <code>main</code>.</p>
+    <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and deliberately mismatched legacy/migrated ownership. The authenticated <code>User.id</code> and <code>Ticket.requesterUserId</code> determine ownership; legacy requester IDs remain only as compatibility/audit fields. Test cleanup also revokes helper-created sessions.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
+      <figcaption><strong>Figure 6.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-create-ticket.png" alt="Create Ticket form with requester name Amina Rahman populated from her authenticated session">
+      <figcaption><strong>Figure 7.</strong> Phase 4 Create Ticket form: the Requester field is read-only and populated from the authenticated User, proving the UI no longer permits manual requester identity selection (AC-04, AC-09).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-ticket-detail.png" alt="Authenticated requester Ticket Detail displaying Amina Rahman as requester with read-only ticket data">
+      <figcaption><strong>Figure 8.</strong> Phase 4 Ticket Detail: the owned Ticket remains readable after migration, with requester identity from the session. The backend authorization tests separately prove that another requester receives safe 404 responses (AC-04, AC-09).</figcaption>
+    </figure>
+
+    <h2>Answer Part 4: AI Use and Reflection</h2>
+    <p>The maintained prompt log and the student reflection are in <code>docs/lab-03/ai-use.md</code>. This section will be rendered into the final PDF after all verification notes are complete.</p>
+
+    <h2>Answer Part 5: Working Login and Password Change UI</h2>
+    <p>Phase 3 authentication was peer-reviewed in <a href="https://github.com/iceswift/toktickit/pull/39">PR #39</a>. Phase 4 browser verification confirmed that a requester using an initial password reaches the forced password-change screen before the requester shell; logout returns to Sign in. The formal final-main test output is still pending.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-03-auth/login-form.png" alt="TokTickIT sign-in form with email and password inputs">
+      <figcaption><strong>Figure 9.</strong> Login UI with email/password inputs, supporting the working authentication entry requirement (AC-01).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/first-login-gate.png" alt="First-login requester session is shown the mandatory change-password screen instead of the requester shell">
+      <figcaption><strong>Figure 10.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
+    </figure>
+    <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2>
+    <p>Phase 5 delivers the queue for authenticated IT Staff, with Administrator read-only access. The UI exposes labelled search, status/requested-priority/IT-priority filters, sorting, pagination controls, a compact desktop table, responsive mobile cards, and explicit loading, empty, no-results, forbidden, and failure feedback. The server endpoint defaults to <code>updatedAt desc</code>, returns <code>items</code>, <code>page</code>, <code>pageSize</code>, <code>totalItems</code>, and <code>totalPages</code>, and accepts only page sizes 10, 20, or 50. Completion workflow evidence is recorded in Issue #43, PR #44, and <code>docs/lab-03/reviewer.md</code>.</p>
+    <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2>
+    <p>Phase 6 provides authenticated IT Staff and Administrator Ticket detail access with claim/reassignment, IT Priority, validated lifecycle transitions, requester-visible Public Comments, and staff-only Internal Notes. The API enforces role boundaries and legal transitions; the responsive UI provides explicit success and safe failure feedback. Completion workflow evidence is recorded in Issue #46, PR #47, and <code>docs/lab-03/reviewer.md</code>.</p>
+    <h2>Answer Part 8: Working Administrator User Management UI</h2>
+    <p>Phase 7 provides an Administrator-only responsive user list with name/email search and role filtering, plus create and edit workflows for one role and Active status. Initial passwords must satisfy policy, are hashed, force a password change at next login, and reset operations revoke existing sessions. The API rejects duplicate email and invalid roles, prevents self-deactivation, and ensures at least one active Administrator remains. Non-Administrators are denied by the backend and never receive the navigation entry. Completion workflow evidence is recorded in Issue #48, PR #49, and <code>docs/lab-03/reviewer.md</code>.</p>
+    <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2>
+    <p>The Phase 8 Playwright suite checks Login, Change Password, Ticket Queue, Staff Ticket Detail, and User Management at 1280×900 desktop, 820×900 tablet, and 390×844 mobile viewports. Every view passed a document-width assertion. The audit replaced the wide Administrator table with readable cards on mobile while retaining the desktop table. All 15 source screenshots are stored in <code>artifacts/lab-03/screenshots/phase-08-qa/</code>.</p>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-mobile.png" alt="TokTickIT Login displayed at the mobile viewport without horizontal overflow">
+      <figcaption><strong>Figure 11.</strong> Mobile Login at 390×844. The Zen Green primary action, labelled fields, System Status control, and readable card layout remain within the viewport (AC-01, AC-10).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-tablet.png" alt="IT Staff Ticket Queue at tablet width with filters and operational Ticket rows">
+      <figcaption><strong>Figure 12.</strong> Tablet Ticket Queue at 820×900. Search, filters, sorting, Ticket metadata, and detail actions remain usable without document overflow (AC-05, AC-10).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-desktop.png" alt="IT Staff Ticket Detail showing ticket information controls Public Comments and private Internal Notes">
+      <figcaption><strong>Figure 13.</strong> Desktop Staff Detail. Operational controls, Public Comments, and the visually distinct private Internal Notes panel demonstrate the required workflow and privacy boundary (AC-06, AC-07).</figcaption>
+    </figure>
+    <figure>
+      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-mobile.png" alt="Administrator User Management displayed as mobile user cards and a responsive Create user form">
+      <figcaption><strong>Figure 14.</strong> Mobile User Management after the Phase 8 QA correction. User records become stacked cards with edit/reset actions, followed by the single-column Create User form; the page passes the no-horizontal-overflow assertion (AC-08, AC-10).</figcaption>
+    </figure>
+
+    <p class="footer-note">This HTML file is the source of the final PDF. It is deliberately retained until the final PDF has been rendered and checked.</p>
+  </main>
+</body>
+</html>
