@@ -1,5 +1,6 @@
 import { getPrisma } from "../src/prisma.js";
 import { hash } from "bcryptjs";
+import { seedTicketExamples, ticketExamples } from "./seed-ticket-examples.js";
 
 const categoryNames = [
   "Account and Access",
@@ -114,7 +115,8 @@ async function main() {
     });
   }
 
-  console.log(`Seeded ${categoryNames.length} IT request categories, ${relatedSystems.length} related systems, ${developmentRequesters.length} Requesters, ${staffUsers.length} IT Staff, and ${administrators.length} Administrator.`);
+  await seedTicketExamples(prisma);
+  console.log(`Seeded ${categoryNames.length} IT request categories, ${relatedSystems.length} related systems, ${developmentRequesters.length} Requesters, ${staffUsers.length} IT Staff, ${administrators.length} Administrator, and ${ticketExamples.length} demonstration Tickets with Public Comments and Internal Notes. Existing Ticket changes and passwords are preserved.`);
 }
 
 main()

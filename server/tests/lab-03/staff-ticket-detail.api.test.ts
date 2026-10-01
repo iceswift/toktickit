@@ -48,4 +48,15 @@ describe("IT Staff Ticket operations", () => {
     expect(detail.body.publicComments).toHaveLength(1); expect(detail.body.internalNotes).toHaveLength(1);
     expect((await requester.get(`/staff/tickets/${ticketId}/internal-notes`)).status).toBe(403);
   });
+  it("allows Administrator priority changes without granting staff workflow writes", async () => {
+    const priority = await admin.patch(`/staff/tickets/${ticketId}/it-priority`).send({ itPriority: "LOW" });
+    expect(priority.status).toBe(200);
+    expect(priority.body.itPriority).toBe("LOW");
+    expect(priority.body.requestedPriority).toBe("HIGH");
+    expect((await admin.patch(`/staff/tickets/${ticketId}/owner`).send({ ownerUserId: null })).status).toBe(403);
+    expect((await admin.patch(`/staff/tickets/${ticketId}/status`).send({ status: "IN_PROGRESS" })).status).toBe(403);
+    expect((await admin.post(`/staff/tickets/${ticketId}/public-comments`).send({ content: "Forbidden administrator write" })).status).toBe(403);
+    expect((await admin.post(`/staff/tickets/${ticketId}/internal-notes`).send({ content: "Forbidden administrator note" })).status).toBe(403);
+    expect((await requester.patch(`/staff/tickets/${ticketId}/it-priority`).send({ itPriority: "URGENT" })).status).toBe(403);
+  });
 });
