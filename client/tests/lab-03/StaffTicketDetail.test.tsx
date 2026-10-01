@@ -21,4 +21,21 @@ describe("IT Staff Ticket Detail", () => {
     await user.type(await screen.findByLabelText("Add Public Comment"), "Working on it"); await user.click(screen.getByRole("button", { name: "Post Public Comment" }));
     expect(post).toHaveBeenCalledWith(7, "Working on it");
   });
+  it("allows Administrator IT Priority changes while keeping staff-only controls unavailable", async () => {
+    const user = userEvent.setup();
+    vi.spyOn(api, "getStaffTicketDetail").mockResolvedValue(ticket);
+    vi.spyOn(api, "getStaffTicketOwners").mockResolvedValue([]);
+    const priority = vi.spyOn(api, "setStaffTicketPriority").mockResolvedValue({ ...ticket, itPriority: "URGENT" });
+    render(<StaffTicketDetail ticketId={7} user={{ id: 3, name: "Narin", email: "narin@example.test", role: "ADMINISTRATOR", mustChangePassword: false }} onBack={() => undefined} />);
+    const selector = await screen.findByLabelText("IT Priority");
+    expect(selector).toBeEnabled();
+    expect(screen.getByLabelText("Current Status")).toBeDisabled();
+    expect(screen.queryByRole("button", { name: "Claim Ticket" })).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Assign or reassign owner")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Add Public Comment")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Add Internal Note")).not.toBeInTheDocument();
+    await user.selectOptions(selector, "URGENT");
+    expect(priority).toHaveBeenCalledWith(7, "URGENT");
+    expect(await screen.findByRole("status")).toHaveTextContent("IT Priority saved");
+  });
 });

@@ -23,15 +23,15 @@ Attachments. Lab 3 replaces that temporary selector with authenticated Requester
 toktickit/
 |-- client/
 |   |-- src/
-|   `-- tests/
-|       `-- lab-01/
+|   |-- e2e/
+|   `-- tests/  (lab-01, lab-02, lab-03)
 |-- server/
 |   |-- prisma/
 |   |-- src/
-|   `-- tests/
-|       `-- lab-01/
+|   `-- tests/  (lab-01, lab-02, lab-03)
 |-- docs/
 |   |-- lab-01/
+|   |-- lab-03/  (engineering contract, review and report evidence)
 |   `-- lab-02/
 |       |-- specification.md
 |       |-- tests.md
@@ -58,7 +58,7 @@ toktickit/
    docker compose up -d postgres
    ```
 
-   The isolated Lab 1 database is exposed on host port `5433` to avoid
+   The Lab 3 database is exposed on host port `5434` to avoid
    conflicting with an existing local PostgreSQL installation.
 
 2. Configure and install the backend, then prepare the database:
@@ -85,21 +85,21 @@ toktickit/
 4. Open `http://localhost:5173` in a browser. The API listens on
    `http://localhost:3000`.
 
-The seed command is idempotent. It preserves the Lab 2 catalogue and creates the Lab 3 Requester, IT Staff, and Administrator accounts used by the documented test scenarios.
+The seed command is idempotent. It preserves the Lab 2 catalogue and creates the Lab 3 Requester, IT Staff, and Administrator accounts used by the documented test scenarios. It also creates eight synthetic Tickets across all statuses, four Requesters, three Requested Priorities, and assigned/unassigned ownership, each with a safe Public Comment and private Internal Note. Stable demo Ticket numbers are `TKT-20260901-DEMO0001` through `DEMO0008`. Repeating the seed preserves worked Ticket fields and existing credentials and does not duplicate the example communication. These fixtures and the initial password `Lab3Initial!2026` are for local development only; first login requires a password change.
 
 ## REST endpoints
 
 - `GET /api/health` returns the TokTickIT API health status.
 - `GET /api/categories` returns the categories stored in PostgreSQL in a
   predictable order.
-- `GET /api/development-requesters` returns active test Requesters.
-- `POST /api/tickets` creates a validated Ticket for the selected Requester.
-- `GET /api/tickets` returns only the selected Requester's searchable,
+- `GET /api/development-requesters` is retired in Lab 3 and does not enumerate identities.
+- `POST /api/tickets` creates a validated Ticket for the authenticated Requester.
+- `GET /api/tickets` returns only the authenticated Requester's searchable,
   filterable, sortable, paginated Ticket list.
 - `GET /api/tickets/:ticketId` retrieves an owned Ticket Detail.
-- `POST /api/auth/login`, `POST /api/auth/change-password`, and `POST /api/auth/logout` implement the Lab 3 session lifecycle.
-- `GET /api/staff/tickets` and the protected Staff Ticket operations implement the role-protected queue and workflow.
-- `/api/admin/users` operations implement Administrator-only account management.
+- `POST /auth/login`, `POST /auth/change-password`, `POST /auth/logout`, and `GET /auth/me` implement the Lab 3 session lifecycle.
+- `GET /staff/tickets` and the protected Staff Ticket operations implement the role-protected queue and workflow. Administrators can view detail and change IT Priority, but cannot perform Staff-only ownership/status/comment/note writes.
+- `/admin/users` operations implement Administrator-only account management.
 - Requester and Staff Public Comment endpoints share requester-visible history; Internal Notes remain Staff/Administrator-only.
 - `POST /api/tickets/:ticketId/attachments`, `GET /api/tickets/:ticketId/attachments`,
   `GET /api/attachments/:attachmentId/download`, and `DELETE /api/attachments/:attachmentId`
