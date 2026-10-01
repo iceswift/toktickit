@@ -34,6 +34,8 @@ Tests use a separate audit container on port 55434, not the original development
 
 ## Workflow and submission gate
 
+Correction [PR #56](https://github.com/iceswift/toktickit/pull/56) is open against `lab3-staging`, with Richyboy170 requested as reviewer and Issue #55 linked in the actual Development panel. Issue #55 is in PR Review (verified after reload). No author merge was performed. Historical Phase 7 Issue #48 was closed on 1 October after verifying merged PR #49; this does not complete the separate correction/release gate.
+
 Tracked by [Issue #55](https://github.com/iceswift/toktickit/issues/55). Correction verification passed: server 42/42 (16 files), client 27/27 (10 files), browser 9/9, and both builds. On the separate fresh seed-check database, two seed runs produced exactly 10 Users, 8 Tickets, 8 Public Comments and 8 Internal Notes. The real-browser Administrator priority screenshot is `artifacts/lab-03/final-audit/admin-priority-correction.png`.
 
 API and E2E checks were rerun sequentially after an initial concurrent execution interfered with a shared login fixture. The failed run was retained locally; it is not represented as a passing result.
