@@ -2,6 +2,14 @@
 
 This plan was written before implementation. Each Acceptance Criterion has unit, API, UI, authorization, regression, or E2E coverage. Phase 8 reconciled the planned paths with the implemented suites and recorded the complete feature-branch result below.
 
+## Final released-main verification - 2 October 2026
+
+Source: `c551061806a9b4eeea3e51967afc8418f7c50ab1`, reviewer-merged Release PR #57. Server: 16 files, 42/42 tests. Client: 10 files, 27/27 tests. Browser: 9/9 E2E tests. Both production builds passed. Seven Prisma migrations applied, no pending migration. These results supersede the older branch checkpoints, not the planned-versus-implemented coverage limitations described below. The report embeds complete actual output, rather than treating a count alone as proof.
+
+## Subsequent Issue #58 correction branch - not released main
+
+The account-switch regression failed on the released UI: after selecting Ben, the Name field still held an unsaved Amina draft. Keying the edit form by `editing.id` makes the selected account's Name, Email, Role and Active state replace the previous account's fields. A second test verifies separate Requested/IT Priority badges and status badges in desktop and mobile Queue layouts. Complete client result: 29/29 (10 files), browser E2E 9/9, both builds passed. These corrections require peer integration/release and another final-main run; they are not included in the 27-test released-main result above.
+
 | ID | Type | AC | Planned behavior | Planned file |
 |---|---|---|---|---|
 | UNIT-01 | unit | AC-01/06 | password policy, single-role guard, and allowed status-transition helper accept valid input and reject forbidden values | `server/tests/lab-03/auth-policy.test.ts` |

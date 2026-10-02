@@ -1,0 +1,32 @@
+
+> toktickit-client@1.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:3924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:6024) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:28396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\lab-02\requester-ticket-flow.spec.ts:21:1 › Requester creates, finds, and opens an owned Ticket (5.8s)
+  ok 2 e2e\lab-02\requester-ticket-flow.spec.ts:38:1 › cross-owner access is blocked while the owner can upload and remove an Attachment (1.8s)
+  ok 3 e2e\lab-02\responsive.spec.ts:16:1 › My Tickets remains usable without horizontal overflow at desktop, tablet, and mobile widths (840ms)
+  ok 4 e2e\lab-03\authentication.spec.ts:5:1 › first login requires password change and logout blocks protected access (2.5s)
+  ok 5 e2e\lab-03\authentication.spec.ts:6:1 › invalid and inactive credentials use the same safe failure (683ms)
+  ok 6 e2e\lab-03\responsive.spec.ts:13:1 › major Lab 3 screens have no horizontal document overflow (7.9s)
+  ok 7 e2e\lab-03\staff-ticket-flow.spec.ts:6:1 › IT Staff completes the operational Ticket workflow (1.7s)
+  ok 8 e2e\lab-03\user-administration.spec.ts:7:1 › Administrator changes IT Priority without receiving staff-only controls (1.4s)
+  ok 9 e2e\lab-03\user-administration.spec.ts:31:1 › Administrator manages a user and forces password change (3.6s)
+
+  9 passed (37.6s)

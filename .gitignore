@@ -15,4 +15,5 @@ server/uploads/
 # logs & OS
 *.log
 .playwright-cli/
+output/
 .DS_Store

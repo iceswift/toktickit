@@ -1,0 +1,173 @@
+[
+  {
+    "pr": 32,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve",
+        "submitted_at": "2026-09-15T01:01:44Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/32#pullrequestreview-5204444440"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 37,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve",
+        "submitted_at": "2026-09-16T14:34:45Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/37#pullrequestreview-5224101551"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 39,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve",
+        "submitted_at": "2026-09-17T02:19:54Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/39#pullrequestreview-5230311846"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 41,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "File: `server/src/app.ts`  \nLines: 52–60, 222–223, 265–267, 302, 330, 350, 379–399\n\n````text\nCould we make `User.id` / `Ticket.requesterUserId` the canonical ownership boundary here instead of resolving the authenticated user back to `DevelopmentRequester.id`?\n\nThe current flow authenticates a `User`, maps it to a legacy requester, and then authorizes every ticket and attachment operation through that legacy ID. If `requesterId` and `requesterUserId` ever become inconsistent during migration or future updates, a user could potentially access another user's ticket or attachment.\n\nPlease use the authenticated user's ID in the ownership predicates, retaining the legacy requester ID only for compatibility or audit fields. It would also be useful to add a regression test with deliberately mismatched legacy and migrated ownership.\n````\n\n### Why this matters\n\nThe PR’s security goal is to make authenticated identity authoritative. Using the legacy requester relationship as the authorization key leaves a second identity mapping in the access-control path and creates a data-integrity risk if the two fields diverge.\n\n---\n\nFile: `server/tests/lab-03/requester-authorization.api.test.ts`  \nLines: 53–59\n\n````text\nThis verifies that a forged `X-Development-Requester-Id` header is ignored, but it does not verify behavior when the legacy requester mapping and the authenticated User mapping disagree.\n\nCould you add a fixture where `Ticket.requesterId` belongs to one requester while `Ticket.requesterUserId` belongs to another User, then assert that access follows the authenticated User only? This would directly protect the ownership invariant introduced by this PR.\n````\n\n### Why this matters\n\nThe existing test covers header spoofing, but the more important remaining risk is inconsistent migrated data. A mismatch-specific test would prevent a future refactor from accidentally authorizing through the legacy ID again.\n\n---\n\nFile: `server/tests/lab-03/requester-session.ts`  \nLines: 6–16\n\n````text\nThe helper resets `mustChangePassword`, but it does not revoke the sessions created by `requesterSession()`.\n\nCould cleanup revoke the test users' active sessions as well, or have `restoreRequesterSession()` perform that cleanup? Otherwise, test runs can leave valid authenticated sessions behind in the database and make later tests order-dependent.\n````\n\n### Why this matters\n\nThe tests mutate shared database state and create persistent authentication records. Although the current suite runs serially, leaked sessions can affect later tests, local debugging, or repeated runs against the same database.\n\n---\n\nFile: `server/src/app.ts`  \nLines: 52–63\n\n````text\nCould this authorization middleware be extracted into a named function, such as `requireRequesterSession`, with focused tests around its decisions?\n\nThis block currently combines session lookup, role validation, first-login gating, legacy-user mapping, and error handling. Giving the boundary a name and testing it directly would make the authorization contract easier to audit as additional role-specific routes are added.\n````\n\n### Why this matters\n\nThis is the central security boundary for all requester ticket and attachment routes. Isolating it would reduce duplication and make future changes less likely to bypass one of the required checks.",
+        "submitted_at": "2026-09-17T14:23:10Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/41#pullrequestreview-5237042317"
+      },
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Thank you for the fix and your awesome job. Approve. ",
+        "submitted_at": "2026-09-18T09:22:56Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/41#pullrequestreview-5246249778"
+      }
+    ],
+    "comments": [
+      {
+        "author": "iceswift",
+        "body": "@Richyboy170 Thank you for the careful review. I addressed all four points on this PR in commit `8c5d5b7`:\n\n1. Requester ticket and attachment authorization now uses the authenticated `User.id` and `Ticket.requesterUserId` throughout. The legacy requester ID remains only for compatibility and audit fields.\n2. A regression fixture deliberately assigns `Ticket.requesterId` and `Ticket.requesterUserId` to different people. It verifies that list, detail, upload, attachment listing, download, and removal follow the authenticated User rather than the legacy ID.\n3. `restoreRequesterSession()` now revokes only the sessions created by the test helper, with a cleanup test.\n4. I extracted the named `requireRequesterSession` middleware and added focused checks for no session, the wrong role, the first-login password-change gate, and a valid requester.\n\nVerification after the changes: server tests 27/27, client tests 18/18, browser E2E tests 3/3, and both production builds passed. I re-requested your review; please review the latest PR head and merge into `lab3-staging` if everything looks good. I will not merge my own PR.",
+        "created_at": "2026-09-17T14:46:00Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/41#issuecomment-5716325967"
+      }
+    ]
+  },
+  {
+    "pr": 44,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve",
+        "submitted_at": "2026-09-19T15:03:58Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/44#pullrequestreview-5256109932"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 47,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve",
+        "submitted_at": "2026-09-20T06:14:20Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/47#pullrequestreview-5259767340"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 49,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approved ✅\n\nThis PR cleanly implements Administrator User Management across the backend and UI:\n\nAdds administrator-only user management routes with proper authorization.\nSupports listing, searching, filtering, creating, editing, and password resets.\nEnforces duplicate-email, password-strength, self-deactivation, and final-administrator safeguards.\nAdds administrator-only UI navigation and responsive management forms.\nIncludes focused frontend and backend tests covering the main workflows and authorization rules.\nThe implementation is well scoped and aligned with the requirements in #48. Nice work!",
+        "submitted_at": "2026-09-20T06:57:00Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/49#pullrequestreview-5259840374"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 52,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "",
+        "submitted_at": "2026-09-20T11:36:07Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/52#pullrequestreview-5260475047"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 54,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "",
+        "submitted_at": "2026-09-21T14:01:50Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/54#pullrequestreview-5267520720"
+      }
+    ],
+    "comments": []
+  },
+  {
+    "pr": 56,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "Approve, look good",
+        "submitted_at": "2026-10-01T11:56:10Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/56#pullrequestreview-5378880843"
+      }
+    ],
+    "comments": [
+      {
+        "author": "iceswift",
+        "body": "Thank you for reviewing and merging the seed/Admin priority corrections. Release #57 is now merged into main by you; the final-main rerun passed server 42/42, client 27/27, E2E 9/9 and both builds. I am completing the report evidence separately and will not treat passing tests alone as complete submission evidence.",
+        "created_at": "2026-10-02T06:34:11Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/56#issuecomment-5946787341"
+      }
+    ]
+  },
+  {
+    "pr": 57,
+    "reviews": [
+      {
+        "author": "Richyboy170",
+        "state": "APPROVED",
+        "body": "approve, look good",
+        "submitted_at": "2026-10-02T01:56:51Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/57#pullrequestreview-5387561692"
+      }
+    ],
+    "comments": [
+      {
+        "author": "iceswift",
+        "body": "Thank you for approving and merging the release. I verified main c551061 and Issue #55 automatic closure, then reran server 42/42, client 27/27, E2E 9/9 and both builds successfully on an isolated audit database. The report/evidence audit remains in progress; no submission-ready PDF is claimed yet.",
+        "created_at": "2026-10-02T06:34:13Z",
+        "html_url": "https://github.com/iceswift/toktickit/pull/57#issuecomment-5946787585"
+      }
+    ]
+  }
+]

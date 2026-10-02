@@ -1,184 +1,562 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TokTickIT — Lab 3 Report</title>
-  <style>
-    @page { size: A4; margin: 18mm 16mm; }
-    :root { --green: #176b4d; --ink: #19332a; --muted: #5c6f67; --line: #c9d7d0; --wash: #f2f8f5; }
-    * { box-sizing: border-box; }
-    body { color: var(--ink); font: 10.5pt/1.55 Arial, sans-serif; margin: 0; }
-    h1, h2, h3 { color: var(--green); line-height: 1.2; }
-    h1 { font-size: 26pt; margin: 0 0 8px; }
-    h2 { border-bottom: 2px solid var(--green); font-size: 16pt; margin: 28px 0 12px; padding-bottom: 5px; }
-    h3 { font-size: 12pt; margin: 18px 0 7px; }
-    p, li { margin: 5px 0; }
-    a { color: #115a41; }
-    .cover { align-items: center; display: flex; min-height: 245mm; padding: 28mm 12mm; }
-    .cover-card { border-left: 8px solid var(--green); padding: 12mm; }
-    .subtitle { color: var(--muted); font-size: 13pt; margin: 0; }
-    .meta { border-collapse: collapse; margin-top: 24mm; width: 100%; }
-    .meta th, .meta td { border-bottom: 1px solid var(--line); padding: 7px 5px; text-align: left; }
-    .meta th { color: var(--muted); font-weight: 600; width: 38%; }
-    .page-break { break-before: page; page-break-before: always; }
-    .toc { background: var(--wash); border-radius: 6px; padding: 12px 18px; }
-    .evidence { background: var(--wash); border-left: 4px solid var(--green); margin: 12px 0; padding: 9px 12px; }
-    figure { break-inside: avoid; margin: 16px 0; }
-    figure img { border: 1px solid var(--line); display: block; height: auto; max-width: 100%; }
-    figcaption { color: var(--muted); font-size: 9pt; margin-top: 6px; }
-    .pending { color: var(--muted); font-style: italic; }
-    .footer-note { color: var(--muted); font-size: 8.5pt; margin-top: 24px; }
-  </style>
-</head>
-<body>
-  <section class="cover">
-    <div class="cover-card">
-      <p class="subtitle">CPE334 Software Engineering Laboratory</p>
-      <h1>TokTickIT<br>Lab 3 Report</h1>
-      <p class="subtitle">Authentication, role-based ticket operations, administration, quality assurance, and release evidence.</p>
-      <table class="meta">
-        <tr><th>Student</th><td>Suwiwat Sinsomboon</td></tr>
-        <tr><th>Repository</th><td>iceswift/toktickit</td></tr>
-        <tr><th>Student ID</th><td>67070503444</td></tr>
-        <tr><th>Report status</th><td>Draft under final audit. Released baseline main is verified; Issue #55 corrections still require peer review, staging integration and release. Not submission-ready.</td></tr>
-      </table>
-    </div>
-  </section>
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Lab 3 Report - 67070503444</title><style>@page{size:A4;margin:18mm 16mm}body{font:15px/1.55 Arial,sans-serif;color:#19332a;max-width:1050px;margin:30px auto;padding:20px}h1,h2,h3,h4{color:#176b4d}h2{border-bottom:2px solid #176b4d;padding-bottom:8px}section{break-before:page;margin-bottom:45px}.cover{min-height:65vh;padding:70px 30px}a{color:#176b4d}nav a{display:flex;justify-content:space-between}nav p{border-bottom:1px dotted #a2b9ac}figure{margin:25px 0;break-inside:avoid}img{display:block;max-width:100%;height:auto;border:1px solid #cad8d1}figcaption{font-size:13px;color:#52685d;margin-top:8px}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border:1px solid #cad8d1;padding:7px;text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#e5f1e9}pre{font:12px/1.5 Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f7f5;padding:12px}hr{border:0;border-top:1px solid #d2dfd7}</style><body><section class="cover"><h1>TokTickIT<br>Lab 3 Report</h1><p>Suwiwat Sinsomboon | 67070503444</p><p>Released product main c551061 - documentation-review draft</p></section><nav><h2>Contents</h2><p><a href="#part1">Answer Part 1 - Git Use with Engineering Workflow <span>p. 3</span></a></p><p><a href="#part2">Answer Part 2 - Spec DD and Definition of Done <span>p. 15</span></a></p><p><a href="#part3">Answer Part 3 - Test DD and Traceability <span>p. 19</span></a></p><p><a href="#part4">Answer Part 4 - AI Use with Reflection <span>p. 27</span></a></p><p><a href="#part5">Answer Part 5 - Working Login and Password Change UI <span>p. 29</span></a></p><p><a href="#part6">Answer Part 6 - Working IT Staff Ticket Queue UI <span>p. 33</span></a></p><p><a href="#part7">Answer Part 7 - Working IT Staff Ticket Detail UI <span>p. 39</span></a></p><p><a href="#part8">Answer Part 8 - Working Administrator User Management UI <span>p. 48</span></a></p><p><a href="#part9">Answer Part 9 - Zen Green UI and Responsive Evidence <span>p. 59</span></a></p></nav><section id="part1"><h2>Answer Part 1 - Git Use with Engineering Workflow</h2>
+<p>Author: iceswift. Peer reviewer and merge performer: Richyboy170. Feature PRs target lab3-staging; release PRs target main. Release PR #57 was reviewer-approved and reviewer-merged on 2 October 2026 at 01:57 UTC (08:57 Bangkok). Released product source: c551061806a9b4eeea3e51967afc8418f7c50ab1. The report is a documentation-review draft; product release and report approval are distinct.</p>
+<p>A further UI audit opened Issue #58 after this released-main checkpoint: edit fields could retain another account&#x27;s values, and queue priority badges were missing. Corrections and two regression tests are on the review branch, not released main. Client 29/29 and both builds passed on that branch. The final Kanban must be captured again after Issue #58 integration; the earlier Done captures below describe the pre-#58 product-release checkpoint, not the current complete state.</p>
+<p>Traceability: Issue/PR pairs 31/32, 35/37, 38/39, 40/41, 43/44, 46/47, 48/49, 51/52, and correction 55/56. Correction release: PR #57. The Kanban captures below are overlapping genuine views, not a reconstructed board: all 21 cards were Done and the five other columns were empty at the capture checkpoint. Issue #43 was closed late during this audit; the chronology is not backdated. Development links 43/44 and 46/47 were also reconciled during this audit.</p>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/kanban-final-empty-columns.jpg" alt="Final product Kanban: Backlog, Specified and Started are empty."><figcaption>Figure 1. Final product Kanban: Backlog, Specified and Started are empty.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/kanban-final-lab3-first.jpg" alt="Final Kanban Done column, first Lab 3 cards: engineering contract, migration, authentication and Requester workflow."><figcaption>Figure 2. Final Kanban Done column, first Lab 3 cards: engineering contract, migration, authentication and Requester workflow.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/kanban-final-lab3-middle.jpg" alt="Final Kanban Done column, middle Lab 3 cards: staff queue, operations, administration and QA."><figcaption>Figure 3. Final Kanban Done column, middle Lab 3 cards: staff queue, operations, administration and QA.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/kanban-final-lab3-last.jpg" alt="Final Kanban Done column, final Lab 3 cards including correction Issue #55 linked to PRs #56/#57."><figcaption>Figure 4. Final Kanban Done column, final Lab 3 cards including correction Issue #55 linked to PRs #56/#57.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/release-57-main.jpg" alt="Release PR #57 is Merged from lab3-staging into main; Richyboy170 performed the merge."><figcaption>Figure 5. Release PR #57 is Merged from lab3-staging into main; Richyboy170 performed the merge.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/release-57-reviewer-merge.jpg" alt="Actual reviewer approval and merge events for Release PR #57."><figcaption>Figure 6. Actual reviewer approval and merge events for Release PR #57.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/release-57-author-reply.jpg" alt="Author acknowledgement of the release review, posted during the final audit."><figcaption>Figure 7. Author acknowledgement of the release review, posted during the final audit.</figcaption></figure>
+<h3>Actual released-main commit graph (git log --graph --oneline --decorate -80 origin/main)</h3>
+<pre>*   c551061 (HEAD -&gt; docs/lab3-released-main-report, origin/main) Merge pull request #57 from iceswift/lab3-staging
+|\
+| *   b70d7e8 Merge pull request #56 from iceswift/feature/lab3-final-audit-fixes
+| |\
+| | * 20b3493 (feature/lab3-final-audit-fixes) docs(lab3): record verified audit review and backlog checkpoints
+| | * 00a2826 fix(lab3): complete seed examples and admin priority permission
+| |/
+* / c9567a5 (main, feature/lab3-seed-admin-priority, docs/lab3-final-submission-audit) Merge pull request #54 from iceswift/lab3-staging
+|/
+*   002abfb Merge pull request #53 from iceswift/docs/lab3-phase8-completion-evidence
+|\
+| * aa18ae5 docs(lab3): record Phase 8 reviewer merge
+|/
+*   e7d5820 Merge pull request #52 from iceswift/feature/lab3-8-qa-release-readiness
+|\
+| * db9dbf9 test(lab3): complete QA and release readiness
+|/
+*   293f64f Merge pull request #50 from iceswift/docs/lab3-phase6-7-completion-evidence
+|\
+| * 08f2c63 docs(lab3): record Phase 6 and 7 completion evidence
+|/
+*   64afcd9 Merge pull request #49 from iceswift/feature/lab3-7-administrator-user-management
+|\
+| * 9a29dbb test(lab3): complete administrator user management
+| * f98e124 feat(lab3): add administrator user management
+|/
+*   79cee7b Merge pull request #47 from iceswift/feature/lab3-6-it-staff-ticket-operations
+|\
+| * 8908655 feat(lab3): add IT Staff ticket operations
+|/
+*   2be944b Merge pull request #45 from iceswift/docs/lab3-phase5-completion-evidence
+|\
+| * 376589b docs(lab3): record Phase 5 completion evidence
+|/
+*   f1f51c8 Merge pull request #44 from iceswift/feature/lab3-5-it-staff-ticket-queue
+|\
+| * efdd033 feat(lab3): add IT Staff ticket queue
+|/
+*   aa278cd Merge pull request #42 from iceswift/docs/lab3-phase4-completion-evidence
+|\
+| * a01260c docs(lab3): record Phase 4 completion evidence
+|/
+*   d48c2c8 Merge pull request #41 from iceswift/feature/lab3-4-requester-authenticated-identity
+|\
+| * 1e7ed5a docs(lab3): record Phase 4 review response
+| * 8c5d5b7 fix(lab3): authorize requester data by User identity
+| * fe972e3 docs(lab3): capture Phase 4 review checkpoint
+| * b85ec0c feat(lab3): bind requester flows to authenticated sessions
+|/
+*   cd48ee3 Merge pull request #39 from iceswift/feature/lab3-3-authentication
+|\
+| * 3d34f8a feat(lab3): add secure authentication sessions
+|/
+*   fce5346 Merge pull request #37 from iceswift/feature/lab3-2-user-migration
+|\
+| * 975cab6 feat(lab3): migrate requesters to role-based users
+|/
+*   6d7864b Merge pull request #36 from iceswift/docs/lab3-part1-evidence
+|\
+| * 6d16a23 docs(lab3): complete phase 1 workflow evidence
+| * ff83231 docs(lab3): begin HTML report source
+|/
+* 42079a7 Merge pull request #32 from iceswift/feature/lab3-1-engineering-contract
+* 2eeffe8 docs(lab3): clarify auth and comment contract
+* ee74c14 docs(lab3): define engineering contract and test plan
+</pre>
+<p>Contract-before-implementation proof: engineering-contract commits ee74c14 and 2eeffe8 were integrated in PR #32 / merge 42079a7 before migration commit 975cab6, authentication commit 3d34f8a and subsequent feature commits. The graph preserves feature merges into staging and staging releases into main.</p>
+<h3>docs/lab-03/reviewer.md</h3>
+<h4>Lab 3 Peer Review Record</h4>
+<p>This record includes phase-time entries and verified corrections added during the final audit. Audit additions are identified explicitly, not represented as contemporaneous phase records.</p>
+<table><tr><th>Phase / Issue</th><th>Feature branch</th><th>PR to <font face="Courier">lab3-staging</font></th><th>Reviewer</th><th>Comment and author response</th><th>Approval and reviewer merge</th></tr><tr><td>1 Engineering Contract / <a href="https://github.com/iceswift/toktickit/issues/31" color="#176b4d">#31</a></td><td><font face="Courier">feature/lab3-1-engineering-contract</font></td><td><a href="https://github.com/iceswift/toktickit/pull/32" color="#176b4d">#32</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>No inline review comments were submitted; therefore no author reply was required.</td><td>Richyboy170 approved and merged PR #32. Merge commit: <font face="Courier">42079a7</font>.</td></tr><tr><td>4 Authenticated Requester / <a href="https://github.com/iceswift/toktickit/issues/40" color="#176b4d">#40</a> (Closed; Project <font face="Courier">Done</font>)</td><td><font face="Courier">feature/lab3-4-requester-authenticated-identity</font></td><td><a href="https://github.com/iceswift/toktickit/pull/41" color="#176b4d">#41</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>One review comment with four suggestions: use <font face="Courier">User.id</font>/<font face="Courier">Ticket.requesterUserId</font> as the ownership boundary; add a mismatched-migration fixture; revoke helper-created test sessions; extract named requester middleware with focused tests. All four were addressed in commit <font face="Courier">8c5d5b7</font>; the author replied on PR #41 and re-requested review.</td><td>Richyboy170 re-checked and approved the follow-up changes, then merged PR #41 into <font face="Courier">lab3-staging</font>. Merge commit: <a href="https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f" color="#176b4d"><font face="Courier">d48c2c8</font></a>. After acceptance confirmation, Issue #40 was closed as completed and its Project status moved to <font face="Courier">Done</font>.</td></tr><tr><td>5 IT Staff Ticket Queue / <a href="https://github.com/iceswift/toktickit/issues/43" color="#176b4d">#43</a> (Closed; Project <font face="Courier">Done</font>)</td><td><font face="Courier">feature/lab3-5-it-staff-ticket-queue</font></td><td><a href="https://github.com/iceswift/toktickit/pull/44" color="#176b4d">#44</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>No inline review changes were requested. The PR description records the queue contract, UI states, and focused API/UI test results.</td><td>Richyboy170 approved PR #44 and merged it into <font face="Courier">lab3-staging</font>. Merge commit: <a href="https://github.com/iceswift/toktickit/commit/f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c" color="#176b4d"><font face="Courier">f1f51c8</font></a>. Issue #43 was then closed as completed and its Project status moved to <font face="Courier">Done</font>.</td></tr><tr><td>6 IT Staff Ticket Operations / <a href="https://github.com/iceswift/toktickit/issues/46" color="#176b4d">#46</a></td><td><font face="Courier">feature/lab3-6-it-staff-ticket-operations</font></td><td><a href="https://github.com/iceswift/toktickit/pull/47" color="#176b4d">#47</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>No corrective review comment was required. The PR covered Ticket detail, claim/reassignment, IT Priority, status transitions, Public Comments, Internal Notes, authorization, and focused API/UI tests.</td><td>Richyboy170 approved and merged PR #47 into <font face="Courier">lab3-staging</font>. Merge commit: <a href="https://github.com/iceswift/toktickit/commit/79cee7bf635d771c9935a8defd7fcd4068105844" color="#176b4d"><font face="Courier">79cee7b</font></a>.</td></tr><tr><td>7 Administrator User Management / <a href="https://github.com/iceswift/toktickit/issues/48" color="#176b4d">#48</a></td><td><font face="Courier">feature/lab3-7-administrator-user-management</font></td><td><a href="https://github.com/iceswift/toktickit/pull/49" color="#176b4d">#49</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>The completed PR added administrator-only list/search/filter/create/edit/password-reset workflows, responsive forms, and frontend/backend coverage. No corrective review comment was requested.</td><td>Richyboy170 approved the implementation as aligned with Issue #48 and merged PR #49 into <font face="Courier">lab3-staging</font>. Merge commit: <a href="https://github.com/iceswift/toktickit/commit/64afcd90fd9dd76dbe2e6ddddaf7d9ff37b8bb8d" color="#176b4d"><font face="Courier">64afcd9</font></a>.</td></tr><tr><td>8 QA and Release Readiness / <a href="https://github.com/iceswift/toktickit/issues/51" color="#176b4d">#51</a> (Closed)</td><td><font face="Courier">feature/lab3-8-qa-release-readiness</font></td><td><a href="https://github.com/iceswift/toktickit/pull/52" color="#176b4d">#52</a> -&gt; <font face="Courier">lab3-staging</font></td><td>Richyboy170</td><td>The PR records complete server, client, E2E, build, migration, responsive, and documentation verification. It also corrected requester comment/resolution coverage and mobile User Management overflow. No corrective review comment was requested.</td><td>Richyboy170 merged PR #52 into <font face="Courier">lab3-staging</font>. Merge commit: <a href="https://github.com/iceswift/toktickit/commit/e7d5820047bfb8932e12ef8e64ffb17b532786a6" color="#176b4d"><font face="Courier">e7d5820</font></a>. Issue #51 was then closed as completed.</td></tr></table>
+<p>Review rules: each PR is linked to its Issue in GitHub&#x27;s Development panel; the author replies to every review comment; corrections remain on the same branch; the reviewer approves and performs the merge into <font face="Courier">lab3-staging</font>. The release PR is also reviewer-merged into <font face="Courier">main</font>.</p>
+<h4>Verified final-audit additions - 1 October 2026</h4>
+<table><tr><th>Record</th><th>Verified result</th></tr><tr><td>Phase 2 / Issue #35 / PR #37</td><td><font face="Courier">feature/lab3-2-user-migration</font> to staging. Richyboy170 submitted an APPROVED review and merged on 16 September; merge <font face="Courier">fce5346bccddfbc5cd496b4f81f41280948ed8c9</font>.</td></tr><tr><td>Phase 3 / Issue #38 / PR #39</td><td><font face="Courier">feature/lab3-3-authentication</font> to staging. Richyboy170 submitted an APPROVED review and merged on 17 September; merge <font face="Courier">cd48ee3551b052c66f1debacbb2c9f8ea534ad22</font>.</td></tr><tr><td>Release <a href="https://github.com/iceswift/toktickit/pull/54" color="#176b4d">PR #54</a></td><td>Richyboy170 merged into main on 21 September 2026, 14:02 UTC. Released baseline: <font face="Courier">c9567a59e183f44cc0f5abea61f7db2097ae5be4</font>. This does not include subsequent audit corrections.</td></tr><tr><td>Phase 7 Issue #48 reconciliation</td><td>Closed as completed on 1 October after verifying already-merged PR #49 and administrator safety tests. This was a late backlog correction, not a new implementation merge.</td></tr><tr><td>Correction <a href="https://github.com/iceswift/toktickit/issues/55" color="#176b4d">Issue #55</a> / <a href="https://github.com/iceswift/toktickit/pull/56" color="#176b4d">PR #56</a></td><td><font face="Courier">feature/lab3-final-audit-fixes</font> to staging; Development linkage verified. Richyboy170 requested as reviewer. <b>OPEN, awaiting peer review and reviewer merge; not released.</b> Local branch results: server 42, client 27, E2E 9 passing; both builds pass.</td></tr></table>
+<h4>Released-main reconciliation - 2 October 2026</h4>
+<p>- PR #56 was approved and merged by Richyboy170 into <font face="Courier">lab3-staging</font> on 1 October. Merge: <font face="Courier">b70d7e852be4eace6ae4f3e16f953d5ae3a4254c</font>.</p>
+<p>- <a href="https://github.com/iceswift/toktickit/pull/57" color="#176b4d">Release PR #57</a> was approved and merged by Richyboy170 into <font face="Courier">main</font> on 2 October 2026 at 01:57 UTC. Merge: <font face="Courier">c551061806a9b4eeea3e51967afc8418f7c50ab1</font>. Issue #55 closed automatically; its Project status is Done.</p>
+<p>- Author acknowledgements: <a href="https://github.com/iceswift/toktickit/pull/56#issuecomment-5946787341" color="#176b4d">PR #56 reply</a>, <a href="https://github.com/iceswift/toktickit/pull/57#issuecomment-5946787585" color="#176b4d">PR #57 reply</a>. These are late audit acknowledgements, not replies made before the original merge.</p>
+<p>- Additional late acknowledgements were posted for review-summary comments on PRs <a href="https://github.com/iceswift/toktickit/pull/32#issuecomment-5947081705" color="#176b4d">#32</a>, <a href="https://github.com/iceswift/toktickit/pull/37#issuecomment-5947081921" color="#176b4d">#37</a>, <a href="https://github.com/iceswift/toktickit/pull/39#issuecomment-5947082147" color="#176b4d">#39</a>, <a href="https://github.com/iceswift/toktickit/pull/44#issuecomment-5947082363" color="#176b4d">#44</a>, <a href="https://github.com/iceswift/toktickit/pull/47#issuecomment-5947082579" color="#176b4d">#47</a>, and <a href="https://github.com/iceswift/toktickit/pull/49#issuecomment-5947082758" color="#176b4d">#49</a>. The earlier statement that an absence of inline comments meant no reply was required was too narrow; these replies do not retroactively establish timely pre-merge conversation.</p>
+<p>- Actual Development links for Issue #43 / PR #44 and Issue #46 / PR #47 were added during the 2 October audit. Closing keywords in descriptions had not created these links for staging-targeted PRs.</p>
+<p>- Issue #43 remained Open despite its earlier Done card and merged PR #44. It was closed during the 2 October audit, not immediately after the original merge. This corrects the inaccurate chronology in the historical Phase 5 row above.</p>
+<p>- The released source at <font face="Courier">c551061</font> passed server 42/42, client 27/27, browser E2E 9/9, both builds and migration status (seven migrations, no pending migration). There were no GitHub CI checks on PR #57; these are actual local verification results.</p>
+<p>An absence of inline comments alone does not establish that no response was required: ordinary conversation comments and review-summary comments must also be checked. Historical rows describe their recorded checkpoints; final submission must include actual comment/reply evidence rather than infer completeness from an approval badge.</p>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-initial-approval-feedback.png" alt="PR #41 technical review: four concrete suggestions, not only an approval badge. Historical checkpoint."><figcaption>Figure 8. PR #41 technical review: four concrete suggestions, not only an approval badge. Historical checkpoint.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-review-reply-rerequest.png" alt="Author response to PR #41 review points and re-requested review after correction commit 8c5d5b7. Historical checkpoint; final reviewer merge is recorded in reviewer.md."><figcaption>Figure 9. Author response to PR #41 review points and re-requested review after correction commit 8c5d5b7. Historical checkpoint; final reviewer merge is recorded in reviewer.md.</figcaption></figure>
+<h3>README.md</h3>
+<h4>TokTickIT</h4>
+<p>TokTickIT is an IT service desk application developed for CPE334 Labs 1-3. This repository demonstrates a full-stack vertical slice using React, Express, Prisma, and PostgreSQL.</p>
+<p>Lab 2 adds a Requester-facing Ticketing MVP. A temporary Development Requester selection context can create Tickets, view only its own paginated My Tickets list, inspect an owned read-only detail screen, and manage permitted Attachments. Lab 3 replaces that temporary selector with authenticated Requester identity and adds secure sessions, role authorization, IT Staff operations, Administrator user management, Public Comments, private Internal Notes, and responsive QA coverage.</p>
+<h4>Technology stack</h4>
+<p>- Frontend: React, TypeScript, Vite, and Bootstrap</p>
+<p>- Backend: Node.js, Express, and TypeScript</p>
+<p>- Database: PostgreSQL with Prisma ORM</p>
+<p>- Testing: Vitest, Testing Library, and Supertest</p>
+<p>- Browser testing: Playwright</p>
+<h4>Repository structure</h4>
+<pre>toktickit/
+|-- client/
+|   |-- src/
+|   |-- e2e/
+|   `-- tests/  (lab-01, lab-02, lab-03)
+|-- server/
+|   |-- prisma/
+|   |-- src/
+|   `-- tests/  (lab-01, lab-02, lab-03)
+|-- docs/
+|   |-- lab-01/
+|   |-- lab-03/  (engineering contract, review and report evidence)
+|   `-- lab-02/
+|       |-- specification.md
+|       |-- tests.md
+|       |-- ui-spec.md
+|       |-- api-spec.md
+|       |-- reviewer.md
+|       `-- ai-use.md
+|-- compose.yaml
+|-- .gitignore
+`-- README.md</pre>
+<h4>Prerequisites</h4>
+<p>- Node.js 20 or newer</p>
+<p>- npm</p>
+<p>- Docker Desktop, or a local PostgreSQL installation</p>
+<h4>Local setup</h4>
+<p>1. Start PostgreSQL:</p>
+<pre>   docker compose up -d postgres</pre>
+<p>The Lab 3 database is exposed on host port <font face="Courier">5434</font> to avoid conflicting with an existing local PostgreSQL installation.</p>
+<p>2. Configure and install the backend, then prepare the database:</p>
+<pre>   cd server
+   cp .env.example .env
+   npm install
+   npx prisma generate
+   npx prisma migrate deploy
+   npm run prisma:seed
+   npm run dev</pre>
+<p>3. In another terminal, configure and install the frontend:</p>
+<pre>   cd client
+   cp .env.example .env
+   npm install
+   npm run dev</pre>
+<p>4. Open <font face="Courier">http://localhost:5173</font> in a browser. The API listens on <font face="Courier">http://localhost:3000</font>.</p>
+<p>The seed command is idempotent. It preserves the Lab 2 catalogue and creates the Lab 3 Requester, IT Staff, and Administrator accounts used by the documented test scenarios. It also creates eight synthetic Tickets across all statuses, four Requesters, three Requested Priorities, and assigned/unassigned ownership, each with a safe Public Comment and private Internal Note. Stable demo Ticket numbers are <font face="Courier">TKT-20260901-DEMO0001</font> through <font face="Courier">DEMO0008</font>. Repeating the seed preserves worked Ticket fields and existing credentials and does not duplicate the example communication. These fixtures and the initial password <font face="Courier">Lab3Initial!2026</font> are for local development only; first login requires a password change.</p>
+<h4>REST endpoints</h4>
+<p>- <font face="Courier">GET /api/health</font> returns the TokTickIT API health status.</p>
+<p>- <font face="Courier">GET /api/categories</font> returns the categories stored in PostgreSQL in a predictable order.</p>
+<p>- <font face="Courier">GET /api/development-requesters</font> is retired in Lab 3 and does not enumerate identities.</p>
+<p>- <font face="Courier">POST /api/tickets</font> creates a validated Ticket for the authenticated Requester.</p>
+<p>- <font face="Courier">GET /api/tickets</font> returns only the authenticated Requester&#x27;s searchable, filterable, sortable, paginated Ticket list.</p>
+<p>- <font face="Courier">GET /api/tickets/:ticketId</font> retrieves an owned Ticket Detail.</p>
+<p>- <font face="Courier">POST /auth/login</font>, <font face="Courier">POST /auth/change-password</font>, <font face="Courier">POST /auth/logout</font>, and <font face="Courier">GET /auth/me</font> implement the Lab 3 session lifecycle.</p>
+<p>- <font face="Courier">GET /staff/tickets</font> and the protected Staff Ticket operations implement the role-protected queue and workflow. Administrators can view detail and change IT Priority, but cannot perform Staff-only ownership/status/comment/note writes.</p>
+<p>- <font face="Courier">/admin/users</font> operations implement Administrator-only account management.</p>
+<p>- Requester and Staff Public Comment endpoints share requester-visible history; Internal Notes remain Staff/Administrator-only.</p>
+<p>- <font face="Courier">POST /api/tickets/:ticketId/attachments</font>, <font face="Courier">GET /api/tickets/:ticketId/attachments</font>, <font face="Courier">GET /api/attachments/:attachmentId/download</font>, and <font face="Courier">DELETE /api/attachments/:attachmentId</font> implement the permitted Attachment lifecycle.</p>
+<h4>Tests and builds</h4>
+<p>Run these commands from either <font face="Courier">client/</font> or <font face="Courier">server/</font> as appropriate:</p>
+<pre>npm run dev
+npm run build
+npm test
+npm run test:e2e</pre>
+<p>The backend tests use Vitest and Supertest. The frontend tests use Vitest and Testing Library. Playwright covers the Lab 2 requester regression plus Lab 3 authentication, logout, Staff workflow/privacy, Administrator lifecycle, and desktop/tablet/mobile checks. Start Docker/PostgreSQL first, then run <font face="Courier">npm run test:e2e</font> from <font face="Courier">client/</font>. Test files are organized by lab under <font face="Courier">tests/</font> and <font face="Courier">e2e/</font>.</p>
+<h4>GitHub workflow</h4>
+<p>- <a href="https://github.com/iceswift/toktickit" color="#176b4d">Repository</a></p>
+<p>- <a href="https://github.com/users/iceswift/projects/2" color="#176b4d">TokTickIT Individual Sprints project</a></p>
+<p>Lab 3 development uses feature branches that merge into <font face="Courier">lab3-staging</font> through peer-reviewed Pull Requests. The completed staging branch is then merged into <font face="Courier">main</font> through one peer-reviewed release Pull Request.</p>
+<h4>Environment files</h4>
+<p>Copy each <font face="Courier">.env.example</font> file to <font face="Courier">.env</font> for local development. Real <font face="Courier">.env</font> files, dependencies, and build output are ignored by Git and must not be committed.</p>
+<h3>.gitignore</h3>
+<h4>dependencies</h4>
+<p>node_modules/</p>
+<h4>env &amp; secrets</h4>
+<p>.env *.env !.env.example</p>
+<h4>build output</h4>
+<p>dist/ build/ client/test-results/ client/playwright-report/</p>
+<h4>prisma</h4>
+<p>server/prisma/*.db server/uploads/</p>
+<h4>logs &amp; OS</h4>
+<p>*.log .playwright-cli/ .DS_Store</p>
+<p>Repository layout is rendered in README above. It identifies client source/tests/E2E, server source/Prisma/tests, docs for each lab, compose.yaml and .gitignore. The evidence bundle is retained under artifacts/lab-03; output contains generated local artifacts, not product source.</p>
+</section><section id="part2"><h2>Answer Part 2 - Spec DD and Definition of Done</h2>
+<p>The reviewed engineering contract below defines numbered functional/business requirements, the role matrix, acceptance criteria, status transitions, migration continuity and Definition of Done. It was committed before implementation, as shown in Part 1. A passing existing suite is not proof that every planned subcase exists; Part 3 retains the planned-to-actual limitations.</p>
+<h3>docs/lab-03/specification.md</h3>
+<h4>Lab 3 Sprint Engineering Specification</h4>
+<h4>1. Sprint Goal</h4>
+<p>Deliver TokTickIT&#x27;s first authenticated operational increment: real Users with one role, secure local-lab sessions, preserved Requester ticketing, an IT Staff queue and Ticket workflow, and minimalist Administrator User Management.</p>
+<h4>2. Stakeholder Request Interpretation</h4>
+<p>The Lab 2 Development Requester selector is replaced by the authenticated User. Requesters retain their existing owned Ticket and Attachment capabilities; IT Staff gain an operational queue and controlled Ticket actions; Administrators manage accounts. The backend, not hidden client controls, enforces every role and ownership rule.</p>
+<h4>3. Scope</h4>
+<h4>Included</h4>
+<p>- Login, logout, current-user retrieval, first-login password change, and server-side role-based authorization.</p>
+<p>- Migration from <font face="Courier">DevelopmentRequester</font> ownership to authenticated <font face="Courier">User</font> ownership without discarding Lab 2 Tickets or Attachments.</p>
+<p>- Requester regression, Public Comments, and a non-final “problem appears resolved” indication.</p>
+<p>- IT Staff queue, Ticket operations, Public Comments, Internal Notes, and Attachment continuity.</p>
+<p>- Minimalist Administrator User Management and required account safety rules.</p>
+<p>- Spec DD, Test DD/TDD, migration/regression tests, E2E, visual checks, PR workflow, and final evidence.</p>
+<h4>Excluded</h4>
+<p>- Self-registration, email/password-reset delivery, MFA, social login, SSO, user deletion, bulk operations, imports/exports, multiple roles, departments, dashboards, SLA/escalation/notification services, Actions Taken, and cloud deployment changes.</p>
+<h4>4. Functional Requirements</h4>
+<p>- FR-01: Active Users authenticate with email and password; inactive accounts cannot enter the application.</p>
+<p>- FR-02: A User with an initial password can only access Change Password until a valid replacement is saved; logout invalidates the authenticated session.</p>
+<p>- FR-03: The application shell shows the current User name and role and only permitted navigation.</p>
+<p>- FR-04: Requester Ticket and Attachment operations derive ownership from the authenticated User, not a client-provided requester identifier.</p>
+<p>- FR-05: Requesters can add Public Comments and indicate a problem appears resolved, without formally resolving or closing the Ticket.</p>
+<p>- FR-06: IT Staff can use a paginated Ticket Queue with documented search, filter, sort, ownership, status, and priority information.</p>
+<p>- FR-07: IT Staff can claim/reassign a Ticket, update IT Priority and permitted status transitions, add Public Comments, and add Internal Notes.</p>
+<p>- FR-08: Administrators can list/search Users, optionally filter by role, create and edit a User, assign exactly one role, activate/deactivate accounts, and set a new initial password.</p>
+<p>- FR-09: All applicable screens provide meaningful loading, validation, busy, success, empty/no-results, forbidden/not-found, conflict, and safe-failure feedback.</p>
+<p>- FR-10: New and preserved screens use the Lab 2 Zen Green system and remain usable at desktop, tablet, and mobile widths.</p>
+<h4>5. Authorization Matrix</h4>
+<table><tr><th>Operation</th><th>Requester</th><th>IT Staff</th><th>Administrator</th></tr><tr><td>Own Tickets / Attachments</td><td>allowed</td><td>no</td><td>no</td></tr><tr><td>Public Comments</td><td>own Ticket: read/post</td><td>read/post</td><td>read-only</td></tr><tr><td>Problem appears resolved</td><td>own Ticket only</td><td>no</td><td>no</td></tr><tr><td>IT Staff Queue / operational detail</td><td>no</td><td>allowed</td><td>read-only</td></tr><tr><td>Claim / reassign / formal status</td><td>no</td><td>allowed</td><td>no</td></tr><tr><td>IT Priority</td><td>no</td><td>allowed</td><td>allowed</td></tr><tr><td>Internal Notes</td><td>no</td><td>read/create</td><td>read-only</td></tr><tr><td>User Management</td><td>no</td><td>no</td><td>allowed</td></tr></table>
+<p>Administrators remain conceptually separate from IT Staff operations. They have read-only operational oversight where the role matrix permits it, while formal status changes remain an IT Staff responsibility. A Ticket Owner may be an active IT Staff User or active Administrator, as required by the Lab 3 data model. Backend checks use the current authenticated session for every row above.</p>
+<h4>6. Business Rules</h4>
+<p>- BR-01: Only an active User with valid credentials can authenticate. Passwords are stored only as bcrypt hashes.</p>
+<p>- BR-02: Invalid credentials and inactive accounts return safe messages that do not disclose extra account information.</p>
+<p>- BR-02a: The login endpoint permits at most five failed attempts for the same normalized email and source IP in a rolling 15-minute window. Further attempts receive the same safe <font face="Courier">401</font> response until the window expires; a successful login clears that pair&#x27;s failure counter. This is rate limiting, not an account-lock workflow.</p>
+<p>- BR-03: A <font face="Courier">mustChangePassword</font> User cannot use normal application endpoints or screens until a valid replacement password is saved.</p>
+<p>- BR-04: Authentication uses a random opaque session token in an HttpOnly, SameSite=Lax cookie. The database stores only its SHA-256 digest, user, expiry, and revocation state. Cookies use <font face="Courier">Secure</font> in HTTPS deployments; local HTTP is documented as a development-only exception.</p>
+<p>- BR-05: Logout revokes the current session and clears the cookie. Expired, revoked, malformed, or missing sessions are unauthenticated.</p>
+<p>- BR-06: One User has exactly one role: <font face="Courier">REQUESTER</font>, <font face="Courier">IT_STAFF</font>, or <font face="Courier">ADMINISTRATOR</font>.</p>
+<p>- BR-07: The authenticated identity, never a client <font face="Courier">requesterId</font>, determines Requester ownership. Cross-owner Ticket, Attachment, and Internal Note access returns a safe not-found response without data leakage.</p>
+<p>- BR-08: Requesters and IT Staff may post Public Comments; these are visible to the Ticket Requester, IT Staff, and Administrators. Internal Notes are created by IT Staff and visible only to IT Staff and Administrators. Both are append-only, backend-authored, timestamped, and reject blank content. After trimming, content is limited to 2,000 Unicode characters and is rendered as escaped plain text (never trusted HTML).</p>
+<p>- BR-09: A Requester may record <font face="Courier">problemAppearsResolvedAt</font>; this does not change formal status to Resolved or Closed. Only IT Staff perform formal transitions.</p>
+<p>- BR-10: A Ticket has zero or one active IT Staff or Administrator owner. Claim assigns the current active IT Staff User; reassignment requires another active IT Staff or Administrator target.</p>
+<p>- BR-11: <font face="Courier">itPriority</font> starts as the mapped Requested Priority and only IT Staff or Administrators can modify it. Requested Priority remains immutable after creation.</p>
+<p>- BR-12: Statuses are <font face="Courier">NEW</font>, <font face="Courier">OPEN</font>, <font face="Courier">IN_PROGRESS</font>, <font face="Courier">WAITING_FOR_REQUESTER</font>, <font face="Courier">RESOLVED</font>, <font face="Courier">CLOSED</font>, <font face="Courier">REOPENED</font>, and <font face="Courier">CANCELLED</font>. IT Staff transitions are: <font face="Courier">NEW -&gt; OPEN|IN_PROGRESS|CANCELLED</font>; <font face="Courier">OPEN|REOPENED -&gt; IN_PROGRESS|WAITING_FOR_REQUESTER|RESOLVED|CANCELLED</font>; <font face="Courier">IN_PROGRESS -&gt; WAITING_FOR_REQUESTER|RESOLVED|CANCELLED</font>; <font face="Courier">WAITING_FOR_REQUESTER -&gt; IN_PROGRESS|RESOLVED|CANCELLED</font>; <font face="Courier">RESOLVED -&gt; CLOSED|REOPENED</font>; <font face="Courier">CLOSED -&gt; REOPENED</font>.</p>
+<p>- BR-13: Email addresses are unique case-insensitively; a User cannot deactivate themselves; the final active Administrator cannot be deactivated; users are deactivated rather than deleted.</p>
+<p>- BR-14: Creating/resetting an initial password sets <font face="Courier">mustChangePassword = true</font>. A password change clears it only after current/initial password verification, valid new password, and confirmation.</p>
+<p>- BR-15: Existing Lab 2 Ticket, Attachment, Category, and Related System data remains valid. Development Requesters are migrated to Users by unique email; Ticket and removal ownership are remapped transactionally.</p>
+<h4>7. Data and Migration Decisions</h4>
+<p><font face="Courier">User</font> adds name, normalized unique email, password hash, role, active state, must-change-password state, and timestamps. <font face="Courier">AuthSession</font> stores a hashed opaque token, User relation, expiry, and revocation. <font face="Courier">Ticket</font> changes requester ownership to <font face="Courier">requesterUserId</font>, adds nullable <font face="Courier">ownerUserId</font>, the expanded status enum, mapped IT Priority, and optional requester-resolution indication. New <font face="Courier">PublicComment</font> and <font face="Courier">InternalNote</font> models link Ticket and author User.</p>
+<p>The migration creates a Requester User for every existing Development Requester, assigns documented local-only initial passwords, remaps Ticket/Attachment foreign keys inside a transaction, verifies counts, then removes selector-only client state. Seed execution is idempotent and supplies at least four active and one inactive Requester, three active and one inactive IT Staff, one active Administrator, realistic Tickets, and safe example comments/notes.</p>
+<h4>8. API and UI References</h4>
+<p>Detailed routes, request/response shapes, cookies, statuses, authorization, and safe errors are in api-spec.md (api-spec.md). Screen structure, modes, feedback, navigation, and responsive rules are in ui-spec.md (ui-spec.md).</p>
+<h4>9. Acceptance Criteria</h4>
+<p>- AC-01: Valid active credentials create authenticated access and return the permitted current User identity and role.</p>
+<p>- AC-02: Initial-password Users must complete valid password change before the application shell is available.</p>
+<p>- AC-03: After logout, protected API and direct UI access are blocked.</p>
+<p>- AC-04: Requester APIs ignore a forged requester identity and never expose another User&#x27;s Ticket or Attachment.</p>
+<p>- AC-05: IT Staff Queue returns documented search/filter/sort/pagination results and clear state feedback.</p>
+<p>- AC-06: IT Staff can perform only permitted ownership, priority, and status transitions; invalid transitions are safely rejected.</p>
+<p>- AC-07: Public Comments follow visibility rules and Internal Notes are never exposed to Requesters.</p>
+<p>- AC-08: Administrator User Management supports the required lifecycle while blocking duplicate email, self-deactivation, and loss of the last active Admin.</p>
+<p>- AC-09: Lab 2 Requester Ticket and Attachment behavior continues after migration without the Development Requester selector.</p>
+<p>- AC-10: All planned API, UI, authorization, migration/regression, responsive, and E2E tests pass from final <font face="Courier">main</font>.</p>
+<h4>10. Product Definition of Done</h4>
+<p>- All FR, BR, AC, data/API/UI contract decisions, and Test DD items are complete.</p>
+<p>- Migration and seed are repeatable and preserve Lab 2 records.</p>
+<p>- Protected endpoints authorize on the backend; no secret or plaintext password is committed.</p>
+<p>- Every AC maps to at least one planned passing test with an actual file path.</p>
+<p>- Every Issue reaches <font face="Courier">Done</font> only after linked peer-reviewed PR, reviewer merge into <font face="Courier">lab3-staging</font>, tests, and acceptance criteria.</p>
+<p>- <font face="Courier">reviewer.md</font>, <font face="Courier">ai-use.md</font>, README, screenshots, final Kanban, and final report evidence are current. A reviewer merges the release PR into <font face="Courier">main</font>.</p>
+<h4>11. Assumptions and Decisions</h4>
+<p>- Local development accounts use documented test-only initial passwords; no real secrets or personal passwords are stored in Git.</p>
+<p>- The local-only seed and migrated-user initial password is <font face="Courier">Lab3Initial!2026</font>. It is bcrypt-hashed before storage, is never used outside local development, and every seeded account must change it at first login.</p>
+<p>- Password validation requires 12-128 characters including upper, lower, number, and symbol; confirmation must match.</p>
+<p>- Sessions expire after eight hours and are invalidated by logout, deactivation, password change, or expiry.</p>
+<p>- Queue defaults to newest updated Ticket first; exact permitted query values are defined in <font face="Courier">api-spec.md</font> before implementation.</p>
+</section><section id="part3"><h2>Answer Part 3 - Test DD and Traceability</h2>
+<p>Actual verification was run on released main c551061, before subsequent report-only edits: server 42/42 in 16 files; client 27/27 in 10 files; Playwright 9/9; both production builds passed; seven Prisma migrations applied with no pending migration. Isolated PostgreSQL used host port 55434 to avoid changing the original development database. PR #57 had zero GitHub CI checks; these are local executable results, not GitHub CI results.</p>
+<h3>docs/lab-03/tests.md</h3>
+<h4>Lab 3 Test Plan and Traceability</h4>
+<p>This plan was written before implementation. Each Acceptance Criterion has unit, API, UI, authorization, regression, or E2E coverage. Phase 8 reconciled the planned paths with the implemented suites and recorded the complete feature-branch result below.</p>
+<h4>Final released-main verification - 2 October 2026</h4>
+<p>Source: <font face="Courier">c551061806a9b4eeea3e51967afc8418f7c50ab1</font>, reviewer-merged Release PR #57. Server: 16 files, 42/42 tests. Client: 10 files, 27/27 tests. Browser: 9/9 E2E tests. Both production builds passed. Seven Prisma migrations applied, no pending migration. These results supersede the older branch checkpoints, not the planned-versus-implemented coverage limitations described below. The report embeds complete actual output, rather than treating a count alone as proof.</p>
+<h4>Subsequent Issue #58 correction branch - not released main</h4>
+<p>The account-switch regression failed on the released UI: after selecting Ben, the Name field still held an unsaved Amina draft. Keying the edit form by <font face="Courier">editing.id</font> makes the selected account&#x27;s Name, Email, Role and Active state replace the previous account&#x27;s fields. A second test verifies separate Requested/IT Priority badges and status badges in desktop and mobile Queue layouts. Complete client result: 29/29 (10 files), browser E2E 9/9, both builds passed. These corrections require peer integration/release and another final-main run; they are not included in the 27-test released-main result above.</p>
+<table><tr><th>ID</th><th>Type</th><th>AC</th><th>Planned behavior</th><th>Planned file</th></tr><tr><td>UNIT-01</td><td>unit</td><td>AC-01/06</td><td>password policy, single-role guard, and allowed status-transition helper accept valid input and reject forbidden values</td><td><font face="Courier">server/tests/lab-03/auth-policy.test.ts</font></td></tr><tr><td>API-01</td><td>API</td><td>AC-01</td><td>valid, invalid, inactive, and rate-limited login; safe session response with no account disclosure</td><td><font face="Courier">server/tests/lab-03/auth.api.test.ts</font></td></tr><tr><td>API-02</td><td>API</td><td>AC-02/03</td><td>password change, logout, expired/revoked session</td><td><font face="Courier">server/tests/lab-03/auth.api.test.ts</font></td></tr><tr><td>API-03</td><td>API/security</td><td>AC-04</td><td>forged requester ID, cross-owner Ticket/Attachment, note privacy</td><td><font face="Courier">server/tests/lab-03/authorization.api.test.ts</font></td></tr><tr><td>API-04</td><td>API</td><td>AC-05</td><td>queue search/filter/sort/page and invalid query</td><td><font face="Courier">server/tests/lab-03/staff-queue.api.test.ts</font></td></tr><tr><td>API-05</td><td>API</td><td>AC-06</td><td>claim/reassign, IT Priority, legal/illegal status transitions</td><td><font face="Courier">server/tests/lab-03/staff-ticket-detail.api.test.ts</font></td></tr><tr><td>API-06</td><td>API/security</td><td>AC-07</td><td>Public Comment visibility; Internal Note role denial</td><td><font face="Courier">server/tests/lab-03/comments-notes.api.test.ts</font></td></tr><tr><td>API-06a</td><td>API/security</td><td>AC-07</td><td>blank/overlength Comment and Note rejection; escaped plain-text rendering contract</td><td><font face="Courier">server/tests/lab-03/comments-notes.api.test.ts</font></td></tr><tr><td>API-07</td><td>API</td><td>AC-08</td><td>User list/create/edit, duplicate email, self/last-Admin safeguards</td><td><font face="Courier">server/tests/lab-03/users-admin.api.test.ts</font></td></tr><tr><td>API-08</td><td>migration/regression</td><td>AC-09</td><td>Lab 2 Requester/Ticket/Attachment records survive migration</td><td><font face="Courier">server/tests/lab-03/migration-regression.api.test.ts</font></td></tr><tr><td>UI-01</td><td>UI</td><td>AC-01/02</td><td>Login and Change Password validation, busy, safe failure</td><td><font face="Courier">client/tests/lab-03/Authentication.test.tsx</font></td></tr><tr><td>UI-02</td><td>UI</td><td>AC-05</td><td>Queue controls and empty/no-results/failure states</td><td><font face="Courier">client/tests/lab-03/StaffTicketQueue.test.tsx</font></td></tr><tr><td>UI-03</td><td>UI</td><td>AC-06/07</td><td>Staff detail modes, comments versus notes, state feedback</td><td><font face="Courier">client/tests/lab-03/StaffTicketDetail.test.tsx</font></td></tr><tr><td>UI-04</td><td>UI/security</td><td>AC-08</td><td>User Management validation and forbidden presentation</td><td><font face="Courier">client/tests/lab-03/UserManagement.test.tsx</font></td></tr><tr><td>VIS-01</td><td>visual/responsive</td><td>AC-10</td><td>Login, Change Password, Queue, Staff Detail, and User Management at desktop/tablet/mobile with document-overflow assertions</td><td><font face="Courier">client/e2e/lab-03/responsive.spec.ts</font></td></tr><tr><td>E2E-01</td><td>E2E</td><td>AC-01/02/03</td><td>login, first password change, logout blocks direct access</td><td><font face="Courier">e2e/lab-03/authentication.spec.ts</font></td></tr><tr><td>E2E-02</td><td>E2E</td><td>AC-05/06/07</td><td>Staff queue/detail happy path and privacy</td><td><font face="Courier">e2e/lab-03/staff-ticket-flow.spec.ts</font></td></tr><tr><td>E2E-03</td><td>E2E</td><td>AC-08</td><td>Admin lifecycle and next-login password-change flow</td><td><font face="Courier">e2e/lab-03/user-administration.spec.ts</font></td></tr><tr><td>REG-01</td><td>API/UI regression</td><td>AC-07/09</td><td>Requester Public Comments remain public-only and the non-final “problem appears resolved” indication never changes formal status</td><td><font face="Courier">server/tests/lab-02/ticket-detail.api.test.ts</font>, <font face="Courier">client/tests/lab-02/RequesterTicketDetail.test.tsx</font></td></tr></table>
+<h4>Phase 8 Feature-Branch Verification</h4>
+<p>- Server: 15 files, 38/38 tests passed.</p>
+<p>- Client: 10 files, 26/26 tests passed.</p>
+<p>- Browser E2E: 8/8 tests passed, including all Lab 2 regressions and four Lab 3 scenarios.</p>
+<p>- Production builds: server and client passed.</p>
+<p>- Database: all 7 Prisma migrations applied; schema is up to date.</p>
+<p>- Responsive evidence: 15 screenshots (5 screens x 3 viewports) captured under <font face="Courier">artifacts/lab-03/screenshots/phase-08-qa/</font> after the overflow assertion passed.</p>
+<p>These are Phase 8 feature-branch results. The release phase must rerun the complete checks from released <font face="Courier">main</font> before they are labelled final evidence.</p>
+<h4>Released baseline audit and post-release correction</h4>
+<p>Released main <font face="Courier">c9567a5</font> was rerun on 2026-10-01: server 38/38, client 26/26, E2E 8/8 and both builds passed. The audit nevertheless found missing realistic seed data and an Administrator priority UI/contract mismatch; the existing suite did not cover those gaps.</p>
+<p>Issue #55 tracks the corrections on <font face="Courier">feature/lab3-final-audit-fixes</font>. Correction-branch verification: server 16 files/42 tests, client 10 files/27 tests, and browser 9 scenarios passed; both builds passed. Raw server and E2E outputs are retained under <font face="Courier">artifacts/lab-03/final-audit/</font>. API and E2E suites must run sequentially when they share this local database: both modify the same fixture accounts. A concurrent run failed a login gate check; the sequential rerun passed all eight original cases, and the expanded nine-case run also passed.</p>
+<table><tr><th>Planned item</th><th>Actual implementation/verification path</th><th>Scope note</th></tr><tr><td>API-03</td><td><font face="Courier">server/tests/lab-03/requester-authorization.api.test.ts</font></td><td>Includes forged identity, wrong role, cross-owner and migrated ownership checks</td></tr><tr><td>API-06 / API-06a</td><td><font face="Courier">server/tests/lab-03/staff-ticket-detail.api.test.ts</font>, <font face="Courier">server/tests/lab-02/ticket-detail.api.test.ts</font></td><td>Communication visibility and blank/overlength rejection; not a separate comments-notes file</td></tr><tr><td>E2E-01</td><td><font face="Courier">client/e2e/lab-03/authentication.spec.ts</font></td><td>Actual path includes client/</td></tr><tr><td>E2E-02</td><td><font face="Courier">client/e2e/lab-03/staff-ticket-flow.spec.ts</font></td><td>Staff operational workflow</td></tr><tr><td>E2E-03</td><td><font face="Courier">client/e2e/lab-03/user-administration.spec.ts</font></td><td>Account lifecycle plus new real-browser Admin priority scenario</td></tr><tr><td>Seed completeness / AC-09</td><td><font face="Courier">server/tests/lab-03/seed-ticket-examples.api.test.ts</font></td><td>Eight examples, ownership, repeat-safety and preservation</td></tr><tr><td>Admin priority / AC-06</td><td><font face="Courier">server/tests/lab-03/staff-ticket-detail.api.test.ts</font>, <font face="Courier">client/tests/lab-03/StaffTicketDetail.test.tsx</font></td><td>Priority allowed; Staff-only writes remain forbidden</td></tr><tr><td>Last active Admin / AC-08</td><td><font face="Courier">server/tests/lab-03/users-admin.api.test.ts</font></td><td>Explicit final-Admin demotion rejection in addition to self-deactivation</td></tr></table>
+<p>The original planning table remains historical. A mapped test file does not by itself prove every planned subcase: UNIT-01&#x27;s separate helper file was not created, and dedicated rate-limit/expiry coverage still needs a traceability check. No such unverified subcase is labelled passing here. Correction results are not final-main results until peer-reviewed integration and release are complete.</p>
+<h3>Complete server unit/API/authorization/regression output</h3>
+<pre>
+&gt; toktickit-server@1.0.0 test
+&gt; vitest run --reporter=verbose
 
-  <main class="page-break">
-    <h2>Contents</h2>
-    <nav class="toc">
-      <ol>
-        <li>Answer Part 1: Workflow, repository, and evidence</li>
-        <li>Answer Part 2: Specification and Definition of Done</li>
-        <li>Answer Part 3: Test evidence</li>
-        <li>Answer Part 4: AI use and reflection</li>
-        <li>Answer Part 5: Login evidence</li>
-        <li>Answer Part 6: IT Staff queue evidence</li>
-        <li>Answer Part 7: IT Staff detail and authorization evidence</li>
-        <li>Answer Part 8: Administrator user-management evidence</li>
-        <li>Answer Part 9: Zen Green UI and responsive evidence</li>
-      </ol>
-    </nav>
 
-    <h2>Answer Part 1: Git Use with Engineering Workflow</h2>
-    <div class="evidence"><strong>Final-audit correction checkpoint, 1 October 2026.</strong> <a href="https://github.com/iceswift/toktickit/pull/56">PR #56</a> targets lab3-staging and is directly linked to <a href="https://github.com/iceswift/toktickit/issues/55">Issue #55</a>. Richyboy170 is the requested reviewer; review and reviewer merge are pending. These corrections are not yet final-main evidence. Phase 7 Issue #48 was closed after verification of its previously merged PR #49.</div>
-    <figure><img src="../../artifacts/lab-03/final-audit/pr-56-linked-review-request.jpg" alt="Open correction PR 56 with Issue 55 directly linked in Development"><figcaption>Audit evidence A. Open correction PR and actual Issue–PR Development linkage; not evidence of approval or release.</figcaption></figure>
-    <p>Issue #55 is in <code>PR Review</code>; Issue #48 is <code>Closed</code> with Project status <code>Done</code>, verified after reload. These individual checkpoints do not replace the final all-Lab-3 Done Kanban capture after correction release.</p>
-    <p>Saved checkpoint captures: <a href="../../artifacts/lab-03/final-audit/issue-55-pr-review-verified.jpg">Issue #55 PR Review</a> and <a href="../../artifacts/lab-03/final-audit/issue-48-closed-done.jpg">Issue #48 Closed / Done</a>.</p>
-    <h3>Phase 1: Project Setup and Engineering Contract</h3>
-    <ul>
-      <li>Issue <a href="https://github.com/iceswift/toktickit/issues/31">#31</a> defined the Phase 1 scope and acceptance criteria.</li>
-      <li>Feature branch <code>feature/lab3-1-engineering-contract</code> was reviewed through <a href="https://github.com/iceswift/toktickit/pull/32">PR #32</a> into <code>lab3-staging</code>.</li>
-      <li><code>Richyboy170</code> approved and merged PR #32. The merge commit is <code>42079a7</code>.</li>
-      <li>The Issue Development panel directly lists the merged PR, and GitHub Project automation moved the closed Issue from <code>Started</code> to <code>Done</code>.</li>
-    </ul>
-    <div class="evidence"><strong>Evidence rule:</strong> captions identify the exact requirement demonstrated; a screenshot is not used if it is incomplete or unreadable.</div>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/issue-31-closed-done-development.png" alt="GitHub Issue 31 shown as Closed, with the Project status Done and PR 32 listed in Development">
-      <figcaption><strong>Figure 1.</strong> Phase 1 final workflow evidence. Issue #31 is Closed; its Kanban status is Done; and the Development panel lists merged PR #32. This proves the required direct Issue–PR linkage and final workflow-board state.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-01-contract/pr-32-approved-merged-development.png" alt="GitHub PR 32 showing Richyboy170 approval, reviewer merge into lab3-staging, and the direct Issue 31 Development link">
-      <figcaption><strong>Figure 2.</strong> PR #32 shows reviewer Richyboy170's approval and reviewer-performed merge into <code>lab3-staging</code>. The right Development panel links Issue #31 directly. This proves the peer-review and reviewer-merge requirements.</figcaption>
-    </figure>
+ RUN  v2.1.9 D:/Chat/cpe/lab3-final-audit/server
 
-    <h3>Phase 4: Authenticated Requester Workflow — completed staging review</h3>
-    <p><a href="https://github.com/iceswift/toktickit/issues/40">Issue #40</a> is linked directly through GitHub Development to <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a>. The feature branch targeted <code>lab3-staging</code>. <code>Richyboy170</code> approved the initial changes and left four technical suggestions in one review comment. The author addressed all four in commit <code>8c5d5b7</code>, replied on PR #41, and re-requested review. Richyboy170 then re-checked, approved, and merged PR #41 into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f"><code>d48c2c8</code></a>. After the acceptance criteria were confirmed, Issue #40 was closed as completed and its Project status was moved to <code>Done</code>.</p>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/issue-40-pr-review-development.png" alt="Open Issue 40 with acceptance criteria, Kanban status PR Review, and PR 41 in the Development panel">
-      <figcaption><strong>Figure 3.</strong> Phase 4 Issue #40 shows the <code>PR Review</code> board state and the direct Development link to PR #41, proving Issue–PR traceability at the review checkpoint. This is not final Done evidence.</figcaption>
-    </figure>
+ PASS tests/lab-03/requester-authorization.api.test.ts &gt; requireRequesterSession authorization boundary &gt; requires a session and rejects staff or first-login Requesters 373ms
+ PASS tests/lab-03/requester-authorization.api.test.ts &gt; requireRequesterSession authorization boundary &gt; ignores a forged requester header and keeps another user&#x27;s ticket private
+ PASS tests/lab-03/requester-authorization.api.test.ts &gt; requireRequesterSession authorization boundary &gt; rejects unauthenticated writes and hides cross-owner Attachment operations
+ PASS tests/lab-03/requester-authorization.api.test.ts &gt; requireRequesterSession authorization boundary &gt; authorizes through requesterUserId even when the legacy requesterId belongs to someone else
+ PASS tests/lab-02/attachments.api.test.ts &gt; Attachment lifecycle APIs &gt; rejects a missing file and a file whose MIME content does not match an allowed type
+ PASS tests/lab-02/attachments.api.test.ts &gt; Attachment lifecycle APIs &gt; rejects an attachment larger than 5 MB
+ PASS tests/lab-02/attachments.api.test.ts &gt; Attachment lifecycle APIs &gt; stores, lists, downloads, then soft-removes an owned permitted Attachment
+ PASS tests/lab-02/attachments.api.test.ts &gt; Attachment lifecycle APIs &gt; uses a safe 404 for cross-requester Attachment access
+ PASS tests/lab-02/attachments.api.test.ts &gt; Attachment lifecycle APIs &gt; rejects a sixth active attachment
+ PASS tests/lab-03/staff-ticket-detail.api.test.ts &gt; IT Staff Ticket operations &gt; returns operational detail only to IT Staff and Administrators
+ PASS tests/lab-03/staff-ticket-detail.api.test.ts &gt; IT Staff Ticket operations &gt; allows IT Staff to claim, prioritize, and use legal status transitions
+ PASS tests/lab-03/staff-ticket-detail.api.test.ts &gt; IT Staff Ticket operations &gt; keeps Notes private and validates append-only communication
+ PASS tests/lab-03/staff-ticket-detail.api.test.ts &gt; IT Staff Ticket operations &gt; allows Administrator priority changes without granting staff workflow writes
+ PASS tests/lab-02/ticket-detail.api.test.ts &gt; GET /api/tickets/:ticketId &gt; returns the full read-only Ticket detail for its owner
+ PASS tests/lab-02/ticket-detail.api.test.ts &gt; GET /api/tickets/:ticketId &gt; allows only the owner to add Public Comments and record a non-final resolution indication
+ PASS tests/lab-02/ticket-detail.api.test.ts &gt; GET /api/tickets/:ticketId &gt; uses the same safe 404 response for another Requester, invalid IDs, and missing Tickets
+ PASS tests/lab-03/users-admin.api.test.ts &gt; Administrator user management &gt; rejects anonymous and non-administrator access
+ PASS tests/lab-03/users-admin.api.test.ts &gt; Administrator user management &gt; creates, searches, edits, and resets a managed user 437ms
+ PASS tests/lab-03/users-admin.api.test.ts &gt; Administrator user management &gt; rejects invalid roles, weak passwords, and duplicate email addresses
+ PASS tests/lab-03/users-admin.api.test.ts &gt; Administrator user management &gt; prevents an administrator from deactivating their own account
+ PASS tests/lab-03/users-admin.api.test.ts &gt; Administrator user management &gt; prevents demotion of the final active Administrator
+ PASS tests/lab-03/staff-queue.api.test.ts &gt; GET /staff/tickets &gt; authorizes IT Staff and Administrator but rejects Requesters and anonymous access
+ PASS tests/lab-03/staff-queue.api.test.ts &gt; GET /staff/tickets &gt; searches, filters, sorts, paginates, and returns queue metadata
+ PASS tests/lab-03/staff-queue.api.test.ts &gt; GET /staff/tickets &gt; rejects invalid query values and keeps valid no-results requests successful
+ PASS tests/lab-03/migration-regression.api.test.ts &gt; Lab 3 user migration and seed regression &gt; keeps every legacy DevelopmentRequester mapped to exactly one Requester User
+ PASS tests/lab-03/migration-regression.api.test.ts &gt; Lab 3 user migration and seed regression &gt; creates the required active and inactive role seed accounts without plaintext passwords
+ PASS tests/lab-03/migration-regression.api.test.ts &gt; Lab 3 user migration and seed regression &gt; dual-writes a legacy requester Ticket to its migrated User during the transition
+ PASS tests/lab-02/my-tickets.api.test.ts &gt; GET /api/tickets &gt; returns only the selected Requester&#x27;s Tickets with documented query controls
+ PASS tests/lab-02/my-tickets.api.test.ts &gt; GET /api/tickets &gt; returns a safe 400 for invalid list query values
+ PASS tests/lab-03/auth.api.test.ts &gt; Lab 3 authentication &gt; creates a session for a valid active User and revokes it on logout
+ PASS tests/lab-03/auth.api.test.ts &gt; Lab 3 authentication &gt; uses the same safe response for invalid credentials and inactive accounts
+ PASS tests/lab-03/auth.api.test.ts &gt; Lab 3 authentication &gt; requires the current password, clears first-login state, and revokes the old session 1218ms
+ PASS tests/lab-03/seed-ticket-examples.api.test.ts &gt; Lab 3 realistic seed examples &gt; creates eight workflow examples with correct ownership and repeat-safe communication
+ PASS tests/lab-03/seed-ticket-examples.api.test.ts &gt; Lab 3 realistic seed examples &gt; preserves an existing worked Ticket and account credentials on a repeat run
+ PASS tests/lab-02/create-ticket.api.test.ts &gt; POST /api/tickets &gt; creates a Ticket for the selected requester with backend-generated values
+ PASS tests/lab-02/create-ticket.api.test.ts &gt; POST /api/tickets &gt; returns safe field errors and does not create a Ticket for invalid input
+ PASS tests/lab-03/requester-session.test.ts &gt; requesterSession test cleanup &gt; revokes only the sessions created by the test helper
+ PASS tests/lab-01/health.test.ts &gt; GET /api/health &gt; returns 200 with status ok and the service name
+ PASS tests/lab-02/ticket-number.test.ts &gt; generateTicketNumber &gt; creates the documented official Ticket Number format
+ PASS tests/lab-02/ticket-number.test.ts &gt; generateTicketNumber &gt; creates a fresh candidate for each retry attempt
+ PASS tests/lab-01/categories.test.ts &gt; GET /api/categories &gt; returns the four seeded categories in id order
+ PASS tests/lab-02/development-requesters.api.test.ts &gt; Retired Lab 2 Development Requester API &gt; does not publicly enumerate migrated requester identities
 
-    <h3>Phase 5: IT Staff Ticket Queue — completed staging review</h3>
-    <p><a href="https://github.com/iceswift/toktickit/issues/43">Issue #43</a> defined the IT Staff queue contract and was implemented on <code>feature/lab3-5-it-staff-ticket-queue</code>. The feature PR, <a href="https://github.com/iceswift/toktickit/pull/44">#44</a>, targeted <code>lab3-staging</code>; its description referenced Issue #43 and GitHub recorded PR #44 in the Issue activity. The implementation provides <code>GET /staff/tickets</code> with authenticated IT Staff/Administrator access, validated search/filter/sort/page queries, pagination metadata, and a responsive queue UI. <code>Richyboy170</code> approved and merged PR #44 into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c"><code>f1f51c8</code></a>. After merge, Issue #43 was closed as completed and its Project status moved from <code>PR Review</code> to <code>Done</code>.</p>
-    <h3>Phases 6–7: Staff operations and Administrator management — completed staging review</h3>
-    <p><a href="https://github.com/iceswift/toktickit/pull/47">PR #47</a> delivered the IT Staff Ticket detail workflow and was reviewer-approved and merged into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/79cee7bf635d771c9935a8defd7fcd4068105844"><code>79cee7b</code></a>. <a href="https://github.com/iceswift/toktickit/pull/49">PR #49</a> then delivered Administrator User Management for <a href="https://github.com/iceswift/toktickit/issues/48">Issue #48</a>. Its Development panel directly links the Issue, <code>iceswift</code> is assigned, and <code>Richyboy170</code> approved the backend, UI, authorization safeguards, and test coverage before merging it into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/64afcd90fd9dd76dbe2e6ddddaf7d9ff37b8bb8d"><code>64afcd9</code></a>.</p>
-    <h3>Phase 8: QA and release readiness — completed staging review</h3>
-    <p><a href="https://github.com/iceswift/toktickit/issues/51">Issue #51</a> tracked the complete-suite audit, responsive evidence, documentation reconciliation, and release-readiness corrections. <code>Richyboy170</code> merged <a href="https://github.com/iceswift/toktickit/pull/52">PR #52</a> into <code>lab3-staging</code> as <a href="https://github.com/iceswift/toktickit/commit/e7d5820047bfb8932e12ef8e64ffb17b532786a6"><code>e7d5820</code></a>. Issue #51 was then closed as completed.</p>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-initial-approval-feedback.png" alt="Open PR 41 into lab3-staging showing Richyboy170's initial approval and review comment, with Issue 40 in Development">
-      <figcaption><strong>Figure 4.</strong> PR #41 shows <code>Richyboy170</code>'s initial approval and technical review comment, while the right Development panel links Issue #40. The author is addressing the comment on the same branch; this image does not claim a final reviewer merge.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/pr-41-review-reply-rerequest.png" alt="PR 41 shows the author's response to four review points and a renewed review request to Richyboy170, with merge still pending">
-      <figcaption><strong>Figure 5.</strong> The author replied to all four points in the review comment and requested another review from <code>Richyboy170</code> after commit <code>8c5d5b7</code>. The final re-check, approval, and reviewer-performed merge are recorded in <a href="https://github.com/iceswift/toktickit/pull/41">PR #41</a> and merge commit <a href="https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f"><code>d48c2c8</code></a>.</figcaption>
-    </figure>
+ Test Files  16 passed (16)
+      Tests  42 passed (42)
+   Start at  13:28:00
+   Duration  16.80s (transform 276ms, setup 0ms, collect 5.61s, tests 8.67s, environment 2ms, prepare 851ms)
 
-    <h3>Evidence register and final-completion check</h3>
-    <p>The records above are verified Phase 1 and Phase 4–8 staging facts. The following Part 1 evidence must be added only after it exists on the final <code>main</code> branch: complete Lab 3 feature-to-staging and staging-to-main commit history; final Kanban with every Lab 3 Issue in Done; rendered <code>README.md</code> and <code>.gitignore</code>; and the final repository tree. The <code>docs/lab-03/reviewer.md</code> record distinguishes completed review from pending review.</p>
+</pre>
+<h3>Complete client UI test output</h3>
+<pre>
+&gt; toktickit-client@1.0.0 test
+&gt; vitest run --reporter=verbose
 
-    <h2>Answer Part 2: Specification and Definition of Done</h2>
-    <p>The reviewed Phase 1 contract is maintained in <code>docs/lab-03/specification.md</code>, <code>ui-spec.md</code>, <code>api-spec.md</code>, and <code>tests.md</code>. These documents define the approved Lab 3 scope before implementation. <code>evidence-matrix.md</code> maps every AC to executable and visual evidence without mislabelling feature-branch results as final-main evidence.</p>
 
-    <h2>Answer Part 3: Test DD and Traceability</h2>
-    <h3>Released baseline and post-release audit</h3>
-    <p>Release <a href="https://github.com/iceswift/toktickit/pull/54">PR #54</a> was approved and merged by Richyboy170 into <code>main</code> as <code>c9567a5</code>. The released baseline was rerun on 1 October 2026: server 38/38, client 26/26, E2E 8/8 and both production builds passed. The historic checkpoint paragraphs below describe earlier branch runs, not the latest completion state.</p>
-    <p>The audit found two uncovered requirements: realistic seed examples and the Administrator IT Priority UI permission. <a href="https://github.com/iceswift/toktickit/issues/55">Issue #55</a> tracks the correction branch. Its server 42/42, client 27/27, browser 9/9 and both builds passed. A separate fresh database produced exactly 10 Users, 8 Tickets, 8 Public Comments and 8 Internal Notes after two seed runs. These are correction-branch results, not final-main evidence for the corrections.</p>
-    <p>Complete actual output: <a href="../../artifacts/lab-03/final-audit/correction-server-tests.txt">server tests</a>, <a href="../../artifacts/lab-03/final-audit/correction-e2e-tests.txt">browser tests</a>, and <a href="../../artifacts/lab-03/final-audit/seed-repeat-counts.json">repeat-seed counts</a>. Updated planned-to-actual traceability is recorded in <a href="tests.md">tests.md</a>; the correction acceptance criteria are in <a href="final-audit-corrections.md">final-audit-corrections.md</a>.</p>
-    <p><strong>Phase 4 checkpoint (feature branch, not final-main evidence):</strong> after addressing peer-review feedback, server API/unit/regression tests passed 27/27, client UI tests passed 18/18, and browser E2E tests passed 3/3. Both production builds passed. The five Prisma migrations were previously reported up to date; this review-fix run did not rerun migration status. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
-    <p><strong>Phase 5 focused verification (feature branch, not final-main evidence):</strong> the staff queue API suite passed 3/3; the StaffTicketQueue UI suite passed 2/2; and both server TypeScript and client production builds passed. <code>git diff --check</code> also passed. These checks cover queue authorization, validated query handling, search/filter/sort/pagination metadata, valid empty responses, and explicit UI empty/no-results states. The final Part 3 requirement remains pending until the complete suite is rerun on released <code>main</code>.</p>
-    <p><strong>Phase 6 focused verification (feature branch, not final-main evidence):</strong> the staff Ticket detail API suite passed 3/3 and the StaffTicketDetail UI suite passed 2/2, with both production builds passing. Coverage includes claim/reassignment, priority and status changes, Public Comments, private Internal Notes, and role boundaries.</p>
-    <p><strong>Phase 7 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 37/37 and the complete client suite passed 25/25; both production builds and <code>git diff --check</code> passed. Focused coverage verifies anonymous/non-Administrator denial, list/search/filter/create/edit/password reset, duplicate email and invalid input rejection, self-deactivation protection, and responsive management actions. Final release evidence will still rerun the complete suite from <code>main</code>.</p>
-    <p><strong>Phase 8 verification (feature branch, not final-main evidence):</strong> the complete server suite passed 38/38, the complete client suite passed 26/26, and the browser suite passed 8/8 across Lab 2 regression and Lab 3 workflows. Both production builds passed, and Prisma reported all 7 migrations applied. The audit added requester Public Comments and a non-final “problem appears resolved” indication required by FR-05/AC-07, then fixed mobile User Management overflow detected by Playwright. Final release evidence will rerun these checks from <code>main</code>.</p>
-    <p>Requester authorization tests exercise missing session (401), wrong role and first-login gate (403), forged identity header, cross-owner Ticket and Attachment access (404), and deliberately mismatched legacy/migrated ownership. The authenticated <code>User.id</code> and <code>Ticket.requesterUserId</code> determine ownership; legacy requester IDs remain only as compatibility/audit fields. Test cleanup also revokes helper-created sessions.</p>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Authenticated Amina Rahman requester shell showing My Tickets and her ticket list without a Development Requester selector">
-      <figcaption><strong>Figure 6.</strong> Phase 4 requester regression: after authenticated login, My Tickets identifies Amina Rahman and lists her Tickets without the Lab 2 Development Requester selector (AC-09; FR requester identity).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-create-ticket.png" alt="Create Ticket form with requester name Amina Rahman populated from her authenticated session">
-      <figcaption><strong>Figure 7.</strong> Phase 4 Create Ticket form: the Requester field is read-only and populated from the authenticated User, proving the UI no longer permits manual requester identity selection (AC-04, AC-09).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-ticket-detail.png" alt="Authenticated requester Ticket Detail displaying Amina Rahman as requester with read-only ticket data">
-      <figcaption><strong>Figure 8.</strong> Phase 4 Ticket Detail: the owned Ticket remains readable after migration, with requester identity from the session. The backend authorization tests separately prove that another requester receives safe 404 responses (AC-04, AC-09).</figcaption>
-    </figure>
+ RUN  v2.1.9 D:/Chat/cpe/lab3-final-audit/client
 
-    <h2>Answer Part 4: AI Use and Reflection</h2>
-    <p>The maintained prompt log and the student reflection are in <code>docs/lab-03/ai-use.md</code>. This section will be rendered into the final PDF after all verification notes are complete.</p>
+ PASS tests/lab-02/ZenGreenStyle.test.tsx &gt; Zen Green form conventions &gt; uses labelled required fields and a disabled-safe submit state
+ PASS tests/lab-02/CreateTicket.test.tsx &gt; Create Ticket &gt; shows field-level validation without calling the API
+ PASS tests/lab-03/StaffTicketQueue.test.tsx &gt; IT Staff Ticket Queue &gt; renders queue controls and an explicit no-results state
+ PASS tests/lab-01/App.test.tsx &gt; App &gt; renders the TokTickIT heading
+ PASS tests/lab-02/DevelopmentRequester.test.tsx &gt; Authenticated requester identity replaces development selection &gt; requires login and never offers a Development Requester selector
+ PASS tests/lab-03/UserManagement.test.tsx &gt; Administrator User Management &gt; lists users with filters and management actions
+ PASS tests/lab-03/StaffTicketDetail.test.tsx &gt; IT Staff Ticket Detail &gt; separates Public Comments from Internal Notes and exposes staff controls
+ PASS tests/lab-01/App.test.tsx &gt; App &gt; shows a loading state while the API request is pending
+ PASS tests/lab-02/RequesterTicketDetail.test.tsx &gt; RequesterTicketDetail &gt; renders owner-scoped Ticket fields read-only and returns to My Tickets
+ PASS tests/lab-01/App.test.tsx &gt; App &gt; shows Online and the categories returned by the API
+ PASS tests/lab-03/StaffTicketQueue.test.tsx &gt; IT Staff Ticket Queue &gt; sends a search query and distinguishes filtered no-results
+ PASS tests/lab-02/MyTickets.test.tsx &gt; My Tickets &gt; shows owned Ticket data and sends search/filter query controls
+ PASS tests/lab-01/App.test.tsx &gt; App &gt; shows an Offline error message when the API is unavailable
+ PASS tests/lab-02/MyTickets.test.tsx &gt; My Tickets &gt; distinguishes an empty Ticket list from no matching results
+ PASS tests/lab-03/UserManagement.test.tsx &gt; Administrator User Management &gt; edits a user&#x27;s role and active state 326ms
+ PASS tests/lab-03/StaffTicketDetail.test.tsx &gt; IT Staff Ticket Detail &gt; posts a Public Comment through the staff API 320ms
+ PASS tests/lab-03/StaffTicketDetail.test.tsx &gt; IT Staff Ticket Detail &gt; allows Administrator IT Priority changes while keeping staff-only controls unavailable
+ PASS tests/lab-03/Authentication.test.tsx &gt; Lab 3 authentication screens &gt; submits credentials and returns the authenticated user 554ms
+ PASS tests/lab-02/RequesterTicketDetail.test.tsx &gt; RequesterTicketDetail &gt; posts a Public Comment and records a non-final resolution indication 400ms
+ PASS tests/lab-02/RequesterTicketDetail.test.tsx &gt; RequesterTicketDetail &gt; does not disclose Ticket data when the owner-scoped request fails
+ PASS tests/lab-02/DevelopmentRequester.test.tsx &gt; Authenticated requester identity replaces development selection &gt; uses the authenticated User for the requester shell 641ms
+ PASS tests/lab-02/DevelopmentRequester.test.tsx &gt; Authenticated requester identity replaces development selection &gt; restores an existing requester session without another identity choice
+ PASS tests/lab-02/DevelopmentRequester.test.tsx &gt; Authenticated requester identity replaces development selection &gt; blocks the requester shell until the first password change
+ PASS tests/lab-02/RequesterTicketDetail.test.tsx &gt; RequesterTicketDetail &gt; uploads an allowed Attachment and requires a reason before soft removal 492ms
+ PASS tests/lab-03/Authentication.test.tsx &gt; Lab 3 authentication screens &gt; keeps a mismatched password in the form and explains the problem 859ms
+ PASS tests/lab-03/UserManagement.test.tsx &gt; Administrator User Management &gt; creates a user and resets an initial password 1143ms
+ PASS tests/lab-02/CreateTicket.test.tsx &gt; Create Ticket &gt; submits valid input and displays the backend Ticket Number 1803ms
 
-    <h2>Answer Part 5: Working Login and Password Change UI</h2>
-    <p>Phase 3 authentication was peer-reviewed in <a href="https://github.com/iceswift/toktickit/pull/39">PR #39</a>. Phase 4 browser verification confirmed that a requester using an initial password reaches the forced password-change screen before the requester shell; logout returns to Sign in. The formal final-main test output is still pending.</p>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-03-auth/login-form.png" alt="TokTickIT sign-in form with email and password inputs">
-      <figcaption><strong>Figure 9.</strong> Login UI with email/password inputs, supporting the working authentication entry requirement (AC-01).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-04-requester/first-login-gate.png" alt="First-login requester session is shown the mandatory change-password screen instead of the requester shell">
-      <figcaption><strong>Figure 10.</strong> First-login gate in the real browser: an initial-password Requester sees Change password before any Ticket screen (AC-02). No password contents are shown.</figcaption>
-    </figure>
-    <h2>Answer Part 6: Working IT Staff Ticket Queue UI</h2>
-    <p>Phase 5 delivers the queue for authenticated IT Staff, with Administrator read-only access. The UI exposes labelled search, status/requested-priority/IT-priority filters, sorting, pagination controls, a compact desktop table, responsive mobile cards, and explicit loading, empty, no-results, forbidden, and failure feedback. The server endpoint defaults to <code>updatedAt desc</code>, returns <code>items</code>, <code>page</code>, <code>pageSize</code>, <code>totalItems</code>, and <code>totalPages</code>, and accepts only page sizes 10, 20, or 50. Completion workflow evidence is recorded in Issue #43, PR #44, and <code>docs/lab-03/reviewer.md</code>.</p>
-    <h2>Answer Part 7: Working IT Staff Ticket Detail UI</h2>
-    <p>Phase 6 provides authenticated IT Staff and Administrator Ticket detail access with claim/reassignment, IT Priority, validated lifecycle transitions, requester-visible Public Comments, and staff-only Internal Notes. The API enforces role boundaries and legal transitions; the responsive UI provides explicit success and safe failure feedback. Completion workflow evidence is recorded in Issue #46, PR #47, and <code>docs/lab-03/reviewer.md</code>.</p>
-    <h2>Answer Part 8: Working Administrator User Management UI</h2>
-    <figure>
-      <img src="../../artifacts/lab-03/final-audit/admin-priority-correction.png" alt="Real Administrator session saved Urgent IT Priority; Current Status stays disabled and Staff-only write controls are absent">
-      <figcaption><strong>Correction evidence (Issue #55; feature branch).</strong> Administrator Narin saves Urgent IT Priority on a synthetic demonstration Ticket. Requested Priority remains High, Current Status is disabled, and claim/reassignment/comment/note write controls are absent. The private note remains visible only to the permitted role. This image is not labelled final-main evidence before reviewer integration.</figcaption>
-    </figure>
-    <p>Phase 7 provides an Administrator-only responsive user list with name/email search and role filtering, plus create and edit workflows for one role and Active status. Initial passwords must satisfy policy, are hashed, force a password change at next login, and reset operations revoke existing sessions. The API rejects duplicate email and invalid roles, prevents self-deactivation, and ensures at least one active Administrator remains. Non-Administrators are denied by the backend and never receive the navigation entry. Completion workflow evidence is recorded in Issue #48, PR #49, and <code>docs/lab-03/reviewer.md</code>.</p>
-    <h2>Answer Part 9: Zen Green UI and Responsive Evidence</h2>
-    <p>The Phase 8 Playwright suite checks Login, Change Password, Ticket Queue, Staff Ticket Detail, and User Management at 1280×900 desktop, 820×900 tablet, and 390×844 mobile viewports. Every view passed a document-width assertion. The audit replaced the wide Administrator table with readable cards on mobile while retaining the desktop table. All 15 source screenshots are stored in <code>artifacts/lab-03/screenshots/phase-08-qa/</code>.</p>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-mobile.png" alt="TokTickIT Login displayed at the mobile viewport without horizontal overflow">
-      <figcaption><strong>Figure 11.</strong> Mobile Login at 390×844. The Zen Green primary action, labelled fields, System Status control, and readable card layout remain within the viewport (AC-01, AC-10).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-tablet.png" alt="IT Staff Ticket Queue at tablet width with filters and operational Ticket rows">
-      <figcaption><strong>Figure 12.</strong> Tablet Ticket Queue at 820×900. Search, filters, sorting, Ticket metadata, and detail actions remain usable without document overflow (AC-05, AC-10).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-desktop.png" alt="IT Staff Ticket Detail showing ticket information controls Public Comments and private Internal Notes">
-      <figcaption><strong>Figure 13.</strong> Desktop Staff Detail. Operational controls, Public Comments, and the visually distinct private Internal Notes panel demonstrate the required workflow and privacy boundary (AC-06, AC-07).</figcaption>
-    </figure>
-    <figure>
-      <img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-mobile.png" alt="Administrator User Management displayed as mobile user cards and a responsive Create user form">
-      <figcaption><strong>Figure 14.</strong> Mobile User Management after the Phase 8 QA correction. User records become stacked cards with edit/reset actions, followed by the single-column Create User form; the page passes the no-horizontal-overflow assertion (AC-08, AC-10).</figcaption>
-    </figure>
+ Test Files  10 passed (10)
+      Tests  27 passed (27)
+   Start at  13:26:32
+   Duration  16.55s (transform 1.17s, setup 17.79s, collect 19.58s, tests 8.54s, environment 103.22s, prepare 2.97s)
 
-    <p class="footer-note">This HTML file is the source of the final PDF. It is deliberately retained until the final PDF has been rendered and checked.</p>
-  </main>
-</body>
-</html>
+</pre>
+<h3>Complete Playwright browser E2E output</h3>
+<pre>
+&gt; toktickit-client@1.0.0 test:e2e
+&gt; playwright test
+
+[WebServer] (node:3924) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:6024) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8728) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8728) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:12156) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28832) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:28396) Warning: The &#x27;NO_COLOR&#x27; env is ignored due to the &#x27;FORCE_COLOR&#x27; env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\lab-02\requester-ticket-flow.spec.ts:21:1 &gt; Requester creates, finds, and opens an owned Ticket (5.8s)
+  ok 2 e2e\lab-02\requester-ticket-flow.spec.ts:38:1 &gt; cross-owner access is blocked while the owner can upload and remove an Attachment (1.8s)
+  ok 3 e2e\lab-02\responsive.spec.ts:16:1 &gt; My Tickets remains usable without horizontal overflow at desktop, tablet, and mobile widths (840ms)
+  ok 4 e2e\lab-03\authentication.spec.ts:5:1 &gt; first login requires password change and logout blocks protected access (2.5s)
+  ok 5 e2e\lab-03\authentication.spec.ts:6:1 &gt; invalid and inactive credentials use the same safe failure (683ms)
+  ok 6 e2e\lab-03\responsive.spec.ts:13:1 &gt; major Lab 3 screens have no horizontal document overflow (7.9s)
+  ok 7 e2e\lab-03\staff-ticket-flow.spec.ts:6:1 &gt; IT Staff completes the operational Ticket workflow (1.7s)
+  ok 8 e2e\lab-03\user-administration.spec.ts:7:1 &gt; Administrator changes IT Priority without receiving staff-only controls (1.4s)
+  ok 9 e2e\lab-03\user-administration.spec.ts:31:1 &gt; Administrator manages a user and forces password change (3.6s)
+
+  9 passed (37.6s)
+</pre>
+<h3>Server production build output</h3>
+<pre>
+&gt; toktickit-server@1.0.0 build
+&gt; tsc
+
+</pre>
+<h3>Client production build output</h3>
+<pre>
+&gt; toktickit-client@1.0.0 build
+&gt; tsc &amp;&amp; vite build
+
+vite v6.4.3 building for production...
+transforming...
+PASS 36 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.28 kB
+dist/assets/index-BL5QWnkG.css  231.14 kB │ gzip: 30.69 kB
+dist/assets/index-HF9GlrBP.js   202.26 kB │ gzip: 57.87 kB
+PASS built in 1.45s
+</pre>
+<h3>Released-main migration status</h3>
+<pre>Prisma schema loaded from prisma\schema.prisma
+Datasource &quot;db&quot;: PostgreSQL database &quot;toktickit&quot;, schema &quot;public&quot; at &quot;localhost:55434&quot;
+
+7 migrations found in prisma/migrations
+
+
+No pending migrations to apply.
+</pre>
+<h3>Supplemental real direct-API security assertions - not extra Vitest test counts</h3>
+<pre>Actual direct API evidence on released main c551061 - 2 October 2026
+Isolated audit PostgreSQL on port 55434. Synthetic test users only. Session cookies/passwords omitted.
+Anonymous GET /staff/tickets -&gt; HTTP 401 {&quot;error&quot;:&quot;Authentication is required.&quot;}
+Requester GET /admin/users -&gt; HTTP 403 {&quot;error&quot;:&quot;Administrator access is required.&quot;}
+Requester GET staff Internal Notes -&gt; HTTP 403 {&quot;error&quot;:&quot;IT Staff or Administrator access is required.&quot;}
+Cross-owner GET Ticket -&gt; HTTP 404 {&quot;error&quot;:&quot;The requested resource was not found.&quot;}
+Owned GET Ticket -&gt; HTTP 200 public comment present=true; internalNotes field absent=true
+Requester attempts formal CLOSED status -&gt; HTTP 403 {&quot;error&quot;:&quot;IT Staff or Administrator access is required.&quot;}
+Requester non-final resolution indication -&gt; HTTP 200 Accepted; formal status checked separately
+Database assertion: problemAppearsResolvedAt recorded; currentStatus remains IN_PROGRESS.
+Blank staff Public Comment -&gt; HTTP 400 {&quot;error&quot;:&quot;Comment content must be 1 to 2,000 characters.&quot;}
+Overlength staff Internal Note -&gt; HTTP 400 {&quot;error&quot;:&quot;Internal Note content must be 1 to 2,000 characters.&quot;}
+Expired session GET /staff/tickets -&gt; HTTP 401 {&quot;error&quot;:&quot;Authentication is required.&quot;}
+Rate-limit wrong-password attempt 1 -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Rate-limit wrong-password attempt 2 -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Rate-limit wrong-password attempt 3 -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Rate-limit wrong-password attempt 4 -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Rate-limit wrong-password attempt 5 -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Correct fixture password after five failures -&gt; HTTP 401 {&quot;error&quot;:&quot;Invalid email or password.&quot;}
+Valid fixture credentials succeeded in the browser before these failures; rate limit does not disclose account existence.
+All assertions above passed. This is supplemental direct API verification, not an additional Vitest test count.</pre>
+<p>Supplemental assertions explicitly exercise anonymous access, wrong-role management, private-note denial, cross-owner safe 404, Requester resolution without formal status change, blank/overlength content, expired sessions and throttled login. All values are synthetic. No session cookie, token or personal password is included in the report. Injected UI failures elsewhere are distinguished from these real backend responses.</p>
+<p>Subsequent Issue #58 branch verification: client 29/29, browser E2E 9/9 and both builds passed. Complete branch output is retained in the evidence bundle separately; these results are not final-main verification for Issue #58.</p>
+</section><section id="part4"><h2>Answer Part 4 - AI Use with Reflection</h2>
+<p>Verified assistant/tool: OpenAI Codex. Exact historical model variants still require student confirmation. The selected prompt entries are summaries of actual task focus, not fabricated verbatim quotations. The reflection is retained as a student-review draft; it must represent the student&#x27;s own learning before submission.</p>
+<h3>docs/lab-03/ai-use.md</h3>
+<h4>Lab 3 AI Use and Reflection</h4>
+<h4>Tool and Responsibility</h4>
+<p>OpenAI Codex is used as an engineering assistant for analysis, drafting, implementation support, and test design. The student remains responsible for reading the Lab 3 sheet, selecting the final rules, reviewing every change, running commands, inspecting evidence, and rejecting unsupported output.</p>
+<h4>Selected Prompts and Verification</h4>
+<table><tr><th>#</th><th>Prompt focus</th><th>Student verification</th></tr><tr><td>1</td><td>Extract Lab 3 deliverables, dependencies, and exclusions.</td><td>Compared the phase plan with the Lab 3 sheet.</td></tr><tr><td>2</td><td>Propose password, session, and logout decisions for the course stack.</td><td>Reviewed cookie, hashing, expiry, and secret-handling trade-offs.</td></tr><tr><td>3</td><td>Design the User/role migration without losing Lab 2 ownership.</td><td>Inspected the generated migration and passed migration/regression coverage against PostgreSQL.</td></tr><tr><td>4</td><td>Build an authorization matrix for all protected operations.</td><td>Compared each operation against the required roles.</td></tr><tr><td>5</td><td>Define a constrained Ticket status-transition matrix.</td><td>Checked that Requesters cannot formally resolve or close.</td></tr><tr><td>6</td><td>Plan IT Staff queue/detail tests and privacy boundaries.</td><td>Ran API, UI, and E2E coverage; also inspected the Staff Detail screenshot to confirm Internal Notes are visually distinguished.</td></tr><tr><td>7</td><td>Plan Administrator safety rules and negative tests.</td><td>Verified duplicate email, self-deactivation, last-Administrator protection, session revocation, and forced password change.</td></tr><tr><td>8</td><td>Audit evidence required for the nine report parts.</td><td>Captured 15 readable responsive screenshots and linked each retained figure to an exact requirement.</td></tr><tr><td>9</td><td>Audit Requester detail against FR-05 and AC-07 before release.</td><td>Found missing requester Public Comments and the non-final resolution indication; added API/UI behavior, migration, and regression tests.</td></tr><tr><td>10</td><td>Diagnose the mobile User Management overflow found by Playwright.</td><td>Used element-bound diagnostics to identify the wide table, replaced it with mobile cards below the medium breakpoint, and reran all viewports.</td></tr></table>
+<h4>My Reflection</h4>
+<p>AI suggestions were treated as hypotheses, not proof. That distinction mattered in Phase 8: a checklist-only review would have missed two real gaps. Comparing the running product with FR-05/AC-07 exposed missing requester Public Comments and a missing non-final resolution indication. Running the responsive browser test then exposed a mobile table overflow that unit tests could not reveal. I accepted the proposed fixes only after reading the affected contract, inspecting the UI screenshots, and passing server, client, migration, build, and E2E checks. The final audit subsequently found missing demonstration seed data and an Administrator IT Priority UI permission. These corrections were peer-reviewed through PR #56 and released through PR #57. The same suites were rerun successfully on released <font face="Courier">main</font> at <font face="Courier">c551061</font> on 2 October. Passing suites do not establish coverage of every originally planned subcase; the traceability record retains those limitations.</p>
+<p>The ten entries above are summaries of prompt focus, not verbatim transcripts. Exact historical model names have not been confirmed and must not be invented; the verified tool name is OpenAI Codex. This reflection remains a student-review draft until the student confirms that it accurately represents their own learning.</p>
+</section><section id="part5"><h2>Answer Part 5 - Working Login and Password Change UI</h2>
+<p>Authentication uses email/password, opaque server sessions and a first-login password-change gate. Invalid and inactive accounts show the same safe message. The role-aware shell displays the authenticated user, and logout revokes the session. Direct protected access, password change and logout are also covered by the passing E2E and API output in Part 3.</p>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/login-invalid.png" alt="Real invalid-credential login rejection: safe message without account disclosure."><figcaption>Figure 10. Real invalid-credential login rejection: safe message without account disclosure.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/login-inactive.png" alt="Real inactive-account rejection: the same safe failure message."><figcaption>Figure 11. Real inactive-account rejection: the same safe failure message.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/login-busy.png" alt="Controlled delayed login request: busy/disabled sign-in state. Browser route delay was injected for this UI evidence; not a backend performance claim."><figcaption>Figure 12. Controlled delayed login request: busy/disabled sign-in state. Browser route delay was injected for this UI evidence; not a backend performance claim.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/login-network-failure.png" alt="Controlled network abort: safe authentication failure. Browser fault injection is labelled explicitly."><figcaption>Figure 13. Controlled network abort: safe authentication failure. Browser fault injection is labelled explicitly.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/reset-first-login-gate.png" alt="Real synthetic account after Administrator initial-password reset: mandatory Change password before protected screens."><figcaption>Figure 14. Real synthetic account after Administrator initial-password reset: mandatory Change password before protected screens.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-04-requester/authenticated-my-tickets.png" alt="Historical Requester regression checkpoint: authenticated user context and My Tickets, without the Development Requester selector."><figcaption>Figure 15. Historical Requester regression checkpoint: authenticated user context and My Tickets, without the Development Requester selector.</figcaption></figure>
+</section><section id="part6"><h2>Answer Part 6 - Working IT Staff Ticket Queue UI</h2>
+<p>The operational queue displays seeded and synthetic audit Tickets, statuses, requested/IT priorities, owners, date metadata and detail actions. Eight stable DEMO seed Tickets cover the eight statuses. Thirteen additional EVID Tickets were created only in the isolated audit database to show real pagination and operations. Counts are demonstration data, not real service activity. Queue priority values appear as text; status is badged. Do not interpret this as proof of separate priority badges.</p>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-real.png" alt="Real populated queue: assigned/unassigned records, status labels, priority values and detail actions."><figcaption>Figure 16. Real populated queue: assigned/unassigned records, status labels, priority values and detail actions.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-pagination.png" alt="Real pagination: page 2 of the populated operational queue."><figcaption>Figure 17. Real pagination: page 2 of the populated operational queue.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-seeded-search-sort.png" alt="Search by exact DEMO prefix and sort by Ticket Number ascending."><figcaption>Figure 18. Search by exact DEMO prefix and sort by Ticket Number ascending.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-filter.png" alt="Real status filter NEW narrows the eight seeded DEMO Tickets to the matching record."><figcaption>Figure 19. Real status filter NEW narrows the eight seeded DEMO Tickets to the matching record.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-no-results.png" alt="Real no-matching-results state after a nonmatching search."><figcaption>Figure 20. Real no-matching-results state after a nonmatching search.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-empty-injected.png" alt="Empty-queue UI using a controlled successful empty API response. This is injected UI evidence, not a claim that the seeded database is empty."><figcaption>Figure 21. Empty-queue UI using a controlled successful empty API response. This is injected UI evidence, not a claim that the seeded database is empty.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-failure-injected.png" alt="Queue API failure UI using a controlled HTTP 503 response."><figcaption>Figure 22. Queue API failure UI using a controlled HTTP 503 response.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/queue-badges-correction.png" alt="Issue #58 correction branch: Requested and IT Priority are separate labelled badges. This correction is not yet released main."><figcaption>Figure 23. Issue #58 correction branch: Requested and IT Priority are separate labelled badges. This correction is not yet released main.</figcaption></figure>
+</section><section id="part7"><h2>Answer Part 7 - Working IT Staff Ticket Detail UI</h2>
+<p>Real synthetic Ticket TKT-20261002-EVID0001 demonstrates unassigned state, claim, reassignment, separate Requested/IT Priority, permitted status change, Public Comments and private Internal Notes. The Requester can indicate that the problem appears resolved without changing formal status; direct API assertions verify this and that private notes are absent from the Requester response. Attachment upload/removal continuity and cross-owner protection are covered by the passing Lab 2 regression E2E/API output in Part 3.</p>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-before-actions.png" alt="Real unassigned staff Ticket Detail before operations."><figcaption>Figure 24. Real unassigned staff Ticket Detail before operations.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-claimed.png" alt="Claim Ticket assigns Iris Nattapong as owner."><figcaption>Figure 25. Claim Ticket assigns Iris Nattapong as owner.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-priority-public-private.png" alt="Urgent IT Priority is distinct from Requested Priority High. Public Comment and visually separated private Internal Note were saved."><figcaption>Figure 26. Urgent IT Priority is distinct from Requested Priority High. Public Comment and visually separated private Internal Note were saved.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-reassigned.png" alt="Real reassignment from Iris Nattapong to Jonas Miller."><figcaption>Figure 27. Real reassignment from Iris Nattapong to Jonas Miller.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-in-progress.png" alt="Permitted transition to IN_PROGRESS with success feedback."><figcaption>Figure 28. Permitted transition to IN_PROGRESS with success feedback.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/detail-invalid-transition.png" alt="Real OPEN to CLOSED attempt rejected by backend; formal status remains OPEN."><figcaption>Figure 29. Real OPEN to CLOSED attempt rejected by backend; formal status remains OPEN.</figcaption></figure>
+<p>Authorization evidence is actual output in Part 3: Requester staff-note access 403, cross-owner Ticket 404, owned public response 200 with no internalNotes field, Requester formal-status write 403, blank comment and overlength note 400. Administrator priority permission is also covered by its passing UI/API/E2E regression. The private-note panel is not available to Requesters.</p>
+</section><section id="part8"><h2>Answer Part 8 - Working Administrator User Management UI</h2>
+<p>Administrator User Management provides searchable/filterable users, one role per account, active/inactive status, create/edit and initial-password reset. Evidence Requester is a synthetic audit-only account. Backend protections reject duplicate email and last-active-Administrator demotion; self-deactivation is disabled in the UI and rejected by API tests. Password reset revokes existing sessions and requires first-login change; the actual next-login gate appears in Part 5. Wrong-role access is denied directly by the backend in Part 3.</p>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-list.png" alt="Real Administrator user list with role and Active/Inactive states."><figcaption>Figure 30. Real Administrator user list with role and Active/Inactive states.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-search-filter.png" alt="Real search for Iris combined with IT_STAFF role filtering."><figcaption>Figure 31. Real search for Iris combined with IT_STAFF role filtering.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-created.png" alt="Real synthetic account creation; success requires first-login password change."><figcaption>Figure 32. Real synthetic account creation; success requires first-login password change.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-duplicate.png" alt="Real duplicate-email rejection from backend."><figcaption>Figure 33. Real duplicate-email rejection from backend.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-self-protection.png" alt="Self-deactivation control disabled with an explicit explanation."><figcaption>Figure 34. Self-deactivation control disabled with an explicit explanation.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-last-admin-rejected.png" alt="Real last-active-Administrator demotion rejected; Administrator remains protected."><figcaption>Figure 35. Real last-active-Administrator demotion rejected; Administrator remains protected.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-edited.png" alt="Real synthetic user details updated successfully."><figcaption>Figure 36. Real synthetic user details updated successfully.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-password-reset.png" alt="Real initial-password reset succeeded, with session-revocation/next-login warning."><figcaption>Figure 37. Real initial-password reset succeeded, with session-revocation/next-login warning.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-failure-injected.png" alt="Safe User Management API failure using a controlled HTTP 503 response."><figcaption>Figure 38. Safe User Management API failure using a controlled HTTP 503 response.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/released-main-evidence/admin-account-switch-correction.png" alt="Issue #58 correction branch: switched directly from Edit Narin to Edit Iris; the form shows Iris&#x27;s matching account fields, not Narin&#x27;s retained values. Regression test first failed on old source and now passes."><figcaption>Figure 39. Issue #58 correction branch: switched directly from Edit Narin to Edit Iris; the form shows Iris&#x27;s matching account fields, not Narin&#x27;s retained values. Regression test first failed on old source and now passes.</figcaption></figure>
+</section><section id="part9"><h2>Answer Part 9 - Zen Green UI and Responsive Evidence</h2>
+<h3>docs/lab-03/ui-spec.md</h3>
+<h4>Lab 3 Zen Green UI Specification</h4>
+<h4>Shared Shell</h4>
+<p>Retain Lab 2 tokens: primary <font face="Courier">#006B3C</font>, pale green surfaces, labelled forms, visible focus, text-bearing badges, field-level validation, and responsive cards. The shell shows current authenticated name and role, Logout, and only permitted navigation: Requester (<font face="Courier">My Tickets</font>, <font face="Courier">Create Ticket</font>), IT Staff (<font face="Courier">Ticket Queue</font>), Administrator (<font face="Courier">Ticket Queue</font> in read-only oversight plus <font face="Courier">User Management</font>). The Development Requester selector and Change Requester control are removed.</p>
+<h4>Required Screens and Modes</h4>
+<table><tr><th>Screen</th><th>Main mode and controls</th><th>Required feedback</th></tr><tr><td>Login</td><td>email, password, submit</td><td>validation, busy, safe invalid/inactive/failure</td></tr><tr><td>Change Password</td><td>current/initial password, new password, confirmation</td><td>rules, validation, busy, success, safe failure</td></tr><tr><td>Requester Ticket Detail</td><td>inherited read-only detail, attachments, Public Comments, resolution indication</td><td>ownership not-found, comment validation, success/failure</td></tr><tr><td>IT Staff Queue</td><td>compact desktop table, mobile cards, search/filter/sort/page controls</td><td>loading, empty, no-results, forbidden, failure</td></tr><tr><td>IT Staff Detail</td><td>read-only requester facts; editable owner/IT priority/status; Public Comments and distinct Internal Notes</td><td>valid transitions, confirmation, busy, validation, safe failure</td></tr><tr><td>User Management</td><td>list Name/Email/Role/Status/Edit; search, optional role filter, create/edit panel, initial-password reset</td><td>duplicate, safety conflict, forbidden, success/failure</td></tr></table>
+<h4>Role and Safety Presentation</h4>
+<p>Public Comments use a shared green-accented section labelled “Visible to Requester, IT Staff, and Administrator.” Internal Notes use a separate neutral section labelled “Visible to IT Staff and Administrator”; a Requester never sees it. Editable operational fields are visually distinct from read-only Ticket facts. Status, Requested Priority, IT Priority, and role badges always include text.</p>
+<h4>Responsive and Accessibility Rules</h4>
+<p>- Desktop &gt;= 992px: dense but readable queue table and two-column detail where useful.</p>
+<p>- Tablet 768-991px: controls wrap without overlap; table can reduce columns.</p>
+<p>- Mobile &lt; 768px: queue uses cards; forms stack; no horizontal document scroll.</p>
+<p>- Controls are keyboard reachable, labels precede fields, focus is visible, and feedback includes text rather than color alone.</p>
+<p>- Visual evidence covers desktop, tablet, and mobile for Login, Change Password, Queue, Staff Detail, and User Management.</p>
+<p>Five required screens were captured at desktop 1280x900, tablet 820x900 and mobile 390x844. The released-main responsive E2E previously passed document-width assertions on all views. The latest screenshots below are corrective-branch captures for Issue #58, not evidence that its changes are already on main. Long screens continue across slices instead of being compressed into unreadable thumbnails.</p>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-desktop.png" alt="Login - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 40. Login - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-tablet.png" alt="Login - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 41. Login - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/login-mobile.png" alt="Login - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 42. Login - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/change-password-desktop.png" alt="Change Password - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 43. Change Password - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/change-password-tablet.png" alt="Change Password - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 44. Change Password - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/change-password-mobile.png" alt="Change Password - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 45. Change Password - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-desktop.png" alt="Ticket Queue - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 46. Ticket Queue - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-tablet.png" alt="Ticket Queue - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 47. Ticket Queue - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/queue-mobile.png" alt="Ticket Queue - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 48. Ticket Queue - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-desktop.png" alt="Staff Ticket Detail - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 49. Staff Ticket Detail - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-tablet.png" alt="Staff Ticket Detail - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 50. Staff Ticket Detail - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/staff-detail-mobile.png" alt="Staff Ticket Detail - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 51. Staff Ticket Detail - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-desktop.png" alt="User Management - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 52. User Management - desktop. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-tablet.png" alt="User Management - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 53. User Management - tablet. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<figure><img src="../../artifacts/lab-03/screenshots/phase-08-qa/user-management-mobile.png" alt="User Management - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections."><figcaption>Figure 54. User Management - mobile. Issue #58 corrective-branch responsive capture; not final-main evidence for the pending corrections.</figcaption></figure>
+<p>Visual checklist: green primary buttons/navigation and neutral secondary actions; current user/role visible; editable controls separated from read-only Ticket identity; separate status/priority presentation; visible validation and safe error text; keyboard-labelled controls; mobile cards replace wide user table; no clipped/overlapping content or horizontal document overflow in the tested viewports. Automated width assertions do not prove every focus interaction or colour-contrast ratio; those should not be presented as measured accessibility conformance.</p>
+<p>Remaining submission checkpoints: reviewer integration and release of Issue #58; rerun final-main tests and recapture final Kanban; student confirmation of AI/model attribution and personal reflection; final PDF readability/layout inspection and removal of redundant repeated screenshot areas. This is a comprehensive evidence draft, not the concise submission version. It must not be labelled fully submission-ready solely because the existing product tests pass.</p>
+</section></body></html>
