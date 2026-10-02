@@ -1,6 +1,6 @@
 # Lab 3 Peer Review Record
 
-This record is updated during each Phase, not reconstructed at the end.
+This record includes phase-time entries and verified corrections added during the final audit. Audit additions are identified explicitly, not represented as contemporaneous phase records.
 
 | Phase / Issue | Feature branch | PR to `lab3-staging` | Reviewer | Comment and author response | Approval and reviewer merge |
 |---|---|---|---|---|---|
@@ -12,3 +12,15 @@ This record is updated during each Phase, not reconstructed at the end.
 | 8 QA and Release Readiness / [#51](https://github.com/iceswift/toktickit/issues/51) (Closed) | `feature/lab3-8-qa-release-readiness` | [#52](https://github.com/iceswift/toktickit/pull/52) -> `lab3-staging` | Richyboy170 | The PR records complete server, client, E2E, build, migration, responsive, and documentation verification. It also corrected requester comment/resolution coverage and mobile User Management overflow. No corrective review comment was requested. | Richyboy170 merged PR #52 into `lab3-staging`. Merge commit: [`e7d5820`](https://github.com/iceswift/toktickit/commit/e7d5820047bfb8932e12ef8e64ffb17b532786a6). Issue #51 was then closed as completed. |
 
 Review rules: each PR is linked to its Issue in GitHub's Development panel; the author replies to every review comment; corrections remain on the same branch; the reviewer approves and performs the merge into `lab3-staging`. The release PR is also reviewer-merged into `main`.
+
+## Verified final-audit additions — 1 October 2026
+
+| Record | Verified result |
+|---|---|
+| Phase 2 / Issue #35 / PR #37 | `feature/lab3-2-user-migration` to staging. Richyboy170 submitted an APPROVED review and merged on 16 September; merge `fce5346bccddfbc5cd496b4f81f41280948ed8c9`. |
+| Phase 3 / Issue #38 / PR #39 | `feature/lab3-3-authentication` to staging. Richyboy170 submitted an APPROVED review and merged on 17 September; merge `cd48ee3551b052c66f1debacbb2c9f8ea534ad22`. |
+| Release [PR #54](https://github.com/iceswift/toktickit/pull/54) | Richyboy170 merged into main on 21 September 2026, 14:02 UTC. Released baseline: `c9567a59e183f44cc0f5abea61f7db2097ae5be4`. This does not include subsequent audit corrections. |
+| Phase 7 Issue #48 reconciliation | Closed as completed on 1 October after verifying already-merged PR #49 and administrator safety tests. This was a late backlog correction, not a new implementation merge. |
+| Correction [Issue #55](https://github.com/iceswift/toktickit/issues/55) / [PR #56](https://github.com/iceswift/toktickit/pull/56) | `feature/lab3-final-audit-fixes` to staging; Development linkage verified. Richyboy170 requested as reviewer. **OPEN, awaiting peer review and reviewer merge; not released.** Local branch results: server 42, client 27, E2E 9 passing; both builds pass. |
+
+An absence of inline comments alone does not establish that no response was required: ordinary conversation comments and review-summary comments must also be checked. Historical rows describe their recorded checkpoints; final submission must include actual comment/reply evidence rather than infer completeness from an approval badge.

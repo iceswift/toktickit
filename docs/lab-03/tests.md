@@ -34,3 +34,22 @@ This plan was written before implementation. Each Acceptance Criterion has unit,
 - Responsive evidence: 15 screenshots (5 screens × 3 viewports) captured under `artifacts/lab-03/screenshots/phase-08-qa/` after the overflow assertion passed.
 
 These are Phase 8 feature-branch results. The release phase must rerun the complete checks from released `main` before they are labelled final evidence.
+
+## Released baseline audit and post-release correction
+
+Released main `c9567a5` was rerun on 2026-10-01: server 38/38, client 26/26, E2E 8/8 and both builds passed. The audit nevertheless found missing realistic seed data and an Administrator priority UI/contract mismatch; the existing suite did not cover those gaps.
+
+Issue #55 tracks the corrections on `feature/lab3-final-audit-fixes`. Correction-branch verification: server 16 files/42 tests, client 10 files/27 tests, and browser 9 scenarios passed; both builds passed. Raw server and E2E outputs are retained under `artifacts/lab-03/final-audit/`. API and E2E suites must run sequentially when they share this local database: both modify the same fixture accounts. A concurrent run failed a login gate check; the sequential rerun passed all eight original cases, and the expanded nine-case run also passed.
+
+| Planned item | Actual implementation/verification path | Scope note |
+|---|---|---|
+| API-03 | `server/tests/lab-03/requester-authorization.api.test.ts` | Includes forged identity, wrong role, cross-owner and migrated ownership checks |
+| API-06 / API-06a | `server/tests/lab-03/staff-ticket-detail.api.test.ts`, `server/tests/lab-02/ticket-detail.api.test.ts` | Communication visibility and blank/overlength rejection; not a separate comments-notes file |
+| E2E-01 | `client/e2e/lab-03/authentication.spec.ts` | Actual path includes client/ |
+| E2E-02 | `client/e2e/lab-03/staff-ticket-flow.spec.ts` | Staff operational workflow |
+| E2E-03 | `client/e2e/lab-03/user-administration.spec.ts` | Account lifecycle plus new real-browser Admin priority scenario |
+| Seed completeness / AC-09 | `server/tests/lab-03/seed-ticket-examples.api.test.ts` | Eight examples, ownership, repeat-safety and preservation |
+| Admin priority / AC-06 | `server/tests/lab-03/staff-ticket-detail.api.test.ts`, `client/tests/lab-03/StaffTicketDetail.test.tsx` | Priority allowed; Staff-only writes remain forbidden |
+| Last active Admin / AC-08 | `server/tests/lab-03/users-admin.api.test.ts` | Explicit final-Admin demotion rejection in addition to self-deactivation |
+
+The original planning table remains historical. A mapped test file does not by itself prove every planned subcase: UNIT-01's separate helper file was not created, and dedicated rate-limit/expiry coverage still needs a traceability check. No such unverified subcase is labelled passing here. Correction results are not final-main results until peer-reviewed integration and release are complete.

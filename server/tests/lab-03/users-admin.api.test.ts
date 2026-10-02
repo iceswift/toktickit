@@ -51,4 +51,11 @@ describe("Administrator user management", () => {
     const response = await admin.patch(`/admin/users/${me.body.user.id}`).send({ name: me.body.user.name, email: me.body.user.email, role: "ADMINISTRATOR", active: false });
     expect(response.status).toBe(409); expect(response.body.error).toMatch(/cannot deactivate/i);
   });
+  it("prevents demotion of the final active Administrator", async () => {
+    const me = await admin.get("/auth/me");
+    expect(await prisma.user.count({ where: { role: "ADMINISTRATOR", isActive: true } })).toBe(1);
+    const response = await admin.patch(`/admin/users/${me.body.user.id}`).send({ name: me.body.user.name, email: me.body.user.email, role: "REQUESTER", active: true });
+    expect(response.status).toBe(409);
+    expect((await prisma.user.findUniqueOrThrow({ where: { id: me.body.user.id } })).role).toBe("ADMINISTRATOR");
+  });
 });
