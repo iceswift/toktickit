@@ -4,6 +4,8 @@ Released baseline: main `8469b118bada539edb7fc3fff8d76a11180bd576`. Lab sheet Se
 
 Backlog: [Issue #61](https://github.com/iceswift/toktickit/issues/61). The card was automatically added to the existing Project in Backlog, then moved to Specified and Started. Issue creation occurred after the local correction began; this ordering is disclosed in the Issue body.
 
+[Correction PR #62](https://github.com/iceswift/toktickit/pull/62) targets lab3-staging with Richyboy170 requested. The actual Development link to Issue #61 was selected and verified, and the existing Project card is now PR Review. It is not Done. Test logs and the linked-card screenshot are retained under `artifacts/lab-03/role-badge-correction/` as well as the local raw output directory.
+
 ## Focused correction
 
 - Shared `client/src/RoleBadge.tsx` renders a Bootstrap badge with a visible role value and accessible `Role: <role>` label.
