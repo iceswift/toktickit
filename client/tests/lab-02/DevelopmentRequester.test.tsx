@@ -37,6 +37,7 @@ describe("Authenticated requester identity replaces development selection", () =
     vi.spyOn(api, "getMyTickets").mockResolvedValue({ items: [], page: 1, pageSize: 10, totalItems: 0, totalPages: 0 });
     render(<App />);
     expect(await screen.findByText("Amina Rahman · Requester")).toBeInTheDocument();
+    expect(screen.getByLabelText("Role: REQUESTER")).toHaveClass("badge");
     expect(screen.queryByLabelText("Development Requester")).not.toBeInTheDocument();
   });
 

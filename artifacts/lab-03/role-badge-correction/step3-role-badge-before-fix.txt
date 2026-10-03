@@ -1,0 +1,1252 @@
+
+> toktickit-client@1.0.0 test
+> vitest run --run tests/lab-03/RoleBadge.test.tsx
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab3-final-audit/client
+
+ ❯ tests/lab-03/RoleBadge.test.tsx (4 tests | 1 failed) 1079ms
+   × Lab 3 role badges > uses role badges in both the desktop user table and mobile cards 1038ms
+     → Unable to find a label with the text of: Role: REQUESTER
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"mb-4"[39m
+      [36m>[39m
+        [36m<h1>[39m
+          [0mUser Management[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-secondary mb-0"[39m
+        [36m>[39m
+          [0mCreate accounts and safely maintain roles, access, and initial passwords.[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"row g-3 mb-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"col-12 col-md-8"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"form-label"[39m
+            [33mfor[39m=[32m"user-search"[39m
+          [36m>[39m
+            [0mSearch users[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"form-control"[39m
+            [33mid[39m=[32m"user-search"[39m
+            [33mplaceholder[39m=[32m"Name or email"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"col-12 col-md-4"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"form-label"[39m
+            [33mfor[39m=[32m"user-role"[39m
+          [36m>[39m
+            [0mRole[0m
+          [36m</label>[39m
+          [36m<select[39m
+            [33mclass[39m=[32m"form-select"[39m
+            [33mid[39m=[32m"user-role"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mAll roles[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mREQUESTER[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mIT_STAFF[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mADMINISTRATOR[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"table-responsive mb-4 d-none d-md-block"[39m
+      [36m>[39m
+        [36m<table[39m
+          [33mclass[39m=[32m"table align-middle"[39m
+        [36m>[39m
+          [36m<thead>[39m
+            [36m<tr>[39m
+              [36m<th>[39m
+                [0mName[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mEmail[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mRole[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mStatus[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"visually-hidden"[39m
+                [36m>[39m
+                  [0mActions[0m
+                [36m</span>[39m
+              [36m</th>[39m
+            [36m</tr>[39m
+          [36m</thead>[39m
+          [36m<tbody>[39m
+            [36m<tr>[39m
+              [36m<td>[39m
+                [0mAmina[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mamina@example.test[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mREQUESTER[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"badge text-bg-success"[39m
+                [36m>[39m
+                  [0mActive[0m
+                [36m</span>[39m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"d-flex flex-wrap gap-2 justify-content-end"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-outline-success btn-sm"[39m
+                  [36m>[39m
+                    [0mEdit[0m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-outline-secondary btn-sm"[39m
+                  [36m>[39m
+                    [0mReset password[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</td>[39m
+            [36m</tr>[39m
+          [36m</tbody>[39m
+        [36m</table>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"d-md-none mb-4"[39m
+      [36m>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"card card-body mb-2"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<strong>[39m
+              [0mAmina[0m
+            [36m</strong>[39m
+          [36m</div>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-break"[39m
+          [36m>[39m
+            [0mamina@example.test[0m
+          [36m</span>[39m
+          [36m<small>[39m
+            [0mREQUESTER[0m
+          [36m</small>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"my-2"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"badge text-bg-success"[39m
+            [36m>[39m
+              [0mActive[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"d-flex flex-wrap gap-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-outline-success btn-sm"[39m
+            [36m>[39m
+              [0mEdit[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-outline-secondary btn-sm"[39m
+            [36m>[39m
+              [0mReset password[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</article>[39m
+      [36m</div>[39m
+      [36m<form[39m
+        [33mclass[39m=[32m"card card-body"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"h5"[39m
+        [36m>[39m
+          [0mCreate user[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"row g-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-name"[39m
+            [36m>[39m
+              [0mName[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-name"[39m
+              [33mmaxlength[39m=[32m"120"[39m
+              [33mminlength[39m=[32m"2"[39m
+              [33mname[39m=[32m"name"[39m
+              [33mrequired[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-email"[39m
+            [36m>[39m
+              [0mEmail[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-email"[39m
+              [33mname[39m=[32m"email"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"email"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-role"[39m
+            [36m>[39m
+              [0mRole[0m
+            [36m</label>[39m
+            [36m<select[39m
+              [33mclass[39m=[32m"form-select"[39m
+              [33mid[39m=[32m"create-role"[39m
+              [33mname[39m=[32m"role"[39m
+            [36m>[39m
+              [36m<option>[39m
+                [0mREQUESTER[0m
+              [36m</option>[39m
+              [36m<option>[39m
+                [0mIT_STAFF[0m
+              [36m</option>[39m
+              [36m<option>[39m
+                [0mADMINISTRATOR[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-password"[39m
+            [36m>[39m
+              [0mInitial password[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33maria-describedby[39m=[32m"create-password-hint"[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-password"[39m
+              [33mmaxlength[39m=[32m"128"[39m
+              [33mminlength[39m=[32m"12"[39m
+              [33mname[39m=[32m"initialPassword"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"password"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-text"[39m
+              [33mid[39m=[32m"create-password-hint"[39m
+            [36m>[39m
+              [0mAt least 12 characters with upper, lower, number, and symbol.[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-check"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mclass[39m=[32m"form-check-input"[39m
+                [33mid[39m=[32m"create-active"[39m
+                [33mname[39m=[32m"active"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-check-label"[39m
+                [33mfor[39m=[32m"create-active"[39m
+              [36m>[39m
+                [0mActive account[0m
+              [36m</label>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"btn btn-success mt-3 align-self-start"[39m
+        [36m>[39m
+          [0mCreate user[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"mb-4"[39m
+      [36m>[39m
+        [36m<h1>[39m
+          [0mUser Management[0m
+        [36m</h1>[39m
+        [36m<p[39m
+          [33mclass[39m=[32m"text-secondary mb-0"[39m
+        [36m>[39m
+          [0mCreate accounts and safely maintain roles, access, and initial passwords.[0m
+        [36m</p>[39m
+      [36m</header>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"row g-3 mb-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"col-12 col-md-8"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"form-label"[39m
+            [33mfor[39m=[32m"user-search"[39m
+          [36m>[39m
+            [0mSearch users[0m
+          [36m</label>[39m
+          [36m<input[39m
+            [33mclass[39m=[32m"form-control"[39m
+            [33mid[39m=[32m"user-search"[39m
+            [33mplaceholder[39m=[32m"Name or email"[39m
+            [33mvalue[39m=[32m""[39m
+          [36m/>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"col-12 col-md-4"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"form-label"[39m
+            [33mfor[39m=[32m"user-role"[39m
+          [36m>[39m
+            [0mRole[0m
+          [36m</label>[39m
+          [36m<select[39m
+            [33mclass[39m=[32m"form-select"[39m
+            [33mid[39m=[32m"user-role"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m""[39m
+            [36m>[39m
+              [0mAll roles[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mREQUESTER[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mIT_STAFF[0m
+            [36m</option>[39m
+            [36m<option>[39m
+              [0mADMINISTRATOR[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"table-responsive mb-4 d-none d-md-block"[39m
+      [36m>[39m
+        [36m<table[39m
+          [33mclass[39m=[32m"table align-middle"[39m
+        [36m>[39m
+          [36m<thead>[39m
+            [36m<tr>[39m
+              [36m<th>[39m
+                [0mName[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mEmail[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mRole[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mStatus[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"visually-hidden"[39m
+                [36m>[39m
+                  [0mActions[0m
+                [36m</span>[39m
+              [36m</th>[39m
+            [36m</tr>[39m
+          [36m</thead>[39m
+          [36m<tbody>[39m
+            [36m<tr>[39m
+              [36m<td>[39m
+                [0mAmina[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mamina@example.test[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mREQUESTER[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"badge text-bg-success"[39m
+                [36m>[39m
+                  [0mActive[0m
+                [36m</span>[39m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"d-flex flex-wrap gap-2 justify-content-end"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-outline-success btn-sm"[39m
+                  [36m>[39m
+                    [0mEdit[0m
+                  [36m</button>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-outline-secondary btn-sm"[39m
+                  [36m>[39m
+                    [0mReset password[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</td>[39m
+            [36m</tr>[39m
+          [36m</tbody>[39m
+        [36m</table>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"d-md-none mb-4"[39m
+      [36m>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"card card-body mb-2"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<strong>[39m
+              [0mAmina[0m
+            [36m</strong>[39m
+          [36m</div>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"text-break"[39m
+          [36m>[39m
+            [0mamina@example.test[0m
+          [36m</span>[39m
+          [36m<small>[39m
+            [0mREQUESTER[0m
+          [36m</small>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"my-2"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"badge text-bg-success"[39m
+            [36m>[39m
+              [0mActive[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"d-flex flex-wrap gap-2"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-outline-success btn-sm"[39m
+            [36m>[39m
+              [0mEdit[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-outline-secondary btn-sm"[39m
+            [36m>[39m
+              [0mReset password[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</article>[39m
+      [36m</div>[39m
+      [36m<form[39m
+        [33mclass[39m=[32m"card card-body"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mclass[39m=[32m"h5"[39m
+        [36m>[39m
+          [0mCreate user[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"row g-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-name"[39m
+            [36m>[39m
+              [0mName[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-name"[39m
+              [33mmaxlength[39m=[32m"120"[39m
+              [33mminlength[39m=[32m"2"[39m
+              [33mname[39m=[32m"name"[39m
+              [33mrequired[39m=[32m""[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-email"[39m
+            [36m>[39m
+              [0mEmail[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-email"[39m
+              [33mname[39m=[32m"email"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"email"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-role"[39m
+            [36m>[39m
+              [0mRole[0m
+            [36m</label>[39m
+            [36m<select[39m
+              [33mclass[39m=[32m"form-select"[39m
+              [33mid[39m=[32m"create-role"[39m
+              [33mname[39m=[32m"role"[39m
+            [36m>[39m
+              [36m<option>[39m
+                [0mREQUESTER[0m
+              [36m</option>[39m
+              [36m<option>[39m
+                [0mIT_STAFF[0m
+              [36m</option>[39m
+              [36m<option>[39m
+                [0mADMINISTRATOR[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12 col-md-6"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"create-password"[39m
+            [36m>[39m
+              [0mInitial password[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33maria-describedby[39m=[32m"create-password-hint"[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"create-password"[39m
+              [33mmaxlength[39m=[32m"128"[39m
+              [33mminlength[39m=[32m"12"[39m
+              [33mname[39m=[32m"initialPassword"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"password"[39m
+            [36m/>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-text"[39m
+              [33mid[39m=[32m"create-password-hint"[39m
+            [36m>[39m
+              [0mAt least 12 characters with upper, lower, number, and symbol.[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"col-12"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-check"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mchecked[39m=[32m""[39m
+                [33mclass[39m=[32m"form-check-input"[39m
+                [33mid[39m=[32m"create-active"[39m
+                [33mname[39m=[32m"active"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-check-label"[39m
+                [33mfor[39m=[32m"create-active"[39m
+              [36m>[39m
+                [0mActive account[0m
+              [36m</label>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"btn btn-success mt-3 align-self-start"[39m
+        [36m>[39m
+          [0mCreate user[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > uses role badges in both the desktop user table and mobile cards
+TestingLibraryElementError: Unable to find a label with the text of: Role: REQUESTER
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <section>
+      <header
+        class="mb-4"
+      >
+        <h1>
+          User Management
+        </h1>
+        <p
+          class="text-secondary mb-0"
+        >
+          Create accounts and safely maintain roles, access, and initial passwords.
+        </p>
+      </header>
+      <div
+        class="row g-3 mb-4"
+      >
+        <div
+          class="col-12 col-md-8"
+        >
+          <label
+            class="form-label"
+            for="user-search"
+          >
+            Search users
+          </label>
+          <input
+            class="form-control"
+            id="user-search"
+            placeholder="Name or email"
+            value=""
+          />
+        </div>
+        <div
+          class="col-12 col-md-4"
+        >
+          <label
+            class="form-label"
+            for="user-role"
+          >
+            Role
+          </label>
+          <select
+            class="form-select"
+            id="user-role"
+          >
+            <option
+              value=""
+            >
+              All roles
+            </option>
+            <option>
+              REQUESTER
+            </option>
+            <option>
+              IT_STAFF
+            </option>
+            <option>
+              ADMINISTRATOR
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="table-responsive mb-4 d-none d-md-block"
+      >
+        <table
+          class="table align-middle"
+        >
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Role
+              </th>
+              <th>
+                Status
+              </th>
+              <th>
+                <span
+                  class="visually-hidden"
+                >
+                  Actions
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Amina
+              </td>
+              <td>
+                amina@example.test
+              </td>
+              <td>
+                REQUESTER
+              </td>
+              <td>
+                <span
+                  class="badge text-bg-success"
+                >
+                  Active
+                </span>
+              </td>
+              <td>
+                <div
+                  class="d-flex flex-wrap gap-2 justify-content-end"
+                >
+                  <button
+                    class="btn btn-outline-success btn-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary btn-sm"
+                  >
+                    Reset password
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="d-md-none mb-4"
+      >
+        <article
+          class="card card-body mb-2"
+        >
+          <div>
+            <strong>
+              Amina
+            </strong>
+          </div>
+          <span
+            class="text-break"
+          >
+            amina@example.test
+          </span>
+          <small>
+            REQUESTER
+          </small>
+          <div
+            class="my-2"
+          >
+            <span
+              class="badge text-bg-success"
+            >
+              Active
+            </span>
+          </div>
+          <div
+            class="d-flex flex-wrap gap-2"
+          >
+            <button
+              class="btn btn-outline-success btn-sm"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-outline-secondary btn-sm"
+            >
+              Reset password
+            </button>
+          </div>
+        </article>
+      </div>
+      <form
+        class="card card-body"
+      >
+        <h2
+          class="h5"
+        >
+          Create user
+        </h2>
+        <div
+          class="row g-3"
+        >
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-name"
+            >
+              Name
+            </label>
+            <input
+              class="form-control"
+              id="create-name"
+              maxlength="120"
+              minlength="2"
+              name="name"
+              required=""
+            />
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-email"
+            >
+              Email
+            </label>
+            <input
+              class="form-control"
+              id="create-email"
+              name="email"
+              required=""
+              type="email"
+            />
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-role"
+            >
+              Role
+            </label>
+            <select
+              class="form-select"
+              id="create-role"
+              name="role"
+            >
+              <option>
+                REQUESTER
+              </option>
+              <option>
+                IT_STAFF
+              </option>
+              <option>
+                ADMINISTRATOR
+              </option>
+            </select>
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-password"
+            >
+              Initial password
+            </label>
+            <input
+              aria-describedby="create-password-hint"
+              class="form-control"
+              id="create-password"
+              maxlength="128"
+              minlength="12"
+              name="initialPassword"
+              required=""
+              type="password"
+            />
+            <div
+              class="form-text"
+              id="create-password-hint"
+            >
+              At least 12 characters with upper, lower, number, and symbol.
+            </div>
+          </div>
+          <div
+            class="col-12"
+          >
+            <div
+              class="form-check"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                id="create-active"
+                name="active"
+                type="checkbox"
+              />
+              <label
+                class="form-check-label"
+                for="create-active"
+              >
+                Active account
+              </label>
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-success mt-3 align-self-start"
+        >
+          Create user
+        </button>
+      </form>
+    </section>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <section>
+      <header
+        class="mb-4"
+      >
+        <h1>
+          User Management
+        </h1>
+        <p
+          class="text-secondary mb-0"
+        >
+          Create accounts and safely maintain roles, access, and initial passwords.
+        </p>
+      </header>
+      <div
+        class="row g-3 mb-4"
+      >
+        <div
+          class="col-12 col-md-8"
+        >
+          <label
+            class="form-label"
+            for="user-search"
+          >
+            Search users
+          </label>
+          <input
+            class="form-control"
+            id="user-search"
+            placeholder="Name or email"
+            value=""
+          />
+        </div>
+        <div
+          class="col-12 col-md-4"
+        >
+          <label
+            class="form-label"
+            for="user-role"
+          >
+            Role
+          </label>
+          <select
+            class="form-select"
+            id="user-role"
+          >
+            <option
+              value=""
+            >
+              All roles
+            </option>
+            <option>
+              REQUESTER
+            </option>
+            <option>
+              IT_STAFF
+            </option>
+            <option>
+              ADMINISTRATOR
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="table-responsive mb-4 d-none d-md-block"
+      >
+        <table
+          class="table align-middle"
+        >
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Email
+              </th>
+              <th>
+                Role
+              </th>
+              <th>
+                Status
+              </th>
+              <th>
+                <span
+                  class="visually-hidden"
+                >
+                  Actions
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Amina
+              </td>
+              <td>
+                amina@example.test
+              </td>
+              <td>
+                REQUESTER
+              </td>
+              <td>
+                <span
+                  class="badge text-bg-success"
+                >
+                  Active
+                </span>
+              </td>
+              <td>
+                <div
+                  class="d-flex flex-wrap gap-2 justify-content-end"
+                >
+                  <button
+                    class="btn btn-outline-success btn-sm"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-outline-secondary btn-sm"
+                  >
+                    Reset password
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="d-md-none mb-4"
+      >
+        <article
+          class="card card-body mb-2"
+        >
+          <div>
+            <strong>
+              Amina
+            </strong>
+          </div>
+          <span
+            class="text-break"
+          >
+            amina@example.test
+          </span>
+          <small>
+            REQUESTER
+          </small>
+          <div
+            class="my-2"
+          >
+            <span
+              class="badge text-bg-success"
+            >
+              Active
+            </span>
+          </div>
+          <div
+            class="d-flex flex-wrap gap-2"
+          >
+            <button
+              class="btn btn-outline-success btn-sm"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-outline-secondary btn-sm"
+            >
+              Reset password
+            </button>
+          </div>
+        </article>
+      </div>
+      <form
+        class="card card-body"
+      >
+        <h2
+          class="h5"
+        >
+          Create user
+        </h2>
+        <div
+          class="row g-3"
+        >
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-name"
+            >
+              Name
+            </label>
+            <input
+              class="form-control"
+              id="create-name"
+              maxlength="120"
+              minlength="2"
+              name="name"
+              required=""
+            />
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-email"
+            >
+              Email
+            </label>
+            <input
+              class="form-control"
+              id="create-email"
+              name="email"
+              required=""
+              type="email"
+            />
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-role"
+            >
+              Role
+            </label>
+            <select
+              class="form-select"
+              id="create-role"
+              name="role"
+            >
+              <option>
+                REQUESTER
+              </option>
+              <option>
+                IT_STAFF
+              </option>
+              <option>
+                ADMINISTRATOR
+              </option>
+            </select>
+          </div>
+          <div
+            class="col-12 col-md-6"
+          >
+            <label
+              class="form-label"
+              for="create-password"
+            >
+              Initial password
+            </label>
+            <input
+              aria-describedby="create-password-hint"
+              class="form-control"
+              id="create-password"
+              maxlength="128"
+              minlength="12"
+              name="initialPassword"
+              required=""
+              type="password"
+            />
+            <div
+              class="form-text"
+              id="create-password-hint"
+            >
+              At least 12 characters with upper, lower, number, and symbol.
+            </div>
+          </div>
+          <div
+            class="col-12"
+          >
+            <div
+              class="form-check"
+            >
+              <input
+                checked=""
+                class="form-check-input"
+                id="create-active"
+                name="active"
+                type="checkbox"
+              />
+              <label
+                class="form-check-label"
+                for="create-active"
+              >
+                Active account
+              </label>
+            </div>
+          </div>
+        </div>
+        <button
+          class="btn btn-success mt-3 align-self-start"
+        >
+          Create user
+        </button>
+      </form>
+    </section>
+  </div>
+</body>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ tests/lab-03/RoleBadge.test.tsx:19:33
+     17|     ]);
+     18|     render(<UserManagement user={{ id: 7, name: "Narin", email: "narin…
+     19|     const badges = await screen.findAllByLabelText("Role: REQUESTER");
+       |                                 ^
+     20|     expect(badges).toHaveLength(2);
+     21|     badges.forEach((badge) => expect(badge).toHaveClass("badge"));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  18:48:20
+   Duration  2.89s (transform 171ms, setup 126ms, collect 314ms, tests 1.08s, environment 824ms, prepare 219ms)
+
