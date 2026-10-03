@@ -1,0 +1,65 @@
+*   c551061 (HEAD -> docs/lab3-released-main-report, origin/main) Merge pull request #57 from iceswift/lab3-staging
+|\
+| *   b70d7e8 Merge pull request #56 from iceswift/feature/lab3-final-audit-fixes
+| |\
+| | * 20b3493 (feature/lab3-final-audit-fixes) docs(lab3): record verified audit review and backlog checkpoints
+| | * 00a2826 fix(lab3): complete seed examples and admin priority permission
+| |/
+* / c9567a5 (main, feature/lab3-seed-admin-priority, docs/lab3-final-submission-audit) Merge pull request #54 from iceswift/lab3-staging
+|/
+*   002abfb Merge pull request #53 from iceswift/docs/lab3-phase8-completion-evidence
+|\
+| * aa18ae5 docs(lab3): record Phase 8 reviewer merge
+|/
+*   e7d5820 Merge pull request #52 from iceswift/feature/lab3-8-qa-release-readiness
+|\
+| * db9dbf9 test(lab3): complete QA and release readiness
+|/
+*   293f64f Merge pull request #50 from iceswift/docs/lab3-phase6-7-completion-evidence
+|\
+| * 08f2c63 docs(lab3): record Phase 6 and 7 completion evidence
+|/
+*   64afcd9 Merge pull request #49 from iceswift/feature/lab3-7-administrator-user-management
+|\
+| * 9a29dbb test(lab3): complete administrator user management
+| * f98e124 feat(lab3): add administrator user management
+|/
+*   79cee7b Merge pull request #47 from iceswift/feature/lab3-6-it-staff-ticket-operations
+|\
+| * 8908655 feat(lab3): add IT Staff ticket operations
+|/
+*   2be944b Merge pull request #45 from iceswift/docs/lab3-phase5-completion-evidence
+|\
+| * 376589b docs(lab3): record Phase 5 completion evidence
+|/
+*   f1f51c8 Merge pull request #44 from iceswift/feature/lab3-5-it-staff-ticket-queue
+|\
+| * efdd033 feat(lab3): add IT Staff ticket queue
+|/
+*   aa278cd Merge pull request #42 from iceswift/docs/lab3-phase4-completion-evidence
+|\
+| * a01260c docs(lab3): record Phase 4 completion evidence
+|/
+*   d48c2c8 Merge pull request #41 from iceswift/feature/lab3-4-requester-authenticated-identity
+|\
+| * 1e7ed5a docs(lab3): record Phase 4 review response
+| * 8c5d5b7 fix(lab3): authorize requester data by User identity
+| * fe972e3 docs(lab3): capture Phase 4 review checkpoint
+| * b85ec0c feat(lab3): bind requester flows to authenticated sessions
+|/
+*   cd48ee3 Merge pull request #39 from iceswift/feature/lab3-3-authentication
+|\
+| * 3d34f8a feat(lab3): add secure authentication sessions
+|/
+*   fce5346 Merge pull request #37 from iceswift/feature/lab3-2-user-migration
+|\
+| * 975cab6 feat(lab3): migrate requesters to role-based users
+|/
+*   6d7864b Merge pull request #36 from iceswift/docs/lab3-part1-evidence
+|\
+| * 6d16a23 docs(lab3): complete phase 1 workflow evidence
+| * ff83231 docs(lab3): begin HTML report source
+|/
+* 42079a7 Merge pull request #32 from iceswift/feature/lab3-1-engineering-contract
+* 2eeffe8 docs(lab3): clarify auth and comment contract
+* ee74c14 docs(lab3): define engineering contract and test plan

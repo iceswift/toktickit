@@ -5,6 +5,24 @@ import * as api from "../../src/api.js";
 import { StaffTicketQueue } from "../../src/StaffTicketQueue.js";
 
 describe("IT Staff Ticket Queue", () => {
+  it("renders distinct requested and IT priority badges in table and mobile cards", async () => {
+    const ticket: api.StaffQueueItem = {
+      id: 1, ticketNumber: "TKT-DEMO0001", summary: "Network request", description: "Connection failure",
+      requesterId: 1, categoryId: 1, relatedSystemId: 1, requestedPriority: "HIGH", itPriority: "URGENT", currentStatus: "OPEN",
+      createdAt: "2026-10-02T00:00:00Z", updatedAt: "2026-10-02T00:00:00Z",
+      category: { id: 1, name: "Network" }, requesterUser: { id: 1, name: "Amina" }, owner: null,
+    };
+    vi.spyOn(api, "getStaffTickets").mockResolvedValue({ items: [ticket], page: 1, pageSize: 10, totalItems: 1, totalPages: 1 });
+    render(<StaffTicketQueue />);
+    for (const label of ["Requested: HIGH", "IT: URGENT"]) {
+      const badges = await screen.findAllByText(label);
+      expect(badges).toHaveLength(2);
+      for (const badge of badges) expect(badge).toHaveClass("badge");
+    }
+    const statuses = screen.getAllByText("OPEN", { selector: "span" });
+    expect(statuses).toHaveLength(2);
+    for (const status of statuses) expect(status).toHaveClass("badge");
+  });
   it("renders queue controls and an explicit no-results state", async () => {
     vi.spyOn(api, "getStaffTickets").mockResolvedValue({ items: [], page: 1, pageSize: 10, totalItems: 0, totalPages: 1 });
     render(<StaffTicketQueue />);

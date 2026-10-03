@@ -1,0 +1,21 @@
+Actual direct API evidence on released main c551061 - 2 October 2026
+Isolated audit PostgreSQL on port 55434. Synthetic test users only. Session cookies/passwords omitted.
+Anonymous GET /staff/tickets -> HTTP 401 {"error":"Authentication is required."}
+Requester GET /admin/users -> HTTP 403 {"error":"Administrator access is required."}
+Requester GET staff Internal Notes -> HTTP 403 {"error":"IT Staff or Administrator access is required."}
+Cross-owner GET Ticket -> HTTP 404 {"error":"The requested resource was not found."}
+Owned GET Ticket -> HTTP 200 public comment present=true; internalNotes field absent=true
+Requester attempts formal CLOSED status -> HTTP 403 {"error":"IT Staff or Administrator access is required."}
+Requester non-final resolution indication -> HTTP 200 Accepted; formal status checked separately
+Database assertion: problemAppearsResolvedAt recorded; currentStatus remains IN_PROGRESS.
+Blank staff Public Comment -> HTTP 400 {"error":"Comment content must be 1 to 2,000 characters."}
+Overlength staff Internal Note -> HTTP 400 {"error":"Internal Note content must be 1 to 2,000 characters."}
+Expired session GET /staff/tickets -> HTTP 401 {"error":"Authentication is required."}
+Rate-limit wrong-password attempt 1 -> HTTP 401 {"error":"Invalid email or password."}
+Rate-limit wrong-password attempt 2 -> HTTP 401 {"error":"Invalid email or password."}
+Rate-limit wrong-password attempt 3 -> HTTP 401 {"error":"Invalid email or password."}
+Rate-limit wrong-password attempt 4 -> HTTP 401 {"error":"Invalid email or password."}
+Rate-limit wrong-password attempt 5 -> HTTP 401 {"error":"Invalid email or password."}
+Correct fixture password after five failures -> HTTP 401 {"error":"Invalid email or password."}
+Valid fixture credentials succeeded in the browser before these failures; rate limit does not disclose account existence.
+All assertions above passed. This is supplemental direct API verification, not an additional Vitest test count.

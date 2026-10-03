@@ -8,6 +8,22 @@ const administrator: api.AuthUser = { id: 7, name: "Narin Admin", email: "narin.
 const managedUser: api.ManagedUser = { id: 8, name: "Amina User", email: "amina@example.test", role: "REQUESTER", isActive: true, mustChangePassword: false };
 
 describe("Administrator User Management", () => {
+  it("replaces edit fields when switching directly to another account", async () => {
+    const user = userEvent.setup();
+    const second: api.ManagedUser = { ...managedUser, id: 9, name: "Ben User", email: "ben@example.test", role: "IT_STAFF", isActive: false };
+    vi.spyOn(api, "getAdminUsers").mockResolvedValue([managedUser, second]);
+    render(<UserManagement user={administrator} />);
+    const table = await screen.findByRole("table");
+    await user.click(within(within(table).getByRole("row", { name: /Amina User/ })).getByRole("button", { name: "Edit" }));
+    await user.clear(screen.getByLabelText("Name", { selector: "#edit-name" }));
+    await user.type(screen.getByLabelText("Name", { selector: "#edit-name" }), "Unsaved Amina draft");
+    await user.click(within(within(table).getByRole("row", { name: /Ben User/ })).getByRole("button", { name: "Edit" }));
+    expect(await screen.findByRole("heading", { name: "Edit Ben User" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Name", { selector: "#edit-name" })).toHaveValue("Ben User");
+    expect(screen.getByLabelText("Email", { selector: "#edit-email" })).toHaveValue("ben@example.test");
+    expect(screen.getByLabelText("Role", { selector: "#edit-role" })).toHaveValue("IT_STAFF");
+    expect(screen.getByLabelText("Active account", { selector: "#edit-active" })).not.toBeChecked();
+  });
   it("lists users with filters and management actions", async () => {
     vi.spyOn(api, "getAdminUsers").mockResolvedValue([managedUser]);
     render(<UserManagement user={administrator} />);
