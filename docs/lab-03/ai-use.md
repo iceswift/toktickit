@@ -6,19 +6,19 @@ OpenAI Codex with GPT Sol6.0 and Sol6.1 supported requirement interpretation, ph
 
 ## Selected Prompts: Analysis, Planning and Review Support
 
-The nine examples below are actual user messages selected to show how AI assisted with interpretation, planning, progress assessment and review. They are not the complete conversation or a claim that AI only advised. Thai messages are labelled English translations; the English instruction is verbatim. The support column describes the purpose of the request, not a verbatim AI response or proof that the student performed a check themselves. Original implementation instructions and execution remain part of the disclosed AI contribution.
+The nine examples below are actual user messages selected to show how AI assisted with interpretation, planning, progress assessment and review. They are not the complete conversation or a claim that AI only advised. All prompts are presented in English; messages originally written in Thai have been translated, while the originally English instruction is verbatim. The support column describes the purpose of the request, not a verbatim AI response or proof that the student performed a check themselves. Original implementation instructions and execution remain part of the disclosed AI contribution.
 
 | # | Actual selected prompt | How AI supported the work |
 |---|---|---|
-| 1 | English translation: "These are the Lab 3 details. Before starting, reread the Lab document and GitHub-use guide, then plan the project phases. Think mainly in English and answer in Thai. Capture evidence and update the report throughout." | Interpret the handout and connect requirements, phase dependencies, GitHub workflow and evidence planning. |
-| 2 | English translation: "Can you plan to inspect and redo the Lab 3 submission documents?" | Organize a report audit against the nine required answer Parts instead of relying on page count. |
-| 3 | English translation: "Have you read the GitHub-use file?" | Recheck reviewer-merge rules, review replies and actual PR-to-Issue links. |
-| 4 | English translation: "How much needs to be corrected now?" | Assess remaining gaps and explain the scope of corrections before proceeding. |
-| 5 | English translation: "Are there still any PRs that need to be opened?" | Clarify which review/integration gates remained, distinguishing product work from documentation updates. |
-| 6 | English translation: "I want a report-submission roadmap; I do not even know when it will finish although the assignment seems fixed." | Break completion into released-main verification, evidence reconciliation, report preparation and final PDF checks. |
-| 7 | English translation: "When will Lab 3 be finished and the report ready to submit?" | Explain readiness and outstanding work rather than treating an approval or passing test count as final submission completion. |
+| 1 | "These are the Lab 3 details. Before starting, reread the Lab document and GitHub-use guide, then plan the project phases. Think mainly in English and answer in Thai. Capture evidence and update the report throughout." | Interpret the handout and connect requirements, phase dependencies, GitHub workflow and evidence planning. |
+| 2 | "Can you plan to inspect and redo the Lab 3 submission documents?" | Organize a report audit against the nine required answer Parts instead of relying on page count. |
+| 3 | "Have you read the GitHub-use file?" | Recheck reviewer-merge rules, review replies and actual PR-to-Issue links. |
+| 4 | "How much needs to be corrected now?" | Assess remaining gaps and explain the scope of corrections before proceeding. |
+| 5 | "Are there still any PRs that need to be opened?" | Clarify which review/integration gates remained, distinguishing product work from documentation updates. |
+| 6 | "I want a report-submission roadmap; I do not even know when it will finish although the assignment seems fixed." | Break completion into released-main verification, evidence reconciliation, report preparation and final PDF checks. |
+| 7 | "When will Lab 3 be finished and the report ready to submit?" | Explain readiness and outstanding work rather than treating an approval or passing test count as final submission completion. |
 | 8 | "Let's do step1" | Authorize the first verification step in the report roadmap. AI executed checks; this is not represented as student-executed testing. |
-| 9 | English translation: "Please provide all the details in English so another AI can take over from here, because the new chat can access the in-app browser." | Prepare a handover that preserves context, verified status and unresolved browser/workflow tasks. |
+| 9 | "Please provide all the details in English so another AI can take over from here, because the new chat can access the in-app browser." | Prepare a handover that preserves context, verified status and unresolved browser/workflow tasks. |
 
 ## My Reflection
 
