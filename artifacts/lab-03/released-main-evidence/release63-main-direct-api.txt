@@ -1,0 +1,13 @@
+Actual supplemental direct API verification: released main b65714ddd4cb733d4ad80983707d50ff618a0a1f, 3 October 2026.
+Isolated release-63 database; synthetic accounts only; secrets omitted. Demo gates cleared after the automated suite for evidence collection.
+Anonymous staff queue -> HTTP 401 {"error":"Authentication is required."}
+Requester admin access -> HTTP 403 {"error":"Administrator access is required."}
+Requester private-note access -> HTTP 403 {"error":"IT Staff or Administrator access is required."}
+Cross-owner Ticket -> HTTP 404 {"error":"The requested resource was not found."}
+Owned detail -> HTTP 200; private internalNotes field absent.
+Requester cannot change formal status -> HTTP 403 {"error":"IT Staff or Administrator access is required."}
+Requester resolution -> HTTP 200; formal status preserved as NEW.
+Logout -> HTTP 204 null
+Reused revoked session protected access -> HTTP 401 {"error":"Authentication is required."}
+Anonymous protected access after logout -> HTTP 401 {"error":"Authentication is required."}
+All assertions passed. Supplemental evidence, not additional Vitest tests.

@@ -1,0 +1,5 @@
+
+> toktickit-server@1.0.0 prisma:seed
+> tsx prisma/seed.ts
+
+Seeded 4 IT request categories, 7 related systems, 5 Requesters, 4 IT Staff, 1 Administrator, and 8 demonstration Tickets with Public Comments and Internal Notes. Existing Ticket changes and passwords are preserved.

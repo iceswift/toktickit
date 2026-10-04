@@ -1,0 +1,10 @@
+Actual supplemental attachment continuity, released main b65714d, 4 October 2026.
+Local synthetic fixture accounts; post-test demo gates cleared temporarily. No additional Vitest count.
+Owner upload -> HTTP 201; Ticket TKT-20260901-DEMO0001.
+Uploaded content is the supplied course handout, not customer/private data.
+Staff detail -> HTTP 200; same attachment ID and filename retained.
+Owner download -> HTTP 200, application/pdf.
+Actual supplemental attachment continuity, released main b65714d, 4 October 2026.
+Local synthetic fixture accounts; post-test demo gates cleared temporarily. No additional Vitest count.
+Owner soft removal -> HTTP 204.
+Removed attachment download -> HTTP 404.

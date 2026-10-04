@@ -1,0 +1,46 @@
+
+> toktickit-client@1.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab3-final-audit/client
+
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders REQUESTER with a text-bearing badge
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders IT_STAFF with a text-bearing badge
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders ADMINISTRATOR with a text-bearing badge
+ ✓ tests/lab-02/ZenGreenStyle.test.tsx > Zen Green form conventions > uses labelled required fields and a disabled-safe submit state
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > uses role badges in both the desktop user table and mobile cards
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > renders distinct requested and IT priority badges in table and mobile cards
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > requires login and never offers a Development Requester selector
+ ✓ tests/lab-02/CreateTicket.test.tsx > Create Ticket > shows field-level validation without calling the API
+ ✓ tests/lab-01/App.test.tsx > App > renders the TokTickIT heading
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > renders queue controls and an explicit no-results state
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > separates Public Comments from Internal Notes and exposes staff controls
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > renders owner-scoped Ticket fields read-only and returns to My Tickets
+ ✓ tests/lab-01/App.test.tsx > App > shows a loading state while the API request is pending
+ ✓ tests/lab-02/MyTickets.test.tsx > My Tickets > shows owned Ticket data and sends search/filter query controls 346ms
+ ✓ tests/lab-01/App.test.tsx > App > shows Online and the categories returned by the API
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > sends a search query and distinguishes filtered no-results
+ ✓ tests/lab-01/App.test.tsx > App > shows an Offline error message when the API is unavailable
+ ✓ tests/lab-02/MyTickets.test.tsx > My Tickets > distinguishes an empty Ticket list from no matching results
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > posts a Public Comment through the staff API 391ms
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > allows Administrator IT Priority changes while keeping staff-only controls unavailable
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > posts a Public Comment and records a non-final resolution indication 433ms
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > does not disclose Ticket data when the owner-scoped request fails
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > replaces edit fields when switching directly to another account 794ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > lists users with filters and management actions
+ ✓ tests/lab-03/Authentication.test.tsx > Lab 3 authentication screens > submits credentials and returns the authenticated user 800ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > uses the authenticated User for the requester shell 776ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > restores an existing requester session without another identity choice
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > blocks the requester shell until the first password change
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > edits a user's role and active state
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > uploads an allowed Attachment and requires a reason before soft removal 591ms
+ ✓ tests/lab-03/Authentication.test.tsx > Lab 3 authentication screens > keeps a mismatched password in the form and explains the problem 933ms
+ ✓ tests/lab-02/CreateTicket.test.tsx > Create Ticket > submits valid input and displays the backend Ticket Number 2047ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > creates a user and resets an initial password 1258ms
+
+ Test Files  11 passed (11)
+      Tests  33 passed (33)
+   Start at  18:52:07
+   Duration  4.89s (transform 823ms, setup 2.00s, collect 5.07s, tests 11.05s, environment 13.39s, prepare 2.41s)
+
