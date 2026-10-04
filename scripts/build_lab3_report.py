@@ -65,7 +65,7 @@ p(s,'Supplemental assertions explicitly exercise anonymous access, wrong-role ma
 p(s,'Failure provenance: the reused evidence DB server run passed 41/42 because a helper selected a reset-password demonstration account while assuming its seed password. The unchanged suite passed 42/42 on clean seeded data. This is a fixture-robustness limitation. An initial sandboxed E2E attempt failed at browser initialization; the unchanged permission-approved run passed 9/9. Both unsuccessful logs remain retained separately.')
 
 s=section('Part 4 - AI Use with Reflection')
-p(s,'The student confirmed GPT Sol6.0 and Sol6.1 in OpenAI Codex on 3 October. Nine selected actual user instructions below distinguish originally English wording from labelled English translations of Thai. Follow-up records assistant work, not an invented claim that the student personally performed every check. My Reflection requires the student\'s personal read-through.')
+p(s,'The student confirmed GPT Sol6.0 and Sol6.1 in OpenAI Codex on 3 October. Nine actual user messages below illustrate analysis, planning and review support; English translations are labelled. This selection does not conceal AI implementation/test execution or claim student-executed checks. My Reflection is a draft for the student\'s personal read-through.')
 md(s,'docs/lab-03/ai-use.md')
 
 s=section('Part 5 - Working Login and Password Change UI')
