@@ -2,13 +2,19 @@
 
 This plan was written before implementation. Each Acceptance Criterion has unit, API, UI, authorization, regression, or E2E coverage. Phase 8 reconciled the planned paths with the implemented suites and recorded the complete feature-branch result below.
 
-## Final released-main verification - 2 October 2026
+## Final released-main verification - 3 October 2026
 
-Source: `c551061806a9b4eeea3e51967afc8418f7c50ab1`, reviewer-merged Release PR #57. Server: 16 files, 42/42 tests. Client: 10 files, 27/27 tests. Browser: 9/9 E2E tests. Both production builds passed. Seven Prisma migrations applied, no pending migration. These results supersede the older branch checkpoints, not the planned-versus-implemented coverage limitations described below. The report embeds complete actual output, rather than treating a count alone as proof.
+Latest source: `b65714ddd4cb733d4ad80983707d50ff618a0a1f`, Release PR #63 approved and merged by jarbbie. Server: 16 files, 42/42 tests. Client: 11 files, 33/33 tests. Browser: 9/9 E2E tests. Both builds passed; all seven migrations applied. Server and browser runs used the separate clean migrated/seeded `lab3_release63_clean_20261003` database on port 55434, preserving prior evidence databases. Complete logs are retained under output/playwright with the `release63-main-` prefix for report embedding. These are local results, not configured GitHub CI. Passing existing suites does not prove every originally planned subcase.
 
-## Subsequent Issue #58 correction branch - not released main
+Release #60 (`8469b11`) previously passed 42/29/9. The increase to 33 client tests comes from four role-badge cases; the existing Requester session test also checks its shell badge. The new user-list integration check failed before the component was applied to User Management. `client/tests/lab-03/RoleBadge.test.tsx` verifies all three roles and both desktop/mobile user-list variants. Release #63 fixes the plain-role-text gap required by Section 7; no backend behavior changed.
 
-The account-switch regression failed on the released UI: after selecting Ben, the Name field still held an unsaved Amina draft. Keying the edit form by `editing.id` makes the selected account's Name, Email, Role and Active state replace the previous account's fields. A second test verifies separate Requested/IT Priority badges and status badges in desktop and mobile Queue layouts. Complete client result: 29/29 (10 files), browser E2E 9/9, both builds passed. These corrections require peer integration/release and another final-main run; they are not included in the 27-test released-main result above.
+Supplemental current-main direct assertions (`release63-main-direct-api.txt`) verify anonymous 401, Requester Admin/private-note 403, cross-owner Ticket 404, no Internal Notes in owned detail, forbidden formal-status write, a non-final resolution indication preserving NEW status, and post-logout/revoked-session 401. These are separate assertions, not extra Vitest test counts. Demo-only mandatory-password gates were cleared for normal-screen captures after the automated runs; no password hashes, product code or assertions were changed for those captures.
+
+## Issue #58 regression and released correction
+
+The account-switch regression failed before the fix: after selecting Ben, Name still held an unsaved Amina draft. Keying the edit form by `editing.id` replaces Name, Email, Role and Active fields with the selected account. A second test verifies separate Requested/IT Priority badges and desktop/mobile status badges. Both fixes are now on main through reviewer merges #59/#60; the 29-test final-main result includes them.
+
+The first server rerun on the reused evidence DB passed 41/42 because a helper selected a reset-password demonstration account while assuming its seed password. No assertion/source was changed; the unchanged suite passed 42/42 on clean seed data. The helper's assumption remains a fixture-robustness limitation. An initial sandboxed E2E attempt failed during browser initialization; the unchanged permission-approved run passed 9/9. Neither unsuccessful attempt is relabelled as passing.
 
 | ID | Type | AC | Planned behavior | Planned file |
 |---|---|---|---|---|
@@ -60,4 +66,4 @@ Issue #55 tracks the corrections on `feature/lab3-final-audit-fixes`. Correction
 | Admin priority / AC-06 | `server/tests/lab-03/staff-ticket-detail.api.test.ts`, `client/tests/lab-03/StaffTicketDetail.test.tsx` | Priority allowed; Staff-only writes remain forbidden |
 | Last active Admin / AC-08 | `server/tests/lab-03/users-admin.api.test.ts` | Explicit final-Admin demotion rejection in addition to self-deactivation |
 
-The original planning table remains historical. A mapped test file does not by itself prove every planned subcase: UNIT-01's separate helper file was not created, and dedicated rate-limit/expiry coverage still needs a traceability check. No such unverified subcase is labelled passing here. Correction results are not final-main results until peer-reviewed integration and release are complete.
+The original planning table remains historical. UNIT-01's separate helper file was not created: password, role and transition behavior is covered through API/UI suites, not a separately named helper unit suite. Rate limiting and expiry were additionally checked by the standalone direct-API assertion script, not extra Vitest tests. Historical direct-API output explicitly identifies its older `c551061` checkpoint; latest final-main automated results are 42/33/9 above.

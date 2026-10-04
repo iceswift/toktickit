@@ -1,36 +1,52 @@
 # Lab 3 Peer Review Record
 
-This record includes phase-time entries and verified corrections added during the final audit. Audit additions are identified explicitly, not represented as contemporaneous phase records.
+Author: **iceswift**. Reviewer/merger for the original phases and releases through #60: **Richyboy170**. Latest product release #63 reviewer/merger: **jarbbie**. The author did not self-merge.
 
-| Phase / Issue | Feature branch | PR to `lab3-staging` | Reviewer | Comment and author response | Approval and reviewer merge |
-|---|---|---|---|---|---|
-| 1 Engineering Contract / [#31](https://github.com/iceswift/toktickit/issues/31) | `feature/lab3-1-engineering-contract` | [#32](https://github.com/iceswift/toktickit/pull/32) -> `lab3-staging` | Richyboy170 | No inline review comments were submitted; therefore no author reply was required. | Richyboy170 approved and merged PR #32. Merge commit: `42079a7`. |
-| 4 Authenticated Requester / [#40](https://github.com/iceswift/toktickit/issues/40) (Closed; Project `Done`) | `feature/lab3-4-requester-authenticated-identity` | [#41](https://github.com/iceswift/toktickit/pull/41) -> `lab3-staging` | Richyboy170 | One review comment with four suggestions: use `User.id`/`Ticket.requesterUserId` as the ownership boundary; add a mismatched-migration fixture; revoke helper-created test sessions; extract named requester middleware with focused tests. All four were addressed in commit `8c5d5b7`; the author replied on PR #41 and re-requested review. | Richyboy170 re-checked and approved the follow-up changes, then merged PR #41 into `lab3-staging`. Merge commit: [`d48c2c8`](https://github.com/iceswift/toktickit/commit/d48c2c834d4fb3dac27ca53071a6362a875acb2f). After acceptance confirmation, Issue #40 was closed as completed and its Project status moved to `Done`. |
-| 5 IT Staff Ticket Queue / [#43](https://github.com/iceswift/toktickit/issues/43) (Closed; Project `Done`) | `feature/lab3-5-it-staff-ticket-queue` | [#44](https://github.com/iceswift/toktickit/pull/44) -> `lab3-staging` | Richyboy170 | No inline review changes were requested. The PR description records the queue contract, UI states, and focused API/UI test results. | Richyboy170 approved PR #44 and merged it into `lab3-staging`. Merge commit: [`f1f51c8`](https://github.com/iceswift/toktickit/commit/f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c). Issue #43 was then closed as completed and its Project status moved to `Done`. |
-| 6 IT Staff Ticket Operations / [#46](https://github.com/iceswift/toktickit/issues/46) | `feature/lab3-6-it-staff-ticket-operations` | [#47](https://github.com/iceswift/toktickit/pull/47) -> `lab3-staging` | Richyboy170 | No corrective review comment was required. The PR covered Ticket detail, claim/reassignment, IT Priority, status transitions, Public Comments, Internal Notes, authorization, and focused API/UI tests. | Richyboy170 approved and merged PR #47 into `lab3-staging`. Merge commit: [`79cee7b`](https://github.com/iceswift/toktickit/commit/79cee7bf635d771c9935a8defd7fcd4068105844). |
-| 7 Administrator User Management / [#48](https://github.com/iceswift/toktickit/issues/48) | `feature/lab3-7-administrator-user-management` | [#49](https://github.com/iceswift/toktickit/pull/49) -> `lab3-staging` | Richyboy170 | The completed PR added administrator-only list/search/filter/create/edit/password-reset workflows, responsive forms, and frontend/backend coverage. No corrective review comment was requested. | Richyboy170 approved the implementation as aligned with Issue #48 and merged PR #49 into `lab3-staging`. Merge commit: [`64afcd9`](https://github.com/iceswift/toktickit/commit/64afcd90fd9dd76dbe2e6ddddaf7d9ff37b8bb8d). |
-| 8 QA and Release Readiness / [#51](https://github.com/iceswift/toktickit/issues/51) (Closed) | `feature/lab3-8-qa-release-readiness` | [#52](https://github.com/iceswift/toktickit/pull/52) -> `lab3-staging` | Richyboy170 | The PR records complete server, client, E2E, build, migration, responsive, and documentation verification. It also corrected requester comment/resolution coverage and mobile User Management overflow. No corrective review comment was requested. | Richyboy170 merged PR #52 into `lab3-staging`. Merge commit: [`e7d5820`](https://github.com/iceswift/toktickit/commit/e7d5820047bfb8932e12ef8e64ffb17b532786a6). Issue #51 was then closed as completed. |
+The full historical audit record is preserved in [reviewer-history.md](https://github.com/iceswift/toktickit/blob/docs/lab3-final-submission/docs/lab-03/reviewer-history.md). Superseded checkpoints there are historical, not the latest state. This archive link points to the documentation review branch until integration.
 
-Review rules: each PR is linked to its Issue in GitHub's Development panel; the author replies to every review comment; corrections remain on the same branch; the reviewer approves and performs the merge into `lab3-staging`. The release PR is also reviewer-merged into `main`.
+## Phase reviews and Issue links
 
-## Verified final-audit additions — 1 October 2026
+| Phase / Issue | Feature PR into lab3-staging | Actual reviewer resolution |
+|---|---|---|
+| 1 Contract / [#31](https://github.com/iceswift/toktickit/issues/31) | [#32](https://github.com/iceswift/toktickit/pull/32) | Richyboy170 approved/merged 42079a7. Contract commits preceded implementation. |
+| 2 Migration / [#35](https://github.com/iceswift/toktickit/issues/35) | [#37](https://github.com/iceswift/toktickit/pull/37) | Richyboy170 approved/merged fce5346 on 16 September. |
+| 3 Authentication / [#38](https://github.com/iceswift/toktickit/issues/38) | [#39](https://github.com/iceswift/toktickit/pull/39) | Richyboy170 approved/merged cd48ee3 on 17 September. |
+| 4 Requester / [#40](https://github.com/iceswift/toktickit/issues/40) | [#41](https://github.com/iceswift/toktickit/pull/41) | Four suggestions corrected in 8c5d5b7; author replied/re-requested review. Richyboy170 re-approved/merged d48c2c8. |
+| 5 Queue / [#43](https://github.com/iceswift/toktickit/issues/43) | [#44](https://github.com/iceswift/toktickit/pull/44) | Richyboy170 approved/merged f1f51c8. Closure/linkage repaired late on 2 October. |
+| 6 Staff operations / [#46](https://github.com/iceswift/toktickit/issues/46) | [#47](https://github.com/iceswift/toktickit/pull/47) | Richyboy170 approved/merged 79cee7b. Linkage repaired late on 2 October. |
+| 7 Administration / [#48](https://github.com/iceswift/toktickit/issues/48) | [#49](https://github.com/iceswift/toktickit/pull/49) | Richyboy170 approved/merged 64afcd9. Issue closure reconciled late on 1 October. |
+| 8 QA / [#51](https://github.com/iceswift/toktickit/issues/51) | [#52](https://github.com/iceswift/toktickit/pull/52) | Richyboy170 approved/merged e7d5820. Initial [release #54](https://github.com/iceswift/toktickit/pull/54) merged into main on 21 September, c9567a5. |
 
-| Record | Verified result |
-|---|---|
-| Phase 2 / Issue #35 / PR #37 | `feature/lab3-2-user-migration` to staging. Richyboy170 submitted an APPROVED review and merged on 16 September; merge `fce5346bccddfbc5cd496b4f81f41280948ed8c9`. |
-| Phase 3 / Issue #38 / PR #39 | `feature/lab3-3-authentication` to staging. Richyboy170 submitted an APPROVED review and merged on 17 September; merge `cd48ee3551b052c66f1debacbb2c9f8ea534ad22`. |
-| Release [PR #54](https://github.com/iceswift/toktickit/pull/54) | Richyboy170 merged into main on 21 September 2026, 14:02 UTC. Released baseline: `c9567a59e183f44cc0f5abea61f7db2097ae5be4`. This does not include subsequent audit corrections. |
-| Phase 7 Issue #48 reconciliation | Closed as completed on 1 October after verifying already-merged PR #49 and administrator safety tests. This was a late backlog correction, not a new implementation merge. |
-| Correction [Issue #55](https://github.com/iceswift/toktickit/issues/55) / [PR #56](https://github.com/iceswift/toktickit/pull/56) | `feature/lab3-final-audit-fixes` to staging; Development linkage verified. Richyboy170 requested as reviewer. **OPEN, awaiting peer review and reviewer merge; not released.** Local branch results: server 42, client 27, E2E 9 passing; both builds pass. |
+Documentation PRs [#36](https://github.com/iceswift/toktickit/pull/36), [#42](https://github.com/iceswift/toktickit/pull/42), [#45](https://github.com/iceswift/toktickit/pull/45), [#50](https://github.com/iceswift/toktickit/pull/50), [#53](https://github.com/iceswift/toktickit/pull/53) were also approved/merged by Richyboy170. Actual Development links were checked/repaired, not inferred from branch links or closing keywords: #36 -> Issue31; #42 ->40; #45 ->43; #50 ->46/48; #52/#53/#54 ->51.
 
-## Released-main reconciliation - 2 October 2026
+## Technical feedback and author's response
 
-- PR #56 was approved and merged by Richyboy170 into `lab3-staging` on 1 October. Merge: `b70d7e852be4eace6ae4f3e16f953d5ae3a4254c`.
-- [Release PR #57](https://github.com/iceswift/toktickit/pull/57) was approved and merged by Richyboy170 into `main` on 2 October 2026 at 01:57 UTC. Merge: `c551061806a9b4eeea3e51967afc8418f7c50ab1`. Issue #55 closed automatically; its Project status is Done.
-- Author acknowledgements: [PR #56 reply](https://github.com/iceswift/toktickit/pull/56#issuecomment-5946787341), [PR #57 reply](https://github.com/iceswift/toktickit/pull/57#issuecomment-5946787585). These are late audit acknowledgements, not replies made before the original merge.
-- Additional late acknowledgements were posted for review-summary comments on PRs [#32](https://github.com/iceswift/toktickit/pull/32#issuecomment-5947081705), [#37](https://github.com/iceswift/toktickit/pull/37#issuecomment-5947081921), [#39](https://github.com/iceswift/toktickit/pull/39#issuecomment-5947082147), [#44](https://github.com/iceswift/toktickit/pull/44#issuecomment-5947082363), [#47](https://github.com/iceswift/toktickit/pull/47#issuecomment-5947082579), and [#49](https://github.com/iceswift/toktickit/pull/49#issuecomment-5947082758). The earlier statement that an absence of inline comments meant no reply was required was too narrow; these replies do not retroactively establish timely pre-merge conversation.
-- Actual Development links for Issue #43 / PR #44 and Issue #46 / PR #47 were added during the 2 October audit. Closing keywords in descriptions had not created these links for staging-targeted PRs.
-- Issue #43 remained Open despite its earlier Done card and merged PR #44. It was closed during the 2 October audit, not immediately after the original merge. This corrects the inaccurate chronology in the historical Phase 5 row above.
-- The released source at `c551061` passed server 42/42, client 27/27, browser E2E 9/9, both builds and migration status (seven migrations, no pending migration). There were no GitHub CI checks on PR #57; these are actual local verification results.
+PR #41 asked for (1) authenticated User.id / Ticket.requesterUserId ownership instead of legacy identity; (2) a deliberately mismatched migration fixture; (3) cleanup of helper-created sessions; (4) named requester middleware with focused decision tests.
 
-An absence of inline comments alone does not establish that no response was required: ordinary conversation comments and review-summary comments must also be checked. Historical rows describe their recorded checkpoints; final submission must include actual comment/reply evidence rather than infer completeness from an approval badge.
+The [reviewer's four-point comment](https://github.com/iceswift/toktickit/pull/41#pullrequestreview-5237042317) and [author response](https://github.com/iceswift/toktickit/pull/41#issuecomment-5716325967) describe all corrections in 8c5d5b7. Richyboy170 subsequently re-approved and merged. The report shows real, newly recaptured regions, not invented comments.
+
+## Product correction releases
+
+| Issue | Reviewer-merged feature/release | Result |
+|---|---|---|
+| [#55](https://github.com/iceswift/toktickit/issues/55), seed/Admin priority | [#56](https://github.com/iceswift/toktickit/pull/56) / [#57](https://github.com/iceswift/toktickit/pull/57) | Richyboy170; released c551061, 2 October. |
+| [#58](https://github.com/iceswift/toktickit/issues/58), account-switch/priority badges | [#59](https://github.com/iceswift/toktickit/pull/59) / [#60](https://github.com/iceswift/toktickit/pull/60) | Richyboy170; released 8469b11, 3 October. Historical server42/client29/E2E9. |
+| [#61](https://github.com/iceswift/toktickit/issues/61), role badges | [#62](https://github.com/iceswift/toktickit/pull/62) / [#63](https://github.com/iceswift/toktickit/pull/63) | #62 Richyboy170 approved12:46:30/merged12:46:37 UTC; #63 jarbbie approved13:43:20/merged13:51:55 UTC (20:51 Bangkok), 3 October. |
+
+Latest product main: **b65714ddd4cb733d4ad80983707d50ff618a0a1f**. Server **42/42**, client **33/33**, E2E **9/9**, both builds passed, seven migrations applied to a separate clean seeded database. These are local executable results, **not configured GitHub CI checks**. Issue61 automatically closed one second after release merge.
+
+Product-completion checkpoint: **23 Done cards** (12 Lab1/2 + eleven Lab3 Issues31,35,38,40,43,46,48,51,55,58,61); other five columns zero. A later report Issue is not silently included in that older board image.
+
+## Replies and chronology qualifications
+
+No inline comments does not waive replying to a nonempty review summary. The following audit acknowledgements were late and do not prove timely pre-merge discussion.
+
+- Phase-summary replies, late 2 October: [#32](https://github.com/iceswift/toktickit/pull/32#issuecomment-5947081705), [#37](https://github.com/iceswift/toktickit/pull/37#issuecomment-5947081921), [#39](https://github.com/iceswift/toktickit/pull/39#issuecomment-5947082147), [#44](https://github.com/iceswift/toktickit/pull/44#issuecomment-5947082363), [#47](https://github.com/iceswift/toktickit/pull/47#issuecomment-5947082579), [#49](https://github.com/iceswift/toktickit/pull/49#issuecomment-5947082758).
+- Documentation-summary replies, late 3 October: [#36](https://github.com/iceswift/toktickit/pull/36#issuecomment-5968476952), [#42](https://github.com/iceswift/toktickit/pull/42#issuecomment-5968477240), [#45](https://github.com/iceswift/toktickit/pull/45#issuecomment-5968477471), [#50](https://github.com/iceswift/toktickit/pull/50#issuecomment-5968477724). Blank #52/#53/#54 summaries are not invented into feedback.
+- Post-merge correction/release acknowledgements: [#56](https://github.com/iceswift/toktickit/pull/56#issuecomment-5946787341), [#57](https://github.com/iceswift/toktickit/pull/57#issuecomment-5946787585), [#59](https://github.com/iceswift/toktickit/pull/59#issuecomment-5954652709), [#60](https://github.com/iceswift/toktickit/pull/60#issuecomment-5968354745), [#62](https://github.com/iceswift/toktickit/pull/62#issuecomment-5969323476), [#63](https://github.com/iceswift/toktickit/pull/63#issuecomment-5969986531).
+
+Missing historical links for #36/#42/#45/#50/#52/#53/#54 were repaired on 3 October. Earlier claims that #43 closed immediately, or no inline comments meant no reply was needed, were inaccurate. The historical archive preserves those checkpoints and their corrections. Issue61 was created after local correction began, disclosed explicitly.
+
+## Final report integration
+
+[Issue #64](https://github.com/iceswift/toktickit/issues/64) tracks document-only report/evidence reconciliation. Local audit work began before Issue creation. Documentation integration and the student's reflection read-through remain pending; no approval/merge or personal confirmation is invented. Product source and its 42/33/9 verification are unchanged.

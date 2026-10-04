@@ -1,0 +1,32 @@
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "lab3_release60_clean_20261003", schema "public" at "localhost:55434"
+
+7 migrations found in prisma/migrations
+
+Applying migration `20260811042726_create_category`
+Applying migration `20260828100000_add_development_requester`
+Applying migration `20260829090000_add_ticket_creation`
+Applying migration `20260916000000_lab3_user_migration`
+Applying migration `20260917000000_add_auth_sessions`
+Applying migration `20260920090000_add_staff_ticket_operations`
+Applying migration `20260920143000_add_requester_resolution_indication`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20260811042726_create_category/
+    └─ migration.sql
+  └─ 20260828100000_add_development_requester/
+    └─ migration.sql
+  └─ 20260829090000_add_ticket_creation/
+    └─ migration.sql
+  └─ 20260916000000_lab3_user_migration/
+    └─ migration.sql
+  └─ 20260917000000_add_auth_sessions/
+    └─ migration.sql
+  └─ 20260920090000_add_staff_ticket_operations/
+    └─ migration.sql
+  └─ 20260920143000_add_requester_resolution_indication/
+    └─ migration.sql
+      
+All migrations have been successfully applied.
