@@ -2,7 +2,7 @@
 
 Author: **iceswift**. Reviewer/merger for the original phases and releases through #60: **Richyboy170**. Latest product release #63 reviewer/merger: **jarbbie**. The author did not self-merge.
 
-The full historical audit record is preserved in [reviewer-history.md](https://github.com/iceswift/toktickit/blob/docs/lab3-final-submission/docs/lab-03/reviewer-history.md). Superseded checkpoints there are historical, not the latest state. This archive link points to the documentation review branch until integration.
+The full historical audit record is preserved in [reviewer-history.md](https://github.com/iceswift/toktickit/blob/5cc636f950c5a8f9b4ed803648f87be36a6b0f6a/docs/lab-03/reviewer-history.md). Superseded checkpoints there are historical, not the latest state. This archive link is pinned to the actual reviewed documentation revision.
 
 ## Phase reviews and Issue links
 
@@ -49,4 +49,6 @@ Missing historical links for #36/#42/#45/#50/#52/#53/#54 were repaired on 3 Octo
 
 ## Final report integration
 
-[Issue #64](https://github.com/iceswift/toktickit/issues/64) tracks document-only report/evidence reconciliation. Local audit work began before Issue creation. Documentation integration and the student's reflection read-through remain pending; no approval/merge or personal confirmation is invented. Product source and its 42/33/9 verification are unchanged.
+[Issue #64](https://github.com/iceswift/toktickit/issues/64) tracks document-only report/evidence reconciliation. Local audit work began before Issue creation. Jarbbie [approved documentation integration](https://github.com/iceswift/toktickit/pull/65#pullrequestreview-5404910001), then [reaffirmed approval](https://github.com/iceswift/toktickit/pull/65#pullrequestreview-5404913405), and merged [PR #65](https://github.com/iceswift/toktickit/pull/65) into lab3-staging at 08:03:13 UTC on 4 October (15:03 Bangkok), merge `0a768cd6d8750ba201e85b93caf2ef245fb22b7b`. The reviewed scope was documentation integration, not certification of final submission or student reflection.
+
+The student explicitly confirmed the personal reflection on 7 October. The author [acknowledged PR65 review limits](https://github.com/iceswift/toktickit/pull/65#issuecomment-6032113200) that day; this is explicitly a late/post-merge reply. This closure update does not change product code, migrations, tests or retained 42/33/9 results. Final reviewed documentation release into main, source-link/report checks and actual Issue64/Done reconciliation remain required. Historical product Done-board images exclude #64 and are not relabelled as current all-task completion.
