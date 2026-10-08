@@ -2,25 +2,28 @@
 
 ## Tool and Responsibility
 
-OpenAI Codex is used as an engineering assistant for analysis, drafting, implementation support, and test design. The student remains responsible for reading the Lab 3 sheet, selecting the final rules, reviewing every change, running commands, inspecting evidence, and rejecting unsupported output.
+OpenAI Codex with GPT Sol6.0 and Sol6.1 supported requirement interpretation, phase planning, implementation, test execution, workflow checks and evidence review. The student confirmed these model names on 3 October 2026. The specification-agent role organized requirements and acceptance criteria; the coding-agent role implemented changes and ran checks. These are assistant workflow roles, not independent human reviewers. The student supplied the assignment, requested checks, questioned incomplete results and authorized the work. Some implementation and documentation were delegated to AI; this report does not claim that the student personally wrote or verified every change. Human peers separately reviewed and merged the PRs.
 
-## Selected Prompts and Verification
+## Selected Prompts: Analysis, Planning and Review Support
 
-| # | Prompt focus | Student verification |
+The nine examples below are actual user messages selected to show how AI assisted with interpretation, planning, progress assessment and review. They are not the complete conversation or a claim that AI only advised. All prompts are presented in English; messages originally written in Thai have been translated, while the originally English instruction is verbatim. The support column describes the purpose of the request, not a verbatim AI response or proof that the student performed a check themselves. Original implementation instructions and execution remain part of the disclosed AI contribution.
+
+| # | Actual selected prompt | How AI supported the work |
 |---|---|---|
-| 1 | Extract Lab 3 deliverables, dependencies, and exclusions. | Compared the phase plan with the Lab 3 sheet. |
-| 2 | Propose password, session, and logout decisions for the course stack. | Reviewed cookie, hashing, expiry, and secret-handling trade-offs. |
-| 3 | Design the User/role migration without losing Lab 2 ownership. | Inspected the generated migration and passed migration/regression coverage against PostgreSQL. |
-| 4 | Build an authorization matrix for all protected operations. | Compared each operation against the required roles. |
-| 5 | Define a constrained Ticket status-transition matrix. | Checked that Requesters cannot formally resolve or close. |
-| 6 | Plan IT Staff queue/detail tests and privacy boundaries. | Ran API, UI, and E2E coverage; also inspected the Staff Detail screenshot to confirm Internal Notes are visually distinguished. |
-| 7 | Plan Administrator safety rules and negative tests. | Verified duplicate email, self-deactivation, last-Administrator protection, session revocation, and forced password change. |
-| 8 | Audit evidence required for the nine report parts. | Captured 15 readable responsive screenshots and linked each retained figure to an exact requirement. |
-| 9 | Audit Requester detail against FR-05 and AC-07 before release. | Found missing requester Public Comments and the non-final resolution indication; added API/UI behavior, migration, and regression tests. |
-| 10 | Diagnose the mobile User Management overflow found by Playwright. | Used element-bound diagnostics to identify the wide table, replaced it with mobile cards below the medium breakpoint, and reran all viewports. |
+| 1 | "These are the Lab 3 details. Before starting, reread the Lab document and GitHub-use guide, then plan the project phases. Think mainly in English and answer in Thai. Capture evidence and update the report throughout." | Interpret the handout and connect requirements, phase dependencies, GitHub workflow and evidence planning. |
+| 2 | "Can you plan to inspect and redo the Lab 3 submission documents?" | Organize a report audit against the nine required answer Parts instead of relying on page count. |
+| 3 | "Have you read the GitHub-use file?" | Recheck reviewer-merge rules, review replies and actual PR-to-Issue links. |
+| 4 | "How much needs to be corrected now?" | Assess remaining gaps and explain the scope of corrections before proceeding. |
+| 5 | "Are there still any PRs that need to be opened?" | Clarify which review/integration gates remained, distinguishing product work from documentation updates. |
+| 6 | "I want a report-submission roadmap; I do not even know when it will finish although the assignment seems fixed." | Break completion into released-main verification, evidence reconciliation, report preparation and final PDF checks. |
+| 7 | "When will Lab 3 be finished and the report ready to submit?" | Explain readiness and outstanding work rather than treating an approval or passing test count as final submission completion. |
+| 8 | "Let's do step1" | Authorize the first verification step in the report roadmap. AI executed checks; this is not represented as student-executed testing. |
+| 9 | "Please provide all the details in English so another AI can take over from here, because the new chat can access the in-app browser." | Prepare a handover that preserves context, verified status and unresolved browser/workflow tasks. |
 
 ## My Reflection
 
-AI suggestions were treated as hypotheses, not proof. That distinction mattered in Phase 8: a checklist-only review would have missed two real gaps. Comparing the running product with FR-05/AC-07 exposed missing requester Public Comments and a missing non-final resolution indication. Running the responsive browser test then exposed a mobile table overflow that unit tests could not reveal. I accepted the proposed fixes only after reading the affected contract, inspecting the UI screenshots, and passing server, client, migration, build, and E2E checks. The final audit subsequently found missing demonstration seed data and an Administrator IT Priority UI permission. These corrections were peer-reviewed through PR #56 and released through PR #57. The same suites were rerun successfully on released `main` at `c551061` on 2 October. Passing suites do not establish coverage of every originally planned subcase; the traceability record retains those limitations.
+AI helped organize a long handout into requirements, a role matrix and a practical roadmap, and also implemented changes and executed tests. The useful lesson for me is to ask for evidence and an explanation of remaining gaps, not accept a completion statement. Audits exposed missing Requester communication, incomplete seed examples, an Administrator priority mismatch, an account-switch edit bug and missing role badges. The account-switch and role-badge regressions failed before their fixes; human reviewers then approved and merged the corrections. Released main `b65714d` passed server 42/42, client 33/33, E2E 9/9 and both builds. These results are valuable checks, but they do not prove every planned test or UI requirement is complete. I remain responsible for reviewing the submitted evidence and understanding the limitations. Next time, I would connect each requirement to a test and screenshot as work proceeds, and respond to review feedback before merge. Late replies and repaired Issue links are disclosed rather than presented as timely compliance.
 
-The ten entries above are summaries of prompt focus, not verbatim transcripts. Exact historical model names have not been confirmed and must not be invented; the verified tool name is OpenAI Codex. This reflection remains a student-review draft until the student confirms that it accurately represents their own learning.
+Model names are student-confirmed; the model assigned to each historical instruction is not recorded and is not invented. My Reflection was initially assistant-drafted. On 7 October 2026, the student explicitly confirmed in the chat that it represents their own experience and learning. This confirmation does not claim student authorship of every implementation or independent execution of every test. Technical requirement analysis and test-design decisions in the repository are assistant work, not invented verbatim user prompts.
+
+Traceability: Richyboy170 reviewer-merged role-badge correction #62; jarbbie approved and merged release #63. Historical release #60 had 29 client tests, not the latest 33. Jarbbie approved and merged documentation PR #65 into lab3-staging on 4 October. Personal reflection confirmation was received on 7 October; the final documentation release into main remains a separate delivery gate. No historical model assignment per prompt is invented.

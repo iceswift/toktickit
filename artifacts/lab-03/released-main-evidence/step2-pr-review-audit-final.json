@@ -1,0 +1,1152 @@
+[
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRPVH9Q",
+        "number": 31,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/31"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlD6Q",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #32, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:42Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/32#issuecomment-5947081705",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "42079a70911a2fc3de00280ed42189da3c7dee9e"
+    },
+    "mergedAt": "2026-09-15T01:01:54Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 32,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABNjWFGA",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-15T01:01:44Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "2eeffe8f557669d6f6b3a867fdb425544e22e9c6"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/32"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRPVH9Q",
+        "number": 31,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/31"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABY7-7GA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging this documentation follow-up. This is a late acknowledgement recorded during the final workflow audit on 3 October 2026, not a reply made before the original merge. Release #60 has since been reviewer-merged into main 8469b11; the unchanged final-main verification passed server 42/42, client 29/29, E2E 9/9 and both builds. Final report content/layout/PDF QA remain separate checkpoints.",
+        "createdAt": "2026-10-03T10:54:49Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/36#issuecomment-5968476952",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "6d7864bb756dd0c16dc53792d23efdec2a6e0ab8"
+    },
+    "mergedAt": "2026-09-15T08:02:06Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 36,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABNl-h4Q",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-15T08:01:58Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "6d16a2377356bfb115bfd3f9399100a531aebb5f"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/36"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRUDpFw",
+        "number": 35,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/35"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlEwQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #37, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:43Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/37#issuecomment-5947081921",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "fce5346bccddfbc5cd496b4f81f41280948ed8c9"
+    },
+    "mergedAt": "2026-09-16T14:34:55Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 37,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABN2F2rw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-16T14:34:45Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "975cab609110ec4b0622ea911c7e103538fdf47b"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/37"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRrp5bQ",
+        "number": 38,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/38"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlFow",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #39, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:44Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/39#issuecomment-5947082147",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "cd48ee3551b052c66f1debacbb2c9f8ea534ad22"
+    },
+    "mergedAt": "2026-09-17T02:20:02Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 39,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABN8A5pg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-17T02:19:54Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "3d34f8a02c9f4da1dc2b814aa7c8972d27d179bf"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/39"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRsLqMw",
+        "number": 40,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/40"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABVLg2Tw",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "@Richyboy170 Thank you for the careful review. I addressed all four points on this PR in commit `8c5d5b7`:\n\n1. Requester ticket and attachment authorization now uses the authenticated `User.id` and `Ticket.requesterUserId` throughout. The legacy requester ID remains only for compatibility and audit fields.\n2. A regression fixture deliberately assigns `Ticket.requesterId` and `Ticket.requesterUserId` to different people. It verifies that list, detail, upload, attachment listing, download, and removal follow the authenticated User rather than the legacy ID.\n3. `restoreRequesterSession()` now revokes only the sessions created by the test helper, with a cleanup test.\n4. I extracted the named `requireRequesterSession` middleware and added focused checks for no session, the wrong role, the first-login password-change gate, and a valid requester.\n\nVerification after the changes: server tests 27/27, client tests 18/18, browser E2E tests 3/3, and both production builds passed. I re-requested your review; please review the latest PR head and merge into `lab3-staging` if everything looks good. I will not merge my own PR.",
+        "createdAt": "2026-09-17T14:46:00Z",
+        "includesCreatedEdit": true,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/41#issuecomment-5716325967",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "d48c2c834d4fb3dac27ca53071a6362a875acb2f"
+    },
+    "mergedAt": "2026-09-18T09:23:05Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 41,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOCbsjQ",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "File: `server/src/app.ts`  \nLines: 52–60, 222–223, 265–267, 302, 330, 350, 379–399\n\n````text\nCould we make `User.id` / `Ticket.requesterUserId` the canonical ownership boundary here instead of resolving the authenticated user back to `DevelopmentRequester.id`?\n\nThe current flow authenticates a `User`, maps it to a legacy requester, and then authorizes every ticket and attachment operation through that legacy ID. If `requesterId` and `requesterUserId` ever become inconsistent during migration or future updates, a user could potentially access another user's ticket or attachment.\n\nPlease use the authenticated user's ID in the ownership predicates, retaining the legacy requester ID only for compatibility or audit fields. It would also be useful to add a regression test with deliberately mismatched legacy and migrated ownership.\n````\n\n### Why this matters\n\nThe PR’s security goal is to make authenticated identity authoritative. Using the legacy requester relationship as the authorization key leaves a second identity mapping in the access-control path and creates a data-integrity risk if the two fields diverge.\n\n---\n\nFile: `server/tests/lab-03/requester-authorization.api.test.ts`  \nLines: 53–59\n\n````text\nThis verifies that a forged `X-Development-Requester-Id` header is ignored, but it does not verify behavior when the legacy requester mapping and the authenticated User mapping disagree.\n\nCould you add a fixture where `Ticket.requesterId` belongs to one requester while `Ticket.requesterUserId` belongs to another User, then assert that access follows the authenticated User only? This would directly protect the ownership invariant introduced by this PR.\n````\n\n### Why this matters\n\nThe existing test covers header spoofing, but the more important remaining risk is inconsistent migrated data. A mismatch-specific test would prevent a future refactor from accidentally authorizing through the legacy ID again.\n\n---\n\nFile: `server/tests/lab-03/requester-session.ts`  \nLines: 6–16\n\n````text\nThe helper resets `mustChangePassword`, but it does not revoke the sessions created by `requesterSession()`.\n\nCould cleanup revoke the test users' active sessions as well, or have `restoreRequesterSession()` perform that cleanup? Otherwise, test runs can leave valid authenticated sessions behind in the database and make later tests order-dependent.\n````\n\n### Why this matters\n\nThe tests mutate shared database state and create persistent authentication records. Although the current suite runs serially, leaked sessions can affect later tests, local debugging, or repeated runs against the same database.\n\n---\n\nFile: `server/src/app.ts`  \nLines: 52–63\n\n````text\nCould this authorization middleware be extracted into a named function, such as `requireRequesterSession`, with focused tests around its decisions?\n\nThis block currently combines session lookup, role validation, first-login gating, legacy-user mapping, and error handling. Giving the boundary a name and testing it directly would make the authorization contract easier to audit as additional role-specific routes are added.\n````\n\n### Why this matters\n\nThis is the central security boundary for all requester ticket and attachment routes. Isolating it would reduce duplication and make future changes less likely to bypass one of the required checks.",
+        "submittedAt": "2026-09-17T14:23:10Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "fe972e3d16b239ef45066a9704666c130ec1a5c6"
+        }
+      },
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOLNrMg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Thank you for the fix and your awesome job. Approve. ",
+        "submittedAt": "2026-09-18T09:22:56Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "1e7ed5a712ab0b382d85021d3842f5752fdcdb7c"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/41"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABRsLqMw",
+        "number": 40,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/40"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABY7-8OA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging this documentation follow-up. This is a late acknowledgement recorded during the final workflow audit on 3 October 2026, not a reply made before the original merge. Release #60 has since been reviewer-merged into main 8469b11; the unchanged final-main verification passed server 42/42, client 29/29, E2E 9/9 and both builds. Final report content/layout/PDF QA remain separate checkpoints.",
+        "createdAt": "2026-10-03T10:54:51Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/42#issuecomment-5968477240",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "aa278cde6281184dffb03f6154454b16ab0fe0d7"
+    },
+    "mergedAt": "2026-09-19T05:12:27Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 42,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOTS44Q",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approved",
+        "submittedAt": "2026-09-19T05:12:20Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "a01260c2028fbd1a809fcd58e0ce7d4701417bd6"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/42"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSE1dUA",
+        "number": 43,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/43"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlGew",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #44, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:45Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/44#issuecomment-5947082363",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "f1f51c83b2211f02b8a4f32ae8f1af9bf6ddba4c"
+    },
+    "mergedAt": "2026-09-19T15:04:05Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 44,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOUnfbA",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-19T15:03:58Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "efdd03375700a4f135d1a2da952c7342fa9e3694"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/44"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSE1dUA",
+        "number": 43,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/43"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABY7-9Hw",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging this documentation follow-up. This is a late acknowledgement recorded during the final workflow audit on 3 October 2026, not a reply made before the original merge. Release #60 has since been reviewer-merged into main 8469b11; the unchanged final-main verification passed server 42/42, client 29/29, E2E 9/9 and both builds. Final report content/layout/PDF QA remain separate checkpoints.",
+        "createdAt": "2026-10-03T10:54:53Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/45#issuecomment-5968477471",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "2be944b9a78f8ac9950d23a5733f3fe4654ba90e"
+    },
+    "mergedAt": "2026-09-19T15:57:01Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 45,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOU0ZJQ",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-19T15:56:53Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "376589b3692d14156246ed262c5cc5b52211ce03"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/45"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSMjRQw",
+        "number": 46,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/46"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlHUw",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #47, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:46Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/47#issuecomment-5947082579",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "79cee7bf635d771c9935a8defd7fcd4068105844"
+    },
+    "mergedAt": "2026-09-20T06:14:28Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 47,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOYGuLA",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-20T06:14:20Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "8908655a79f146230c09f6b0e88b08d3981ec3ee"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/47"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSMpG-g",
+        "number": 48,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/48"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnlIBg",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and approving PR #49, and for performing the merge into lab3-staging. This is a late author acknowledgement added during the final report audit on 2 October, not a reply made before the original merge. The released product at main c551061 has now been rerun successfully: server 42/42, client 27/27, E2E 9/9, both builds, and migration status. I am updating reviewer.md and the report to distinguish original review events from these audit reconciliations.",
+        "createdAt": "2026-10-02T07:02:48Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/49#issuecomment-5947082758",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "64afcd90fd9dd76dbe2e6ddddaf7d9ff37b8bb8d"
+    },
+    "mergedAt": "2026-09-20T06:57:16Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 49,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOYLLdg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approved ✅\n\nThis PR cleanly implements Administrator User Management across the backend and UI:\n\nAdds administrator-only user management routes with proper authorization.\nSupports listing, searching, filtering, creating, editing, and password resets.\nEnforces duplicate-email, password-strength, self-deactivation, and final-administrator safeguards.\nAdds administrator-only UI navigation and responsive management forms.\nIncludes focused frontend and backend tests covering the main workflows and authorization rules.\nThe implementation is well scoped and aligned with the requirements in #48. Nice work!",
+        "submittedAt": "2026-09-20T06:57:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "9a29dbb024a087276d2fafd430ae233a0586e0c1"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/49"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSMjRQw",
+        "number": 46,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/46"
+      },
+      {
+        "id": "I_kwDOT0B_PM8AAAABSMpG-g",
+        "number": 48,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/48"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABY7--HA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging this documentation follow-up. This is a late acknowledgement recorded during the final workflow audit on 3 October 2026, not a reply made before the original merge. Release #60 has since been reviewer-merged into main 8469b11; the unchanged final-main verification passed server 42/42, client 29/29, E2E 9/9 and both builds. Final report content/layout/PDF QA remain separate checkpoints.",
+        "createdAt": "2026-10-03T10:54:55Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/50#issuecomment-5968477724",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "293f64ff8584eedccb3718f35313171f25358b79"
+    },
+    "mergedAt": "2026-09-20T08:44:32Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 50,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOYbeeg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve",
+        "submittedAt": "2026-09-20T08:44:20Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "08f2c63500b26a1c7e5bb56f016097b0334ec804"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/50"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSNWJbA",
+        "number": 51,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/51"
+      }
+    ],
+    "comments": [],
+    "mergeCommit": {
+      "oid": "e7d5820047bfb8932e12ef8e64ffb17b532786a6"
+    },
+    "mergedAt": "2026-09-20T11:36:23Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 52,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOYx6pw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "",
+        "submittedAt": "2026-09-20T11:36:07Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "db9dbf968dadbf200a9db4dc2f7557f0f777fa6f"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/52"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSNWJbA",
+        "number": 51,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/51"
+      }
+    ],
+    "comments": [],
+    "mergeCommit": {
+      "oid": "002abfb76b84deda3766cc315bd8704148e9e156"
+    },
+    "mergedAt": "2026-09-20T15:04:58Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 53,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOZLTaw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "",
+        "submittedAt": "2026-09-20T15:04:50Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "aa18ae5684a786b92e6b34e2d791245b1827b38c"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/53"
+  },
+  {
+    "baseRefName": "main",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABSNWJbA",
+        "number": 51,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/51"
+      }
+    ],
+    "comments": [],
+    "mergeCommit": {
+      "oid": "c9567a59e183f44cc0f5abea61f7db2097ae5be4"
+    },
+    "mergedAt": "2026-09-21T14:02:00Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 54,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABOff80A",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "",
+        "submittedAt": "2026-09-21T14:01:50Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "002abfb76b84deda3766cc315bd8704148e9e156"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/54"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABUSeGLg",
+        "number": 55,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/55"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnTGDQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging the seed/Admin priority corrections. Release #57 is now merged into main by you; the final-main rerun passed server 42/42, client 27/27, E2E 9/9 and both builds. I am completing the report evidence separately and will not treat passing tests alone as complete submission evidence.",
+        "createdAt": "2026-10-02T06:34:11Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/56#issuecomment-5946787341",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "b70d7e852be4eace6ae4f3e16f953d5ae3a4254c"
+    },
+    "mergedAt": "2026-10-01T11:56:20Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 56,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABQJs1Sw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Approve, look good",
+        "submittedAt": "2026-10-01T11:56:10Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "20b3493b004b4dbb5e42df32a01d4d39948b13d3"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/56"
+  },
+  {
+    "baseRefName": "main",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABUSeGLg",
+        "number": 55,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/55"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYnTHAQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for approving and merging the release. I verified main c551061 and Issue #55 automatic closure, then reran server 42/42, client 27/27, E2E 9/9 and both builds successfully on an isolated audit database. The report/evidence audit remains in progress; no submission-ready PDF is claimed yet.",
+        "createdAt": "2026-10-02T06:34:13Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/57#issuecomment-5946787585",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "c551061806a9b4eeea3e51967afc8418f7c50ab1"
+    },
+    "mergedAt": "2026-10-02T01:57:00Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 57,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABQR-q3A",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "approve, look good",
+        "submittedAt": "2026-10-02T01:56:51Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "b70d7e852be4eace6ae4f3e16f953d5ae3a4254c"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/57"
+  },
+  {
+    "baseRefName": "lab3-staging",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABUjR4hA",
+        "number": 58,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/58"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABYuzKJQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging this correction. The account-switch regression and queue badge corrections are now integrated into lab3-staging. I will prepare the release PR for your review and merge into main, then rerun final-main verification and refresh the report evidence. The report remains a review draft until those checks and final PDF QA are complete.",
+        "createdAt": "2026-10-02T14:28:53Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/59#issuecomment-5954652709",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "93516a8bbc8bb1b40d5010e41205ad32a123cfae"
+    },
+    "mergedAt": "2026-10-02T09:25:30Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 59,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABQUgobw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "approve, looks goodd",
+        "submittedAt": "2026-10-02T09:25:21Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "f33b32b10090bac5b9129114a2b8f96ea65d26d9"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/59"
+  },
+  {
+    "baseRefName": "main",
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABUjR4hA",
+        "number": 58,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/58"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABY73duQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you for reviewing and merging the release into main. I verified that you performed the merge and Issue #58 closed automatically. Final-main verification is now running on 8469b118bada539edb7fc3fff8d76a11180bd576; client 29/29 and both builds have passed so far. Server/database and browser E2E results, final Kanban and PDF QA will be checked separately before marking the report ready.",
+        "createdAt": "2026-10-03T10:36:47Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/60#issuecomment-5968354745",
+        "viewerDidAuthor": true
+      }
+    ],
+    "mergeCommit": {
+      "oid": "8469b118bada539edb7fc3fff8d76a11180bd576"
+    },
+    "mergedAt": "2026-10-03T07:32:07Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 60,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABQdaegw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "approve, look good",
+        "submittedAt": "2026-10-03T07:32:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "93516a8bbc8bb1b40d5010e41205ad32a123cfae"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/60"
+  }
+]

@@ -1,0 +1,55 @@
+
+> toktickit-server@1.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab3-final-audit/server
+
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > requires a session and rejects staff or first-login Requesters 566ms
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > ignores a forged requester header and keeps another user's ticket private
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > rejects unauthenticated writes and hides cross-owner Attachment operations
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > authorizes through requesterUserId even when the legacy requesterId belongs to someone else
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects a missing file and a file whose MIME content does not match an allowed type
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects an attachment larger than 5 MB
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > stores, lists, downloads, then soft-removes an owned permitted Attachment
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > uses a safe 404 for cross-requester Attachment access
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects a sixth active attachment
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > returns operational detail only to IT Staff and Administrators
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > allows IT Staff to claim, prioritize, and use legal status transitions
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > keeps Notes private and validates append-only communication
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > allows Administrator priority changes without granting staff workflow writes
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > returns the full read-only Ticket detail for its owner
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > allows only the owner to add Public Comments and record a non-final resolution indication
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > uses the same safe 404 response for another Requester, invalid IDs, and missing Tickets
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > rejects anonymous and non-administrator access
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > creates, searches, edits, and resets a managed user 1003ms
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > rejects invalid roles, weak passwords, and duplicate email addresses
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > prevents an administrator from deactivating their own account
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > prevents demotion of the final active Administrator
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > authorizes IT Staff and Administrator but rejects Requesters and anonymous access
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > searches, filters, sorts, paginates, and returns queue metadata
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > rejects invalid query values and keeps valid no-results requests successful
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > keeps every legacy DevelopmentRequester mapped to exactly one Requester User
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > creates the required active and inactive role seed accounts without plaintext passwords
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > dual-writes a legacy requester Ticket to its migrated User during the transition 669ms
+ ✓ tests/lab-02/my-tickets.api.test.ts > GET /api/tickets > returns only the selected Requester's Tickets with documented query controls
+ ✓ tests/lab-02/my-tickets.api.test.ts > GET /api/tickets > returns a safe 400 for invalid list query values
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > creates a session for a valid active User and revokes it on logout 599ms
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > uses the same safe response for invalid credentials and inactive accounts 474ms
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > requires the current password, clears first-login state, and revokes the old session 2817ms
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts > Lab 3 realistic seed examples > creates eight workflow examples with correct ownership and repeat-safe communication 307ms
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts > Lab 3 realistic seed examples > preserves an existing worked Ticket and account credentials on a repeat run
+ ✓ tests/lab-02/create-ticket.api.test.ts > POST /api/tickets > creates a Ticket for the selected requester with backend-generated values
+ ✓ tests/lab-02/create-ticket.api.test.ts > POST /api/tickets > returns safe field errors and does not create a Ticket for invalid input
+ ✓ tests/lab-03/requester-session.test.ts > requesterSession test cleanup > revokes only the sessions created by the test helper 637ms
+ ✓ tests/lab-01/health.test.ts > GET /api/health > returns 200 with status ok and the service name
+ ✓ tests/lab-02/ticket-number.test.ts > generateTicketNumber > creates the documented official Ticket Number format
+ ✓ tests/lab-02/ticket-number.test.ts > generateTicketNumber > creates a fresh candidate for each retry attempt
+ ✓ tests/lab-01/categories.test.ts > GET /api/categories > returns the four seeded categories in id order
+ ✓ tests/lab-02/development-requesters.api.test.ts > Retired Lab 2 Development Requester API > does not publicly enumerate migrated requester identities
+
+ Test Files  16 passed (16)
+      Tests  42 passed (42)
+   Start at  21:15:20
+   Duration  27.80s (transform 376ms, setup 0ms, collect 4.77s, tests 17.90s, environment 5ms, prepare 1.76s)
+

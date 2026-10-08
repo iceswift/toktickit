@@ -103,13 +103,15 @@ model. Backend checks use the current authenticated session for every row above.
 - BR-06: One User has exactly one role: `REQUESTER`, `IT_STAFF`, or
   `ADMINISTRATOR`.
 - BR-07: The authenticated identity, never a client `requesterId`, determines
-  Requester ownership. Cross-owner Ticket, Attachment, and Internal Note access
-  returns a safe not-found response without data leakage.
+  Requester ownership. Cross-owner Ticket/Attachment access returns safe `404`;
+  Requester access to Staff/Internal Note routes returns role-based `403` with
+  no protected content (actual behavior clarified in the 3 October audit).
 - BR-08: Requesters and IT Staff may post Public Comments; these are visible to
   the Ticket Requester, IT Staff, and Administrators. Internal Notes are created
   by IT Staff and visible only to IT Staff and Administrators. Both are
   append-only, backend-authored, timestamped, and reject blank content. After
-  trimming, content is limited to 2,000 Unicode characters and is rendered as
+  trimming, content is limited to 2,000 JavaScript UTF-16 code units (actual
+  string-length/maxlength behavior clarified in the 3 October audit), rendered as
   escaped plain text (never trusted HTML).
 - BR-09: A Requester may record `problemAppearsResolvedAt`; this does not change
   formal status to Resolved or Closed. Only IT Staff perform formal transitions.
