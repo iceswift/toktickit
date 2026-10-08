@@ -5,7 +5,7 @@ Phase count is a planning choice, separate from nine submission Parts.
 
 | Phase | Issue | Depends on | Initial/current work |
 |---|---|---|---|
-| 1 | [#68](https://github.com/iceswift/toktickit/issues/68) Contract | Released Lab 3 | Started, contract preparation |
+| 1 | [#68](https://github.com/iceswift/toktickit/issues/68) Contract | Released Lab 3 | PR Review, linked [#76](https://github.com/iceswift/toktickit/pull/76) |
 | 2 | [#69](https://github.com/iceswift/toktickit/issues/69) Data/migration/seeds | #68 | Backlog |
 | 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | Backlog |
 | 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | Backlog |

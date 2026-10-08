@@ -26,6 +26,28 @@ authenticated student iceswift, not a mock board. Image shows the active Started
 card clearly; it is NOT final all-Done evidence and is labelled accordingly.
 The HTML draft contains this image; rendered report inspection is still pending.
 
+## Phase 1 PR checkpoint - 8 October 2026
+
+Contract commit: 753ddeb6c871d1aa909097bb97ad2617de48732a.
+PR #76 directly linked to Issue #68; jarbbie review requested; no approval/merge yet.
+Actual board: Backlog 7, Specified 0, Started 0, PR Review 1, Fixing 0, historical Done24.
+These are interim sprint images, NOT final Lab 4 all-Done proof.
+
+| File (artifacts/lab-04/github/) | Source/role/viewport | Inspection |
+|---|---|---|
+| phase1-backlog.jpg | Actual Project #2, iceswift, 1280x720, baseline main5398f2d / contract753ddeb | Captured; shows backlog7; inspect report before completion claim |
+| phase1-pr-review.jpg | Actual Project #2, iceswift, 1280x720 | Captured and visually verified; #68 PR Review displays #76 |
+| phase1-pr76-linked.jpg | Actual PR76, iceswift, 1265px browser content | Captured and visually verified; direct Development linkage and requested jarbbie review |
+
+Structural check: python scripts/verify_lab4_contract.py PASS, covering required files,
+AC-01..13 test mapping, nine report sections, anchors and local asset references.
+No product test, feature, migration or database mutation is claimed.
+
+Report visual limitation: browser rejected file:// navigation under its URL policy.
+No workaround attempted. HTML assets/anchors were structurally verified and the
+original GitHub screenshots inspected, but rendered HTML layout has NOT been
+certified. Keep that QA item pending; source can be opened in the app file editor.
+
 ## Working Phases (organizing choice, not mandated number)
 
 1. Baseline/contract/backlog, decision approval, spec/test plan before coding.

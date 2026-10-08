@@ -1,4 +1,4 @@
-# Lab 4 UI Specification - draft
+# Lab 4 UI Specification - prepared for peer review
 
 Reuse existing Zen Green conventions; no replacement design or new shell framework.
 Requester Dashboard and Staff/Admin Dashboard lead to detailed lists/Tickets.
@@ -8,7 +8,7 @@ assignment and explicit status controls. Requesters have read-only own-Ticket wo
 Display date/time, description, result, authenticated performed-by, separate assignee,
 follow-up indicator/note and attachment notes. Preserve terminal Actions/history.
 UI transitions reflect backend eligibility but never replace backend authorization.
-Show a resolution explanation when the proposed gate is unmet; Requester indication
+Show a resolution explanation when the approved gate is unmet; Requester indication
 is advisory. Distinguish shared Actions from private InternalNotes without color alone.
 
 Every screen needs loading, success, zero/empty vs no-results, validation, forbidden,

@@ -1,4 +1,4 @@
-# Sprint 4 Engineering Contract - decision draft
+# Sprint 4 Engineering Contract - prepared for peer review
 
 Status: D-01..04 student-approved on 8 October 2026 ("I agree your accord").
 Contract prepared for peer review; product implementation waits for reviewer merge.
@@ -22,7 +22,7 @@ advanced BI, multitenancy and unapproved features.
 
 ## 3. Student-approved decisions
 
-| ID | Proposed decision | Why confirmation is needed |
+| ID | Student-approved decision | Why an explicit design decision was needed |
 |---|---|---|
 | D-01 | Authenticated creator/performedBy is immutable and separate from active Staff/Admin assignee; another staff member may record work. Requester reads all Actions on owned Tickets only. | Assignment is graded but the handout does not fully specify actor vs assignee. |
 | D-02 | PLANNED -> IN_PROGRESS -> COMPLETED; PLANNED/IN_PROGRESS -> CANCELLED. Terminal records stay visible; no deletion/reopening. | Action states/transitions are graded but exact values are not supplied. |
@@ -81,7 +81,7 @@ below are engineering choices under this scope for the peer reviewer to check.
 - BR-19: Scoped creation retry returns the original Action without another event;
   reused key with different normalized payload returns 409.
 
-## 6. Baseline Ticket matrix to refine, not silently replace
+## 6. Preserved Ticket matrix and final role/gate rules
 
 Verified in baseline `server/src/app.ts`:
 
@@ -133,7 +133,7 @@ run destructive demonstrations against the user's working database.
 Seeds must cover every major Ticket state/priority/ownership, zero/one/multiple
 Actions and zero/non-zero metrics; repeat runs must not duplicate records.
 
-## 8. Metric proposals to finalize
+## 8. Exact metrics and final data choices
 
 Store timestamps in UTC; use Asia/Bangkok calendar boundaries converted to UTC,
 half-open [start,end) ranges. One response has one asOf instant.
