@@ -15,7 +15,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from pypdf import PdfReader
 
 ROOT=Path(__file__).resolve().parents[1]
-REPORT_REF=os.environ.get('LAB3_REPORT_REF','docs/lab3-final-submission')
+REPORT_REF=os.environ.get('LAB3_REPORT_REF','docs/lab3-closure')
 OUT=ROOT/'output/pdf'; OUT.mkdir(parents=True,exist_ok=True)
 EVID=ROOT/'artifacts/lab-03/released-main-evidence'; EVID.mkdir(parents=True,exist_ok=True)
 SRC=ROOT/'output/playwright'
@@ -37,7 +37,7 @@ def fig(s,path,caption):
 E='artifacts/lab-03/released-main-evidence/'
 Q='artifacts/lab-03/screenshots/phase-08-qa/'
 s=section('Part 1 - Git Use with Engineering Workflow')
-p(s,'Author: iceswift. Original feature reviewer/merger: Richyboy170. Latest release reviewer/merger: jarbbie. Release PR #63 was approved at 13:43:20 UTC and merged into main at 13:51:55 UTC on 3 October 2026 (20:51 Bangkok). Latest released source: b65714ddd4cb733d4ad80983707d50ff618a0a1f. Product corrections are released; this report remains a content/layout review draft.')
+p(s,'Author: iceswift. Original feature reviewer/merger: Richyboy170. Latest product release reviewer/merger: jarbbie. Release PR #63 was approved at 13:43:20 UTC and merged into main at 13:51:55 UTC on 3 October 2026 (20:51 Bangkok). Verified product source: b65714ddd4cb733d4ad80983707d50ff618a0a1f. Jarbbie merged documentation PR #65 into lab3-staging on 4 October. The student confirmed My Reflection on 7 October. Final documentation release into main is still pending; no unperformed merge or final all-Done checkpoint is claimed.')
 p(s,'Issue #58 corrected account-switch edit fields and added separate priority/status badges. The regression failed before its fix. Richyboy170 merged correction #59 into staging and release #60 into main. At that historical release-60 checkpoint, server 42/42, client 29/29, E2E 9/9 and both builds passed. Latest release-63 verification is in Part 3.')
 p(s,'The earlier release #60 Kanban checkpoint has 22 Done cards: 12 earlier Lab 1/2 cards plus all ten Lab 3 Issues (31,35,38,40,43,46,48,51,55,58). At that checkpoint all five other columns were zero. Captures below are overlapping real views, not a reconstructed board. Late closures, Development-link repairs and author acknowledgements are disclosed in reviewer.md; they are not backdated as timely original compliance.')
 p(s,'Latest release #63 board: 23 Done cards (12 earlier Lab 1/2 plus eleven Lab 3 Issues), all five other columns zero. Issue #61 is Closed/Done with both merged #62/#63 linked. New captures below distinguish this from the earlier 22-card checkpoint.')
@@ -65,7 +65,7 @@ p(s,'Supplemental assertions explicitly exercise anonymous access, wrong-role ma
 p(s,'Failure provenance: the reused evidence DB server run passed 41/42 because a helper selected a reset-password demonstration account while assuming its seed password. The unchanged suite passed 42/42 on clean seeded data. This is a fixture-robustness limitation. An initial sandboxed E2E attempt failed at browser initialization; the unchanged permission-approved run passed 9/9. Both unsuccessful logs remain retained separately.')
 
 s=section('Part 4 - AI Use with Reflection')
-p(s,'The student confirmed GPT Sol6.0 and Sol6.1 in OpenAI Codex on 3 October. Nine actual user messages below illustrate analysis, planning and review support, presented in English. This selection does not conceal AI implementation/test execution or claim student-executed checks. My Reflection is a draft for the student\'s personal read-through.')
+p(s,'The student confirmed GPT Sol6.0 and Sol6.1 in OpenAI Codex on 3 October. Nine actual user messages below illustrate analysis, planning and review support, presented in English. This selection does not conceal AI implementation/test execution or claim student-executed checks. The student confirmed on 7 October that My Reflection represents their own experience and learning.')
 md(s,'docs/lab-03/ai-use.md')
 
 s=section('Part 5 - Working Login and Password Change UI')
@@ -105,7 +105,7 @@ for screen,label in [('login','Login'),('change-password','Change Password'),('q
     for device in ['desktop','tablet','mobile']:fig(s,Q+screen+'-'+device+'.png',f'{label} - {device}. Captured by the released-main b65714d responsive E2E rerun on 3 October.')
 p(s,'Badge audit: the Section 7 role-badge gap is fixed and released through #62/#63. Latest-main User Management and authenticated shell roles use text-bearing badges; status/priority remain distinct. Actual 33 client tests and current-main responsive images support this correction. The completed, qualified checklist above records observations and the tablet native-select truncation limitation; no measured accessibility conformance is claimed.')
 fig(s,E+'release63-keyboard-focus.png','Released main b65714d: pressing Tab focuses Email with a clearly visible ring. A focused control example, not a full WCAG audit.')
-p(s,'Content evidence has been reconciled with the nine required Parts, including the completed qualified visual checklist. This peer-review copy has undergone every-page layout inspection and structural checks. Remaining submission gates are the student personal-reflection read-through and reviewer-merged documentation integration, followed by the final revision/Done-board reconciliation. Recorded UI/test-plan limitations remain disclosed rather than certified as complete. Release #63 and main tests are verified; this is a peer-review copy, not a submission-readiness certificate.')
+p(s,'Content evidence has been reconciled with the nine required Parts, including the completed qualified visual checklist. The student confirmed My Reflection on 7 October; documentation PR #65 is reviewer-merged into staging. Remaining delivery gates are review of this factual closure update, reviewer-merged documentation release into main, final revision/source-link verification and actual Issue64/Done-board reconciliation. Recorded UI/test-plan limitations remain disclosed rather than certified as complete. Product release #63 and its main test results are verified; this review copy does not claim the final documentation release already happened.')
 
 pdfmetrics.registerFont(TTFont('ReportArial','C:/Windows/Fonts/arial.ttf'))
 pdfmetrics.registerFont(TTFont('ReportArialBold','C:/Windows/Fonts/arialbd.ttf'))
@@ -168,9 +168,9 @@ class ReportDoc(BaseDocTemplate):
             key=flow.section_key;label=flow.getPlainText();self.canv.bookmarkPage(key);self.canv.addOutlineEntry(label,key,0)
             self.section_pages[key]=self.page;self.notify('TOCEntry',(0,label,self.page,key))
 def para(text,style='BodyReport'):return Paragraph(inline(text),styles[style])
-story += [Spacer(1,115),para('CPE334 Software Engineering Laboratory','SubReport'),para('TokTickIT - Lab 3 Report','CoverReport'),para('Authentication, roles, staff operations and administration'),Spacer(1,28),para('Suwiwat Sinsomboon | 67070503444'),para('[Repository: iceswift/toktickit](https://github.com/iceswift/toktickit)'),para('Verified product: released main b65714d | 3 October 2026'),para('Peer-review copy - documentation integration and personal reflection review remain.'),PageBreak(),para('Contents','SectionReport')]
+story += [Spacer(1,115),para('CPE334 Software Engineering Laboratory','SubReport'),para('TokTickIT - Lab 3 Report','CoverReport'),para('Authentication, roles, staff operations and administration'),Spacer(1,28),para('Suwiwat Sinsomboon | 67070503444'),para('[Repository: iceswift/toktickit](https://github.com/iceswift/toktickit)'),para('Verified product: released main b65714d | 3 October 2026'),para('Reflection confirmed 7 October | documentation release review copy.'),PageBreak(),para('Contents','SectionReport')]
 toc=TableOfContents();toc.levelStyles=[ParagraphStyle(name='TOCReport',fontName='ReportArial',fontSize=10,leading=20,leftIndent=0,firstLineIndent=0)];story += [toc,PageBreak()]
-htmlparts.append('<section class="cover"><h1>TokTickIT<br>Lab 3 Report</h1><p>Suwiwat Sinsomboon | 67070503444</p><p>Released product main b65714d - 3 October 2026 - content-review draft</p></section>')
+htmlparts.append('<section class="cover"><h1>TokTickIT<br>Lab 3 Report</h1><p>Suwiwat Sinsomboon | 67070503444</p><p>Verified product main b65714d - reflection confirmed 7 October 2026 - documentation release review copy</p></section>')
 for index,s in enumerate(sections,1):
     if index>1:story.append(PageBreak())
     heading=para(s['title'],'SectionReport');heading.section_key='part'+str(index);story.append(heading)
@@ -182,7 +182,7 @@ for index,s in enumerate(sections,1):
             path,label=item[1:];story.append(para('Rendered '+label if kind=='md' else label,'SubReport'));hp.append('<h3>'+html.escape(label)+'</h3>')
             if kind=='md':
                 source_url='https://github.com/iceswift/toktickit/blob/'+REPORT_REF+'/'+label
-                source_label='[Rendered source revision]('+source_url+') - document-only peer-review branch; integration into main is pending.'
+                source_label='[Rendered source revision]('+source_url+') - exact documentation source; see Part 1 for integration status.'
                 story.append(para(source_label,'CaptionReport'));hp.append('<p>'+inline(source_label)+'</p>')
             text=path.read_text(encoding='utf-8-sig')
             entries=blocks(text) if kind=='md' and label!='.gitignore' else [('code',text)]

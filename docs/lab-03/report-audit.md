@@ -1,5 +1,13 @@
 # Report evidence reconciliation - 4 October 2026
 
+## Current closure checkpoint - 7 October 2026
+
+The dated sections below preserve historical audit events, not current pending gates. GitHub REST checks verified PR #65 is merged by jarbbie into lab3-staging at 08:03:13 UTC on 4 October, merge 0a768cd6d8750ba201e85b93caf2ef245fb22b7b. The student explicitly confirmed that My Reflection represents their own experience and learning on 7 October. reviewer.md, ai-use.md and the report generator now reflect these facts.
+
+This closure branch is based on the actual merged staging head, not an overwritten/reset staging branch. No product source, migrations, assertions or retained test results are changed. Source links identify the closure documentation revision; historical evidence retains its dates and provenance. Remaining gates: reviewer integration of this small factual closure update, documentation release to main, final source/report checks and actual Issue #64/Done reconciliation. No author self-merge or premature task closure is authorized by this record. The generated PDF remains a release-review copy until these external delivery events occur.
+
+The regenerated 75-page/60-figure closure copy passed the structure checker (nine outlines, 82 links before adding the late PR65 acknowledgement link, zero missing images, all TOC targets checked). All 75 pages were visually inspected in 19 newly rendered contact sheets. The Part4 introduction was then corrected after visual inspection found a remaining draft-reflection sentence; changed pages are regenerated and rechecked before publishing. No new product test run is claimed. PR65 feedback was acknowledged on 7 October with its post-merge timing explicitly disclosed.
+
 Product source: released main `b65714ddd4cb733d4ad80983707d50ff618a0a1f` (#63), reviewer-approved and reviewer-merged by jarbbie. This audit/report revision is local and has not been integrated through a documentation PR. It is not a submission-readiness certificate.
 
 ## Evidence mapped to the nine required Parts
