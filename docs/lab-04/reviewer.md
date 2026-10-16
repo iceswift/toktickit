@@ -41,6 +41,10 @@ Do not fabricate dialogue or pre-fill successful reviews.
 - Added regression assertions to scripts/verify_lab4_contract.py for baseline
   mixed prefixes, resolved endpoint paths and absence of bare /tickets paths.
 - Approval, merge and Phase 1 completion remain pending peer re-review.
+- Fix pushed as fa8e550; actual response posted at
+  https://github.com/iceswift/toktickit/pull/76#issuecomment-6215220380.
+  Re-review requested from jarbbie. Actual Edge screenshot of commit/reply
+  visually inspected and incorporated in the report; no approval is claimed.
 - Project CLI cannot move Issue #68 to Fixing: current token lacks read:project
   scope. No board transition or new screenshot is claimed for this correction.
   Existing 8 October screenshots remain historical, not current-state evidence.

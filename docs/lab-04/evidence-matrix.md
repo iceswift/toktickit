@@ -52,8 +52,12 @@ certified. Keep that QA item pending; source can be opened in the app file edito
 
 16 October correction checkpoint: PR #76 remains open with jarbbie's Request
 changes. API prefix correction and structural regression checks are recorded in
-reviewer.md and report Part 2. No product code/tests were run. New visual evidence
-and board Fixing -> PR Review transition remain unverified; Project CLI access
+reviewer.md and report Part 2. No product code/tests were run. Actual author reply
+https://github.com/iceswift/toktickit/pull/76#issuecomment-6215220380 and commit
+fa8e550 were captured in Edge (1920x1080), visually inspected and incorporated as
+artifacts/lab-04/github/phase1-pr76-route-correction.png. This is live GitHub, not
+a fixture, authenticated as iceswift; approval is not claimed.
+The board Fixing -> PR Review transition remains unverified; Project CLI access
 lacks read:project scope. Historical screenshots above must not be relabelled as
 proof of this correction or current approval.
 
