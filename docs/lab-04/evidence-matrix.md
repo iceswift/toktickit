@@ -50,6 +50,13 @@ certified. Keep that QA item pending; source can be opened in the app file edito
 
 ## Working Phases (organizing choice, not mandated number)
 
+16 October correction checkpoint: PR #76 remains open with jarbbie's Request
+changes. API prefix correction and structural regression checks are recorded in
+reviewer.md and report Part 2. No product code/tests were run. New visual evidence
+and board Fixing -> PR Review transition remain unverified; Project CLI access
+lacks read:project scope. Historical screenshots above must not be relabelled as
+proof of this correction or current approval.
+
 1. Baseline/contract/backlog, decision approval, spec/test plan before coding.
 2. Database migration/recovery, Action model and idempotent seeds (depends 1).
 3. Action APIs/auth/validation/history/conflicts/retry tests (depends 2).

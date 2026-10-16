@@ -9,6 +9,7 @@ verified; earlier Lab 3 Sol6.0/Sol6.1 usage is not attributed to Lab 4 automatic
 |---|---|---|
 | 2026-10-08 | มาเริ่ม lab4 กันเลย | Read requirements, verify baseline, prepare contract decisions and evidence plan. Student has not yet approved D-01..04. |
 | 2026-10-08 | I agree your accord | Student approves D-01..04; refine exact contract and test plan before code. |
+| 2026-10-16 | ทำ Lab4 ของเรากันต่อดีกว่า | Inspect actual PR #76 review, correct HTTP route contract against baseline, add a structural regression check, and update report/review evidence. Peer approval remains required; no product implementation claimed. |
 
 The quoted Thai prompt is retained honestly, not rewritten as a fictitious English
 prompt. Add 6-10 actual selected prompts as the sprint proceeds; translations, if

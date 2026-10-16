@@ -15,6 +15,27 @@ assert {f'AC-{i:02}' for i in range(1, 14)} <= set(re.findall(r'AC-\d{2}', spec)
 assert {f'AC-{i:02}' for i in range(1, 14)} <= set(re.findall(r'AC-\d{2}', plan))
 assert 'not yet exist' in plan
 
+# Contract regression check: mixed baseline prefixes are deliberate. These are
+# source/contract checks only, not evidence that proposed endpoints run.
+api = (DOCS / 'api-spec.md').read_text(encoding='utf-8')
+baseline = (ROOT / 'server' / 'src' / 'app.ts').read_text(encoding='utf-8')
+client_api = (ROOT / 'client' / 'src' / 'api.ts').read_text(encoding='utf-8')
+for path in ['/api/tickets', '/api/attachments', '/staff/tickets', '/auth/login']:
+    assert path in baseline and path in client_api, f'Baseline route drift: {path}'
+for path in [
+    'GET /api/tickets/:id/actions', 'GET /api/tickets/dashboard',
+    'GET /api/tickets/:id/actions/:actionId/events',
+    'GET /api/tickets/:id/workflow-events',
+    'GET /api/tickets?statusGroup=open',
+    'GET /staff/tickets/:id/actions', 'GET /staff/dashboard',
+    'GET /staff/actions?performedBy=me',
+]:
+    assert path in api, f'Missing resolved HTTP path: {path}'
+for name, content in [('api-spec.md', api), ('specification.md', spec)]:
+    assert not re.search(r'(?<![\w/])/tickets(?:[/?\s|`]|$)', content), (
+        f'Ambiguous bare Requester HTTP path in {name}'
+    )
+
 class ReportCheck(HTMLParser):
     ids = set()
     refs = []
@@ -39,3 +60,4 @@ for ref in parser.refs + parser.images:
         assert (DOCS / ref).resolve().is_file(), f'Broken local reference {ref}'
 print('PASS: required documents, AC-01..13 mapping, nine Parts, anchors and local assets.')
 print('Scope: structural contract/report checks only; no product tests executed.')
+print('PASS: mixed baseline HTTP prefixes and resolved Requester/Staff paths.')

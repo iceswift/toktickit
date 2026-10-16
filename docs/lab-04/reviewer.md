@@ -1,6 +1,7 @@
 # Lab 4 Peer Review Record
 
-Status: Phase 1 prepared; PR #76 OPEN, review requested from jarbbie.
+Status: Phase 1 PR #76 OPEN; jarbbie requested changes on 8 October 2026.
+Route contract correction prepared on the same branch on 16 October 2026.
 No reviewer approval or merge exists yet. Author must not self-merge.
 Do not reuse the friend's PR #60 as evidence of this repository's Lab 4.
 
@@ -26,3 +27,20 @@ Do not fabricate dialogue or pre-fill successful reviews.
 - Verification: structural contract checker and git diff checks passed. This is
   docs-only; zero GitHub checks were attached at checkpoint. No product Pass claimed.
 - Captured and visually inspected actual PR link/review-request and PR Review board.
+
+## Review correction - 16 October 2026
+
+- Actual reviewer jarbbie requested changes on head fc1cdfa, 8 October 2026,
+  16:33:57 UTC: Requester paths must match /api/tickets and /api/attachments;
+  Staff/Admin/auth must retain /staff, /admin and /auth.
+- Confirmed the finding against baseline server/src/app.ts middleware/mounts and
+  client/src/api.ts fetch paths. It was a real contract error, not a product fix.
+- Corrected all proposed Requester paths, event paths, route-order instruction,
+  metric drill-down example and explicit server-origin URL notation. Listed Staff
+  paths fully and specified guards for new sibling Staff endpoints.
+- Added regression assertions to scripts/verify_lab4_contract.py for baseline
+  mixed prefixes, resolved endpoint paths and absence of bare /tickets paths.
+- Approval, merge and Phase 1 completion remain pending peer re-review.
+- Project CLI cannot move Issue #68 to Fixing: current token lacks read:project
+  scope. No board transition or new screenshot is claimed for this correction.
+  Existing 8 October screenshots remain historical, not current-state evidence.

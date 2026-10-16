@@ -152,7 +152,7 @@ included in ordinary status counts. Do not invent historical events or timestamp
 
 | Metric/list | Exact predicate and drill-down |
 |---|---|
-| Requester openTickets | session requesterUserId AND open statuses; /tickets?statusGroup=open |
+| Requester openTickets | session requesterUserId AND open statuses; GET /api/tickets?statusGroup=open |
 | Requester waitingTickets | same owner AND WAITING_FOR_REQUESTER; status drill-down |
 | Requester recentlyResolvedTickets | same owner AND RESOLVED/CLOSED AND lastResolvedAt in [start,asOf); resolvedSince/resolvedBefore and statusGroup=resolved |
 | Requester recentTickets | same owner, all statuses, updatedAt DESC,id DESC, limit 5; detail links |
@@ -165,7 +165,11 @@ included in ordinary status counts. Do not invent historical events or timestamp
 | Staff recentTickets | all Tickets, updatedAt DESC,id DESC, limit 5; staff detail links |
 | Staff urgentTickets | open AND HIGH/URGENT; URGENT first then updatedAt DESC,id DESC, limit 5 |
 
-All drill-downs use identical predicates. Staff/Admin current-user metrics use actual
+All drill-downs use identical predicates. Use actual HTTP paths relative to the
+server origin as defined in api-spec.md: Requester
+list/detail/actions use /api/tickets, while Staff paths remain /staff (no /api).
+These endpoint paths are not frontend navigation route names.
+Staff/Admin current-user metrics use actual
 session identity, not assignee. Recently-resolved records may include subsequently
 Closed work, never Reopened/Open work. Empty counts/buckets are zero, lists [].
 
