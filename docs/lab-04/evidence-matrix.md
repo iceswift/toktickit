@@ -1,5 +1,77 @@
 # Lab 4 Evidence Register
 
+## Latest Phase 2 review correction - 28 October 2026
+
+- Actual PR78 review by Richyboy170 is COMMENTED, not Approve. Two findings concern
+  workflow/Action event version integrity. Added the explicit mutation-layer
+  implementation before API exposure, per the reviewer's proposed option.
+- Implemented VERSION-01: 14 internal transaction tests; full local backend now
+  20 files / 66 tests, no skips, build passed. Existing SQL migration unchanged.
+- Complete logs: phase2/review-server-output.txt, review-build-output.txt and
+  review-data-output.txt. The older 19-file/52-test checkpoint below is historical.
+- Version protocol and API integration gates: docs/lab-04/version-protocol.md.
+  Raw ORM/SQL is not protected by this layer; future routes must not bypass it.
+  Explicit synthetic no-op policy is a test fixture, not auth/Resolve proof.
+- Reuse PR78; no new PR, approval, reviewer merge or final-main result claimed.
+  Actual author reply: PR78#issuecomment-6470468784; fix c031106 pushed and
+  Richyboy170 re-review requested. phase2-pr78-version-review-reply.png was
+  captured/visually verified in Browser in app; no Edge interaction was used.
+
+## Current in-app browser proof - 28 October 2026
+
+Supersedes the earlier browser/board blockers below; CLI Project scope is still
+absent but actual Browser in app now works. Edge was not used in this recovery.
+
+- PR78 is Open/Ready for review into lab4-staging, reviewer Richyboy170 requested.
+  Direct Issue69 Development linkage confirmed in UI and GitHub API.
+- Actual board: Lab4 Backlog6, Specified0, Started0, PR Review1 (#69 with #78),
+  Fixing0, Done1 (#68). This is NOT final all-Lab4-Done evidence.
+- Issue68 Done was observed, not newly fabricated. Issue69 moved Started ->
+  PR Review only after its direct PR link was verified. Filter Lab4 is temporary.
+- Actual screenshots captured and visually verified, around 1280x720 content:
+  phase2-pr78-overview.png (head2192131, requested reviewer),
+  phase2-pr78-issue69.png (Open and Development link),
+  phase2-kanban-phase1-done.png (PR Review69 and Done68),
+  phase1-pr77-approved-merged.png (real Richy approval, merge0f84785 and reply).
+  All are under artifacts/lab-04/github and incorporated in report.html.
+- No new reviewer approval/merge, product rerun, or CI test is claimed from these
+  workflow screenshots. GitHub Checks0 is not a passing CI result.
+
+## Current Phase 2 PR preparation - 28 October 2026
+
+- Working branch feature/69-lab4-data from merged staging0f84785; student now
+  authorized push and the Phase2 feature PR. No peer approval/merge claimed.
+  Initially Draft until direct Issue69 Development linkage is verified.
+  Actual submission: PR78, product/evidence commit0ad56c4, reviewer Richyboy170.
+  PR opened/pushed; approval/merge and direct linkage not yet verified.
+- MIG-01/SEED-01 implemented, isolated PostgreSQL18 loopback55484. Complete actual
+  backend output: artifacts/lab-04/phase2/final-server-output.txt. Source-level
+  TDD red excerpt retained in phase2/tdd-red-excerpt.txt (not a full failing log).
+- Includes genuine nine-table preservation and pre-upgrade backup/restoration;
+  no mock DB or working application database used. See database-runbook.md.
+- Actual latest backend result: 19 files / 52 tests (10 new data tests), no skips;
+  build/validation/generation pass; final schema diff reports no difference.
+  Final core-source SHA256 manifest and schema verification are retained in phase2/.
+- Actual progress comment: https://github.com/iceswift/toktickit/issues/69#issuecomment-6463087098.
+  Issue remains open, no card transition/PR/merge claimed. Temporary PostgreSQL
+  test cluster stopped after verification; all synthetic databases retained.
+- Phase1 fresh approval/merge/Done screenshots remain missing. Phase2 terminal
+  screenshots are not fabricated; machine output is retained as text. Browser
+  capture limitations remain disclosed. Rendered HTML/PDF not certified.
+- Audit11 (4moderate/4high/3critical) from unchanged lockfile remains open for
+  hardening; database/build Pass is not release approval. No client/E2E claim.
+
+Verified closure, 28 October 2026 (local update): PR77 reviewer-approved and
+reviewer-merged by Richyboy170, staging0f84785; original linked PR76 now marked
+merged, Issue68 manually closed. API records verified; no new closure screenshot
+or Kanban Done proof captured. No new PR/merge or publication of this local update.
+Previous pending checkpoints below are historical. See reviewer.md for linkage limits.
+
+28 October 2026: replacement PR #77, docs/lab4-contract-richy -> lab4-staging,
+requested reviewer Richyboy170 (write permission verified). Student explicitly
+requested a new PR/reviewer. Previous PR #76 review/correction history is preserved.
+No approval, merge, Phase 1 completion, or replacement screenshot is claimed yet.
+
 Checkpoint: 2026-10-08, Asia/Bangkok. Baseline main `5398f2d08659014f5e0c6245941dfeba7e44c42c`.
 States: Planned -> Captured -> Visually verified -> Incorporated -> Final-main reverified.
 Draft report is a checklist, not a finished submission; do not mark planned work complete.
@@ -7,9 +79,9 @@ Draft report is a checklist, not a finished submission; do not mark planned work
 | Evidence ID | Part / AC | Required proof | State | File / provenance |
 |---|---|---|---|---|
 | GIT-BASE | 1 | Correct main/staging baseline and actual Phase 1 board | Captured, visually verified, linked in report source | baseline.md; artifacts/lab-04/github/phase1-issue68-started.jpg; Issue #68 Started; 8 Oct; 1280x720 browser; UI/main baseline SHA recorded |
-| SPEC-01 | 2 | Approved spec commit before product implementation | Student decisions approved; peer review pending | specification.md; D-01..04 approved 8 Oct; spec commit to be recorded |
+| SPEC-01 | 2 | Approved spec commit before product implementation | Peer approved/merged; source records retained; fresh screenshot pending | specification.md; original753ddeb; PR77 reviewed head c0c9ba9, staging0f84785; phase1-closure.md |
 | TEST-01 | 3 / all AC | Planned coverage and real final test paths/output from main | Plan recorded, execution pending | tests.md |
-| AI-01 | 4 | Actual tool/prompts and confirmed personal reflection | One authentic prompt recorded | ai-use.md |
+| AI-01 | 4 | Actual tool/prompts and confirmed personal reflection | Authentic prompt register maintained; reflection pending | ai-use.md |
 | STAFF-01 | 5 / AC-08,12 | Metrics vs DB, performedBy work, drill-down and safe states | Planned | Capture in Phase 6 |
 | ACT-01 | 6 / AC-01..04,11,12 | List/create/assign/edit/transitions/complete/cancel, different staff/actions, negatives | Planned | Capture in Phases 2-4 |
 | WF-01 | 7 / AC-05,06,11 | Full transitions, gate bypass, immutable ordered history, visibility | Planned | Capture in Phases 3/5 |

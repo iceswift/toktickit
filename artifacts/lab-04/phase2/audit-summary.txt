@@ -1,0 +1,18 @@
+28 October 2026, actual npm audit metadata from unchanged server package-lock.json.
+11 vulnerable nodes: 4 moderate, 4 high, 3 critical. NOT a passing audit.
+No npm audit fix or dependency update performed.
+
+@vitest/mocker: moderate (transitive)
+body-parser: high (transitive)
+esbuild: moderate (transitive)
+multer: high (direct)
+proxy-addr: critical (transitive)
+qs: moderate (transitive)
+source-map-js: high (transitive)
+tinypool: critical (transitive)
+vite: high (transitive)
+vite-node: moderate (transitive)
+vitest: critical (direct)
+
+This summarizes local npm audit results, not independently assessed exploitability.
+Security remediation remains a release gate; data/build Pass does not clear it.

@@ -9,6 +9,19 @@ selection context can create Tickets, view only its own paginated My Tickets
 list, inspect an owned read-only detail screen, and manage permitted
 Attachments. Lab 3 replaces that temporary selector with authenticated Requester identity and adds secure sessions, role authorization, IT Staff operations, Administrator user management, Public Comments, private Internal Notes, and responsive QA coverage.
 
+## Lab 4 Phase 2 local data increment
+
+The peer-merged Lab 4 contract is followed by a local Actions/history/version/retry
+schema and additive migration. Existing application API/UI behavior is unchanged;
+new Actions APIs and dashboards are not implemented yet. The standard seed now
+also creates eight dedicated synthetic Lab 4 Tickets, without inventing Actions
+on old Tickets or overwriting already-worked Lab 4 fixture records.
+
+See [database verification and recovery runbook](docs/lab-04/database-runbook.md)
+for isolated migration, backup/restore and repeated-seed commands and limitations.
+Do not use the working application database for destructive regression tests.
+Phase 2 is being submitted for peer review; no reviewer approval or merge is claimed.
+
 ## Technology stack
 
 - Frontend: React, TypeScript, Vite, and Bootstrap

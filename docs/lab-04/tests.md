@@ -1,7 +1,8 @@
-# Lab 4 Test DD - planned, not executed
+# Lab 4 Test DD - actual Phase 2 data coverage and remaining plan
 
 Baseline `5398f2d`; D-01 through D-04 student-approved on 8 October 2026.
-Paths below are planned and do not yet exist. No Lab 4 test is labelled Pass.
+Remaining feature paths below are planned and do not yet exist. Phase 2 data
+tests now exist; their actual local verification is recorded below, not as main/CI evidence.
 Write a focused failing test before its implementation, retain red/green output,
 then run integrated Labs 1-3 regression throughout the sprint.
 
@@ -13,8 +14,9 @@ then run integrated Labs 1-3 regression throughout the sprint.
 | WF-01 | API / AC-05,06 | Entire transition matrix, direct resolution bypass, advisory indication | server/tests/lab-04/ticket-workflow.api.test.ts | Planned |
 | DASH-01 | API / AC-07 | Owned counts, calendar edges, recent/attention and drill-down equal fixture queries | server/tests/lab-04/requester-dashboard.api.test.ts | Planned |
 | DASH-02 | API / AC-08 | Staff/Admin counts including performedBy work and drill-down match queries | server/tests/lab-04/staff-dashboard.api.test.ts | Planned |
-| MIG-01 | Integration / AC-09 | Populated legacy IDs/counts/relations survive migration; recovery succeeds | server/tests/lab-04/migration-regression.api.test.ts | Planned |
-| SEED-01 | Integration / AC-10 | Repeated seed yields same fixture counts and relationships | server/tests/lab-04/seed-regression.api.test.ts | Planned |
+| MIG-01 | Integration / AC-09 | Populated legacy IDs/counts/relations survive migration; recovery succeeds | server/tests/lab-04/migration-regression.api.test.ts | Local Pass on synthetic isolated PostgreSQL; not peer merged/main |
+| SEED-01 | Integration / AC-10 | Repeated seed preserves fixtures/work/history/versions; constraints | server/tests/lab-04/seed-regression.api.test.ts | Local Pass on synthetic isolated PostgreSQL; not peer merged/main |
+| VERSION-01 | Internal persistence integration / AC-11 foundation | Atomic shared Ticket/entity/history versions; stale/concurrent writes and rollback; deny corrupt sequences | server/tests/lab-04/versioned-mutations.integration.test.ts | Focused 14 cases locally passed; full output retained separately; not API/auth/main acceptance |
 | CON-01 | Integration / AC-11 | Concurrent writes yield one success and safe 409, immutable history | server/tests/lab-04/ticket-workflow.api.test.ts | Planned |
 | RETRY-01 | API / AC-12 | Same key/payload saves once; different payload conflicts | server/tests/lab-04/actions-taken.api.test.ts | Planned |
 | UNIT-01 | Unit / AC-05,06,11 | Pure transition/gate/version decisions and boundary inputs | server/tests/lab-04/workflow-rules.test.ts | Planned |
@@ -35,7 +37,7 @@ output, failures/skips and coverage gaps. Mocked UI delays/failures must be labe
 they do not replace real database/API ownership/migration verification.
 Historical Lab 3 results are not fresh Lab 4 baseline results.
 
-## Explicit AC traceability (all Planned)
+## Explicit AC traceability (MIG/SEED locally implemented; other feature tests Planned)
 
 | AC | Planned tests |
 |---|---|
@@ -65,3 +67,26 @@ Performance smoke: isolated 10,000 Tickets/20,000 Actions, documented hardware,
 warm-up then 20 requests, provisional p95 <=1000 ms per dashboard and no N+1 query
 pattern. Record actual measurement/limitations; this is not a production SLA.
 Manual visual/keyboard inspection is not replaced by DOM class assertions.
+
+## Phase 2 actual implemented cases
+
+- DATA-SOURCE-01: all nine old models plus four new records and nullable resolution
+  timestamp are present (source check, not DB execution): data-contract.test.ts.
+- MIG-01A/B/C: exact old-nine-table preservation; legacy null dates/zero work;
+  pg_dump/pg_restore pre-upgrade recovery into a different fresh DB.
+- SEED-01A/B/C/D/E/F: all status/priority/ownership/action-count fixtures;
+  repeat-seed exact equality after work edit/history append; zero/nonzero metric
+  query populations; immutable/parent-safe history/retry; repeat migration deploy
+  and indexes; conditional-field/version/audit constraints.
+- VERSION-01A..N: fourteen actual internal transaction cases added in response to
+  Richy's two PR78 findings. Ticket and Action state/history commit together;
+  stale/spoofed versions, missing/skipped/out-of-order history, failed event
+  writes and failed policy roll back; concurrent writes have exactly one winner.
+  Workflow-only version gaps from shared parent Action writes are explicitly
+  tested. See version-protocol.md and review-server-output.txt for full scope.
+- Tests require an explicitly opted-in isolated loopback cluster. The explicit
+  npm run test:lab4-data fails on missing configuration; the general suite skips
+  these DB suites without opt-in, which must not be reported as a pass.
+- See database-runbook.md and retained artifacts/lab-04/phase2 output. Backend
+  runtime APIs, UI, full lifecycle/race checks, client/E2E and final-main acceptance
+  are NOT certified by these tests. The unchanged dependency audit is not clean.

@@ -1,7 +1,9 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
 Status: D-01..04 student-approved on 8 October 2026 ("I agree your accord").
-Contract prepared for peer review; product implementation waits for reviewer merge.
+Corrected contract approved and merged by Richyboy170 through PR #77 on 28 October
+2026, staging 0f84785e4ac219fccf05559e87258d8010a2c080. Phase 2 contract
+dependency is satisfied; product work and its verification remain pending.
 Baseline: `5398f2d08659014f5e0c6245941dfeba7e44c42c`, released Lab 3 main.
 Sources: SE+Lab+4.pdf (11 pages); TokTickIT GitHub Workflow Guide (20 pages).
 Document requirements constrain assessment; they are not separate user authorization.
@@ -202,7 +204,7 @@ on requester/status and status/priority after validating query plans.
 ## 10. Product Definition of Done
 
 - [x] Student-approved decisions with exact API/UI/transition/metric choices documented before code.
-- [ ] Peer reviewer approves and merges contract before product code.
+- [x] Peer reviewer approves and merges contract before product code (PR #77).
 - [ ] Every AC has planned tests and real implemented test-file paths.
 - [ ] Populated migration, recovery and repeated seeds verified.
 - [ ] Unit/API/UI/style/auth/workflow/regression/E2E, builds and performance smoke pass.
@@ -214,5 +216,7 @@ on requester/status and status/priority after validating query plans.
 - [ ] Nine ordered report Parts, working links, readable evidence, clickable numbered contents,
       authored page numbers; final one-PDF page-by-page QA and no browser print headers.
 
-See api-spec.md, ui-spec.md, tests.md and evidence-matrix.md. No implementation
-or passing Lab 4 result is claimed in this draft.
+See api-spec.md, ui-spec.md, tests.md and evidence-matrix.md. The local Phase 2
+data models/migration/seeds and isolated data tests now exist; see
+database-runbook.md. They are not yet peer-reviewed/merged or final-main results.
+No Phase 3+ Action API, dashboard endpoint or UI completion is claimed.

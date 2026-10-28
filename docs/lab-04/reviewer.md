@@ -1,10 +1,68 @@
 # Lab 4 Peer Review Record
 
+## Latest review correction - 28 October 2026
+
+Richyboy170 COMMENTED on PR78 head e17403f at 08:04:31 UTC, not APPROVED.
+Both findings are valid: workflow-event and Action-event uniqueness does not
+make parent/entity versions atomic or sequential. The correction implements the
+reviewer's mutation-layer option before new routes are exposed; see
+version-protocol.md and server/src/lab4/versioned-mutations.ts. No SQL-wide
+invariant or completed API/domain policy is falsely claimed.
+
+Fourteen new internal transaction tests pass; integrated backend regression is
+20 files / 66 tests with no skips, plus build. Existing migration SQL is unchanged,
+and populated legacy preservation/recovery and seed repeat tests still pass.
+Actual logs: artifacts/lab-04/phase2/review-server-output.txt,
+review-build-output.txt and review-data-output.txt. Fix c03110677b0deff0326094b26dff202dcc0c1c82
+was pushed to the SAME PR78. Author answered both findings with actual results at
+https://github.com/iceswift/toktickit/pull/78#issuecomment-6470468784 and requested
+re-review from Richyboy170. Actual Browser in app screenshot:
+artifacts/lab-04/github/phase2-pr78-version-review-reply.png. Visually verified:
+Open PR78 into staging, correction commit, both replies and real test counts.
+Approval/reviewer merge remain pending; Issue69 is not Done. No CI checks are
+attached; the recorded backend results are local, not a passing GitHub CI claim.
+
+Earlier checkpoint sections below are historical, not current review state.
+
+## Current Phase 2 PR Review - verified through in-app browser
+
+Issue69; feature/69-lab4-data from peer-merged staging0f84785. Data schema,
+migration, seed and tests implemented and locally verified. Student now explicitly
+authorized push and opening the Phase2 PR; no approval or merge is claimed.
+Direct Development linkage to Issue69 is now verified in the in-app browser and
+GitHub API. PR78 was changed from Draft to Ready for review after that verification.
+Reviewer: Richyboy170. Do not mark Issue69 Done or imply peer integration.
+Actual PR: https://github.com/iceswift/toktickit/pull/78, initially Draft, now Open/Ready.
+Product/evidence commit: 0ad56c4; source branch feature/69-lab4-data;
+target lab4-staging. Richyboy170 review requested; approval and merge pending.
+Actual Project2 now shows Issue69 in PR Review with linked PR78, and closed
+Issue68 in Done. Board filter Lab4 was temporary, not saved as the shared view.
+Actual PR78 overview/Development, Project cards and PR77 approval/merge screenshots
+were captured and visually inspected in Browser in app; no Edge input was used.
+Actual local test scope and remaining security/visual gaps: database-runbook.md.
+
+## Verified closure - 28 October 2026 (local report update)
+
+PR #77 was approved by Richyboy170 at 06:34:37 UTC and merged by that reviewer
+at 06:34:46 UTC, merge 0f84785e4ac219fccf05559e87258d8010a2c080 into lab4-staging.
+Original #76 is also recorded merged by GitHub at 06:34:48 UTC, its original
+history being contained in #77. #76 retains direct Development linkage to #68;
+#77 closingIssuesReferences is empty. Do not claim a retrospective #77 link or
+an approval on #76. Actual author reply:
+https://github.com/iceswift/toktickit/pull/77#issuecomment-6462523848.
+Issue #68 was manually closed after integrated-contract verification. Kanban Done
+status is unverified: Project CLI lacks read:project. No new PR or merge created.
+This closure update is carried with the authorized Phase2 feature branch, not
+through a separate closure-only PR or direct staging push.
+Earlier checkpoint entries below are retained as history, not current status.
+
 Status update, 28 October 2026: student requested a replacement Phase 1 PR with
 Richyboy170 as reviewer. Preserve the original contract and review corrections;
 this is a reviewer handover, not a new product implementation or approval.
 Richyboy170's repository write permission was verified before requesting review.
-Replacement PR details will be recorded after creation. PR #76 is historical and
+Replacement PR: https://github.com/iceswift/toktickit/pull/77;
+docs/lab4-contract-richy -> lab4-staging, requested reviewer Richyboy170.
+PR #76 is historical and
 must not be treated as approved or merged.
 
 Previous checkpoint: Phase 1 PR #76 OPEN; jarbbie requested changes on 8 October 2026.

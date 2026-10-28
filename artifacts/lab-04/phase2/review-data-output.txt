@@ -1,0 +1,42 @@
+
+> toktickit-server@1.0.0 test:lab4-data
+> node scripts/check-lab4-test-env.mjs && vitest run tests/lab-04/data-contract.test.ts tests/lab-04/migration-regression.api.test.ts tests/lab-04/seed-regression.api.test.ts tests/lab-04/versioned-mutations.integration.test.ts --reporter=verbose
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > commits a Ticket transition and its matching version/from/to event together
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects stale Ticket writes without an extra event or state change
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects caller-supplied/skipped event versions rather than accepting version 99
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rolls back Ticket state/version when workflow-event insertion fails
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > creates an Action at version 1 with CREATED history and one parent bump
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > appends exactly one ordered Action event per increment and shares parent versions
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects stale Action versions and wrong parents with full transaction rollback
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rolls back Action changes and parent version when event insertion fails
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > allows only one concurrent Action writer for the same expected versions
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > serializes competing Action and Ticket writes on the shared parent version
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > refuses mutation of Actions with missing, skipped or out-of-insertion-order history
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects corrupt workflow history before writing another transition
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects Action version spoofing and empty mutations without creating history
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > fails closed without explicit policy and rolls back a failed policy inside the lock
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > covers every status/priority, assigned/unassigned and zero/one/multiple Actions
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > reruns without duplicates, resetting user changes, passwords or Action history 11627ms
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > provides zero and nonzero dashboard fixture populations without fabricating legacy work
+stdout | tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes
+SEED-01 PASS: all eight migrations deploy; repeated seed preserves work/history; statuses/priorities and zero/one/multiple Actions covered.
+
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > enforces append-only events, immutable creator, no Action deletion and parent-safe retries
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes 1208ms
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > enforces conditional fields, positive versions and immutable workflow/retry history
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > preserves every existing field/ID/relationship in all nine tables 776ms
+stdout | tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality
+MIG-01 PASS: exact nine-table equality, legacy zero-Action/NULL resolution, separate-database pg_dump/pg_restore recovery.
+
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > keeps legacy zero-Action and unknown resolution timestamps truthful
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality 1718ms
+ ✓ tests/lab-04/data-contract.test.ts > Phase 2 data contract (source checks, not database execution) > adds work/history/retry records without dropping legacy models
+
+ Test Files  4 passed (4)
+      Tests  24 passed (24)
+   Start at  20:33:09
+   Duration  35.43s (transform 205ms, setup 0ms, collect 413ms, tests 33.56s, environment 6ms, prepare 515ms)

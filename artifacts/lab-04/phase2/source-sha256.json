@@ -1,0 +1,42 @@
+[
+  {
+    "path": "server/prisma/schema.prisma",
+    "sha256": "2A9ABF1BC6124EE0B120B5ADB65DFB767C14D3F9107B534D59F7482969EBC3A1"
+  },
+  {
+    "path": "server/prisma/migrations/20261028070000_lab4_action_foundation/migration.sql",
+    "sha256": "5EDCA48445600B320439ABA4A9F5C59AC5E02A220CBC3AC60E46770F7516D28F"
+  },
+  {
+    "path": "server/prisma/seed-lab4.ts",
+    "sha256": "FDA35A3CA402B46D3812AF6E1C0ACF9166F2CB58D5F99F839AAEB2FD1218FF08"
+  },
+  {
+    "path": "server/prisma/seed.ts",
+    "sha256": "87340725A37EB7BFC63B0CCCDF4BB131710028A73C5389D87E02292B34389107"
+  },
+  {
+    "path": "server/tests/lab-04/data-contract.test.ts",
+    "sha256": "B236C97CE189D343ECF5A4610DF4039C295BD1B1E47CA56498205F6B3B06D376"
+  },
+  {
+    "path": "server/tests/lab-04/database-fixture.ts",
+    "sha256": "4DB565B89C0153BABB3A6DD323F5CD55C2836D5D2CE3921991D96B2432828B98"
+  },
+  {
+    "path": "server/tests/lab-04/migration-regression.api.test.ts",
+    "sha256": "C79381058E61987C235A8F5DC7021ED1D2D6784A2C93FE9CE49EC0F7625F5AC3"
+  },
+  {
+    "path": "server/tests/lab-04/seed-regression.api.test.ts",
+    "sha256": "B15203F8CDB818179C43D3803287E00482120CB909881BAA4DEDFF1FC7010C19"
+  },
+  {
+    "path": "server/scripts/check-lab4-test-env.mjs",
+    "sha256": "579C153B21538D7428192FD7CF8A5487AB0F2C891E42AE8E27BC6F120A6F6A21"
+  },
+  {
+    "path": "server/package.json",
+    "sha256": "719CD1D9DBB0FAD9559E5FFADBA823FBD1B88668B10A65926CC5843689AFAE34"
+  }
+]

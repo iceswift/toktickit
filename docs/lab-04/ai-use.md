@@ -17,6 +17,27 @@ needed, must not masquerade as the original. No fabricated implementation histor
 
 ## My Reflection
 
+28 October 2026 actual prompt: "คุณก็แก้ได้เลย" after discussion of the two
+PR78 review findings. Assistance: acknowledge that unique event-version indexes
+are not an atomic history protocol; add internal versioned transaction primitives,
+fail-closed policy integration, fourteen real PostgreSQL transaction tests,
+integrated regression and an author reply in the same PR. Do not infer peer
+approval, full API authorization, final workflow completion or student reflection
+confirmation from this implementation request.
+
+28 October 2026 actual prompt: "ถ้า Phase2 เสร็จ เปิด PR ได้เลย".
+Student authorized pushing the verified Phase2 implementation and opening PR78
+for Richyboy170 review into lab4-staging. It starts as Draft until direct Issue69
+linkage is verified. No reviewer approval or merge is inferred.
+
+28 October 2026 actual prompt: "ทำ Phase ถัดไป ตรงไหนไม่มั่นใจ ไอ่านเอกสารใหม่".
+Assistance: reread all 11 Lab 4 pages, implement the approved additive data model,
+write a failing source contract test first, and test populated-data preservation,
+isolated PostgreSQL backup/recovery, repeat seed and prior-lab backend regression.
+Student subsequently stated Docker Desktop was opened; isolated existing test
+cluster was kept to avoid switching onto the working application database.
+No Phase 2 peer approval, new PR or merge is attributed to these prompts.
+
 28 October 2026 actual prompt: "Phase นี้แก้ได้ไหม คือเริ่มใหม่และเปิด pr ใหม่ ใช้อีกคนคือ Richy".
 Assistance: reviewer handover to Richyboy170 through a replacement PR, preserving
 the original contract commits, actual feedback, and corrections. No peer approval
