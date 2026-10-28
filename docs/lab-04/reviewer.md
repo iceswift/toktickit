@@ -7,6 +7,9 @@ migration, seed and tests implemented and locally verified. Student now explicit
 authorized push and opening the Phase2 PR; no approval or merge is claimed.
 PR initially remains Draft until direct Development linkage to Issue69 is verified.
 Reviewer: Richyboy170. Do not mark Issue69 Done or imply peer integration.
+Actual PR: https://github.com/iceswift/toktickit/pull/78, opened as Draft.
+Product/evidence commit: 0ad56c4; source branch feature/69-lab4-data;
+target lab4-staging. Direct Issue linkage is not yet verified.
 Actual local test scope and remaining security/visual gaps: database-runbook.md.
 
 ## Verified closure - 28 October 2026 (local report update)

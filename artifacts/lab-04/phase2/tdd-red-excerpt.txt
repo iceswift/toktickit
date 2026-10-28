@@ -1,5 +1,6 @@
 Phase2 TDD source-contract check before adding ActionTaken/history/retry models.
 This is an excerpt of the actual failed run, not a complete product test log.
+Trailing whitespace normalized for version control; result text is unchanged.
 
 Warning: truncated output (original token count: 2039)
 Total output lines: 232
@@ -26,16 +27,16 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 - model ActionTaken {
 + // Prisma schema — datasource and generator are pre-wired.
 + // Your DATABASE_URL lives in server/.env (copy it from .env.example).
-+ 
++
 + generator client {
 +   provider = "prisma-client-js"
 + }
-+ 
++
 + datasource db {
 +   provider = "postgresql"
 +   url      = env("DATABASE_URL")
 + }
-+ 
++
 + // ---------------------------------------------------------------------------
 + // Issue 3 — Create and seed IT request categories
 + // Define a Category model with:
@@ -48,10 +49,10 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   name      String   @unique
 +   isActive  Boolean  @default(true)
 +   createdAt DateTime @default(now())
-+ 
++
 +   tickets Ticket[]
 + }
-+ 
++
 + model DevelopmentRequester {
 +   id          Int      @id @default(autoincrement())
 +   displayName String
@@ -59,12 +60,12 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   isActive    Boolean  @default(true)
 +   createdAt   DateTime @default(now())
 +   updatedAt   DateTime @updatedAt
-+ 
++
 +   tickets        Ticket[]     @relation("TicketRequester")
 +   removedFiles   Attachment[] @relation("AttachmentRemovedBy")
 +   migratedUser   User?        @relation("DevelopmentRequesterMigration")
 + }
-+ 
++
 + model User {
 +   id                       Int                   @id @default(autoincrement())
 +   name                     String
@@ -76,7 +77,7 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   developmentRequesterId   Int?                  @unique
 +   createdAt                DateTime              @default(now())
 +   updatedAt                DateTime              @updatedAt
-+ 
++
 +   legacyDevelopmentRequester DevelopmentRequester? @relation("DevelopmentRequesterMigration", fields: [developmentRequesterId], references: [id])
 +   submittedTickets          Ticket[]              @relation("TicketRequesterUser")
 +   ownedTickets              Ticket[]              @relation("TicketOwner")
@@ -84,10 +85,10 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   publicComments            PublicComment[]
 +   internalNotes             InternalNote[]
 +   sessions                  AuthSession[]
-+ 
++
 +   @@index([role, isActive])
 + }
-+ 
++
 + model AuthSession {
 +   id          Int       @id @default(autoincrement())
 +   tokenHash   String    @unique
@@ -95,10 +96,10 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   expiresAt   DateTime
 +   revokedAt   DateTime?
 +   createdAt   DateTime  @default(now())
-+ 
++
 +   user User @…239 tokens truncated…))
 +   updatedAt         DateTime          @updatedAt
-+ 
++
 +   requester     DevelopmentRequester @relation("TicketRequester", fields: [requesterId], references: [id])
 +   requesterUser User?                @relation("TicketRequesterUser", fields: [requesterUserId], references: [id])
 +   owner         User?                @relation("TicketOwner", fields: [ownerUserId], references: [id])
@@ -107,38 +108,38 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   attachments   Attachment[]
 +   publicComments PublicComment[]
 +   internalNotes  InternalNote[]
-+ 
++
 +   @@index([requesterId, createdAt])
 +   @@index([requesterUserId, createdAt])
 +   @@index([ownerUserId, currentStatus])
 + }
-+ 
++
 + model PublicComment {
 +   id        Int      @id @default(autoincrement())
 +   ticketId  Int
 +   authorId  Int
 +   content   String    @db.VarChar(2000)
 +   createdAt DateTime  @default(now())
-+ 
++
 +   ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
 +   author User   @relation(fields: [authorId], references: [id])
-+ 
++
 +   @@index([ticketId, createdAt])
 + }
-+ 
++
 + model InternalNote {
 +   id        Int      @id @default(autoincrement())
 +   ticketId  Int
 +   authorId  Int
 +   content   String    @db.VarChar(2000)
 +   createdAt DateTime  @default(now())
-+ 
++
 +   ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
 +   author User   @relation(fields: [authorId], references: [id])
-+ 
++
 +   @@index([ticketId, createdAt])
 + }
-+ 
++
 + model Attachment {
 +   id                 Int                   @id @default(autoincrement())
 +   ticketId           Int
@@ -151,20 +152,20 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   removalReason      String?
 +   removedByRequesterId Int?
 +   removedByUserId      Int?
-+ 
++
 +   ticket             Ticket                @relation(fields: [ticketId], references: [id])
 +   removedByRequester DevelopmentRequester? @relation("AttachmentRemovedBy", fields: [removedByRequesterId], references: [id])
 +   removedByUser      User?                 @relation("AttachmentRemovedByUser", fields: [removedByUserId], references: [id])
-+ 
++
 +   @@index([ticketId, removedAt])
 + }
-+ 
++
 + enum RequestedPriority {
 +   LOW
 +   MEDIUM
 +   HIGH
 + }
-+ 
++
 + enum ITPriority {
 +   NOT_SET
 +   LOW
@@ -172,7 +173,7 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   HIGH
 +   URGENT
 + }
-+ 
++
 + enum TicketStatus {
 +   NEW
 +   OPEN
@@ -183,7 +184,7 @@ AssertionError: expected '// Prisma schema — datasource and gen…' to contain
 +   REOPENED
 +   CANCELLED
 + }
-+ 
++
 + enum UserRole {
 +   REQUESTER
 +   IT_STAFF

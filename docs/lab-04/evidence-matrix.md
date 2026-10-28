@@ -5,6 +5,8 @@
 - Working branch feature/69-lab4-data from merged staging0f84785; student now
   authorized push and the Phase2 feature PR. No peer approval/merge claimed.
   Initially Draft until direct Issue69 Development linkage is verified.
+  Actual submission: PR78, product/evidence commit0ad56c4, reviewer Richyboy170.
+  PR opened/pushed; approval/merge and direct linkage not yet verified.
 - MIG-01/SEED-01 implemented, isolated PostgreSQL18 loopback55484. Complete actual
   backend output: artifacts/lab-04/phase2/final-server-output.txt. Source-level
   TDD red excerpt retained in phase2/tdd-red-excerpt.txt (not a full failing log).
