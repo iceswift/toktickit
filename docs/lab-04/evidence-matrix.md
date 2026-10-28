@@ -1,5 +1,20 @@
 # Lab 4 Evidence Register
 
+## Latest Phase 2 review correction - 28 October 2026
+
+- Actual PR78 review by Richyboy170 is COMMENTED, not Approve. Two findings concern
+  workflow/Action event version integrity. Added the explicit mutation-layer
+  implementation before API exposure, per the reviewer's proposed option.
+- Implemented VERSION-01: 14 internal transaction tests; full local backend now
+  20 files / 66 tests, no skips, build passed. Existing SQL migration unchanged.
+- Complete logs: phase2/review-server-output.txt, review-build-output.txt and
+  review-data-output.txt. The older 19-file/52-test checkpoint below is historical.
+- Version protocol and API integration gates: docs/lab-04/version-protocol.md.
+  Raw ORM/SQL is not protected by this layer; future routes must not bypass it.
+  Explicit synthetic no-op policy is a test fixture, not auth/Resolve proof.
+- Reuse PR78; no new PR, approval, reviewer merge or final-main result claimed.
+  Actual author reply and refreshed browser evidence are added after push.
+
 ## Current in-app browser proof - 28 October 2026
 
 Supersedes the earlier browser/board blockers below; CLI Project scope is still

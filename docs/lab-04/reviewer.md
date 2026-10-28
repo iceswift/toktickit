@@ -1,5 +1,24 @@
 # Lab 4 Peer Review Record
 
+## Latest review correction - 28 October 2026
+
+Richyboy170 COMMENTED on PR78 head e17403f at 08:04:31 UTC, not APPROVED.
+Both findings are valid: workflow-event and Action-event uniqueness does not
+make parent/entity versions atomic or sequential. The correction implements the
+reviewer's mutation-layer option before new routes are exposed; see
+version-protocol.md and server/src/lab4/versioned-mutations.ts. No SQL-wide
+invariant or completed API/domain policy is falsely claimed.
+
+Fourteen new internal transaction tests pass; integrated backend regression is
+20 files / 66 tests with no skips, plus build. Existing migration SQL is unchanged,
+and populated legacy preservation/recovery and seed repeat tests still pass.
+Actual logs: artifacts/lab-04/phase2/review-server-output.txt,
+review-build-output.txt and review-data-output.txt. Author response/re-review
+request will be recorded after the correction is pushed to the SAME PR78.
+Approval/reviewer merge remain pending; Issue69 is not Done.
+
+Earlier checkpoint sections below are historical, not current review state.
+
 ## Current Phase 2 PR Review - verified through in-app browser
 
 Issue69; feature/69-lab4-data from peer-merged staging0f84785. Data schema,

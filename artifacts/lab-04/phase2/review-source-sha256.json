@@ -1,0 +1,26 @@
+[
+  {
+    "path": "server/src/lab4/versioned-mutations.ts",
+    "sha256": "b797f49793b0faf5b329afba6426b374092d74d404d1f73bd4bdd3f23f16cd64"
+  },
+  {
+    "path": "server/tests/lab-04/versioned-mutations.integration.test.ts",
+    "sha256": "7a62ddf15f5b9b3e524198a1f41eccfc7d0362e7d8fa9c7beabb9fffdc972530"
+  },
+  {
+    "path": "server/tests/lab-04/seed-regression.api.test.ts",
+    "sha256": "b24f11e59c1e5fab8df4984d425b1961baa90825a9cef7336d5b6c7a79fff4c4"
+  },
+  {
+    "path": "server/package.json",
+    "sha256": "975bf1a1c38729c5488854f3f08ecc9d70ddb746bbf7e6f3d7a09381b717004c"
+  },
+  {
+    "path": "server/prisma/schema.prisma",
+    "sha256": "2a9abf1bc6124ee0b120b5adb65dfb767c14d3f9107b534d59f7482969ebc3a1"
+  },
+  {
+    "path": "server/prisma/migrations/20261028070000_lab4_action_foundation/migration.sql",
+    "sha256": "5edca48445600b320439aba4a9f5c59ac5e02a220cbc3ac60e46770f7516d28f"
+  }
+]

@@ -16,6 +16,7 @@ then run integrated Labs 1-3 regression throughout the sprint.
 | DASH-02 | API / AC-08 | Staff/Admin counts including performedBy work and drill-down match queries | server/tests/lab-04/staff-dashboard.api.test.ts | Planned |
 | MIG-01 | Integration / AC-09 | Populated legacy IDs/counts/relations survive migration; recovery succeeds | server/tests/lab-04/migration-regression.api.test.ts | Local Pass on synthetic isolated PostgreSQL; not peer merged/main |
 | SEED-01 | Integration / AC-10 | Repeated seed preserves fixtures/work/history/versions; constraints | server/tests/lab-04/seed-regression.api.test.ts | Local Pass on synthetic isolated PostgreSQL; not peer merged/main |
+| VERSION-01 | Internal persistence integration / AC-11 foundation | Atomic shared Ticket/entity/history versions; stale/concurrent writes and rollback; deny corrupt sequences | server/tests/lab-04/versioned-mutations.integration.test.ts | Focused 14 cases locally passed; full output retained separately; not API/auth/main acceptance |
 | CON-01 | Integration / AC-11 | Concurrent writes yield one success and safe 409, immutable history | server/tests/lab-04/ticket-workflow.api.test.ts | Planned |
 | RETRY-01 | API / AC-12 | Same key/payload saves once; different payload conflicts | server/tests/lab-04/actions-taken.api.test.ts | Planned |
 | UNIT-01 | Unit / AC-05,06,11 | Pure transition/gate/version decisions and boundary inputs | server/tests/lab-04/workflow-rules.test.ts | Planned |
@@ -77,6 +78,12 @@ Manual visual/keyboard inspection is not replaced by DOM class assertions.
   repeat-seed exact equality after work edit/history append; zero/nonzero metric
   query populations; immutable/parent-safe history/retry; repeat migration deploy
   and indexes; conditional-field/version/audit constraints.
+- VERSION-01A..N: fourteen actual internal transaction cases added in response to
+  Richy's two PR78 findings. Ticket and Action state/history commit together;
+  stale/spoofed versions, missing/skipped/out-of-order history, failed event
+  writes and failed policy roll back; concurrent writes have exactly one winner.
+  Workflow-only version gaps from shared parent Action writes are explicitly
+  tested. See version-protocol.md and review-server-output.txt for full scope.
 - Tests require an explicitly opted-in isolated loopback cluster. The explicit
   npm run test:lab4-data fails on missing configuration; the general suite skips
   these DB suites without opt-in, which must not be reported as a pass.

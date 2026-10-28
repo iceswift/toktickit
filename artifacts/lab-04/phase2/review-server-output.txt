@@ -1,0 +1,50 @@
+
+> toktickit-server@1.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts (14 tests) 8574ms
+ ✓ tests/lab-03/requester-authorization.api.test.ts (4 tests) 4287ms
+   ✓ requireRequesterSession authorization boundary > requires a session and rejects staff or first-login Requesters 982ms
+stdout | tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes
+SEED-01 PASS: all eight migrations deploy; repeated seed preserves work/history; statuses/priorities and zero/one/multiple Actions covered.
+
+ ✓ tests/lab-04/seed-regression.api.test.ts (6 tests) 17612ms
+   ✓ SEED-01: migration deployment, constraints and repeated seeds > reruns without duplicates, resetting user changes, passwords or Action history 10328ms
+   ✓ SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes 804ms
+ ✓ tests/lab-02/attachments.api.test.ts (5 tests) 1020ms
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts (4 tests) 1450ms
+ ✓ tests/lab-02/ticket-detail.api.test.ts (3 tests) 1011ms
+ ✓ tests/lab-03/users-admin.api.test.ts (5 tests) 1664ms
+   ✓ Administrator user management > creates, searches, edits, and resets a managed user 782ms
+ ✓ tests/lab-03/staff-queue.api.test.ts (3 tests) 1334ms
+stdout | tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality
+MIG-01 PASS: exact nine-table equality, legacy zero-Action/NULL resolution, separate-database pg_dump/pg_restore recovery.
+
+ ✓ tests/lab-04/migration-regression.api.test.ts (3 tests) 5762ms
+   ✓ MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > preserves every existing field/ID/relationship in all nine tables 931ms
+   ✓ MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality 1894ms
+ ✓ tests/lab-03/migration-regression.api.test.ts (3 tests) 775ms
+   ✓ Lab 3 user migration and seed regression > dual-writes a legacy requester Ticket to its migrated User during the transition 683ms
+ ✓ tests/lab-02/my-tickets.api.test.ts (2 tests) 527ms
+ ✓ tests/lab-03/auth.api.test.ts (3 tests) 3258ms
+   ✓ Lab 3 authentication > creates a session for a valid active User and revokes it on logout 566ms
+   ✓ Lab 3 authentication > uses the same safe response for invalid credentials and inactive accounts 364ms
+   ✓ Lab 3 authentication > requires the current password, clears first-login state, and revokes the old session 2326ms
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts (2 tests) 544ms
+   ✓ Lab 3 realistic seed examples > creates eight workflow examples with correct ownership and repeat-safe communication 403ms
+ ✓ tests/lab-02/create-ticket.api.test.ts (2 tests) 537ms
+ ✓ tests/lab-03/requester-session.test.ts (1 test) 473ms
+   ✓ requesterSession test cleanup > revokes only the sessions created by the test helper 472ms
+ ✓ tests/lab-04/data-contract.test.ts (1 test) 4ms
+ ✓ tests/lab-01/health.test.ts (1 test) 29ms
+ ✓ tests/lab-02/ticket-number.test.ts (2 tests) 4ms
+ ✓ tests/lab-01/categories.test.ts (1 test) 67ms
+ ✓ tests/lab-02/development-requesters.api.test.ts (1 test) 21ms
+
+ Test Files  20 passed (20)
+      Tests  66 passed (66)
+   Start at  20:31:24
+   Duration  72.69s (transform 1.14s, setup 0ms, collect 17.80s, tests 48.95s, environment 5ms, prepare 1.80s)

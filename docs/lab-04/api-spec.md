@@ -105,3 +105,17 @@ Safe errors: 400 field errors; 401 missing/expired/inactive session; 403 wrong r
 illegal transition, unmet gate or idempotency mismatch; 500 safe recoverable error
 without private data/stack. Mandatory first-login password change stays enforced.
 No DELETE Action/event API. Data/history and mutation are transactional.
+
+## PR #78 review correction: mandatory persistence protocol
+
+The internal mutation primitives now exist in
+`server/src/lab4/versioned-mutations.ts`; see [version-protocol.md](version-protocol.md).
+They conditionally increment/lock the shared Ticket version, validate existing
+history, update Action/Ticket and insert matching-version history atomically.
+Event versions are server-derived, never accepted from a caller. An explicit
+policy callback runs under the parent lock; the default denies writes. These are
+NOT new HTTP routes or completed authorization/Resolve/idempotency behavior.
+All future Action writers and the extended legacy Ticket status writer MUST use
+this protocol and real policy checks before being exposed. SQL uniqueness alone
+does not enforce this property. Workflow-event versions can have legitimate gaps
+because Action writes also consume shared Ticket versions; Action events cannot.

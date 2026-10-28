@@ -24,6 +24,11 @@ Actual submission: https://github.com/iceswift/toktickit/pull/78.
 - Version/conditional-text constraints and deterministic list/query indexes are
   included in migration SQL. Custom CHECK constraints/triggers are not represented
   completely in Prisma's model syntax; preserve them in future migrations.
+- PR78 review correction: uniqueness/positivity is NOT atomic version/history
+  enforcement. Internal transaction primitives now implement the mutation-layer
+  protocol and fail closed without an explicit policy. See version-protocol.md.
+  Existing Lab3 status routes/new API integration remain Phase3/4 release gates;
+  the protocol is not yet exposed as an HTTP API or a database-wide constraint.
 - Baseline drift found during verification: optional User.developmentRequesterId
   and Ticket.requesterUserId relations had implicit Prisma SetNull, but the old
   migration actually used RESTRICT. Their schema annotations now explicitly say

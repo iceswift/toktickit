@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { newDatabase, prismaCommand, runSeed, snapshot, sql } from './database-fixture.js';
 import { LAB4_PREFIX } from '../../prisma/seed-lab4.js';
+import { updateActionWithHistory, transitionTicketWithHistory } from '../../src/lab4/versioned-mutations.js';
 
 describe.skipIf(!process.env.LAB4_TEST_ADMIN_URL)('SEED-01: migration deployment, constraints and repeated seeds', () => {
   let url: string;
@@ -25,9 +26,10 @@ describe.skipIf(!process.env.LAB4_TEST_ADMIN_URL)('SEED-01: migration deployment
   });
   it('reruns without duplicates, resetting user changes, passwords or Action history', async () => {
     const action = await prisma.actionTaken.findFirstOrThrow();
-    await prisma.actionTaken.update({ where: { id: action.id }, data: { description: 'User-edited synthetic work', version: 2 } });
-    await prisma.actionEvent.create({ data: { actionId: action.id, ticketId: action.ticketId,
-      actorId: action.performedByUserId, type: 'UPDATED', version: 2, changes: { description: 'User-edited synthetic work' } } });
+    const ticket = await prisma.ticket.findUniqueOrThrow({ where: { id: action.ticketId } });
+    await updateActionWithHistory(prisma, { ticketId: ticket.id, actionId: action.id,
+      actorId: action.performedByUserId, expectedTicketVersion: ticket.version,
+      expectedVersion: action.version, data: { description: 'User-edited synthetic work' } }, async () => {});
     const before = snapshot(url, ['Ticket','ActionTaken','ActionEvent','TicketWorkflowEvent','IdempotencyRecord']);
     const password = await prisma.user.findFirstOrThrow();
     runSeed(url);
@@ -71,8 +73,10 @@ describe.skipIf(!process.env.LAB4_TEST_ADMIN_URL)('SEED-01: migration deployment
     await expect(prisma.actionTaken.update({ where: { id: action.id }, data: { followUpRequired: true, followUpNote: ' ' } })).rejects.toThrow();
     await expect(prisma.actionTaken.update({ where: { id: action.id }, data: { status: 'COMPLETED', result: '' } })).rejects.toThrow();
     await expect(prisma.actionTaken.update({ where: { id: action.id }, data: { version: 0 } })).rejects.toThrow();
-    const workflow = await prisma.ticketWorkflowEvent.create({ data: { ticketId: action.ticketId,
-      actorId: action.performedByUserId, fromStatus: 'OPEN', toStatus: 'IN_PROGRESS', version: 99 } });
+    const ticket = await prisma.ticket.findUniqueOrThrow({ where: { id: action.ticketId } });
+    await transitionTicketWithHistory(prisma, { ticketId: ticket.id, actorId: action.performedByUserId,
+      expectedTicketVersion: ticket.version, toStatus: ticket.currentStatus === 'IN_PROGRESS' ? 'OPEN' : 'IN_PROGRESS' }, async () => {});
+    const workflow = await prisma.ticketWorkflowEvent.findFirstOrThrow({ where: { ticketId: ticket.id } });
     await expect(prisma.ticketWorkflowEvent.update({ where: { id: workflow.id }, data: { version: 100 } })).rejects.toThrow();
     await expect(prisma.ticketWorkflowEvent.delete({ where: { id: workflow.id } })).rejects.toThrow();
     const retry = await prisma.idempotencyRecord.findFirstOrThrow();
