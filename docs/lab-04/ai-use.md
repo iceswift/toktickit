@@ -17,6 +17,14 @@ needed, must not masquerade as the original. No fabricated implementation histor
 
 ## My Reflection
 
+28 October 2026 actual prompt: "ทำ Phase ถัดไป ตรงไหนไม่มั่นใจ ไอ่านเอกสารใหม่".
+Assistance: reread all 11 Lab 4 pages, implement the approved additive data model,
+write a failing source contract test first, and test populated-data preservation,
+isolated PostgreSQL backup/recovery, repeat seed and prior-lab backend regression.
+Student subsequently stated Docker Desktop was opened; isolated existing test
+cluster was kept to avoid switching onto the working application database.
+No Phase 2 peer approval, new PR or merge is attributed to these prompts.
+
 28 October 2026 actual prompt: "Phase นี้แก้ได้ไหม คือเริ่มใหม่และเปิด pr ใหม่ ใช้อีกคนคือ Richy".
 Assistance: reviewer handover to Richyboy170 through a replacement PR, preserving
 the original contract commits, actual feedback, and corrections. No peer approval

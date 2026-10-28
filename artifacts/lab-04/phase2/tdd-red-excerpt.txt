@@ -1,0 +1,208 @@
+Phase2 TDD source-contract check before adding ActionTaken/history/retry models.
+This is an excerpt of the actual failed run, not a complete product test log.
+
+Warning: truncated output (original token count: 2039)
+Total output lines: 232
+
+
+> toktickit-server@1.0.0 test
+> vitest run tests/lab-04/data-contract.test.ts
+
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ❯ tests/lab-04/data-contract.test.ts (1 test | 1 failed) 22ms
+   × Phase 2 data contract (source checks, not database execution) > adds work/history/retry records without dropping legacy models 20ms
+     → expected '// Prisma schema — datasource and gen…' to contain 'model ActionTaken {'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/data-contract.test.ts > Phase 2 data contract (source checks, not database execution) > adds work/history/retry records without dropping legacy models
+AssertionError: expected '// Prisma schema — datasource and gen…' to contain 'model ActionTaken {'
+
+- Expected
++ Received
+
+- model ActionTaken {
++ // Prisma schema — datasource and generator are pre-wired.
++ // Your DATABASE_URL lives in server/.env (copy it from .env.example).
++ 
++ generator client {
++   provider = "prisma-client-js"
++ }
++ 
++ datasource db {
++   provider = "postgresql"
++   url      = env("DATABASE_URL")
++ }
++ 
++ // ---------------------------------------------------------------------------
++ // Issue 3 — Create and seed IT request categories
++ // Define a Category model with:
++ //   id        Int      @id @default(autoincrement())
++ //   name      String   @unique
++ //   createdAt DateTime @default(now())
++ // Then run:  npx prisma migrate dev --name init
++ model Category {
++   id        Int      @id @default(autoincrement())
++   name      String   @unique
++   isActive  Boolean  @default(true)
++   createdAt DateTime @default(now())
++ 
++   tickets Ticket[]
++ }
++ 
++ model DevelopmentRequester {
++   id          Int      @id @default(autoincrement())
++   displayName String
++   email       String   @unique
++   isActive    Boolean  @default(true)
++   createdAt   DateTime @default(now())
++   updatedAt   DateTime @updatedAt
++ 
++   tickets        Ticket[]     @relation("TicketRequester")
++   removedFiles   Attachment[] @relation("AttachmentRemovedBy")
++   migratedUser   User?        @relation("DevelopmentRequesterMigration")
++ }
++ 
++ model User {
++   id                       Int                   @id @default(autoincrement())
++   name                     String
++   email                    String                @unique
++   passwordHash             String
++   role                     UserRole
++   isActive                 Boolean               @default(true)
++   mustChangePassword       Boolean               @default(true)
++   developmentRequesterId   Int?                  @unique
++   createdAt                DateTime              @default(now())
++   updatedAt                DateTime              @updatedAt
++ 
++   legacyDevelopmentRequester DevelopmentRequester? @relation("DevelopmentRequesterMigration", fields: [developmentRequesterId], references: [id])
++   submittedTickets          Ticket[]              @relation("TicketRequesterUser")
++   ownedTickets              Ticket[]              @relation("TicketOwner")
++   removedFiles              Attachment[]          @relation("AttachmentRemovedByUser")
++   publicComments            PublicComment[]
++   internalNotes             InternalNote[]
++   sessions                  AuthSession[]
++ 
++   @@index([role, isActive])
++ }
++ 
++ model AuthSession {
++   id          Int       @id @default(autoincrement())
++   tokenHash   String    @unique
++   userId      Int
++   expiresAt   DateTime
++   revokedAt   DateTime?
++   createdAt   DateTime  @default(now())
++ 
++   user User @…239 tokens truncated…))
++   updatedAt         DateTime          @updatedAt
++ 
++   requester     DevelopmentRequester @relation("TicketRequester", fields: [requesterId], references: [id])
++   requesterUser User?                @relation("TicketRequesterUser", fields: [requesterUserId], references: [id])
++   owner         User?                @relation("TicketOwner", fields: [ownerUserId], references: [id])
++   category      Category              @relation(fields: [categoryId], references: [id])
++   relatedSystem RelatedSystem         @relation(fields: [relatedSystemId], references: [id])
++   attachments   Attachment[]
++   publicComments PublicComment[]
++   internalNotes  InternalNote[]
++ 
++   @@index([requesterId, createdAt])
++   @@index([requesterUserId, createdAt])
++   @@index([ownerUserId, currentStatus])
++ }
++ 
++ model PublicComment {
++   id        Int      @id @default(autoincrement())
++   ticketId  Int
++   authorId  Int
++   content   String    @db.VarChar(2000)
++   createdAt DateTime  @default(now())
++ 
++   ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
++   author User   @relation(fields: [authorId], references: [id])
++ 
++   @@index([ticketId, createdAt])
++ }
++ 
++ model InternalNote {
++   id        Int      @id @default(autoincrement())
++   ticketId  Int
++   authorId  Int
++   content   String    @db.VarChar(2000)
++   createdAt DateTime  @default(now())
++ 
++   ticket Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
++   author User   @relation(fields: [authorId], references: [id])
++ 
++   @@index([ticketId, createdAt])
++ }
++ 
++ model Attachment {
++   id                 Int                   @id @default(autoincrement())
++   ticketId           Int
++   originalFilename   String
++   storageKey         String                @unique
++   mimeType           String
++   byteSize           Int
++   uploadedAt         DateTime              @default(now())
++   removedAt          DateTime?
++   removalReason      String?
++   removedByRequesterId Int?
++   removedByUserId      Int?
++ 
++   ticket             Ticket                @relation(fields: [ticketId], references: [id])
++   removedByRequester DevelopmentRequester? @relation("AttachmentRemovedBy", fields: [removedByRequesterId], references: [id])
++   removedByUser      User?                 @relation("AttachmentRemovedByUser", fields: [removedByUserId], references: [id])
++ 
++   @@index([ticketId, removedAt])
++ }
++ 
++ enum RequestedPriority {
++   LOW
++   MEDIUM
++   HIGH
++ }
++ 
++ enum ITPriority {
++   NOT_SET
++   LOW
++   MEDIUM
++   HIGH
++   URGENT
++ }
++ 
++ enum TicketStatus {
++   NEW
++   OPEN
++   IN_PROGRESS
++   WAITING_FOR_REQUESTER
++   RESOLVED
++   CLOSED
++   REOPENED
++   CANCELLED
++ }
++ 
++ enum UserRole {
++   REQUESTER
++   IT_STAFF
++   ADMINISTRATOR
++ }
++ // ---------------------------------------------------------------------------
++
+
+ ❯ tests/lab-04/data-contract.test.ts:10:22
+      8|       'AuthSession', 'Ticket', 'Attachment', 'PublicComment', 'Interna…
+      9|       'ActionTaken', 'ActionEvent', 'TicketWorkflowEvent', 'Idempotenc…
+     10|       expect(schema).toContain(`model ${model} {`);
+       |                      ^
+     11|     }
+     12|     expect(schema).toContain('lastResolvedAt');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  13:58:12
+   Duration  521ms (transform 43ms, setup 0ms, collect 45ms, tests 22ms, environment 0ms, prepare 169ms)

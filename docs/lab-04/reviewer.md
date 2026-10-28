@@ -1,10 +1,36 @@
 # Lab 4 Peer Review Record
 
+## Current Phase 2 PR preparation
+
+Issue69; feature/69-lab4-data from peer-merged staging0f84785. Data schema,
+migration, seed and tests implemented and locally verified. Student now explicitly
+authorized push and opening the Phase2 PR; no approval or merge is claimed.
+PR initially remains Draft until direct Development linkage to Issue69 is verified.
+Reviewer: Richyboy170. Do not mark Issue69 Done or imply peer integration.
+Actual local test scope and remaining security/visual gaps: database-runbook.md.
+
+## Verified closure - 28 October 2026 (local report update)
+
+PR #77 was approved by Richyboy170 at 06:34:37 UTC and merged by that reviewer
+at 06:34:46 UTC, merge 0f84785e4ac219fccf05559e87258d8010a2c080 into lab4-staging.
+Original #76 is also recorded merged by GitHub at 06:34:48 UTC, its original
+history being contained in #77. #76 retains direct Development linkage to #68;
+#77 closingIssuesReferences is empty. Do not claim a retrospective #77 link or
+an approval on #76. Actual author reply:
+https://github.com/iceswift/toktickit/pull/77#issuecomment-6462523848.
+Issue #68 was manually closed after integrated-contract verification. Kanban Done
+status is unverified: Project CLI lacks read:project. No new PR or merge created.
+This closure update is carried with the authorized Phase2 feature branch, not
+through a separate closure-only PR or direct staging push.
+Earlier checkpoint entries below are retained as history, not current status.
+
 Status update, 28 October 2026: student requested a replacement Phase 1 PR with
 Richyboy170 as reviewer. Preserve the original contract and review corrections;
 this is a reviewer handover, not a new product implementation or approval.
 Richyboy170's repository write permission was verified before requesting review.
-Replacement PR details will be recorded after creation. PR #76 is historical and
+Replacement PR: https://github.com/iceswift/toktickit/pull/77;
+docs/lab4-contract-richy -> lab4-staging, requested reviewer Richyboy170.
+PR #76 is historical and
 must not be treated as approved or merged.
 
 Previous checkpoint: Phase 1 PR #76 OPEN; jarbbie requested changes on 8 October 2026.
