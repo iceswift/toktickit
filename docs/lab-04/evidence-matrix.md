@@ -13,7 +13,9 @@
   Raw ORM/SQL is not protected by this layer; future routes must not bypass it.
   Explicit synthetic no-op policy is a test fixture, not auth/Resolve proof.
 - Reuse PR78; no new PR, approval, reviewer merge or final-main result claimed.
-  Actual author reply and refreshed browser evidence are added after push.
+  Actual author reply: PR78#issuecomment-6470468784; fix c031106 pushed and
+  Richyboy170 re-review requested. phase2-pr78-version-review-reply.png was
+  captured/visually verified in Browser in app; no Edge interaction was used.
 
 ## Current in-app browser proof - 28 October 2026
 

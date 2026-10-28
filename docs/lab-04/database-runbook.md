@@ -10,7 +10,8 @@ Actual submission: https://github.com/iceswift/toktickit/pull/78.
 
 - Add ActionTaken separately from comments/private notes. Immutable authenticated
   performer and active-assignee selection remain distinct concepts; Phase 3 must
-  enforce authentication, active/role checks and the shared version transaction.
+  enforce authentication/active/role checks and use the shared version protocol
+  with a real in-transaction policy callback before any new API is enabled.
 - ActionEvent and TicketWorkflowEvent are append-only for ordinary UPDATE/DELETE,
   reinforced by database triggers. No Action delete; immutable identity/creator.
   Eligible field revisions are still possible, as approved in D-03. These defenses

@@ -13,9 +13,14 @@ Fourteen new internal transaction tests pass; integrated backend regression is
 20 files / 66 tests with no skips, plus build. Existing migration SQL is unchanged,
 and populated legacy preservation/recovery and seed repeat tests still pass.
 Actual logs: artifacts/lab-04/phase2/review-server-output.txt,
-review-build-output.txt and review-data-output.txt. Author response/re-review
-request will be recorded after the correction is pushed to the SAME PR78.
-Approval/reviewer merge remain pending; Issue69 is not Done.
+review-build-output.txt and review-data-output.txt. Fix c03110677b0deff0326094b26dff202dcc0c1c82
+was pushed to the SAME PR78. Author answered both findings with actual results at
+https://github.com/iceswift/toktickit/pull/78#issuecomment-6470468784 and requested
+re-review from Richyboy170. Actual Browser in app screenshot:
+artifacts/lab-04/github/phase2-pr78-version-review-reply.png. Visually verified:
+Open PR78 into staging, correction commit, both replies and real test counts.
+Approval/reviewer merge remain pending; Issue69 is not Done. No CI checks are
+attached; the recorded backend results are local, not a passing GitHub CI claim.
 
 Earlier checkpoint sections below are historical, not current review state.
 
