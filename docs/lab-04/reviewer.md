@@ -1,15 +1,20 @@
 # Lab 4 Peer Review Record
 
-## Current Phase 2 PR preparation
+## Current Phase 2 PR Review - verified through in-app browser
 
 Issue69; feature/69-lab4-data from peer-merged staging0f84785. Data schema,
 migration, seed and tests implemented and locally verified. Student now explicitly
 authorized push and opening the Phase2 PR; no approval or merge is claimed.
-PR initially remains Draft until direct Development linkage to Issue69 is verified.
+Direct Development linkage to Issue69 is now verified in the in-app browser and
+GitHub API. PR78 was changed from Draft to Ready for review after that verification.
 Reviewer: Richyboy170. Do not mark Issue69 Done or imply peer integration.
-Actual PR: https://github.com/iceswift/toktickit/pull/78, opened as Draft.
+Actual PR: https://github.com/iceswift/toktickit/pull/78, initially Draft, now Open/Ready.
 Product/evidence commit: 0ad56c4; source branch feature/69-lab4-data;
-target lab4-staging. Direct Issue linkage is not yet verified.
+target lab4-staging. Richyboy170 review requested; approval and merge pending.
+Actual Project2 now shows Issue69 in PR Review with linked PR78, and closed
+Issue68 in Done. Board filter Lab4 was temporary, not saved as the shared view.
+Actual PR78 overview/Development, Project cards and PR77 approval/merge screenshots
+were captured and visually inspected in Browser in app; no Edge input was used.
 Actual local test scope and remaining security/visual gaps: database-runbook.md.
 
 ## Verified closure - 28 October 2026 (local report update)

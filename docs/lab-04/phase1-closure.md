@@ -2,6 +2,13 @@
 
 Verified 28 October 2026, Asia/Bangkok. No new PR or merge performed for closure.
 
+Later same-day evidence update: Browser in app successfully captured the actual
+PR77 Richy approval/merge and observed Issue68 in Done on Project2. These earlier
+visual blockers are resolved; see phase1-pr77-approved-merged.png and
+phase2-kanban-phase1-done.png under artifacts/lab-04/github. Missing #77 direct
+Issue linkage remains honestly documented; it was not retrospectively created.
+Earlier failed attempts below are retained as historical context, not current status.
+
 ## Integrated work
 
 - Baseline main: `5398f2d08659014f5e0c6245941dfeba7e44c42c`.

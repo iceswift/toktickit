@@ -2,8 +2,8 @@
 
 Working branch: feature/69-lab4-data, based on peer-merged staging `0f84785`.
 Local verification complete; student authorized the Phase2 feature PR and push.
-Peer approval and merge remain pending. Draft status protects the unresolved
-direct Issue69 Development linkage until it is independently verified.
+Peer approval and merge remain pending. Initially Draft; direct Development link
+to Issue69 is now independently verified and PR78 is Ready for review.
 Actual submission: https://github.com/iceswift/toktickit/pull/78.
 
 ## Models and database decisions

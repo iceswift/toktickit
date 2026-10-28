@@ -1,5 +1,25 @@
 # Lab 4 Evidence Register
 
+## Current in-app browser proof - 28 October 2026
+
+Supersedes the earlier browser/board blockers below; CLI Project scope is still
+absent but actual Browser in app now works. Edge was not used in this recovery.
+
+- PR78 is Open/Ready for review into lab4-staging, reviewer Richyboy170 requested.
+  Direct Issue69 Development linkage confirmed in UI and GitHub API.
+- Actual board: Lab4 Backlog6, Specified0, Started0, PR Review1 (#69 with #78),
+  Fixing0, Done1 (#68). This is NOT final all-Lab4-Done evidence.
+- Issue68 Done was observed, not newly fabricated. Issue69 moved Started ->
+  PR Review only after its direct PR link was verified. Filter Lab4 is temporary.
+- Actual screenshots captured and visually verified, around 1280x720 content:
+  phase2-pr78-overview.png (head2192131, requested reviewer),
+  phase2-pr78-issue69.png (Open and Development link),
+  phase2-kanban-phase1-done.png (PR Review69 and Done68),
+  phase1-pr77-approved-merged.png (real Richy approval, merge0f84785 and reply).
+  All are under artifacts/lab-04/github and incorporated in report.html.
+- No new reviewer approval/merge, product rerun, or CI test is claimed from these
+  workflow screenshots. GitHub Checks0 is not a passing CI result.
+
 ## Current Phase 2 PR preparation - 28 October 2026
 
 - Working branch feature/69-lab4-data from merged staging0f84785; student now
