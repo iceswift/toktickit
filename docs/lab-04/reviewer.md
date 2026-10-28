@@ -1,6 +1,13 @@
 # Lab 4 Peer Review Record
 
-Status: Phase 1 PR #76 OPEN; jarbbie requested changes on 8 October 2026.
+Status update, 28 October 2026: student requested a replacement Phase 1 PR with
+Richyboy170 as reviewer. Preserve the original contract and review corrections;
+this is a reviewer handover, not a new product implementation or approval.
+Richyboy170's repository write permission was verified before requesting review.
+Replacement PR details will be recorded after creation. PR #76 is historical and
+must not be treated as approved or merged.
+
+Previous checkpoint: Phase 1 PR #76 OPEN; jarbbie requested changes on 8 October 2026.
 Route contract correction prepared on the same branch on 16 October 2026.
 No reviewer approval or merge exists yet. Author must not self-merge.
 Do not reuse the friend's PR #60 as evidence of this repository's Lab 4.
