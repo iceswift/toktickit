@@ -1,5 +1,23 @@
 # Lab 4 Test DD - actual Phase 2 data coverage and remaining plan
 
+## Latest: Phase4 local UI verification,29October2026
+
+13 files/52 client tests and production build pass;7 real-browser scenarios pass.
+New files: client/tests/lab-04/ActionsTaken.test.tsx (10 component cases),
+actions-api.test.tsx (9 HTTP-adapter cases),
+client/e2e/lab-04/actions-taken-flow.spec.ts (7 scenarios).
+UI-01/E2E-01 and Actions-only STYLE/RESP acceptance are locally implemented;
+remaining workflow/dashboard/full-regression/final-main cases stay planned.
+See phase4-actions-ui.md and artifacts/lab-04/phase4 for complete outputs,
+synthetic environment, injected failures, source fingerprints and inspection
+limits. Peer review/merge pending. Earlier UI-planned text is historical.
+
+Latest29October: Phase3 Action API scope accepted after Richy approved/merged PR79
+at2f633d0. Reviewed headcc479b2 is tree-identical to fetched staging. The110-test
+backend/build evidence below is the retained pre-merge LOCAL run, not new staging
+CI/main verification. Phase4 UI and full Phase5 workflow matrix remain planned.
+See phase3-closure.md; older pending-peer-review descriptions are historical.
+
 ## Current Phase3 local checkpoint - 29 October 2026
 
 Full backend22files/110tests passes without skips, plus build/schema validation.

@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL ?? (typeof window !== "undefined" && window.location.hostname === "127.0.0.1" ? "http://127.0.0.1:3000" : "http://localhost:3000");
+export const API_URL = import.meta.env.VITE_API_URL ?? (typeof window !== "undefined" && window.location.hostname === "127.0.0.1" ? "http://127.0.0.1:3000" : "http://localhost:3000");
 
 export interface Category {
   id: number;
@@ -99,6 +99,7 @@ export interface StaffQueueItem extends TicketListItem {
   owner: { id: number; name: string; role: UserRole } | null;
 }
 export interface StaffTicketDetail extends TicketDetail {
+  version?: number;
   requesterUser: { id: number; name: string; email: string } | null;
   owner: { id: number; name: string; role: UserRole } | null;
   publicComments: TicketEntry[];
@@ -285,7 +286,7 @@ export async function getStaffTicketOwners(): Promise<TicketOwner[]> {
 export const claimStaffTicket = (ticketId: number) => staffTicketRequest(ticketId, "/owner", "PATCH", { ownerUserId: null }) as Promise<StaffTicketDetail>;
 export const assignStaffTicket = (ticketId: number, ownerUserId: number) => staffTicketRequest(ticketId, "/owner", "PATCH", { ownerUserId }) as Promise<StaffTicketDetail>;
 export const setStaffTicketPriority = (ticketId: number, itPriority: ITPriority) => staffTicketRequest(ticketId, "/it-priority", "PATCH", { itPriority }) as Promise<StaffTicketDetail>;
-export const setStaffTicketStatus = (ticketId: number, status: TicketStatus) => staffTicketRequest(ticketId, "/status", "PATCH", { status }) as Promise<StaffTicketDetail>;
+export const setStaffTicketStatus = (ticketId: number, status: TicketStatus, expectedVersion?: number) => staffTicketRequest(ticketId, "/status", "PATCH", { status, ...(expectedVersion !== undefined ? { expectedVersion } : {}) }) as Promise<StaffTicketDetail>;
 export const addStaffPublicComment = (ticketId: number, content: string) => staffTicketRequest(ticketId, "/public-comments", "POST", { content }) as Promise<TicketEntry>;
 export const addStaffInternalNote = (ticketId: number, content: string) => staffTicketRequest(ticketId, "/internal-notes", "POST", { content }) as Promise<TicketEntry>;
 

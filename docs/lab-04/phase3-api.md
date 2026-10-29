@@ -1,5 +1,9 @@
 # Phase 3 Action APIs - implementation and evidence
 
+Closure29October: independently approved/merged in PR79 by Richyboy170, staging
+2f633d0, reviewed headcc479b2. Issue70 Closed/Done after scope verification. See
+phase3-closure.md for actual images/records and explicit local-vs-CI distinction.
+
 29 October 2026. Branch feature/70-lab4-actions from reviewer-merged staging
 f4b6ea9. Issue70 maps AC01..04/11/12. Local verification is NOT peer acceptance,
 GitHub CI or final-main evidence. No UI/dashboard work is included.
@@ -87,7 +91,7 @@ suites if not configured (skips are NOT passing API evidence).
 
 ## Still pending
 
-Independent peer review/merge, new UI/client/E2E, full final Ticket role/matrix/UI,
+New UI/client/E2E, full final Ticket role/matrix/UI,
 dashboards, clean dependency audit, final-main/one-PDF acceptance remain pending.
 The unchanged dependency lockfile has the previously disclosed audit findings;
 this phase does not falsely certify a clean release. Local Phase2 closure evidence

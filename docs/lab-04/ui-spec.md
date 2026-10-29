@@ -1,5 +1,11 @@
 # Lab 4 UI Specification - prepared for peer review
 
+29October2026 implementation note: Phase4 Actions-only forms/list/history are
+implemented and locally verified; below “Not implemented” table remains the
+historical plan for the full sprint. See phase4-actions-ui.md and report Part6/9
+for inspected three-width screenshots, semantic validation/focus, field-state
+and safe-error proof. Dashboard/final-workflow/app-wide checks remain pending.
+
 Reuse existing Zen Green conventions; no replacement design or new shell framework.
 Requester Dashboard and Staff/Admin Dashboard lead to detailed lists/Tickets.
 Actions area belongs to existing Ticket Detail: list plus create/view/edit modes,

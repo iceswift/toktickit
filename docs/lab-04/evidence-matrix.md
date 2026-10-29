@@ -1,5 +1,30 @@
 # Lab 4 Evidence Register
 
+## Latest Phase4 UI checkpoint — 29 October 2026
+
+Issue71 Started verified in Browser in app; screenshot phase4-issue71-started.png
+in artifacts/lab-04/github. UI/API adapter tests and seven synthetic real-browser
+scenarios are implemented; independent peer review/merge remains pending.
+See phase4-actions-ui.md for AC01–04/12/13 mapping and evidence provenance.
+Local complete logs in artifacts/lab-04/phase4: client52 tests, build, E2E7.
+Twelve inspected UI captures cover lifecycle/history, multiple staff, Requester,
+Administrator, inactive assignee, draft recovery/conflict, validation at three
+widths and labelled injected loading/403. Part6/9 incorporate these images.
+No final-main, app-wide accessibility, GitHub CI or final Done claim.
+Earlier Phase3 “Phase4 not started” statements describe historical checkpoints.
+
+## Latest Phase3 closure - 29 October 2026
+
+Reviewed head cc479b2 approved then merged by Richyboy170 in PR79, staging2f633d0.
+Fetched tree equals reviewed source; no new CI/test run claimed. Acceptance scope
+checked and Issue70 Closed; actual Project automation PR Review -> Done confirmed
+in UI. Lab4 filtered board Backlog5/Done3, intermediate0; Phase4 not started.
+Real Browser in app captures phase3-pr79-approved-merged.png,
+phase3-issue70-closed.png and phase3-kanban-done.png were visually inspected and
+incorporated in local report, alongside actual phase3-merge-record.json.
+See phase3-closure.md for all criteria and remaining role/UI/audit/release limits.
+Closure-only changes are local for next authorized feature PR, not another PR.
+
 ## Current Phase3 local implementation - 29 October 2026
 
 Actual PR79 is now Open/Ready into lab4-staging; direct Development link to Issue70
