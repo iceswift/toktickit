@@ -2,6 +2,15 @@
 
 ## Current Phase3 preparation - 29 October 2026
 
+Submission verified: https://github.com/iceswift/toktickit/pull/79, Open/Ready into
+lab4-staging; direct Issue70 Development link verified in UI and API, then Issue70
+moved to PR Review. Richyboy170 requested, write permission verified. Product commit
+bfd2089544cc50baf7ee532baccbeebcfa8e62d4. No approval/merge; no CI checks attached
+(local110-test output is not CI). Actual screenshots phase3-pr79-ready.png and
+phase3-issue70-pr-review.png are visually inspected and included in report.html.
+Actual Issue progress: https://github.com/iceswift/toktickit/issues/70#issuecomment-6490097813.
+This supersedes the initial Started/preparation wording below.
+
 Issue70; branch feature/70-lab4-actions from peer-merged staging f4b6ea9.
 Action APIs and real in-transaction policy/replay implemented; local backend
 22files/110tests, build/schema validation passed. Actual Issue70 Project status
