@@ -5,6 +5,7 @@ import { currentUser } from '../auth.js';
 import { getPrisma } from '../prisma.js';
 import { ActionFailure, badInput, parseActionInput, permittedActionTransition } from './action-validation.js';
 import { createActionWithHistory, updateActionWithHistory, MutationConflict } from './versioned-mutations.js';
+import { allowedTicketTransitions } from './ticket-workflow.js';
 
 export const actionsRouter = Router();
 const person = { id:true, name:true } as const;
@@ -68,8 +69,12 @@ for(const [prefix,staff] of [['/api/tickets',false],['/staff/tickets',true]] as 
   actionsRouter.get(root+'/workflow-events',safe(async(req,res)=>{
     const result=await getPrisma().$transaction(async tx=>{
       const {ticket}=await accessible(req,tx,staff);
-      return {items:await tx.ticketWorkflowEvent.findMany({where:{ticketId:ticket.id},select:{id:true,actor:{select:person},createdAt:true,version:true,fromStatus:true,toStatus:true},orderBy:[{createdAt:'asc'},{id:'asc'}]})};
-    });return res.json(result);
+      const actions=await tx.actionTaken.findMany({where:{ticketId:ticket.id},select:{status:true,followUpRequired:true}});
+      const reasons=[...(!actions.some(a=>a.status==='COMPLETED')?['NO_COMPLETED_ACTION']:[]),...(actions.some(a=>['PLANNED','IN_PROGRESS'].includes(a.status))?['OPEN_ACTIONS']:[]),...(actions.some(a=>a.status!=='CANCELLED'&&a.followUpRequired)?['FOLLOW_UP_PENDING']:[])];
+      return {items:await tx.ticketWorkflowEvent.findMany({where:{ticketId:ticket.id},select:{id:true,actor:{select:person},createdAt:true,version:true,fromStatus:true,toStatus:true},orderBy:[{createdAt:'asc'},{id:'asc'}]}),
+        ticket:{id:ticket.id,currentStatus:ticket.currentStatus,version:ticket.version,lastResolvedAt:ticket.lastResolvedAt},
+        eligibility:{allowedTransitions:allowedTicketTransitions[ticket.currentStatus],resolutionReasons:reasons,cancelBlocked:actions.some(a=>['PLANNED','IN_PROGRESS'].includes(a.status))}};
+    },{isolationLevel:Prisma.TransactionIsolationLevel.RepeatableRead});return res.json(result);
   }));
 }
 // Express4 uses explicit root/parameter patterns, not Express5 brace wildcards.

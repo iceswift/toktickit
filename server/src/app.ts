@@ -9,6 +9,7 @@ import { requireAdministratorSession, requireRequesterSession, requireStaffQueue
 import { hash } from "bcryptjs";
 import { actionsRouter, actionError } from './lab4/actions-router.js';
 import { legacyStatusWithHistory } from './lab4/legacy-workflow.js';
+import { allowedTicketTransitions as allowedStatusTransitions } from './lab4/ticket-workflow.js';
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -279,17 +280,6 @@ function validEntryContent(body: unknown): string | null {
   return content.length > 0 && content.length <= 2000 ? content : null;
 }
 
-const allowedStatusTransitions: Record<string, string[]> = {
-  NEW: ["OPEN", "IN_PROGRESS", "CANCELLED"],
-  OPEN: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
-  REOPENED: ["IN_PROGRESS", "WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
-  IN_PROGRESS: ["WAITING_FOR_REQUESTER", "RESOLVED", "CANCELLED"],
-  WAITING_FOR_REQUESTER: ["IN_PROGRESS", "RESOLVED", "CANCELLED"],
-  RESOLVED: ["CLOSED", "REOPENED"],
-  CLOSED: ["REOPENED"],
-  CANCELLED: [],
-};
-
 app.get("/staff/tickets/:ticketId", async (req: Request, res: Response) => {
   const ticketId = staffTicketId(req);
   if (!ticketId) return res.status(404).json(notFoundMessage);
@@ -338,7 +328,6 @@ app.patch("/staff/tickets/:ticketId/it-priority", async (req: Request, res: Resp
 });
 
 app.patch("/staff/tickets/:ticketId/status", async (req: Request, res: Response) => {
-  if (res.locals.staffRole !== "IT_STAFF") return res.status(403).json({ error: "IT Staff access is required." });
   const ticketId = staffTicketId(req); const status = (req.body as { status?: unknown })?.status;
   if (!ticketId) return res.status(404).json(notFoundMessage);
   if (typeof status !== "string" || !ticketStatuses.has(status)) return res.status(400).json({ error: "Choose a valid Ticket status." });

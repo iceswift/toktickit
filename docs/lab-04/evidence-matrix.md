@@ -1,5 +1,32 @@
 # Lab 4 Evidence Register
 
+Latest published Phase5: PR81 Open/Ready into lab4-staging, directly linked to
+Issue72, Richyboy170 requested. Actual Issue72 PR Review and PR81 Ready captures
+inspected/incorporated. Product/evidence213df6e; no peer approval/merge/Done or
+passing GitHub CI. Prior Started checkpoint remains historical.
+
+## Latest Phase5 implementation — 29 October 2026
+
+Issue72 Started verified/captured in Browser in app. Final matrix/gate/versioned
+history and role-aware UI locally verified: backend248/client68, both builds,
+Lab4 E2E12. Fifteen inspected workflow captures and actual gate/race/full output
+are in artifacts/lab-04/phase5 and report Part7/9. Only the503 transport scene
+is injected in Phase5 E2E; real bypass/role/concurrency evidence is distinct.
+No reviewer approval/merge/Done or final-main/CI claim. Phase4 closure evidence
+carried in this feature. See phase5-ticket-workflow.md; older planned/pending
+checkpoints below are historical.
+
+## Latest Phase4 closure — 29 October 2026
+
+PR80 reviewer Richyboy170 approved final60c20d4, then merged at ae16e00.
+Fetched staging tree matches reviewed head. Issue71 acceptance verified and
+Closed; actual Project Done. Board Lab4 Done4/Backlog4, all intermediate0.
+Inspected actual phase4-pr80-approved-merged.png, phase4-issue71-closed.png,
+phase4-kanban-done.png are incorporated in the working report. Temporary filter
+not saved. Retained client52/build/E2E7 are pre-merge local evidence, not new
+staging CI/main. See phase4-closure.md. Phase5 not started; older PR Review state
+is historical. Closure changes remain local to carry with next feature PR.
+
 Latest published Phase4: [PR80](https://github.com/iceswift/toktickit/pull/80)
 Open/Ready, directly linked to Issue71 via Development/API. Richyboy170 requested;
 actual PR Review screenshot and PR Ready screenshot incorporated. No peer approval,

@@ -1,5 +1,11 @@
 # Phase 4 — Actions Taken UI
 
+Latest closure: Richyboy170 approved final60c20d4 then merged PR80 at ae16e00
+on29October2026. Fetched staging exactly matches reviewed source. Issue71
+acceptance checked, Closed/Project Done. See phase4-closure.md. Earlier pending
+review descriptions below are historical. This accepts Phase4 only, not the
+full Lab4 release or final-main/PDF. Closure update is local for next feature.
+
 29 October 2026. Issue [#71](https://github.com/iceswift/toktickit/issues/71),
 feature/71-lab4-actions-ui from peer-merged staging
 `2f633d0ae78195bbd721ad958f2795323a89cf23`. Local implementation checkpoint;

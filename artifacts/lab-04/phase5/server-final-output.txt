@@ -1,0 +1,320 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > creates under the correct parent and immutable session actor, without changing Ticket owner
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > protects all reads/writes and the sibling /staff/actions route by actual session/role
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/actions","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/actions/14/events","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/workflow-events","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > replays a persistent normalized payload before stale checks with no duplicate work/history
+NEGATIVE_API_PROOF {"case":"idempotency-payload-mismatch","status":409,"body":{"error":"Unable to complete this Action request.","code":"IDEMPOTENCY_CONFLICT"}}
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > replays a persistent normalized payload before stale checks with no duplicate work/history
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes simultaneous identical retries and rejects simultaneous different-key stale writes
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > validates parent date range, unknown identity fields, inactive assignees and retry keys without partial saves
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > edits, assigns and transitions atomically, retaining before/after audit and terminal rules 485ms
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > enforces merged follow-up/result values and stale edit checks without bumping versions 308ms
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > blocks terminal Ticket writes, rechecks replay authentication, and rejects wrong parents
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > returns stable paginated lists, safe own-created work, and rejects invalid paging 707ms
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > prevents the legacy status writer bypassing Action gates or shared versions
+NEGATIVE_API_PROOF {"case":"legacy-resolution-bypass","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > prevents the legacy status writer bypassing Action gates or shared versions
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes actual HTTP Resolve vs Action creation, then retains immutable workflow history
+CONCURRENCY_API_PROOF {"case":"Resolve-vs-Action","statuses":[200,409],"finalStatus":"RESOLVED","version":6}
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes actual HTTP Resolve vs Action creation, then retains immutable workflow history 409ms
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > retains work/events on forbidden deletion and safely hides unexpected backend errors
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > scopes the same retry key separately by actor and Ticket
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > commits a Ticket transition and its matching version/from/to event together
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects stale Ticket writes without an extra event or state change
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects caller-supplied/skipped event versions rather than accepting version 99
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rolls back Ticket state/version when workflow-event insertion fails
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > creates an Action at version 1 with CREATED history and one parent bump
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > appends exactly one ordered Action event per increment and shares parent versions 459ms
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects stale Action versions and wrong parents with full transaction rollback 360ms
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rolls back Action changes and parent version when event insertion fails
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > allows only one concurrent Action writer for the same expected versions 347ms
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > serializes competing Action and Ticket writes on the shared parent version
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > refuses mutation of Actions with missing, skipped or out-of-insertion-order history 308ms
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects corrupt workflow history before writing another transition
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > rejects Action version spoofing and empty mutations without creating history
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts > VERSION-01: atomic parent/entity/history protocol > fails closed without explicit policy and rolls back a failed policy inside the lock
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > Administrator can perform an approved final transition with a supplied version
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix NEW -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix OPEN -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix IN_PROGRESS -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix WAITING_FOR_REQUESTER -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix RESOLVED -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CLOSED -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix REOPENED -> CANCELLED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> NEW for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> OPEN for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> IN_PROGRESS for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> WAITING_FOR_REQUESTER for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> RESOLVED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> CLOSED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> REOPENED for Staff and Admin
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > HTTP matrix CANCELLED -> CANCELLED for Staff and Admin
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"NO_COMPLETED_ACTION","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"NO_COMPLETED_ACTION","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"FOLLOW_UP_PENDING","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"FOLLOW_UP_PENDING"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"OPEN_ACTIONS","resolve":{"status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"OPEN_ACTIONS"}}},"cancel":{"status":409,"body":{"error":"Unable to complete this Action request.","code":"OPEN_ACTIONS"}}}
+
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > never infers versions for legacy Tickets; rejects spoofed/unknown fields and stale versions
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > enforces session roles, inactive and mandatory-password denial on formal transitions
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > preserves legacy terminal Tickets with zero Actions and unknown dates without inventing history
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > keeps Requester indication advisory and scopes immutable status history to owned Tickets 354ms
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass 356ms
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+ ✓ tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > requires a session and rejects staff or first-login Requesters 351ms
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > ignores a forged requester header and keeps another user's ticket private
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > rejects unauthenticated writes and hides cross-owner Attachment operations
+ ✓ tests/lab-03/requester-authorization.api.test.ts > requireRequesterSession authorization boundary > authorizes through requesterUserId even when the legacy requesterId belongs to someone else
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > covers every status/priority, assigned/unassigned and zero/one/multiple Actions
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > reruns without duplicates, resetting user changes, passwords or Action history 11545ms
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > provides zero and nonzero dashboard fixture populations without fabricating legacy work
+stdout | tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes
+SEED-01 PASS: all eight migrations deploy; repeated seed preserves work/history; statuses/priorities and zero/one/multiple Actions covered.
+
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > enforces append-only events, immutable creator, no Action deletion and parent-safe retries
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes 782ms
+ ✓ tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > enforces conditional fields, positive versions and immutable workflow/retry history
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects a missing file and a file whose MIME content does not match an allowed type
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects an attachment larger than 5 MB
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > stores, lists, downloads, then soft-removes an owned permitted Attachment
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > uses a safe 404 for cross-requester Attachment access
+ ✓ tests/lab-02/attachments.api.test.ts > Attachment lifecycle APIs > rejects a sixth active attachment
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > returns operational detail only to IT Staff and Administrators
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > allows IT Staff to claim, prioritize, and use legal status transitions
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > keeps Notes private and validates append-only communication
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts > IT Staff Ticket operations > allows Administrator priority/status but preserves staff-only ownership/comments/Notes
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > returns the full read-only Ticket detail for its owner
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > allows only the owner to add Public Comments and record a non-final resolution indication
+ ✓ tests/lab-02/ticket-detail.api.test.ts > GET /api/tickets/:ticketId > uses the same safe 404 response for another Requester, invalid IDs, and missing Tickets
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > rejects anonymous and non-administrator access
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > creates, searches, edits, and resets a managed user 668ms
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > rejects invalid roles, weak passwords, and duplicate email addresses
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > prevents an administrator from deactivating their own account
+ ✓ tests/lab-03/users-admin.api.test.ts > Administrator user management > prevents demotion of the final active Administrator
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > authorizes IT Staff and Administrator but rejects Requesters and anonymous access
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > searches, filters, sorts, paginates, and returns queue metadata
+ ✓ tests/lab-03/staff-queue.api.test.ts > GET /staff/tickets > rejects invalid query values and keeps valid no-results requests successful
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > preserves every existing field/ID/relationship in all nine tables 740ms
+stdout | tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality
+MIG-01 PASS: exact nine-table equality, legacy zero-Action/NULL resolution, separate-database pg_dump/pg_restore recovery.
+
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > keeps legacy zero-Action and unknown resolution timestamps truthful
+ ✓ tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality 1616ms
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > keeps every legacy DevelopmentRequester mapped to exactly one Requester User
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > creates the required active and inactive role seed accounts without plaintext passwords
+ ✓ tests/lab-03/migration-regression.api.test.ts > Lab 3 user migration and seed regression > dual-writes a legacy requester Ticket to its migrated User during the transition 560ms
+ ✓ tests/lab-02/my-tickets.api.test.ts > GET /api/tickets > returns only the selected Requester's Tickets with documented query controls
+ ✓ tests/lab-02/my-tickets.api.test.ts > GET /api/tickets > returns a safe 400 for invalid list query values
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > creates a session for a valid active User and revokes it on logout 426ms
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > uses the same safe response for invalid credentials and inactive accounts 339ms
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > requires the current password, clears first-login state, and revokes the old session
+ ✓ tests/lab-03/auth.api.test.ts > Lab 3 authentication > requires the current password, clears first-login state, and revokes the old session 2164ms
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts > Lab 3 realistic seed examples > creates eight workflow examples with correct ownership and repeat-safe communication
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts > Lab 3 realistic seed examples > preserves an existing worked Ticket and account credentials on a repeat run
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > normalizes strings and UTC dates without accepting a spoofed actor or status
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects invalid/timezone-free date 2026-02-30T00:00:00Z
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects invalid/timezone-free date not a date
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects invalid/timezone-free date 2026-10-28T09:00:00
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects invalid/timezone-free date 2026-13-01T00:00:00Z
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 0
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 1
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 2
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 3
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 4
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 5
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 6
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > rejects malformed or invalid create payload 7
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > requires a genuine editable subset and both versions; separate assign/status inputs
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition PLANNED -> PLANNED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition PLANNED -> IN_PROGRESS
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition PLANNED -> COMPLETED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition PLANNED -> CANCELLED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition IN_PROGRESS -> PLANNED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition IN_PROGRESS -> IN_PROGRESS
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition IN_PROGRESS -> COMPLETED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition IN_PROGRESS -> CANCELLED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition COMPLETED -> PLANNED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition COMPLETED -> IN_PROGRESS
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition COMPLETED -> COMPLETED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition COMPLETED -> CANCELLED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition CANCELLED -> PLANNED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition CANCELLED -> IN_PROGRESS
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition CANCELLED -> COMPLETED
+ ✓ tests/lab-04/action-validation.unit.test.ts > Lab4 Action input and transition rules > enforces Action transition CANCELLED -> CANCELLED
+ ✓ tests/lab-02/create-ticket.api.test.ts > POST /api/tickets > creates a Ticket for the selected requester with backend-generated values
+ ✓ tests/lab-02/create-ticket.api.test.ts > POST /api/tickets > returns safe field errors and does not create a Ticket for invalid input
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> OPEN: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> IN_PROGRESS: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> WAITING_FOR_REQUESTER: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> RESOLVED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > NEW -> CANCELLED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> IN_PROGRESS: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> WAITING_FOR_REQUESTER: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> RESOLVED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > OPEN -> CANCELLED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> IN_PROGRESS: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> WAITING_FOR_REQUESTER: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> RESOLVED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > IN_PROGRESS -> CANCELLED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> IN_PROGRESS: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> WAITING_FOR_REQUESTER: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> RESOLVED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > WAITING_FOR_REQUESTER -> CANCELLED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> IN_PROGRESS: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> WAITING_FOR_REQUESTER: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> RESOLVED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> CLOSED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> REOPENED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > RESOLVED -> CANCELLED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> IN_PROGRESS: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> WAITING_FOR_REQUESTER: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> RESOLVED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> REOPENED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CLOSED -> CANCELLED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> IN_PROGRESS: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> WAITING_FOR_REQUESTER: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> RESOLVED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > REOPENED -> CANCELLED: allowed
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> NEW: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> OPEN: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> IN_PROGRESS: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> WAITING_FOR_REQUESTER: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> RESOLVED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> CLOSED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> REOPENED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > CANCELLED -> CANCELLED: rejected
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts > Approved Ticket matrix and resolution predicate > requires completed work, excludes cancelled work, rejects open/follow-up and accepts cleared completed work
+ ✓ tests/lab-03/requester-session.test.ts > requesterSession test cleanup > revokes only the sessions created by the test helper 439ms
+ ✓ tests/lab-04/data-contract.test.ts > Phase 2 data contract (source checks, not database execution) > adds work/history/retry records without dropping legacy models
+ ✓ tests/lab-01/health.test.ts > GET /api/health > returns 200 with status ok and the service name
+ ✓ tests/lab-02/ticket-number.test.ts > generateTicketNumber > creates the documented official Ticket Number format
+ ✓ tests/lab-02/ticket-number.test.ts > generateTicketNumber > creates a fresh candidate for each retry attempt
+ ✓ tests/lab-01/categories.test.ts > GET /api/categories > returns the four seeded categories in id order
+ ✓ tests/lab-02/development-requesters.api.test.ts > Retired Lab 2 Development Requester API > does not publicly enumerate migrated requester identities
+
+ Test Files  24 passed (24)
+      Tests  248 passed (248)
+   Start at  21:25:32
+   Duration  91.10s (transform 731ms, setup 0ms, collect 4.86s, tests 80.11s, environment 5ms, prepare 1.99s)

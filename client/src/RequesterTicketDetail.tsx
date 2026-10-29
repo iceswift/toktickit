@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { ActionsTaken } from './ActionsTaken.js';
+import { TicketWorkflow } from './TicketWorkflow.js';
 import { addRequesterPublicComment, AttachmentMetadata, AuthUser, downloadAttachment, getTicketDetail, removeAttachment, setRequesterResolutionIndication, TicketDetail, uploadTicketAttachment } from "./api.js";
 
 function label(value: string) { return value.charAt(0) + value.slice(1).toLowerCase().replace("_", " "); }
@@ -76,6 +77,6 @@ export function RequesterTicketDetail({ requester, ticketId, onBack }: { request
       </div></section>
       <section className="card shadow-sm mt-4" aria-labelledby="public-comments-heading"><div className="card-body"><h2 className="h5" id="public-comments-heading">Public Comments</h2><p className="text-secondary">Visible to Requester, IT Staff, and Administrator.</p>{ticket.publicComments.length === 0 ? <p>No Public Comments yet.</p> : ticket.publicComments.map((entry) => <article className="border-bottom py-2" key={entry.id}><strong>{entry.author.name}</strong><small className="text-secondary ms-2">{formatDate(entry.createdAt)}</small><p className="mb-0" style={{ whiteSpace: "pre-wrap" }}>{entry.content}</p></article>)}<form className="mt-3" onSubmit={handleComment}><label className="form-label" htmlFor="requester-public-comment">Add Public Comment</label><textarea id="requester-public-comment" className="form-control" value={publicComment} maxLength={2000} onChange={(event) => setPublicComment(event.target.value)} required /><button className="btn btn-success mt-2">Post Public Comment</button></form></div></section>
       <section className="card shadow-sm mt-4" aria-labelledby="resolution-heading"><div className="card-body"><h2 className="h5" id="resolution-heading">Problem appears resolved</h2><p>This indication informs IT Staff but does not change the formal Ticket status.</p><p className="fw-semibold">{ticket.problemAppearsResolvedAt ? `Indicated on ${formatDate(ticket.problemAppearsResolvedAt)}` : "Not indicated"}</p><button className={ticket.problemAppearsResolvedAt ? "btn btn-outline-secondary" : "btn btn-success"} onClick={() => void updateResolution(!ticket.problemAppearsResolvedAt)}>{ticket.problemAppearsResolvedAt ? "Clear indication" : "Mark problem as appearing resolved"}</button></div></section></>}
-    {state==='ready'&&ticket&&<ActionsTaken key={`${requester.id}:${ticket.id}`} ticket={ticket} user={requester}/>}
+    {state==='ready'&&ticket&&<><TicketWorkflow key={`workflow:${requester.id}:${ticket.id}`} ticketId={ticket.id} user={requester}/><ActionsTaken key={`${requester.id}:${ticket.id}`} ticket={ticket} user={requester}/></>}
   </section>;
 }

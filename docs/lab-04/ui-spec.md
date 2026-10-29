@@ -1,5 +1,10 @@
 # Lab 4 UI Specification - prepared for peer review
 
+Phase5 local checkpoint: Ticket Workflow gate/confirmation/history and Requester
+read-only view implemented; three-width captures/focus/overflow checks inspected.
+See phase5-ticket-workflow.md and report Part7/Part9 continuation. Below old
+not-implemented table is historical; dashboards/app-wide final QA still pending.
+
 29October2026 implementation note: Phase4 Actions-only forms/list/history are
 implemented and locally verified; below “Not implemented” table remains the
 historical plan for the full sprint. See phase4-actions-ui.md and report Part6/9

@@ -4,11 +4,10 @@ import { getPrisma } from '../prisma.js';
 import { currentUser } from '../auth.js';
 import { ActionFailure, positive } from './action-validation.js';
 import { MutationConflict, transitionTicketWithHistory } from './versioned-mutations.js';
+import { resolutionReason } from './ticket-workflow.js';
 
-/** Security prerequisite for enabling Action writes: the old status writer
- * cannot remain an unversioned bypass. Staff-only baseline role is preserved;
- * the final Admin/UI contract integration still belongs to the workflow phase.
- */
+/** Existing status endpoint, now final Lab4 roles, strict preconditions and gate.
+ * All policy and history persist under the same shared parent lock as Actions. */
 export async function legacyStatusWithHistory(req:Request,ticketId:number,status:TicketStatus,
   transitions:Record<string,string[]>,include:Prisma.TicketInclude) {
   return getPrisma().$transaction(async tx=>{
@@ -16,26 +15,24 @@ export async function legacyStatusWithHistory(req:Request,ticketId:number,status
     if(!ticket)throw new ActionFailure(404,'NOT_FOUND');
     const user=await currentUser(req,tx);
     if(!user)throw new ActionFailure(401,'AUTHENTICATION_REQUIRED');
-    if(user.role!=='IT_STAFF'||user.mustChangePassword)throw new ActionFailure(403,'FORBIDDEN');
+    if(!['IT_STAFF','ADMINISTRATOR'].includes(user.role)||user.mustChangePassword)throw new ActionFailure(403,'FORBIDDEN');
+    if(!req.body||typeof req.body!=='object'||Array.isArray(req.body)||Object.keys(req.body).some(key=>!['status','expectedVersion'].includes(key)))throw new ActionFailure(400,'VALIDATION_ERROR',{body:'Unknown or immutable fields are not accepted.'});
     const supplied=req.body?.expectedVersion;
-    // Transitional compatibility ONLY for untouched legacy Tickets with no work
-    // or workflow history. Once opted into Lab4, missing preconditions conflict.
-    if(supplied===undefined && (await tx.actionTaken.count({where:{ticketId}})>0
-      || await tx.ticketWorkflowEvent.count({where:{ticketId}})>0))throw new MutationConflict('STALE_VERSION');
-    const expectedTicketVersion=supplied===undefined?ticket.version:positive(supplied,'expectedVersion');
+    if(supplied===undefined)throw new MutationConflict('STALE_VERSION');
+    const expectedTicketVersion=positive(supplied,'expectedVersion');
+    // Also maps identity transitions to the contracted409, not primitive400.
+    if(!transitions[ticket.currentStatus]?.includes(status))throw new ActionFailure(409,'INVALID_STATUS_TRANSITION');
     await transitionTicketWithHistory(tx,{ticketId,actorId:user.id,expectedTicketVersion,toStatus:status},async(policyTx)=>{
       const actor=await currentUser(req,policyTx);
       if(!actor)throw new ActionFailure(401,'AUTHENTICATION_REQUIRED');
-      if(actor.role!=='IT_STAFF'||actor.mustChangePassword)throw new ActionFailure(403,'FORBIDDEN');
+      if(!['IT_STAFF','ADMINISTRATOR'].includes(actor.role)||actor.mustChangePassword)throw new ActionFailure(403,'FORBIDDEN');
       const current=await policyTx.ticket.findUniqueOrThrow({where:{id:ticketId}});
       if(!transitions[current.currentStatus]?.includes(status))throw new ActionFailure(409,'INVALID_STATUS_TRANSITION');
       const actions=await policyTx.actionTaken.findMany({where:{ticketId},select:{status:true,followUpRequired:true}});
       const open=actions.some(action=>action.status==='PLANNED'||action.status==='IN_PROGRESS');
       if(status==='CANCELLED'&&open)throw new ActionFailure(409,'OPEN_ACTIONS');
       if(status==='RESOLVED'){
-        if(!actions.some(action=>action.status==='COMPLETED'))throw new ActionFailure(409,'RESOLUTION_GATE',{reason:'NO_COMPLETED_ACTION'});
-        if(open)throw new ActionFailure(409,'RESOLUTION_GATE',{reason:'OPEN_ACTIONS'});
-        if(actions.some(action=>action.status!=='CANCELLED'&&action.followUpRequired))throw new ActionFailure(409,'RESOLUTION_GATE',{reason:'FOLLOW_UP_PENDING'});
+        const reason=resolutionReason(actions);if(reason)throw new ActionFailure(409,'RESOLUTION_GATE',{reason});
       }
     });
     return tx.ticket.findUniqueOrThrow({where:{id:ticketId},include});
