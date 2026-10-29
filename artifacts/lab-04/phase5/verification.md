@@ -32,3 +32,8 @@ remain later acceptance. No peer approval/merge/Done invented.
 After verification, task-only test servers exited and the task-owned PostgreSQL
 cluster was stopped; databases/events retained. Text outputs only normalized
 trailing blank EOF lines for git checks, preserving all actual test diagnostics.
+
+Published PR81 Open/Ready into lab4-staging (product/evidence213df6e), direct
+Issue72 linkage confirmed through closingIssuesReferences and UI. Actual Project
+PR Review, Richyboy170 requested; Issue Open. Checks0, not CI Pass. No approval
+or merge claimed. Captured PR/Issue screenshots carried in same-PR docs follow-up.

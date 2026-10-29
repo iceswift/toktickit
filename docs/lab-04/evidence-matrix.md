@@ -1,5 +1,10 @@
 # Lab 4 Evidence Register
 
+Latest published Phase5: PR81 Open/Ready into lab4-staging, directly linked to
+Issue72, Richyboy170 requested. Actual Issue72 PR Review and PR81 Ready captures
+inspected/incorporated. Product/evidence213df6e; no peer approval/merge/Done or
+passing GitHub CI. Prior Started checkpoint remains historical.
+
 ## Latest Phase5 implementation — 29 October 2026
 
 Issue72 Started verified/captured in Browser in app. Final matrix/gate/versioned

@@ -1,5 +1,14 @@
 # Lab 4 Peer Review Record
 
+## Latest Phase5 ready for peer review —29October2026
+
+[PR81](https://github.com/iceswift/toktickit/pull/81) Open/Ready into lab4-staging,
+product/evidence213df6e. Direct Issue72 Development link confirmed in UI and
+closingIssuesReferences. Richyboy170 review requested, actual Project PR Review,
+Issue72 Open. Checks0 is not CI Pass. Inspected actual phase5-pr81-ready.png
+and phase5-issue72-pr-review.png incorporated into this PR/report. No approval,
+review discussion or merge fabricated. Earlier Started state is historical.
+
 ## Phase5 implementation —29October2026
 
 Issue72 Started, feature/72-lab4-ticket-workflow from ae16e00. Independent review

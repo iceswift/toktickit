@@ -1,5 +1,12 @@
 # Phase 5 — final Ticket workflow and resolution gate
 
+Published [PR81](https://github.com/iceswift/toktickit/pull/81) Open/Ready into
+lab4-staging, product/evidence commit213df6e. Direct Development Issue72 linkage
+verified in UI and GitHub closingIssuesReferences. Richyboy170 review requested;
+actual Project PR Review; Issue72 remains Open. Checks0 is not passing CI.
+Actual PR/Issue captures and this submission record are carried in the same PR.
+No reviewer approval, author merge or Phase6 start claimed.
+
 29 October 2026. Issue72; feature/72-lab4-ticket-workflow from reviewer-merged
 staging `ae16e0049b089c6ad935eeb04cbc3d370c8c7c97`. Phase4 closure docs/images
 carried with this feature, not another cleanup PR. Independent review/merge
