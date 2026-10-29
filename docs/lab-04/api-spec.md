@@ -1,5 +1,16 @@
 # Lab 4 API Contract - Phase 1 peer review
 
+Phase5 implementation,29October2026: final matrix/Staff+Admin status permission,
+strict version (no untouched-legacy fallback), gate and safe status history now
+implemented locally. GET /api/tickets/:id/workflow-events and
+/staff/tickets/:id/workflow-events preserve {items} and add safe ticket
+{id,currentStatus,version,lastResolvedAt}, eligibility
+{allowedTransitions,resolutionReasons,cancelBlocked} from one RepeatableRead
+snapshot. Mutation still rechecks policy under the shared parent lock; preview
+is not authorization. Missing expectedVersion409, malformed/unknown fields400.
+See phase5-ticket-workflow.md for actual tests/limits. Peer review/merge pending;
+older statements that final workflow integration is planned are historical.
+
 Phase3 implementation checkpoint, 29 October 2026: Action list/create/edit/assign/
 status/event/own-work routes below are now implemented on the feature branch;
 see phase3-api.md for actual local110-test evidence and precise limits. Dashboard

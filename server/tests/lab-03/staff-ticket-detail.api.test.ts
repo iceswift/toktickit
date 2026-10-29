@@ -40,9 +40,11 @@ describe("IT Staff Ticket operations", () => {
   it("allows IT Staff to claim, prioritize, and use legal status transitions", async () => {
     expect((await staff.patch(`/staff/tickets/${ticketId}/owner`).send({ ownerUserId: null })).status).toBe(200);
     expect((await staff.patch(`/staff/tickets/${ticketId}/it-priority`).send({ itPriority: "URGENT" })).body.itPriority).toBe("URGENT");
-    expect((await staff.patch(`/staff/tickets/${ticketId}/status`).send({ status: "OPEN" })).body.currentStatus).toBe("OPEN");
-    expect((await staff.patch(`/staff/tickets/${ticketId}/status`).send({ status: "CLOSED" })).status).toBe(409);
-    expect((await admin.patch(`/staff/tickets/${ticketId}/status`).send({ status: "IN_PROGRESS" })).status).toBe(403);
+    const version=(await staff.get(`/staff/tickets/${ticketId}`)).body.version;
+    expect((await staff.patch(`/staff/tickets/${ticketId}/status`).send({ status: "OPEN", expectedVersion:version })).body.currentStatus).toBe("OPEN");
+    expect((await staff.patch(`/staff/tickets/${ticketId}/status`).send({ status: "CLOSED",expectedVersion:version+1 })).status).toBe(409);
+    // Lab4 explicitly extends only formal status writes to Administrator.
+    expect((await admin.patch(`/staff/tickets/${ticketId}/status`).send({ status: "IN_PROGRESS",expectedVersion:version+1 })).status).toBe(200);
   });
   it("keeps Notes private and validates append-only communication", async () => {
     expect((await staff.post(`/staff/tickets/${ticketId}/public-comments`).send({ content: "We are investigating this issue." })).status).toBe(201);
@@ -53,13 +55,14 @@ describe("IT Staff Ticket operations", () => {
     expect(detail.body.publicComments).toHaveLength(1); expect(detail.body.internalNotes).toHaveLength(1);
     expect((await requester.get(`/staff/tickets/${ticketId}/internal-notes`)).status).toBe(403);
   });
-  it("allows Administrator priority changes without granting staff workflow writes", async () => {
+  it("allows Administrator priority/status but preserves staff-only ownership/comments/Notes", async () => {
     const priority = await admin.patch(`/staff/tickets/${ticketId}/it-priority`).send({ itPriority: "LOW" });
     expect(priority.status).toBe(200);
     expect(priority.body.itPriority).toBe("LOW");
     expect(priority.body.requestedPriority).toBe("HIGH");
     expect((await admin.patch(`/staff/tickets/${ticketId}/owner`).send({ ownerUserId: null })).status).toBe(403);
-    expect((await admin.patch(`/staff/tickets/${ticketId}/status`).send({ status: "IN_PROGRESS" })).status).toBe(403);
+    const version=(await admin.get(`/staff/tickets/${ticketId}`)).body.version;
+    expect((await admin.patch(`/staff/tickets/${ticketId}/status`).send({ status: "WAITING_FOR_REQUESTER",expectedVersion:version })).status).toBe(200);
     expect((await admin.post(`/staff/tickets/${ticketId}/public-comments`).send({ content: "Forbidden administrator write" })).status).toBe(403);
     expect((await admin.post(`/staff/tickets/${ticketId}/internal-notes`).send({ content: "Forbidden administrator note" })).status).toBe(403);
     expect((await requester.patch(`/staff/tickets/${ticketId}/it-priority`).send({ itPriority: "URGENT" })).status).toBe(403);

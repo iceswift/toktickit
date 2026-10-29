@@ -1,5 +1,12 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
+Latest29October implementation: Phase4 reviewer-merged PR80 at ae16e00 and
+Issue71 Closed/Done. Phase5 final matrix/Staff+Admin status/gate/strict version/
+history UI now locally verified on feature/72-lab4-ticket-workflow; see
+phase5-ticket-workflow.md (backend248/client68/builds/Lab4 E2E12). Independent
+Phase5 peer review/merge pending; no dashboard/main/release completion claim.
+Prior implementation statuses below are historical, not changed requirements.
+
 Latest29October closure: Phase3 independently approved/merged by Richyboy170 in
 PR79 at staging2f633d0; Issue70 acceptance verified and Closed/Done. See
 phase3-closure.md. Earlier Phase3-pending checkpoints below are historical;

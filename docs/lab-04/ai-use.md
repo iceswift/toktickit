@@ -5,6 +5,13 @@ verified; earlier Lab 3 Sol6.0/Sol6.1 usage is not attributed to Lab 4 automatic
 
 ## Authentic prompt register
 
+29October2026 actual prompt: "เริ่ม Phase5 ได้เลย".
+Assistance: reread Issue72 and approved matrix/role/API/UI contract, preserve
+reviewer-merged Phase4, implement strict status/gate/history UI, write actual
+pre-fix Administrator failing test, all-pair/API/race/component/E2E verification,
+inspect/capture workflow evidence and update the same feature's working report.
+No invented student reflection, model version or peer review attributed.
+
 29October2026 actual prompt: "เริ่ม Phase 4 ได้เลย".
 Assistance: implement Actions Taken inside existing Ticket Detail from the
 approved Phase3 API/contract, create component/adapter/E2E tests, verify against

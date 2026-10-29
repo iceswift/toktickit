@@ -29,7 +29,7 @@ describe("IT Staff Ticket Detail", () => {
     render(<StaffTicketDetail ticketId={7} user={{ id: 3, name: "Narin", email: "narin@example.test", role: "ADMINISTRATOR", mustChangePassword: false }} onBack={() => undefined} />);
     const selector = await screen.findByLabelText("IT Priority");
     expect(selector).toBeEnabled();
-    expect(screen.getByLabelText("Current Status")).toBeDisabled();
+    expect(screen.getByRole('heading',{name:'Ticket Workflow'})).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Claim Ticket" })).not.toBeInTheDocument();
     expect(screen.queryByLabelText("Assign or reassign owner")).not.toBeInTheDocument();
     expect(screen.queryByLabelText("Add Public Comment")).not.toBeInTheDocument();

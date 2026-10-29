@@ -1,0 +1,31 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ × tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > Administrator can perform an approved final transition with a supplied version
+   → expected 403 to be 200 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > Administrator can perform an approved final transition with a supplied version
+AssertionError: expected 403 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 403
+
+ ❯ tests/lab-04/ticket-workflow.api.test.ts:29:92
+     27|   const patch=(id:number,status:string,version:number,cookie=staff)=>r…
+     28|   it('Administrator can perform an approved final transition with a su…
+     29|     const t=await fixture('NEW');const r=await patch(t.id,'OPEN',1,adm…
+       |                                                                                            ^
+     30|   });
+     31|   for(const from of Object.keys(matrix))for(const to of Object.keys(ma…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 71 skipped (72)
+   Start at  21:15:03
+   Duration  13.93s (transform 458ms, setup 0ms, collect 4.00s, tests 9.63s, environment 0ms, prepare 74ms)

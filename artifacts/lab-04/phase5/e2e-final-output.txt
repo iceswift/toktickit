@@ -1,0 +1,31 @@
+[WebServer] (node:7108) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:41348) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:30616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:37572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:38548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:41060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\lab-04\actions-taken-flow.spec.ts:52:1 › real multi-staff lifecycle: create, edit, assign, complete/cancel and owned Requester read-only history (6.5s)
+  ok  2 e2e\lab-04\actions-taken-flow.spec.ts:99:1 › uncertain transport response retains draft/key; real backend replay creates only one record (1.9s)
+  ok  3 e2e\lab-04\actions-taken-flow.spec.ts:119:1 › real inactive-assignee race retains draft and accepts a corrected active selection (2.2s)
+  ok  4 e2e\lab-04\actions-taken-flow.spec.ts:133:1 › real competing edit returns 409; refresh and explicit rebase retain local input (2.2s)
+  ok  5 e2e\lab-04\actions-taken-flow.spec.ts:151:1 › Administrator creation is allowed and follows the same Action policy (1.9s)
+  ok  6 e2e\lab-04\actions-taken-flow.spec.ts:157:1 › fully loaded forms, validation, keyboard focus and responsive layout at three widths (2.0s)
+  ok  7 e2e\lab-04\actions-taken-flow.spec.ts:174:1 › labelled delayed assignee loading and safe forbidden/load retry state (2.2s)
+  ok  8 e2e\lab-04\ticket-resolution.spec.ts:14:1 › real work gate then Resolve, Close, Administrator Reopen and Cancel with ordered history (5.4s)
+  ok  9 e2e\lab-04\ticket-resolution.spec.ts:27:1 › Requester indication remains advisory; own history read-only and formal API403 (1.9s)
+  ok 10 e2e\lab-04\ticket-resolution.spec.ts:33:1 › real competing Ticket write409 preserves selection until refresh and explicit rebase (2.2s)
+  ok 11 e2e\lab-04\ticket-resolution.spec.ts:39:1 › injected recoverable failure retains selection/version and succeeds on deliberate retry (1.9s)
+  ok 12 e2e\lab-04\ticket-resolution.spec.ts:45:1 › workflow confirmation and gate remain readable with keyboard focus at all three widths (2.1s)
+
+  12 passed (41.4s)

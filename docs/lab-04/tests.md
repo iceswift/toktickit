@@ -1,5 +1,24 @@
 # Lab 4 Test DD - actual Phase 2 data coverage and remaining plan
 
+## Latest Phase5 local verification
+
+24 backend files/248 tests,15 client files/68 tests, both builds and12 Lab4
+browser scenarios pass. New ticket-workflow.unit.test.ts:64 pairs+predicate;
+ticket-workflow.api.test.ts:73 cases (64 HTTP pairs each Staff/Admin, role,
+gate/bypass, strict versions/legacy, advisory/immutable history,3 race types×3).
+New TicketWorkflow.test.tsx:9 cases; workflow-api.test.tsx:7 cases;
+ticket-resolution.spec.ts:5 browser scenarios plus7 existing Phase4 scenarios.
+WF-01,UI-02,E2E-02 and additional CON-01 locally implemented; final-main and
+dashboard/performance/all-old-browser-suite acceptance still pending.
+Actual pre-fix Admin403 vs200 proof retained separately from final passing logs.
+See phase5-ticket-workflow.md, phase5 source hashes and complete outputs.
+
+Latest closure: Phase4 independently approved/merged in PR80 at ae16e00 after
+reviewer approval of final60c20d4; trees match. Issue71 Closed/Done after acceptance
+verification. Retained client52/build/E2E7 are pre-merge LOCAL results, not a new
+staging/main/CI test run. See phase4-closure.md. Phase5 workflow/dashboard/full
+release tests still planned; earlier pending-review checkpoints are historical.
+
 ## Latest: Phase4 local UI verification,29October2026
 
 13 files/52 client tests and production build pass;7 real-browser scenarios pass.

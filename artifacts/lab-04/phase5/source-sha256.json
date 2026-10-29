@@ -1,0 +1,70 @@
+[
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\src\\app.ts",
+    "Hash": "8385083141467C921ADC32CD433BE0335B162CAC365D9E64C6B9AB65214B4627"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\src\\lab4\\ticket-workflow.ts",
+    "Hash": "F70A1705B64C710499B2EA05EF85CE851F48F102C8F6ACF3D4F63CA910A1659F"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\src\\lab4\\legacy-workflow.ts",
+    "Hash": "EB75B4829AD7B1D1D840AE1EDA5AFEDF328D6FC8CFE21E9A34B2A9BDCC18E4BB"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\src\\lab4\\actions-router.ts",
+    "Hash": "4A72A7ACE2E0A7B183B09685D18B551CDB6BE3F88BA25C94C959625E878707CD"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\tests\\lab-04\\ticket-workflow.unit.test.ts",
+    "Hash": "FD1AC877DBF3A410D8B83625BC9D24DB1D67B1EA0E48CC8D34DC41ACE8895516"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\tests\\lab-04\\ticket-workflow.api.test.ts",
+    "Hash": "BC517B39C55E4FB2C036688AAD80FA320C3C80C77296F35940099DEAB52A9B98"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\server\\tests\\lab-03\\staff-ticket-detail.api.test.ts",
+    "Hash": "A6C9CA5489905F12E17B0764197DD8B8814AF1BE2180F117CE1CB089E0D0CDEC"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\TicketWorkflow.tsx",
+    "Hash": "F4148323AC48E3B282B8D4DA0DDAFB9517A8FEA8CB61EB59CB753154968F4033"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\workflow-api.ts",
+    "Hash": "EC55BB1C38E5C1C2915EF0AE4226B9EB74026D1B175A41AF85E38E0D1488395F"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\StaffTicketDetail.tsx",
+    "Hash": "342766C7AEB7F275D209F481C0A6981C2452289A781AE60CF6640CE024DD3047"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\RequesterTicketDetail.tsx",
+    "Hash": "33B89A87961378BED7E50B3FE16E1EC9EC307C61D8C22D5A0FCD4945F0C88297"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\tests\\lab-04\\TicketWorkflow.test.tsx",
+    "Hash": "041B74F9B2F0351AB1C88A8B8CD26C4541B69756100B7FD9F7F2E1F692669C3F"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\tests\\lab-04\\workflow-api.test.tsx",
+    "Hash": "7D0B716749B0E5245B4EA63E084D88272FCF0C7991F64AD70DE09DAA65548921"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\tests\\lab-03\\StaffTicketDetail.test.tsx",
+    "Hash": "B37A256E978FD6ED0F0ECF4A1FB07B57D6B1CDC27604261819ED118F83C8CEC5"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\e2e\\lab-04\\actions-taken-flow.spec.ts",
+    "Hash": "C6D0458861591A12C04168C2A1386B33DD922FC4E77C15F6806574E3A9539CE2"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\e2e\\lab-04\\ticket-resolution.spec.ts",
+    "Hash": "D6B4380665276354374DC59D9B2BFCE014EB716FFA3392E272174BC9ED8BB10C"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\playwright.lab4.config.ts",
+    "Hash": "97866BCB6EC81360A32E085DB6901AACB47CD73E90243E9DDB21553E3E2DCC11"
+  }
+]

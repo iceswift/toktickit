@@ -1,5 +1,26 @@
 # Lab 4 Peer Review Record
 
+## Phase5 implementation —29October2026
+
+Issue72 Started, feature/72-lab4-ticket-workflow from ae16e00. Independent review
+pending; local backend248/client68/builds/E2E12 evidence and15 inspected images.
+Review focus: full64-pair matrix, Admin extension without other permission creep,
+strict legacy versions, gate under shared lock, immutable owned history and
+explicit UI selection/version recovery. Phase4 closure docs/images carried here.
+No author merge, peer feedback/approval or completed Phase6 claimed.
+
+## Latest Phase4 closure — 29 October 2026
+
+Richyboy170 approved final60c20d4 at13:49:21UTC, then merged PR80 at13:49:29UTC
+(20:49:21/29 Bangkok), staging ae16e0049b089c6ad935eeb04cbc3d370c8c7c97.
+Fetched staging equals reviewed tree. Review “Look good”; no inline comments or
+unresolved findings. Author replied at
+https://github.com/iceswift/toktickit/pull/80#issuecomment-6498508535.
+Issue71 accepted/closed; actual Project automation Done verified in UI and board.
+See phase4-closure.md for approval permalink, evidence and exact limits. No
+author merge/new cleanup PR; closure updates remain local for the next feature.
+Older pending-review checkpoints below are historical and superseded.
+
 ## Latest Phase4 submitted for peer review — 29 October 2026
 
 [PR80](https://github.com/iceswift/toktickit/pull/80) Open/Ready into lab4-staging,
