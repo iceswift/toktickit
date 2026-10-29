@@ -32,12 +32,24 @@
     "sha256": "37644f487bb4aa15c8c5533f40d3872487d02c7be5b347d39f3dbe2833a41ae0"
   },
   {
+    "path": "artifacts/lab-04/phase6/issue73-pr-review.png",
+    "sha256": "4f950bbedf08b2e2c72d919646361104181a8d6f84a11090fc5f367219163ddc"
+  },
+  {
     "path": "artifacts/lab-04/phase6/issue73-started.png",
     "sha256": "dd345a74fa0054f86a79c2bccc8f43cfd117c4629943b487146139c7c54c2599"
   },
   {
     "path": "artifacts/lab-04/phase6/policy-red-output.txt",
     "sha256": "930d1960e06eb774d7f2d910c254acc04d5e24d43d87bc8f5d9851675983471f"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/pr82-ready-record.json",
+    "sha256": "2ba5c47c603a5bad47ada4c875194e6b08c90d0df29dad03d547a5a4125192a5"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/pr82-ready.png",
+    "sha256": "ae0782e78caa8a6c4e37f04a1ff0cc1e45c9b797413d46cfd3329904e129bcea"
   },
   {
     "path": "artifacts/lab-04/phase6/server-build-output.txt",
@@ -49,11 +61,11 @@
   },
   {
     "path": "artifacts/lab-04/phase6/structural-check-output.txt",
-    "sha256": "e914ebbfe81015a4b734ccd57efc3b21719e26f03d81541f08b147281c4af7d2"
+    "sha256": "15533b87df0bea4fc6c2e7508a65ec50e5976214fe64d5d3740f11b14f787298"
   },
   {
     "path": "artifacts/lab-04/phase6/verification.md",
-    "sha256": "b59d40de33bc16944a0b138da8648e51dacfe5db9eca8898dd2c1dac4477ab85"
+    "sha256": "4476cbdc489bf38000fb3c8cb39f74735fbb1a2a7fb9daa640736c7e5a15f1c0"
   },
   {
     "path": "artifacts/lab-04/phase6/screenshots/administrator.png",

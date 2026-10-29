@@ -75,6 +75,12 @@ This config refuses working database names and reuse of existing servers; ports
 
 ## Remaining acceptance boundary
 
+PR [#82](https://github.com/iceswift/toktickit/pull/82) is now Open/Ready into
+lab4-staging; direct Issue73 link verified in closingIssuesReferences. Richyboy170
+requested, Issue Open and actual Project PR Review. Product tree edb2c2a; follow-up
+documentation/evidence commits remain in this same PR. Attached CI checks0 is not
+a pass. No independent approval or merge has happened at this checkpoint.
+
 Peer review and reviewer merge are required before Done/Issue closure. No main/CI
 result, performance load test, all-app accessibility certification or final PDF
 pagination is inferred. Existing dependency audit warnings remain for Phase7.

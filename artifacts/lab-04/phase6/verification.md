@@ -16,3 +16,10 @@ All19 card/list populations match independent real DB fixture rows. Report
 Parts5/8/9 and evidence/test/review records updated. Structural check passed,
 not rendered HTML/PDF approval. Dependency audit/performance/all-app QA and final
 main/CI/PDF remain Phase7/8; peer review/merge still required.
+
+GitHub checkpoint: PR82 Open/Ready into lab4-staging, direct Issue73 Development
+link verified through GitHub closingIssuesReferences; Richyboy170 review requested.
+Actual Issue73 remains Open / Project PR Review. Product commit edb2c2a. Checks
+attached0 is not passing CI. Real screenshots pr82-ready.png and issue73-pr-review.png
+inspected. This record/docs are published in the same PR, no author merge.
+Log trailing spaces/extra EOF blanks normalized mechanically; result lines kept.

@@ -260,3 +260,10 @@ Initial17pass/1fail was a fixture assumption: Darin actually had a Waiting Ticke
 kept failure log and replaced zero scenario with a newly created synthetic owner,
 not deleted history. All19 API counts still pass; recent work length160 asserted.
 Report Parts5/8/9 updated; structural document/asset check passed, not rendered QA.
+
+Current GitHub checkpoint: [PR82](https://github.com/iceswift/toktickit/pull/82)
+Open/Ready into lab4-staging. Direct Issue73 Development link confirmed through
+closingIssuesReferences; Richyboy170 requested. Issue Open / actual Project PR Review.
+Inspected phase6/pr82-ready.png and phase6/issue73-pr-review.png; no approval or
+merge claimed. Product/evidence edb2c2a, follow-up records in the same PR. Attached
+checks0 is NOT passing CI. Reviewer approves final head AND merges; author replies.
