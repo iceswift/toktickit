@@ -7,6 +7,8 @@ import { isPermittedAttachment, MAX_ATTACHMENT_BYTES, readStoredAttachment, remo
 import { changePassword, currentUser, login, logout } from "./auth.js";
 import { requireAdministratorSession, requireRequesterSession, requireStaffQueueSession } from "./requester-session.js";
 import { hash } from "bcryptjs";
+import { actionsRouter, actionError } from './lab4/actions-router.js';
+import { legacyStatusWithHistory } from './lab4/legacy-workflow.js';
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -53,7 +55,9 @@ app.get("/auth/me", async (req, res) => {
 
 app.use(["/api/tickets", "/api/attachments"], requireRequesterSession);
 app.use("/staff/tickets", requireStaffQueueSession);
+app.use('/staff/ticket-owners', requireStaffQueueSession);
 app.use("/admin/users", requireAdministratorSession);
+app.use(actionsRouter);
 
 const userRoles = new Set(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"]);
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{12,128}$/;
@@ -339,11 +343,8 @@ app.patch("/staff/tickets/:ticketId/status", async (req: Request, res: Response)
   if (!ticketId) return res.status(404).json(notFoundMessage);
   if (typeof status !== "string" || !ticketStatuses.has(status)) return res.status(400).json({ error: "Choose a valid Ticket status." });
   try {
-    const ticket = await getPrisma().ticket.findUnique({ where: { id: ticketId }, select: { id: true, currentStatus: true } });
-    if (!ticket) return res.status(404).json(notFoundMessage);
-    if (!allowedStatusTransitions[ticket.currentStatus].includes(status)) return res.status(409).json({ error: "That status transition is not permitted." });
-    return res.status(200).json(await getPrisma().ticket.update({ where: { id: ticketId }, data: { currentStatus: status as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }, include: staffTicketInclude }));
-  } catch { return res.status(500).json({ error: "Unable to update Ticket status." }); }
+    return res.status(200).json(await legacyStatusWithHistory(req,ticketId,status as import('@prisma/client').TicketStatus,allowedStatusTransitions,staffTicketInclude));
+  } catch(error) { return actionError(res,error); }
 });
 
 app.post("/staff/tickets/:ticketId/public-comments", async (req: Request, res: Response) => {

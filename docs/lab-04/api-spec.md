@@ -1,5 +1,11 @@
 # Lab 4 API Contract - Phase 1 peer review
 
+Phase3 implementation checkpoint, 29 October 2026: Action list/create/edit/assign/
+status/event/own-work routes below are now implemented on the feature branch;
+see phase3-api.md for actual local110-test evidence and precise limits. Dashboard
+routes and final Ticket role/UI integration remain planned. The older no-endpoint
+baseline wording below is historical, not the current Action API state.
+
 No new endpoint is implemented. D-01..04 student-approved 8 October 2026.
 All paths below are actual HTTP paths relative to the server origin, not to an
 implicit /api base. API_URL is the server origin (for example http://localhost:3000).

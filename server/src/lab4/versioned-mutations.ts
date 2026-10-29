@@ -12,6 +12,12 @@ export class MutationConflict extends Error {
 }
 interface ParentCommand { ticketId: number; actorId: number; expectedTicketVersion: number }
 type Policy = (tx: Prisma.TransactionClient, ticket: { id: number; currentStatus: TicketStatus; version: number }) => Promise<void>;
+type Database = PrismaClient | Prisma.TransactionClient;
+function transaction<T>(db: Database, write: (tx: Prisma.TransactionClient) => Promise<T>): Promise<T> {
+  // A caller may compose replay records and domain policy into this SAME outer
+  // interactive transaction. Do not open a second, independently committing one.
+  return '$transaction' in db ? db.$transaction(write) : write(db);
+}
 type ActionData = {
   assigneeUserId: number; actionDateTime: Date; description: string; result: string;
   followUpRequired: boolean; followUpNote: string; attachmentNotes: string;
@@ -63,11 +69,11 @@ async function lockParent(tx: Prisma.TransactionClient, args: ParentCommand) {
  * Test/seed callers may pass an explicit no-op for synthetic persistence tests;
  * that is not evidence of authorization, business-rule or Resolve-gate enforcement.
  */
-export async function createActionWithHistory(prisma: PrismaClient,
+export async function createActionWithHistory(prisma: Database,
   args: ParentCommand & { data: ActionData }, policy: Policy = denyUnvalidatedMutation) {
   command(args, ['data']);
   keys(args.data, createKeys, createKeys);
-  return prisma.$transaction(async tx => {
+  return transaction(prisma, async tx => {
     const ticket = await lockParent(tx, args);
     await policy(tx, { ...ticket, version: args.expectedTicketVersion });
     const action = await tx.actionTaken.create({ data: { ...args.data, ticketId: args.ticketId,
@@ -78,13 +84,13 @@ export async function createActionWithHistory(prisma: PrismaClient,
   });
 }
 
-export async function updateActionWithHistory(prisma: PrismaClient,
+export async function updateActionWithHistory(prisma: Database,
   args: ParentCommand & { actionId: number; expectedVersion: number; data: ActionPatch }, policy: Policy = denyUnvalidatedMutation) {
   command(args, ['actionId', 'expectedVersion', 'data']);
   if (![args.actionId, args.expectedVersion].every(value => Number.isSafeInteger(value) && value > 0)) throw new MutationConflict('INVALID_MUTATION');
   keys(args.data, patchKeys);
   if (!Object.keys(args.data).length || Object.values(args.data).some(value => value === undefined)) throw new MutationConflict('INVALID_MUTATION');
-  return prisma.$transaction(async tx => {
+  return transaction(prisma, async tx => {
     const ticket = await lockParent(tx, args);
     await policy(tx, { ...ticket, version: args.expectedTicketVersion });
     const before = await tx.actionTaken.findFirst({ where: { id: args.actionId, ticketId: args.ticketId, version: args.expectedVersion } });
@@ -108,11 +114,11 @@ export async function updateActionWithHistory(prisma: PrismaClient,
   });
 }
 
-export async function transitionTicketWithHistory(prisma: PrismaClient,
+export async function transitionTicketWithHistory(prisma: Database,
   args: ParentCommand & { toStatus: TicketStatus }, policy: Policy = denyUnvalidatedMutation) {
   command(args, ['toStatus']);
   if (!Object.values(TicketStatus).includes(args.toStatus)) throw new MutationConflict('INVALID_MUTATION');
-  return prisma.$transaction(async tx => {
+  return transaction(prisma, async tx => {
     const ticket = await lockParent(tx, args);
     if (ticket.currentStatus === args.toStatus) throw new MutationConflict('INVALID_MUTATION');
     await policy(tx, { ...ticket, version: args.expectedTicketVersion });

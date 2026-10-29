@@ -1,0 +1,57 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > creates under the correct parent and immutable session actor, without changing Ticket owner
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > protects all reads/writes and the sibling /staff/actions route by actual session/role
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > replays a persistent normalized payload before stale checks with no duplicate work/history
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes simultaneous identical retries and rejects simultaneous different-key stale writes
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > validates parent date range, unknown identity fields, inactive assignees and retry keys without partial saves
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > edits, assigns and transitions atomically, retaining before/after audit and terminal rules
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > enforces merged follow-up/result values and stale edit checks without bumping versions
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > blocks terminal Ticket writes, rechecks replay authentication, and rejects wrong parents
+ ↓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > returns stable paginated lists, safe own-created work, and rejects invalid paging
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay
+PrismaClientValidationError:
+Invalid `db.user.create()` invocation in
+D:\Chat\cpe\lab4\server\tests\lab-04\actions-taken.api.test.ts:28:34
+
+  25 assigneeId=(await db.user.findUniqueOrThrow({where:{email:'jonas.miller@example.test'}})).id;
+  26 const blocked=await session('jonas.miller@example.test'); firstLogin=blocked.cookie;
+  27 await db.user.update({where:{id:assigneeId},data:{mustChangePassword:true}});
+→ 28 const disabled=await db.user.create({
+       data: {
+         email: "disabled-647f5824-d64f-4c28-a196-a733067bc9b1@example.test",
+         name: "Disabled synthetic staff",
+         role: "IT_STAFF",
+         isActive: false,
+         mustChangePassword: false,
+     +   passwordHash: String
+       }
+     })
+
+Argument `passwordHash` is missing.
+ ❯ wn node_modules/@prisma/client/runtime/library.js:29:1363
+ ❯ $n.handleRequestError node_modules/@prisma/client/runtime/library.js:121:6958
+ ❯ $n.handleAndLogRequestError node_modules/@prisma/client/runtime/library.js:121:6623
+ ❯ $n.request node_modules/@prisma/client/runtime/library.js:121:6307
+ ❯ l node_modules/@prisma/client/runtime/library.js:130:9633
+ ❯ tests/lab-04/actions-taken.api.test.ts:28:20
+     26|     const blocked=await session('jonas.miller@example.test'); firstLog…
+     27|     await db.user.update({where:{id:assigneeId},data:{mustChangePasswo…
+     28|     const disabled=await db.user.create({data:{email:`disabled-${rando…
+       |                    ^
+     29|     const token=randomBytes(32).toString('base64url');
+     30|     await db.authSession.create({data:{userId:disabled.id,tokenHash:cr…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { clientVersion: '5.22.0' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  10 skipped (10)
+   Start at  13:34:47
+   Duration  31.17s (transform 346ms, setup 0ms, collect 10.49s, tests 20.38s, environment 0ms, prepare 81ms)

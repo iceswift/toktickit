@@ -5,9 +5,9 @@ Phase count is a planning choice, separate from nine submission Parts.
 
 | Phase | Issue | Depends on | Initial/current work |
 |---|---|---|---|
-| 1 | [#68](https://github.com/iceswift/toktickit/issues/68) Contract | Released Lab 3 | PR Review, linked [#76](https://github.com/iceswift/toktickit/pull/76) |
-| 2 | [#69](https://github.com/iceswift/toktickit/issues/69) Data/migration/seeds | #68 | Backlog |
-| 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | Backlog |
+| 1 | [#68](https://github.com/iceswift/toktickit/issues/68) Contract | Released Lab 3 | Done; reviewer-merged #77, original linked #76 retained |
+| 2 | [#69](https://github.com/iceswift/toktickit/issues/69) Data/migration/seeds | #68 | Done; Richy approved/merged #78 at f4b6ea9; Issue closed after AC verification |
+| 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | Started; local110-test backend pass, awaiting linked feature PR/peer review |
 | 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | Backlog |
 | 5 | [#72](https://github.com/iceswift/toktickit/issues/72) Ticket workflow | #70/#71 | Backlog |
 | 6 | [#73](https://github.com/iceswift/toktickit/issues/73) Dashboards | #69/#70/#72 | Backlog |
