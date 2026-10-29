@@ -2,12 +2,14 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import request from "supertest";
 import { app } from "../../src/app.js";
 import { getPrisma } from "../../src/prisma.js";
+import { randomBytes } from 'node:crypto';
 
 const prisma = getPrisma();
 let staff: ReturnType<typeof request.agent>;
 let admin: ReturnType<typeof request.agent>;
 let requester: ReturnType<typeof request.agent>;
 let ticketId = 0;
+const fixtureNumber = `TKT-20990102-${randomBytes(4).toString('hex').toUpperCase()}`;
 
 beforeAll(async () => {
   staff = request.agent(app); admin = request.agent(app); requester = request.agent(app);
@@ -17,12 +19,15 @@ beforeAll(async () => {
     prisma.developmentRequester.findUniqueOrThrow({ where: { email: "amina.rahman@example.test" } }), prisma.user.findUniqueOrThrow({ where: { email: "amina.rahman@example.test" } }),
     prisma.category.findFirstOrThrow({ where: { isActive: true } }), prisma.relatedSystem.findFirstOrThrow({ where: { isActive: true } }),
   ]);
-  const ticket = await prisma.ticket.upsert({ where: { ticketNumber: "TKT-20990102-DETAIL01" }, update: { requesterUserId: requesterUser.id, currentStatus: "NEW", ownerUserId: null, itPriority: "NOT_SET" }, create: { ticketNumber: "TKT-20990102-DETAIL01", requesterId: legacyRequester.id, requesterUserId: requesterUser.id, categoryId: category.id, relatedSystemId: relatedSystem.id, summary: "Staff detail verification", description: "A Ticket used to verify staff Ticket operations.", requestedPriority: "HIGH" } });
+  const ticket = await prisma.ticket.create({ data: { ticketNumber: fixtureNumber, requesterId: legacyRequester.id, requesterUserId: requesterUser.id, categoryId: category.id, relatedSystemId: relatedSystem.id, summary: "Staff detail verification", description: "A Ticket used to verify staff Ticket operations.", requestedPriority: "HIGH" } });
   ticketId = ticket.id;
 });
 
 afterAll(async () => {
-  await prisma.ticket.deleteMany({ where: { id: ticketId } });
+  // Genuine workflow history is append-only and parent deletion is RESTRICT.
+  // Retain audited synthetic fixtures in this disposable DB; never disable the
+  // history constraint to make cleanup pass. Unique fixture IDs allow reruns.
+  await prisma.ticket.deleteMany({ where: { id: ticketId, workflowEvents: { none: {} } } });
   await prisma.user.updateMany({ where: { email: { in: ["iris.nattapong@example.test", "narin.admin@example.test", "amina.rahman@example.test"] } }, data: { mustChangePassword: true } });
 });
 

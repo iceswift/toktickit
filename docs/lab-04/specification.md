@@ -1,5 +1,12 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
+Implementation checkpoint 29 October: Phase2 independently approved/merged in
+PR78 at f4b6ea9. Phase3 Action APIs now implemented locally and submitted in PR79
+with direct Issue70 linkage and actual Project PR Review. Backend110tests pass;
+independent Phase3 review/merge, UI/dashboard/final workflow and release/PDF
+remain pending. See phase3-api.md for the legacy writer safety prerequisite and
+its explicitly limited no-version compatibility. Do not infer final-main success.
+
 Status: D-01..04 student-approved on 8 October 2026 ("I agree your accord").
 Corrected contract approved and merged by Richyboy170 through PR #77 on 28 October
 2026, staging 0f84785e4ac219fccf05559e87258d8010a2c080. Phase 2 contract
@@ -206,7 +213,7 @@ on requester/status and status/priority after validating query plans.
 - [x] Student-approved decisions with exact API/UI/transition/metric choices documented before code.
 - [x] Peer reviewer approves and merges contract before product code (PR #77).
 - [ ] Every AC has planned tests and real implemented test-file paths.
-- [ ] Populated migration, recovery and repeated seeds verified.
+- [x] Populated migration, recovery and repeated seeds verified (Phase2, PR78).
 - [ ] Unit/API/UI/style/auth/workflow/regression/E2E, builds and performance smoke pass.
 - [ ] Complete passing output from final main retained with SHA/environment.
 - [ ] Actual role/negative API proofs and all required screenshots visually inspected.

@@ -1,5 +1,30 @@
 # Lab 4 Test DD - actual Phase 2 data coverage and remaining plan
 
+## Current Phase3 local checkpoint - 29 October 2026
+
+Full backend22files/110tests passes without skips, plus build/schema validation.
+New action-validation.unit.test.ts has30 cases; actions-taken.api.test.ts has14
+actual DB-backed HTTP cases. See phase3-api.md and phase3/server-full-output.txt
+for real404/409, persistent retry, ownership, failure and concurrency evidence.
+API01/02, AUTH01 and RETRY01 Action scope are implemented locally. CON01 has
+actual Action-vs-Resolve HTTP and concurrent-retry evidence, but the complete
+Phase5 Ticket transition/role matrix remains planned. No client/E2E or main claim.
+
+| Test ID | Type / AC | Actual assertion / expected result | File | Evidence status |
+|---|---|---|---|---|
+| ACTION-VAL | Unit / AC02,03 | All16 state pairs, strict/date/text/version inputs | server/tests/lab-04/action-validation.unit.test.ts | Local30 passed |
+| ACTION-API | API / AC01..04 | Authenticated actor, active permitted assignee, immutable ownership/history, safe owned read-only projection | server/tests/lab-04/actions-taken.api.test.ts | Local14 passed, grouped assertions |
+| ACTION-RETRY | API+DB / AC11,12 | Same scoped key replays once; conflict409; concurrent requests persist one resource/event | server/tests/lab-04/actions-taken.api.test.ts | Actual DB/logged responses |
+| ACTION-RACE | API+DB / AC11 | Resolve vs Action shares parent lock; one winner/one409; legacy bypass blocked | server/tests/lab-04/actions-taken.api.test.ts | Actual DB/logged response |
+
+Earlier Phase2/source-plan tables below are historical where superseded here.
+
+Closure checkpoint 29 October 2026: Phase2 peer merged in PR78 at staging f4b6ea9;
+reviewed head c2d7027 has the exact same tree. Retained pre-merge local result is
+20 files/66 tests (data-only4files/24tests), not CI or a new staging rerun.
+MIG/SEED/VERSION foundation is accepted for Phase2 only. Future API/domain-policy
+and client/E2E coverage below remains planned. See phase2-closure.md.
+
 Baseline `5398f2d`; D-01 through D-04 student-approved on 8 October 2026.
 Remaining feature paths below are planned and do not yet exist. Phase 2 data
 tests now exist; their actual local verification is recorded below, not as main/CI evidence.

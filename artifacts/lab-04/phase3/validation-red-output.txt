@@ -1,0 +1,16 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/action-validation.unit.test.ts [ tests/lab-04/action-validation.unit.test.ts ]
+Error: Failed to load url ../../src/lab4/action-validation.js (resolved id: ../../src/lab4/action-validation.js) in D:/Chat/cpe/lab4/server/tests/lab-04/action-validation.unit.test.ts. Does the file exist?
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  13:32:42
+   Duration  740ms (transform 49ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 415ms)

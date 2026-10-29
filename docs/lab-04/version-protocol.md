@@ -1,5 +1,11 @@
 # Phase 2 review correction: versioned transaction protocol
 
+Phase3 update, 29 October: Action routes now invoke these primitives with real
+locked policy, and idempotency uses the same outer transaction. The legacy
+status writer is now guarded against Action races. See phase3-api.md for the
+explicit transitional compatibility and remaining final role/UI work. The text
+below describes the original Phase2 pre-API checkpoint, not current route absence.
+
 PR #78 reviewer Richyboy170 commented on head `e17403f` on 28 October 2026:
 unique event-version indexes do not guarantee that current rows and their history
 advance together. Both the Ticket and Action findings are valid.

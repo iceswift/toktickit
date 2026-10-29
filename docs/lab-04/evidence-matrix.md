@@ -1,5 +1,38 @@
 # Lab 4 Evidence Register
 
+## Current Phase3 local implementation - 29 October 2026
+
+Actual PR79 is now Open/Ready into lab4-staging; direct Development link to Issue70
+verified through both Browser in app and API. Project Issue70 PR Review observed
+after the direct link was established. Reviewer Richyboy170 requested. New images
+phase3-pr79-ready.png / phase3-issue70-pr-review.png are visually checked and
+included in the report; earlier phase3-issue70-started.png remains historical.
+No passing CI/approval/merge claimed. Product commit bfd2089, same one feature PR.
+
+- Action APIs/policy/replay/history exist on feature/70-lab4-actions, based on
+  reviewed staging f4b6ea9. Issue70 Started verified in Browser in app.
+- Local backend22files/110tests, no skips, build/schema pass. Full output under
+  phase3/ includes actual cross-owner404, replay mismatch409, Resolve gate409 and
+  a real HTTP Resolve/Action race with one winner. No screenshots or CI invented.
+- Genuine legacy gate red preserved: actual200 instead of expected409, then green.
+  Earlier setup/cleanup failures retained honestly; see phase3-api.md.
+- Student said the Phase2 report looked acceptable and authorized the next step.
+  Agent did not bypass the blocked file:// browser preview or claim agent layout QA.
+- Local Phase2 closure additions carried here; peer integration of this phase,
+  client/E2E/dashboard/full-workflow and final-main/PDF remain pending.
+
+## Current Phase 2 closure - 29 October 2026
+
+PR78 independently approved/merged by Richyboy170 on reviewed head c2d7027;
+staging f4b6ea9 equals the reviewed source tree. Issue69 closed after AC09/10
+verification; Project automation moved its card to Done and UI independently
+confirmed it. Browser in app captures phase2-pr78-approved-merged.png,
+phase2-issue69-closed.png and phase2-kanban-done.png are visually inspected and
+incorporated in the local report. Filtered board: Backlog6, Done2, others zero.
+No saved shared filter, new PR, author merge, Phase3 work or post-merge test claim.
+Full checklist/limits: phase2-closure.md. These closure-only additions remain
+local for the next authorized feature PR; earlier pending records are historical.
+
 ## Latest Phase 2 review correction - 28 October 2026
 
 - Actual PR78 review by Richyboy170 is COMMENTED, not Approve. Two findings concern

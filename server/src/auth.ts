@@ -2,6 +2,7 @@ import { createHash, randomBytes } from "node:crypto";
 import type { Request, Response } from "express";
 import { compare, hash } from "bcryptjs";
 import { getPrisma } from "./prisma.js";
+import type { Prisma } from '@prisma/client';
 
 const COOKIE_NAME = "toktickit_session";
 const SESSION_HOURS = 8;
@@ -26,9 +27,9 @@ function sessionCookie(res: Response, token: string) {
 }
 export function clearSessionCookie(res: Response) { res.clearCookie(COOKIE_NAME, { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/" }); }
 
-export async function currentUser(req: Request): Promise<AuthenticatedUser | null> {
+export async function currentUser(req: Request, database: Pick<Prisma.TransactionClient, 'authSession'> = getPrisma()): Promise<AuthenticatedUser | null> {
   const token = cookieToken(req); if (!token) return null;
-  const session = await getPrisma().authSession.findUnique({ where: { tokenHash: digest(token) }, include: { user: true } });
+  const session = await database.authSession.findUnique({ where: { tokenHash: digest(token) }, include: { user: true } });
   if (!session || session.revokedAt || session.expiresAt <= new Date() || !session.user.isActive) return null;
   const { id, name, email, role, mustChangePassword } = session.user;
   return { id, name, email, role, mustChangePassword };

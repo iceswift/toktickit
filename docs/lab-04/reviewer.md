@@ -1,5 +1,36 @@
 # Lab 4 Peer Review Record
 
+## Current Phase3 preparation - 29 October 2026
+
+Submission verified: https://github.com/iceswift/toktickit/pull/79, Open/Ready into
+lab4-staging; direct Issue70 Development link verified in UI and API, then Issue70
+moved to PR Review. Richyboy170 requested, write permission verified. Product commit
+bfd2089544cc50baf7ee532baccbeebcfa8e62d4. No approval/merge; no CI checks attached
+(local110-test output is not CI). Actual screenshots phase3-pr79-ready.png and
+phase3-issue70-pr-review.png are visually inspected and included in report.html.
+Actual Issue progress: https://github.com/iceswift/toktickit/issues/70#issuecomment-6490097813.
+This supersedes the initial Started/preparation wording below.
+
+Issue70; branch feature/70-lab4-actions from peer-merged staging f4b6ea9.
+Action APIs and real in-transaction policy/replay implemented; local backend
+22files/110tests, build/schema validation passed. Actual Issue70 Project status
+Started was set and verified in Browser in app. Feature PR/direct Issue link,
+peer approval and merge are not claimed until separately verified.
+The earlier Phase2 closure-only local docs/images are included with this feature
+as planned, not via another cleanup PR. See phase3-api.md for role/UI scope limits.
+
+## Current closure - 29 October 2026
+
+PR78 reviewer Richyboy170 approved final head c2d7027 at 22:23:23 UTC on 28 October,
+then merged at 22:23:32 UTC into lab4-staging, f4b6ea9d108fe7de14a4856f4b78c75ca2c6cc32.
+These are 29 October 05:23 Bangkok. No author merge. Source tree equality with
+fetched staging verified; pre-merge local test output is not new staging/main CI.
+Issue69 AC09/10 verified and closed; actual Project card Done. Browser in app
+captured reviewer approval/merge, closed Issue and Done68/69, all in report.html.
+See phase2-closure.md and artifacts/lab-04/github/phase2-merge-record.json.
+Closure additions are local, to carry with the next feature work, not a new PR.
+Earlier pending-review sections below are historical and superseded.
+
 ## Latest review correction - 28 October 2026
 
 Richyboy170 COMMENTED on PR78 head e17403f at 08:04:31 UTC, not APPROVED.

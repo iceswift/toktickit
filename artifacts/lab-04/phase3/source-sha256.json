@@ -1,0 +1,42 @@
+[
+  {
+    "path": "server/src/app.ts",
+    "sha256": "50ce2b12fd57d1fad0706ae1f2ac4211bed917715512a57cce3d66800b5e8df8"
+  },
+  {
+    "path": "server/src/auth.ts",
+    "sha256": "c89ac5bbb8d3a4b81dc5ae30a1102ef86cab2308160da1889e3f6ea2cc41fb8c"
+  },
+  {
+    "path": "server/src/lab4/action-validation.ts",
+    "sha256": "7bbe8f8dd1229663b5e66bf899a0054f8c8325b963c0eb58ee81f7fa478cd2a3"
+  },
+  {
+    "path": "server/src/lab4/actions-router.ts",
+    "sha256": "af50f3e1fdf7600b43c5e09dc94f48880ffb6a6de1fea665eb0693c4374204cf"
+  },
+  {
+    "path": "server/src/lab4/legacy-workflow.ts",
+    "sha256": "09ca793114a3a814cdd7bf368e5179317a6d9549f8ce46e19d0708d5afe224f5"
+  },
+  {
+    "path": "server/src/lab4/versioned-mutations.ts",
+    "sha256": "195f051266752c6bb64332454c297535e5fefca8afd18f3dc2a1abceed4a299e"
+  },
+  {
+    "path": "server/tests/lab-04/action-validation.unit.test.ts",
+    "sha256": "9820863e94ce6ad4e0ba8523db2d5f86f855036d8beefa2f94127f61413f3323"
+  },
+  {
+    "path": "server/tests/lab-04/actions-taken.api.test.ts",
+    "sha256": "bb09664f1604790800abaec60025c2048f9bb86c8c8258849060ffa43bec79c3"
+  },
+  {
+    "path": "server/tests/lab-03/staff-ticket-detail.api.test.ts",
+    "sha256": "8e1a600449a98fff4c8e5b0ede4539fa85c2cae058cea86b4c898052b786130d"
+  },
+  {
+    "path": "server/package.json",
+    "sha256": "24fbccaa9aed7e3fc7eb367914a7c9c66794bdc760114e5da358a0e457e9c28f"
+  }
+]

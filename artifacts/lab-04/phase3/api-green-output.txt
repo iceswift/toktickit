@@ -1,0 +1,19 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/server
+
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > creates under the correct parent and immutable session actor, without changing Ticket owner
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > protects all reads/writes and the sibling /staff/actions route by actual session/role
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > replays a persistent normalized payload before stale checks with no duplicate work/history
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes simultaneous identical retries and rejects simultaneous different-key stale writes
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > validates parent date range, unknown identity fields, inactive assignees and retry keys without partial saves
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > edits, assigns and transitions atomically, retaining before/after audit and terminal rules 393ms
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > enforces merged follow-up/result values and stale edit checks without bumping versions
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > blocks terminal Ticket writes, rechecks replay authentication, and rejects wrong parents
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > returns stable paginated lists, safe own-created work, and rejects invalid paging 611ms
+ ✓ tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > prevents the legacy status writer bypassing Action gates or shared versions
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  13:39:15
+   Duration  9.66s (transform 149ms, setup 0ms, collect 379ms, tests 9.02s, environment 0ms, prepare 73ms)
