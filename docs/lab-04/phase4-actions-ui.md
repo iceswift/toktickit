@@ -5,6 +5,12 @@ feature/71-lab4-actions-ui from peer-merged staging
 `2f633d0ae78195bbd721ad958f2795323a89cf23`. Local implementation checkpoint;
 independent review and reviewer merge are still required. No Phase5 started.
 
+Published [PR80](https://github.com/iceswift/toktickit/pull/80) Open/Ready into
+lab4-staging; product/evidence commit4820ce3. Direct Development Issue71 linkage
+verified in UI and closingIssuesReferences; Richyboy170 requested. Actual Project
+PR Review, Issue remains Open. Attached checks0 is NOT passing CI. This feature
+also carries these submission screenshots/docs; no separate cleanup PR or self-merge.
+
 ## Acceptance and verification
 
 | Contract | Delivered scope and actual verification |

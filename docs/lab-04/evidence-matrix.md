@@ -1,5 +1,10 @@
 # Lab 4 Evidence Register
 
+Latest published Phase4: [PR80](https://github.com/iceswift/toktickit/pull/80)
+Open/Ready, directly linked to Issue71 via Development/API. Richyboy170 requested;
+actual PR Review screenshot and PR Ready screenshot incorporated. No peer approval,
+merge, Done or passing CI claimed; prior Started capture remains historical.
+
 ## Latest Phase4 UI checkpoint — 29 October 2026
 
 Issue71 Started verified in Browser in app; screenshot phase4-issue71-started.png

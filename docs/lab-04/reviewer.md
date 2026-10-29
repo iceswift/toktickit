@@ -1,5 +1,15 @@
 # Lab 4 Peer Review Record
 
+## Latest Phase4 submitted for peer review — 29 October 2026
+
+[PR80](https://github.com/iceswift/toktickit/pull/80) Open/Ready into lab4-staging,
+product/evidence head4820ce3. Direct Issue71 Development linkage independently
+confirmed in UI and GitHub closingIssuesReferences. Richyboy170 review requested;
+actual Issue Project Status PR Review; Issue71 stays Open. Checks0 is not CI Pass.
+Actual phase4-pr80-ready.png and phase4-issue71-pr-review.png inspected and added
+to the same PR/report. No peer approval, review discussion or merge invented.
+Earlier Started checkpoint below is superseded by this published review state.
+
 ## Phase4 UI — implementation checkpoint,29October2026
 
 Issue71 is Started on feature/71-lab4-actions-ui from reviewed staging2f633d0.
