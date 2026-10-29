@@ -1,0 +1,26 @@
+[WebServer] (node:28060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:27576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:36280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:36280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:27244) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:26584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:36768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\lab-04\actions-taken-flow.spec.ts:52:1 › real multi-staff lifecycle: create, edit, assign, complete/cancel and owned Requester read-only history (12.0s)
+  ok 2 e2e\lab-04\actions-taken-flow.spec.ts:99:1 › uncertain transport response retains draft/key; real backend replay creates only one record (4.0s)
+  ok 3 e2e\lab-04\actions-taken-flow.spec.ts:119:1 › real inactive-assignee race retains draft and accepts a corrected active selection (3.7s)
+  ok 4 e2e\lab-04\actions-taken-flow.spec.ts:133:1 › real competing edit returns 409; refresh and explicit rebase retain local input (4.4s)
+  ok 5 e2e\lab-04\actions-taken-flow.spec.ts:151:1 › Administrator creation is allowed and follows the same Action policy (3.1s)
+  ok 6 e2e\lab-04\actions-taken-flow.spec.ts:157:1 › fully loaded forms, validation, keyboard focus and responsive layout at three widths (3.7s)
+  ok 7 e2e\lab-04\actions-taken-flow.spec.ts:171:1 › labelled delayed assignee loading and safe forbidden/load retry state (3.6s)
+
+  7 passed (43.9s)

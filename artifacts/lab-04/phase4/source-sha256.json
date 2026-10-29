@@ -1,0 +1,38 @@
+[
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\ActionsTaken.tsx",
+    "Hash": "7D81156C17460FB675816144062C6089DED6F040E5F6F5AD647964C211539365"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\actions-api.ts",
+    "Hash": "84BAF50EE31293894C4926A28EC67659EE792E187D0D871E7C638C38FC88DDA5"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\StaffTicketDetail.tsx",
+    "Hash": "816C90BB34659A92DF1F92FB4BC954E0E7F3EC15A5762C7AD3A99A94FA0A719A"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\RequesterTicketDetail.tsx",
+    "Hash": "28DA344532EC3FC43C9C526439B2454CC8CDD13814C1733BC649FAF6CD30A019"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\src\\api.ts",
+    "Hash": "C0A456BCB9BCF6F996B8CBC889AB00DF5D74780535326893E2066E223FAA6630"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\tests\\lab-04\\ActionsTaken.test.tsx",
+    "Hash": "4576B6F205FE00DB42B2FEFA6C27B6F25DD39820F67A6470EABF316037A0B0A2"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\tests\\lab-04\\actions-api.test.tsx",
+    "Hash": "0E6B3C5194551941C7078D0E12010C74428DC49D9753F9BF2E2EE2E839595DF3"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\e2e\\lab-04\\actions-taken-flow.spec.ts",
+    "Hash": "8210A297EAD03C2ECF3D9AE52BA7C22450FDD8C5C60CE78EEAD5E3E23EA8523C"
+  },
+  {
+    "Path": "D:\\Chat\\cpe\\lab4\\client\\playwright.lab4.config.ts",
+    "Hash": "DB067527003B92F4ED1F13C3A0B7583C493443742ED77355F03E93DB9E6BE19B"
+  }
+]

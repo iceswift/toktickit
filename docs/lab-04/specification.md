@@ -1,5 +1,10 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
+Latest29October closure: Phase3 independently approved/merged by Richyboy170 in
+PR79 at staging2f633d0; Issue70 acceptance verified and Closed/Done. See
+phase3-closure.md. Earlier Phase3-pending checkpoints below are historical;
+this does not certify full workflow/UI/dashboard/audit/release completion.
+
 Implementation checkpoint 29 October: Phase2 independently approved/merged in
 PR78 at f4b6ea9. Phase3 Action APIs now implemented locally and submitted in PR79
 with direct Issue70 linkage and actual Project PR Review. Backend110tests pass;

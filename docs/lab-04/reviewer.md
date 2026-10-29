@@ -1,5 +1,40 @@
 # Lab 4 Peer Review Record
 
+## Latest Phase4 submitted for peer review — 29 October 2026
+
+[PR80](https://github.com/iceswift/toktickit/pull/80) Open/Ready into lab4-staging,
+product/evidence head4820ce3. Direct Issue71 Development linkage independently
+confirmed in UI and GitHub closingIssuesReferences. Richyboy170 review requested;
+actual Issue Project Status PR Review; Issue71 stays Open. Checks0 is not CI Pass.
+Actual phase4-pr80-ready.png and phase4-issue71-pr-review.png inspected and added
+to the same PR/report. No peer approval, review discussion or merge invented.
+Earlier Started checkpoint below is superseded by this published review state.
+
+## Phase4 UI — implementation checkpoint,29October2026
+
+Issue71 is Started on feature/71-lab4-actions-ui from reviewed staging2f633d0.
+Local client52/build/E2E7 and inspected screenshots retained. Review focus:
+distinct actor/assignee, role-safe shared history, durable retry key, explicit
+version reconciliation, terminal work and form/keyboard/responsive behavior.
+Phase3 closure docs/images are carried with this feature rather than a separate
+cleanup PR. No Phase4 peer feedback, approval, merge or Done is claimed yet.
+Reviewer must approve AND merge into lab4-staging; author replies to findings
+and updates the same PR. No Phase5/dashboard/release certification.
+
+## Latest Phase3 closure - 29 October 2026
+
+Richyboy170 approved head cc479b2 at11:36:21UTC and merged PR79 at11:36:31UTC
+(18:36:21/31 Bangkok), staging2f633d0ae78195bbd721ad958f2795323a89cf23.
+No author merge; fetched staging tree equals reviewed head. Approval permalink:
+https://github.com/iceswift/toktickit/pull/79#pullrequestreview-5697030874.
+There were no substantive review findings left unanswered; author acknowledged
+at https://github.com/iceswift/toktickit/pull/79#issuecomment-6497008183.
+Issue70 acceptance checked and closed; Project automation Done independently
+verified on Issue and Kanban. Actual merge/closed/Done3 images are incorporated
+in local report. See phase3-closure.md and phase3-merge-record.json.
+Local closure additions accompany next feature work, no new PR/merge/push here.
+Earlier Ready/PR Review statements below are historical and superseded.
+
 ## Current Phase3 preparation - 29 October 2026
 
 Submission verified: https://github.com/iceswift/toktickit/pull/79, Open/Ready into

@@ -5,6 +5,14 @@ verified; earlier Lab 3 Sol6.0/Sol6.1 usage is not attributed to Lab 4 automatic
 
 ## Authentic prompt register
 
+29October2026 actual prompt: "เริ่ม Phase 4 ได้เลย".
+Assistance: implement Actions Taken inside existing Ticket Detail from the
+approved Phase3 API/contract, create component/adapter/E2E tests, verify against
+a fresh synthetic PostgreSQL database, inspect/capture evidence and update the
+working report. Source behavior and local test results are recorded separately
+from peer approval/main acceptance. The student has not confirmed a Lab4 personal
+reflection; no invented reflection/model name is attributed to this prompt.
+
 | Date | Actual selected prompt | Assistance / student authority |
 |---|---|---|
 | 2026-10-08 | มาเริ่ม lab4 กันเลย | Read requirements, verify baseline, prepare contract decisions and evidence plan. Student has not yet approved D-01..04. |

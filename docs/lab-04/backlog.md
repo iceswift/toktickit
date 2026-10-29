@@ -7,8 +7,8 @@ Phase count is a planning choice, separate from nine submission Parts.
 |---|---|---|---|
 | 1 | [#68](https://github.com/iceswift/toktickit/issues/68) Contract | Released Lab 3 | Done; reviewer-merged #77, original linked #76 retained |
 | 2 | [#69](https://github.com/iceswift/toktickit/issues/69) Data/migration/seeds | #68 | Done; Richy approved/merged #78 at f4b6ea9; Issue closed after AC verification |
-| 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | PR Review; directly linked [#79](https://github.com/iceswift/toktickit/pull/79) Open/Ready; Richy requested, local110-test backend pass |
-| 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | Backlog |
+| 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | Done; Richy approved/merged [#79](https://github.com/iceswift/toktickit/pull/79) at2f633d0; acceptance verified and Issue closed |
+| 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | PR Review; [PR80](https://github.com/iceswift/toktickit/pull/80) Ready/directly linked; Richyboy170 requested; approval/merge pending |
 | 5 | [#72](https://github.com/iceswift/toktickit/issues/72) Ticket workflow | #70/#71 | Backlog |
 | 6 | [#73](https://github.com/iceswift/toktickit/issues/73) Dashboards | #69/#70/#72 | Backlog |
 | 7 | [#74](https://github.com/iceswift/toktickit/issues/74) QA/hardening | #71/#72/#73 | Backlog |
