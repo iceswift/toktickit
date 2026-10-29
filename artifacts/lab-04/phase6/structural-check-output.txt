@@ -1,0 +1,3 @@
+PASS: required documents, AC-01..13 mapping, nine Parts, anchors and local assets.
+Scope: structural contract/report checks only; no product tests executed.
+PASS: mixed baseline HTTP prefixes and resolved Requester/Staff paths.

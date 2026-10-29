@@ -55,3 +55,13 @@ One idempotency key per logical create, retained with input through retry/failur
 409 shows reload/reconcile, never overwrites automatically. Success refreshes Ticket
 version/status, Action/history and dashboard. Semantic labels, keyboard focus,
 textual statuses/priorities and field-associated errors required at all viewports.
+
+## Phase6 working UI checkpoint
+
+Explicit Dashboard navigation preserves legacy landing pages. Server filters
+are retained in list search/sort/pagination; scope is visible and clearable.
+Back from Detail returns to its source; Dashboard remount and explicit Refresh
+re-fetch. Loading, zero,403 and failure differ; old counts clear on fetch/error.
+My Actions lists current-performer work, not assignments. Whole-app final QA
+checkboxes above remain pending. Actual targeted browser evidence is recorded in
+[Phase6](phase6-dashboards.md), not inferred from component tests.

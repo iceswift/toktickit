@@ -1,5 +1,11 @@
 # Phase 5 — final Ticket workflow and resolution gate
 
+Latest closure: Richyboy170 approved final6b12c82 and merged PR81 at aa1f868
+on29October2026. Merged tree matches reviewed head; Issue72 acceptance checked
+and Closed/Project Done. See phase5-closure.md for actual approval/reply/images
+and limits. Earlier pending-peer-review statements below are historical. This
+accepts Phase5 only, not full Lab4/main/PDF. Closure updates local for next feature.
+
 Published [PR81](https://github.com/iceswift/toktickit/pull/81) Open/Ready into
 lab4-staging, product/evidence commit213df6e. Direct Development Issue72 linkage
 verified in UI and GitHub closingIssuesReferences. Richyboy170 review requested;

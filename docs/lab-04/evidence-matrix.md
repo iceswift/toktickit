@@ -1,5 +1,15 @@
 # Lab 4 Evidence Register
 
+## Latest Phase5 closure —29October2026
+
+Richyboy170 approved final6b12c82 before merging PR81 at aa1f868. Tree match
+verified; acceptance checked, Issue72 Closed, actual Project Done. Lab4 board
+Done5/Backlog3, intermediate0. Inspected actual phase5-pr81-approved-merged.png,
+phase5-issue72-closed.png, phase5-kanban-done.png and GitHub merge metadata now
+incorporated in the working report. Retained backend248/client68/builds/E2E12
+are pre-merge LOCAL evidence, not fresh main/CI. See phase5-closure.md; earlier
+PR Review notices superseded. Closure updates local for next feature PR.
+
 Latest published Phase5: PR81 Open/Ready into lab4-staging, directly linked to
 Issue72, Richyboy170 requested. Actual Issue72 PR Review and PR81 Ready captures
 inspected/incorporated. Product/evidence213df6e; no peer approval/merge/Done or
@@ -233,3 +243,20 @@ proof of this correction or current approval.
 8. Reviewer records/release/final main/Done board/one-PDF QA (depends 7).
 
 Tests and report evidence evolve in the same active feature PR, not postponed to Phase 8.
+
+## Phase6 working evidence (AC-07/08/12/13)
+
+Issue73 Started screenshot: ../../artifacts/lab-04/phase6/issue73-started.png.
+267 server/82client tests and builds passed locally; complete logs under phase6.
+Card populations, Bangkok window and auth verified with isolated database rows.
+Browser18 passed, Dashboard6 rerun passed, 15 screenshots inspected; peer review pending; do not mark Done from local
+results. Phase5 closure evidence is carried in this feature, not a new cleanup PR.
+
+Phase6 browser checkpoint: 18 scenarios passed (12 prior Lab4 +6 Dashboard).
+Dashboard6 rerun after expanded Requester viewport coverage also passed; not24
+unique tests. Inspected15 screenshots: actual metrics/drill-down/zero plus labelled
+delayed/injected503/injected403 states, both roles at1440×900/768×1024/390×844.
+Initial17pass/1fail was a fixture assumption: Darin actually had a Waiting Ticket;
+kept failure log and replaced zero scenario with a newly created synthetic owner,
+not deleted history. All19 API counts still pass; recent work length160 asserted.
+Report Parts5/8/9 updated; structural document/asset check passed, not rendered QA.

@@ -1,5 +1,10 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
+Latest29October closure: Phase5 accepted after Richyboy170 approved final6b12c82
+then merged PR81 at aa1f868; trees match. Issue72 Closed/Project Done verified.
+See phase5-closure.md. No new main/CI, dashboard/hardening/release completion.
+Prior pending-peer-review checkpoints below are historical, not current state.
+
 Latest29October implementation: Phase4 reviewer-merged PR80 at ae16e00 and
 Issue71 Closed/Done. Phase5 final matrix/Staff+Admin status/gate/strict version/
 history UI now locally verified on feature/72-lab4-ticket-workflow; see
@@ -239,3 +244,8 @@ See api-spec.md, ui-spec.md, tests.md and evidence-matrix.md. The local Phase 2
 data models/migration/seeds and isolated data tests now exist; see
 database-runbook.md. They are not yet peer-reviewed/merged or final-main results.
 No Phase 3+ Action API, dashboard endpoint or UI completion is claimed.
+
+Phase6 implementation checkpoint (30 October 2026): section8 populations remain
+unchanged; exact19 card/list mappings now pass real-DB checks on the feature tree.
+267server/82client tests/builds passed locally. Browser/peer acceptance recorded
+separately; Phase7/8 remain Backlog. See phase6-dashboards.md.

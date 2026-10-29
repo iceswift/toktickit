@@ -68,6 +68,7 @@ export interface TicketDetail extends Ticket {
 }
 
 export interface MyTicketsQuery {
+  statusGroup?:'open'|'resolved';resolvedSince?:string;resolvedBefore?:string;
   search?: string;
   categoryId?: number;
   requestedPriority?: RequestedPriority;
@@ -108,6 +109,7 @@ export interface StaffTicketDetail extends TicketDetail {
 export interface TicketOwner { id: number; name: string; role: UserRole; }
 export interface TicketEntry { id: number; ticketId: number; content: string; createdAt: string; author: { id: number; name: string; role: UserRole }; }
 export interface StaffQueueQuery {
+  statusGroup?:'open';ownerId?:number;unassigned?:boolean;
   search?: string; status?: TicketStatus; requestedPriority?: RequestedPriority; itPriority?: ITPriority;
   sortBy?: "updatedAt" | "createdAt" | "ticketNumber" | "currentStatus" | "requestedPriority" | "itPriority";
   sortOrder?: "asc" | "desc"; page?: number; pageSize?: 10 | 20 | 50;

@@ -1,5 +1,11 @@
 # Lab 4 Test DD - actual Phase 2 data coverage and remaining plan
 
+Latest closure: Phase5 independently approved/merged in PR81 at aa1f868 after
+approval of final6b12c82; reviewed/merged trees match. Issue72 accepted/Closed/
+Done. Retained backend248/client68/builds/E2E12 are pre-merge LOCAL results, not
+a new staging/main/CI run. See phase5-closure.md. Dashboards/broader QA/release
+acceptance remain later phases; older review-pending records are historical.
+
 ## Latest Phase5 local verification
 
 24 backend files/248 tests,15 client files/68 tests, both builds and12 Lab4
@@ -152,3 +158,22 @@ Manual visual/keyboard inspection is not replaced by DOM class assertions.
 - See database-runbook.md and retained artifacts/lab-04/phase2 output. Backend
   runtime APIs, UI, full lifecycle/race checks, client/E2E and final-main acceptance
   are NOT certified by these tests. The unchanged dependency audit is not clean.
+
+## Phase6 local verification — 30 October 2026
+
+AC-07/08/12/13: dashboard-policy.unit + dashboards.api + Dashboard.test.tsx.
+Real PostgreSQL explicitly enabled: **267 server tests/26files passed**;
+**82 client tests/16files passed**, server/client builds passed. All19 drill-down
+populations compared to independent fixture row predicates; zero/midnight/date
+boundary/legacy-null/auth/spoofing/failure checks included. Full outputs in
+artifacts/lab-04/phase6. Browser18 passed; Dashboard6 rerun passed with both roles at all3 widths; 15 captures inspected;
+no CI/main or final performance/accessibility certification. See phase6-dashboards.md.
+
+Phase6 browser checkpoint: 18 scenarios passed (12 prior Lab4 +6 Dashboard).
+Dashboard6 rerun after expanded Requester viewport coverage also passed; not24
+unique tests. Inspected15 screenshots: actual metrics/drill-down/zero plus labelled
+delayed/injected503/injected403 states, both roles at1440×900/768×1024/390×844.
+Initial17pass/1fail was a fixture assumption: Darin actually had a Waiting Ticket;
+kept failure log and replaced zero scenario with a newly created synthetic owner,
+not deleted history. All19 API counts still pass; recent work length160 asserted.
+Report Parts5/8/9 updated; structural document/asset check passed, not rendered QA.

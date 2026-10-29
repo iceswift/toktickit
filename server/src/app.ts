@@ -10,6 +10,8 @@ import { hash } from "bcryptjs";
 import { actionsRouter, actionError } from './lab4/actions-router.js';
 import { legacyStatusWithHistory } from './lab4/legacy-workflow.js';
 import { allowedTicketTransitions as allowedStatusTransitions } from './lab4/ticket-workflow.js';
+import { dashboardsRouter } from './lab4/dashboards-router.js';
+import { dashboardScope } from './lab4/dashboard-policy.js';
 
 // Export the Express app separately from app.listen() so Supertest can use it.
 export const app = express();
@@ -57,6 +59,9 @@ app.get("/auth/me", async (req, res) => {
 app.use(["/api/tickets", "/api/attachments"], requireRequesterSession);
 app.use("/staff/tickets", requireStaffQueueSession);
 app.use('/staff/ticket-owners', requireStaffQueueSession);
+// Literal dashboard route precedes the parameter /api/tickets/:ticketId route.
+// Its sibling /staff/dashboard authenticates explicitly inside the router.
+app.use(dashboardsRouter);
 app.use("/admin/users", requireAdministratorSession);
 app.use(actionsRouter);
 
@@ -220,6 +225,9 @@ function parsePositiveInteger(value: unknown): number | undefined {
 
 app.get("/staff/tickets", async (req: Request, res: Response) => {
   const query = req.query;
+  let scope:import('@prisma/client').Prisma.TicketWhereInput;
+  try{scope=dashboardScope(query,true);}catch{return res.status(400).json({error:'One or more queue query values are invalid.'});}
+  const selectedPriority=query.itPriority??query.priority;
   const search = typeof query.search === "string" ? query.search.trim() : "";
   const ownerId = query.ownerId === undefined ? undefined : parsePositiveInteger(query.ownerId);
   const page = query.page === undefined ? 1 : parsePositiveInteger(query.page);
@@ -233,15 +241,16 @@ app.get("/staff/tickets", async (req: Request, res: Response) => {
     typeof sortOrder !== "string" || !["asc", "desc"].includes(sortOrder) ||
     (query.status !== undefined && (typeof query.status !== "string" || !ticketStatuses.has(query.status))) ||
     (query.requestedPriority !== undefined && (typeof query.requestedPriority !== "string" || !priorities.has(query.requestedPriority))) ||
-    (query.itPriority !== undefined && (typeof query.itPriority !== "string" || !itPriorities.has(query.itPriority)));
+    (selectedPriority !== undefined && (typeof selectedPriority !== "string" || !itPriorities.has(selectedPriority)));
   if (invalid) return res.status(400).json({ error: "One or more queue query values are invalid." });
 
   try {
     const where = {
+      ...scope,
       ...(ownerId === undefined ? {} : { ownerUserId: ownerId }),
       ...(query.status === undefined ? {} : { currentStatus: query.status as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }),
       ...(query.requestedPriority === undefined ? {} : { requestedPriority: query.requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
-      ...(query.itPriority === undefined ? {} : { itPriority: query.itPriority as "NOT_SET" | "LOW" | "MEDIUM" | "HIGH" | "URGENT" }),
+      ...(selectedPriority === undefined ? {} : { itPriority: selectedPriority as "NOT_SET" | "LOW" | "MEDIUM" | "HIGH" | "URGENT" }),
       ...(search === "" ? {} : { OR: [{ ticketNumber: { contains: search, mode: "insensitive" as const } }, { summary: { contains: search, mode: "insensitive" as const } }] }),
     };
     const prisma = getPrisma();
@@ -373,6 +382,8 @@ app.post("/staff/tickets/:ticketId/internal-notes", async (req: Request, res: Re
 app.get("/api/tickets", async (req: Request, res: Response) => {
   const requesterUserId = Number(res.locals.requesterUserId);
   const query = req.query;
+  let scope:import('@prisma/client').Prisma.TicketWhereInput;
+  try{scope=dashboardScope(query,false);}catch{return res.status(400).json({error:'One or more list query values are invalid.'});}
   const search = typeof query.search === "string" ? query.search.trim() : "";
   const categoryId = query.categoryId === undefined ? undefined : parsePositiveInteger(query.categoryId);
   const page = query.page === undefined ? 1 : parsePositiveInteger(query.page);
@@ -380,7 +391,7 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
   const sortBy = query.sortBy === undefined ? "createdAt" : query.sortBy;
   const sortOrder = query.sortOrder === undefined ? "desc" : query.sortOrder;
   const requestedPriority = query.requestedPriority;
-  const currentStatus = query.currentStatus;
+  const currentStatus = query.currentStatus??query.status;
 
   const invalid =
     (query.search !== undefined && typeof query.search !== "string") ||
@@ -411,6 +422,7 @@ app.get("/api/tickets", async (req: Request, res: Response) => {
 
     const where = {
       requesterUserId,
+      ...scope,
       ...(categoryId === undefined ? {} : { categoryId }),
       ...(requestedPriority === undefined ? {} : { requestedPriority: requestedPriority as "LOW" | "MEDIUM" | "HIGH" }),
       ...(currentStatus === undefined ? {} : { currentStatus: currentStatus as "NEW" | "OPEN" | "IN_PROGRESS" | "WAITING_FOR_REQUESTER" | "RESOLVED" | "CLOSED" | "REOPENED" | "CANCELLED" }),
