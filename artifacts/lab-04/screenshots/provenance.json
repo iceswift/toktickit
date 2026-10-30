@@ -1,0 +1,56 @@
+[
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\staff-dashboard-desktop.png",
+    "target": "artifacts\\lab-04\\screenshots\\staff-dashboard\\desktop.png",
+    "sha256": "b62e0556cdf4994ac06670ebf75c76617a9cd8682ef3c2121ceeb92081ed6c7d",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\requester-dashboard-desktop.png",
+    "target": "artifacts\\lab-04\\screenshots\\requester-dashboard\\desktop.png",
+    "sha256": "0aa3e750834201e4e79898ce8d4ce9f3a7fa00be094f85aff0a8c7a91a132ec4",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\action-validation-desktop-panel.png",
+    "target": "artifacts\\lab-04\\screenshots\\actions-taken\\validation-desktop.png",
+    "sha256": "39d2d07346e48f79f8a4628cd247ea5a14311380b4c3ff443c788cbea349fc9b",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\staff-dashboard-tablet.png",
+    "target": "artifacts\\lab-04\\screenshots\\staff-dashboard\\tablet.png",
+    "sha256": "a786f9a7381a5aecc01c0b92fce3cbea09cdd91418e35dc3ac76cb4633aed2f4",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\requester-dashboard-tablet.png",
+    "target": "artifacts\\lab-04\\screenshots\\requester-dashboard\\tablet.png",
+    "sha256": "472019ada9c467d963891b4fbac3b3728c95e8c6249629fc2bbbebe3bd6fcbf2",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\action-validation-tablet-panel.png",
+    "target": "artifacts\\lab-04\\screenshots\\actions-taken\\validation-tablet.png",
+    "sha256": "9bd4b2b51af035d1bd5813927b6c7e6d732227e1bdb5a9fd4dd2a5af9d0c64ab",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\staff-dashboard-mobile.png",
+    "target": "artifacts\\lab-04\\screenshots\\staff-dashboard\\mobile.png",
+    "sha256": "4bb3252d39efffe717dddbac5a51c9523bada8050b8b6f357a88ac71e8806b89",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\requester-dashboard-mobile.png",
+    "target": "artifacts\\lab-04\\screenshots\\requester-dashboard\\mobile.png",
+    "sha256": "7db1be31991421e68b705881075c7fa55a76161555c7dec4d78a1c172a340b9f",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  },
+  {
+    "source": "artifacts\\lab-04\\phase7\\screenshots\\action-validation-mobile-panel.png",
+    "target": "artifacts\\lab-04\\screenshots\\actions-taken\\validation-mobile.png",
+    "sha256": "33a02f9e8e8f09a995d210a46c338d8dc9fefda1de7dff3e11a44a353ee6cacb",
+    "scope": "Retained Phase7 feature-run screenshot, not final main"
+  }
+]

@@ -1,5 +1,14 @@
 # Lab 4 Evidence Register
 
+## Latest closure / Phase8 -30October2026
+
+Phase7 accepted after Richy approved/merged PR83, final bb8f60b -> b887994.
+Actual metadata and inspected approval/merge/reply/Closed/Done images are in
+artifacts/lab-04/github/phase7-*. See phase7-closure.md. Issue75 is now Started;
+phase8-issue75-started.png and phase8-release.md record the actual next work and
+nine-Part gaps. Earlier PR Review notices below are superseded. No final-main,
+all-Done board, release acceptance or final PDF claimed.
+
 ## Current Phase7 QA —30October2026
 
 Phase6 closed at df785a5 after Richy approved/merged PR82; Issue73 Closed/Done.
