@@ -25,7 +25,20 @@ approves final head AND merges; direct PR–Issue link required. No Phase8 start
   and explicitly selected patched dev tooling, no blind force upgrade.
 - [x] README current and test/evidence/AC paths reconciled; source/env/logs/hashes
   retained, working report Parts3/8/9 updated. No invented final main/CI/PDF proof.
-- [ ] One directly linked feature PR into staging, peer acceptance/merge pending.
+- [x] One directly linked feature PR83 into staging; peer acceptance/merge pending.
+
+## Publication / independent-review gate
+
+[PR83](https://github.com/iceswift/toktickit/pull/83) Open/Ready into lab4-staging,
+product/evidence174bd181d86261785282577181c05e5d722bed30. Direct Issue74 Development
+link confirmed in actual UI and closingIssuesReferences, not just a branch/body
+mention. Richyboy170 requested; actual Project status PR Review, Issue74 Open.
+Inspected phase7-pr83-ready.png and phase7-issue74-pr-review.png are retained in
+artifacts/lab-04/github and incorporated into the report. This handoff record is
+a documentation-only follow-up in the SAME PR; product source/verification unchanged.
+Attached checks0 is not CI Pass. Reviewer approves final head and merges; no author
+merge, approval, closed Issue, Done or final release inferred. Phase8 Issue75 remains
+Backlog until independent acceptance of Phase7.
 
 ## Findings before fixes
 

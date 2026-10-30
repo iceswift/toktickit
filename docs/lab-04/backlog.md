@@ -11,7 +11,7 @@ Phase count is a planning choice, separate from nine submission Parts.
 | 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | Done; Richy approved final60c20d4 then merged [PR80](https://github.com/iceswift/toktickit/pull/80) at ae16e00; acceptance checked, Issue Closed/Project Done |
 | 5 | [#72](https://github.com/iceswift/toktickit/issues/72) Ticket workflow | #70/#71 | Done; Richy approved final6b12c82 then merged [PR81](https://github.com/iceswift/toktickit/pull/81) at aa1f868; acceptance verified, Issue Closed/Project Done |
 | 6 | [#73](https://github.com/iceswift/toktickit/issues/73) Dashboards | #69/#70/#72 | Done; Richyboy170 approved final d64d0e3 then merged [PR82](https://github.com/iceswift/toktickit/pull/82) at df785a5; acceptance verified, Issue Closed / Project Done |
-| 7 | [#74](https://github.com/iceswift/toktickit/issues/74) QA/hardening | #71/#72/#73 | Started; feature/74-lab4-qa-hardening from df785a5; acceptance in phase7-qa.md, not a passing result |
+| 7 | [#74](https://github.com/iceswift/toktickit/issues/74) QA/hardening | #71/#72/#73 | PR Review; directly linked [PR83](https://github.com/iceswift/toktickit/pull/83) Open/Ready, Richyboy170 requested; local backend272/client90/browser37/builds pass, independent acceptance pending |
 | 8 | [#75](https://github.com/iceswift/toktickit/issues/75) Release/report | #74 | Backlog |
 
 Only active work moves Started; PR Review requires actual direct Issue linkage.
