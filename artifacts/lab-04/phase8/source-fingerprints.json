@@ -1,7 +1,7 @@
 {
-  "capturedAt": "2026-10-30T16:02:27.9041887Z",
+  "capturedAt": "2026-10-30T16:09:41.4201814Z",
   "branch": "docs/lab4-release-report",
-  "baseHead": "53c246c3cde9de5bfd1d122c8636467b44c833cf",
+  "baseHead": "9a88fb8a89b72935ebc791894f2c2f9a6d817503",
   "scope": "Working-tree source fingerprints, not a clean-main or peer-acceptance assertion",
   "node": "v22.17.0",
   "npm": "10.9.2",
@@ -249,7 +249,7 @@
     },
     {
       "path": "scripts/build_lab4_report.py",
-      "sha256": "3aa646bf59a3179648dc2afe8d57c75ade5121cf1259bb8a522b5af9dc2294d8"
+      "sha256": "3cf59eb1bd185cb8a5baca5193fd064cdc12fa72d825060bd4290522d2fba8f6"
     },
     {
       "path": "scripts/capture_lab4_staff_states.js",

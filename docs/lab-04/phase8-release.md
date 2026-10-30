@@ -50,8 +50,10 @@ Required screenshots/staff-dashboard, requester-dashboard and actions-taken path
 now contain9 byte-identical copies of real inspected Phase7 captures, with SHA256
 provenance.json. This corrects directory structure only; no new main run inferred.
 
-No Phase8 PR, release approval/merge, fresh final-main run, final all-Done screenshot
-or final submission PDF exists yet. The report builder now consolidates the nine
+Phase8 PR84 is Open/Ready into lab4-staging, directly linked to Issue75, with
+Richyboy170 requested. Issue75 remains Open / actual Project PR Review. Release
+approval/merge, fresh final-main run, final all-Done and final submission PDF are
+not complete. The report builder now consolidates the nine
 Parts into matching HTML/PDF REVIEW COPY with page-numbered linked contents;
 every-page visual inspection is required before publication. Runtime-generated final outputs must cite their source
 commit/observation time; they must not silently rewrite committed reviewer history.

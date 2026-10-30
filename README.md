@@ -9,8 +9,8 @@ Lab4 adds audited Actions Taken, safe final Ticket workflow and role dashboards.
 
 Lab4 Phases1–7 are independently approved and merged into `lab4-staging`.
 Phase7 PR83 was approved/merged by Richyboy170; Issue74 accepted/Closed/Done.
-Phase8 report/release is on `docs/lab4-release-report` (Issue75), not yet a
-reviewer-approved release. Phase8 will publish reviewed staging into main and
+Phase8 report/release is PR84 on `docs/lab4-release-report` (directly linked Issue75,
+PR Review; Richyboy170 requested), not yet a reviewer-approved release. Phase8 will publish reviewed staging into main and
 verify the final single PDF/main output. No final-main/CI pass is inferred.
 
 ## Setup (working development environment)

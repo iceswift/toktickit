@@ -62,8 +62,8 @@ P6 = 'artifacts/lab-04/phase6/screenshots/'
 s = section('Answer Part 1 - Git Use with Engineering Workflow',
     'Repository: [iceswift/toktickit](https://github.com/iceswift/toktickit). '
     'Author iceswift; accepted integration reviewer and merger Richyboy170. '
-    'Phases 1-7 are accepted at lab4-staging b887994. Issue75 is Started on '
-    'docs/lab4-release-report. This is an inspectable review copy, NOT the final '
+    'Phases 1-7 are accepted at lab4-staging b887994. [PR84](https://github.com/iceswift/toktickit/pull/84) '
+    'is directly linked to Issue75 (PR Review), with Richyboy170 requested. This is a review copy, NOT the final '
     'submission: it does not claim a Lab4 release into main or an all-Done board.')
 add(s, 'md', 'docs/lab-04/reviewer.md')
 figure(s, G+'phase2-pr78-version-review-reply.png',
@@ -71,8 +71,8 @@ figure(s, G+'phase2-pr78-version-review-reply.png',
     'not a fabricated review conversation. The linked discussion retains full text.')
 figure(s, G+'phase7-pr83-approved-merged.png',
     'Latest accepted feature PR83: Richyboy170 approved and merged; author acknowledgement linked above.')
-figure(s, G+'phase8-issue75-started.png',
-    'Current checkpoint, NOT final Kanban: report/release Issue75 remains Started. '
+figure(s, P8+'issue75-pr-review.png',
+    'Current checkpoint, NOT final Kanban: Issue75 remains Open / PR Review with PR84 directly linked. '
     'A final all-eight-Issue Done capture is required only after all release gates hold.')
 add(s, 'log', P8+'staging-history.txt',
     'Actual feature-to-staging graph, excluding released Lab3 baseline5398f2d. '

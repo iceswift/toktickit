@@ -38,8 +38,8 @@ source provenance, unchanged contract rules, genuine AI disclosure, the favicon
 change and reproducible checks. Fixes/replies remain in this PR. Richyboy170 is the
 requested reviewer and must approve the final head AND perform the merge.
 
-Directly link Issue #75 through Development (non-default staging means a textual
-reference alone is not sufficient). Leave75 open/PR Review: acceptance also needs
+Issue #75 is directly linked through Development and verified in actual GitHub
+metadata; Project status is PR Review, not Done. Leave75 open: acceptance also needs
 a separate reviewed Release PR staging->main, complete fresh main verification,
 actual final all-Done capture and final PDF regeneration/every-page inspection.
 Do not self-merge or treat this report-integration merge as final Issue75 closure.

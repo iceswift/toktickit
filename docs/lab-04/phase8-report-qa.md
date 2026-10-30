@@ -2,7 +2,7 @@
 
 Current generated REVIEW COPY:48 pages,32 numbered functional/GitHub figures,
 four explicitly labelled three-width comparisons, nine ordered Answer Parts.
-Section starts:3,9,14,22,24,28,36,41,45. Structural verification found106 external
+Section starts:3,9,14,22,24,28,36,41,45. Structural verification found107 external
 link annotations,18 internal links and9 outline entries; TOC numbers match actual
 section starts and internal destinations. HTML anchors/local assets/AC mapping pass.
 

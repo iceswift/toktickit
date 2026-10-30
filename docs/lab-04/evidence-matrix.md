@@ -1,7 +1,8 @@
 # Lab 4 Evidence Register - Phase8 review copy
 
 Snapshot30October2026. Phases1-7 reviewer-accepted at staging b887994; Issue75
-Started. Release/main/all-Done/final-PDF gates remain open. Earlier checkpoints
+Open / PR Review with directly linked PR84 and Richyboy170 requested.
+Release/main/all-Done/final-PDF gates remain open. Earlier checkpoints
 are preserved in [evidence-history.md](evidence-history.md), not current assertions.
 
 | Report Part | Retained sources | What the proof establishes |
