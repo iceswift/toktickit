@@ -1,0 +1,1 @@
+Refusing full QA: explicit dedicated127.0.0.1:55484/lab4_p[78]_reg_* DATABASE_URL, LAB4_TEST_ADMIN_URL ending /postgres, LAB4_PG_BIN and LAB4_PERF_TEST=1 required. Never use the working database.

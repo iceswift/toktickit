@@ -1,0 +1,102 @@
+
+> toktickit-client@1.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > uses only owned Requester routes and includes the session cookie 10ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > sends the same explicitly supplied creation key in the header, not spoofed identity 4ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > rejects malformed list items rather than crashing the rendered UI 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > rejects malformed history safely 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > preserves status 401 without exposing server diagnostic text 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > preserves status 403 without exposing server diagnostic text 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > preserves status 404 without exposing server diagnostic text 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > preserves status 409 without exposing server diagnostic text 1ms
+ ✓ tests/lab-04/actions-api.test.tsx > Action HTTP adapter > preserves status 503 without exposing server diagnostic text 2ms
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders REQUESTER with a text-bearing badge 91ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > sends an exact versioned status body with credentials 8ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > uses the owned Requester history route and rejects malformed successful snapshots 3ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > preserves status401 without disclosing private server errors 1ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > preserves status403 without disclosing private server errors 1ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > preserves status404 without disclosing private server errors 1ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > preserves status409 without disclosing private server errors 0ms
+ ✓ tests/lab-04/workflow-api.test.tsx > Ticket workflow adapter > preserves status503 without disclosing private server errors 0ms
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders IT_STAFF with a text-bearing badge 8ms
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders ADMINISTRATOR with a text-bearing badge 9ms
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > uses role badges in both the desktop user table and mobile cards 53ms
+ ✓ tests/lab-02/ZenGreenStyle.test.tsx > Zen Green form conventions > uses labelled required fields and a disabled-safe submit state 168ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > makes Requester history read-only and uses owned routes only 66ms
+ ✓ tests/lab-01/App.test.tsx > App > renders the TokTickIT heading 70ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Public Comment through failure then clears only after confirmed success 226ms
+ ✓ tests/lab-04/ZenGreenStyle.test.tsx > exposes exactly one current-page navigation action and follows user navigation 227ms
+ ✓ tests/lab-02/CreateTicket.test.tsx > Create Ticket > shows field-level validation without calling the API 217ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > shows loading, then numeric zeros and explicit empty lists 168ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > passes the exact owned status-group predicate to the list 62ms
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > renders distinct requested and IT priority badges in table and mobile cards 176ms
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > renders queue controls and an explicit no-results state 47ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > requires login and never offers a Development Requester selector 157ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Internal Note through failure then clears only after confirmed success 77ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > prevents repeated posts and protects input while the original request is pending 45ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > shows correct IT_STAFF heading and zero enum buckets 264ms
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > separates Public Comments from Internal Notes and exposes staff controls 238ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > shows safe failure rather than fabricated zero totals; retries successfully 49ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > refreshes the snapshot after a new server response 49ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > does not leak counts when access is rejected (401) 2ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > does not leak counts when access is rejected (403) 1ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination https://evil.test/api/tickets 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination //evil.test/api/tickets 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /staff/tickets?status=OPEN 1ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets?ownerId=5 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets?status=OPEN&status=CLOSED 1ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets#secret 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > maps staff owner, priority and current-performer work without dropping filters 1ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects malformed totals rather than displaying partial data 1ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > blocks Resolve with explicit missing work/follow-up reasons without sending a write 205ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > renders separate performer/assignee and read-only Requester history without fetching staff data 280ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > shows correct ADMINISTRATOR heading and zero enum buckets 66ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > carries session-owner drill-down and current-performer My Actions as distinct populations 63ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > does not show cached operational totals on forbidden response 8ms
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > renders owner-scoped Ticket fields read-only and returns to My Tickets 304ms
+ ✓ tests/lab-03/StaffTicketQueue.test.tsx > IT Staff Ticket Queue > sends a search query and distinguishes filtered no-results 207ms
+ ✓ tests/lab-01/App.test.tsx > App > shows a loading state while the API request is pending 223ms
+ ✓ tests/lab-01/App.test.tsx > App > shows Online and the categories returned by the API 85ms
+ ✓ tests/lab-02/MyTickets.test.tsx > My Tickets > shows owned Ticket data and sends search/filter query controls 355ms
+ ✓ tests/lab-01/App.test.tsx > App > shows an Offline error message when the API is unavailable 79ms
+ ✓ tests/lab-02/MyTickets.test.tsx > My Tickets > distinguishes an empty Ticket list from no matching results 180ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > offers only matrix destinations and requires explicit keyboard-focusable confirmation for Administrator 220ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > replaces edit fields when switching directly to another account 727ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > lists users with filters and management actions 34ms
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > posts a Public Comment through the staff API 335ms
+ ✓ tests/lab-03/StaffTicketDetail.test.tsx > IT Staff Ticket Detail > allows Administrator IT Priority changes while keeping staff-only controls unavailable 91ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > preserves a failed selection and version through recoverable503 209ms
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > posts a Public Comment and records a non-final resolution indication 496ms
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > does not disclose Ticket data when the owner-scoped request fails 56ms
+ ✓ tests/lab-03/Authentication.test.tsx > Lab 3 authentication screens > submits credentials and returns the authenticated user 943ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > edits a user's role and active state 584ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > validates required description and conditional follow-up note near fields without an API call 967ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > uses the authenticated User for the requester shell 1110ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > restores an existing requester session without another identity choice 172ms
+ ✓ tests/lab-02/DevelopmentRequester.test.tsx > Authenticated requester identity replaces development selection > blocks the requester shell until the first password change 125ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > requires an actual refresh and deliberate version adoption after409 855ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > retains selection but disables writes when refreshed saved status makes it illegal 282ms
+ ✓ tests/lab-03/Authentication.test.tsx > Lab 3 authentication screens > keeps a mismatched password in the form and explains the problem 1447ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > prevents double submits while status update is pending 485ms
+ ✓ tests/lab-02/RequesterTicketDetail.test.tsx > RequesterTicketDetail > uploads an allowed Attachment and requires a reason before soft removal 1622ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > does not invent legacy history and permits only Reopened from Closed 202ms
+ ✓ tests/lab-04/TicketWorkflow.test.tsx > Final Ticket workflow UI > fails closed on forbidden/not-found and allows safe retry 111ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > retains the draft and same logical retry key through a recoverable API failure 1435ms
+ ✓ tests/lab-02/CreateTicket.test.tsx > Create Ticket > submits valid input and displays the backend Ticket Number 2855ms
+ ✓ tests/lab-03/UserManagement.test.tsx > Administrator User Management > creates a user and resets an initial password 1924ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > requires deliberate refresh/reconcile for a stale version while preserving edited values 1065ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > shows inactive-assignee server validation without clearing the form 630ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > shows terminal work/history but does not offer further status changes or deletion 74ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > freezes status-confirmation versions even if the saved Ticket is refreshed before confirmation 369ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > prevents duplicate submissions while the original create request is pending 687ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > allows an Administrator to record work with the actor identity read-only 307ms
+ ✓ tests/lab-04/ActionsTaken.test.tsx > Actions Taken role-aware UI > shows a safe forbidden state and offers a successful read retry without disclosing data 129ms
+
+ Test Files  19 passed (19)
+      Tests  90 passed (90)
+   Start at  17:30:51
+   Duration  8.37s (transform 3.63s, setup 3.66s, import 9.52s, tests 25.23s, environment 22.86s)

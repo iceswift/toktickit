@@ -1,0 +1,65 @@
+
+> toktickit-client@1.0.0 test
+> vitest run --reporter=verbose
+
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 17 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-01/App.test.tsx [ tests/lab-01/App.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433361-d5aqrhfo5y7' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/17]⎯
+
+ FAIL  tests/lab-02/CreateTicket.test.tsx [ tests/lab-02/CreateTicket.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433365-9f6cwg7a21r' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/17]⎯
+
+ FAIL  tests/lab-02/DevelopmentRequester.test.tsx [ tests/lab-02/DevelopmentRequester.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433229-qwje05fr7w' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/17]⎯
+
+ FAIL  tests/lab-02/MyTickets.test.tsx [ tests/lab-02/MyTickets.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433322-jcqsyrotj4' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/17]⎯
+
+ FAIL  tests/lab-02/RequesterTicketDetail.test.tsx [ tests/lab-02/RequesterTicketDetail.test.tsx ]
+ FAIL  tests/lab-04/ActionsTaken.test.tsx [ tests/lab-04/ActionsTaken.test.tsx ]
+ FAIL  tests/lab-04/Dashboard.test.tsx [ tests/lab-04/Dashboard.test.tsx ]
+ FAIL  tests/lab-04/TicketWorkflow.test.tsx [ tests/lab-04/TicketWorkflow.test.tsx ]
+ FAIL  tests/lab-03/UserManagement.test.tsx [ tests/lab-03/UserManagement.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433111-qai0esdrlwb' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/17]⎯
+
+ FAIL  tests/lab-02/ZenGreenStyle.test.tsx [ tests/lab-02/ZenGreenStyle.test.tsx ]
+ FAIL  tests/lab-03/RoleBadge.test.tsx [ tests/lab-03/RoleBadge.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433394-3f1t4yy5fo' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/17]⎯
+
+ FAIL  tests/lab-04/actions-api.test.tsx [ tests/lab-04/actions-api.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433319-g5fbm4uf1mg' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/17]⎯
+
+ FAIL  tests/lab-04/StaffDraftRecovery.test.tsx [ tests/lab-04/StaffDraftRecovery.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433225-nzqc08i2f0p' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/17]⎯
+
+ FAIL  tests/lab-04/workflow-api.test.tsx [ tests/lab-04/workflow-api.test.tsx ]
+ FAIL  tests/lab-03/Authentication.test.tsx [ tests/lab-03/Authentication.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433389-0xj416cfuvd' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/17]⎯
+
+ FAIL  tests/lab-03/StaffTicketDetail.test.tsx [ tests/lab-03/StaffTicketDetail.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433169-9mk23r4xq8w' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/17]⎯
+
+ FAIL  tests/lab-03/StaffTicketQueue.test.tsx [ tests/lab-03/StaffTicketQueue.test.tsx ]
+Error: EPERM: operation not permitted, rename 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\.tmp-1793338433296-ewdqqoz2nc5' -> 'C:\Users\iceberg\AppData\Local\Packages\sandbox.{4e85d03a-8b36-43fc-aaa5-99d1920b6f81}\AC\Temp\XjNC6vP255TrJ-cioLSIM\client\fc0d2c38dddcf750ece546b2bff933c6c56ea916'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/17]⎯
+
+
+ Test Files  17 failed (17)
+      Tests  no tests
+   Start at  12:33:49
+   Duration  4.05s (transform 0ms, setup 0ms, import 0ms, tests 0ms, environment 55.18s)

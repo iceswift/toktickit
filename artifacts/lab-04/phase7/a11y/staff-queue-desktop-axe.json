@@ -1,0 +1,184 @@
+{
+  "name": "staff-queue-desktop",
+  "url": "http://127.0.0.1:55486/",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"queue-status\" class=\"form-select\"><option value=\"\">All</option><option>NEW</option><option>OPEN</option><option>IN_PROGRESS</option><option>WAITING_FOR_REQUESTER</option><option>RESOLVED</option><option>CLOSED</option><option>REOPENED</option><option>CANCELLED</option></select>",
+                  "target": [
+                    "#queue-status"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"queue-status\" class=\"form-select\"><option value=\"\">All</option><option>NEW</option><option>OPEN</option><option>IN_PROGRESS</option><option>WAITING_FOR_REQUESTER</option><option>RESOLVED</option><option>CLOSED</option><option>REOPENED</option><option>CANCELLED</option></select>",
+          "target": [
+            "#queue-status"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"queue-requested-priority\" class=\"form-select\"><option value=\"\">All</option><option>LOW</option><option>MEDIUM</option><option>HIGH</option></select>",
+                  "target": [
+                    "#queue-requested-priority"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"queue-requested-priority\" class=\"form-select\"><option value=\"\">All</option><option>LOW</option><option>MEDIUM</option><option>HIGH</option></select>",
+          "target": [
+            "#queue-requested-priority"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"queue-it-priority\" class=\"form-select\"><option value=\"\">All</option><option>NOT_SET</option><option>LOW</option><option>MEDIUM</option><option>HIGH</option><option>URGENT</option></select>",
+                  "target": [
+                    "#queue-it-priority"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"queue-it-priority\" class=\"form-select\"><option value=\"\">All</option><option>NOT_SET</option><option>LOW</option><option>MEDIUM</option><option>HIGH</option><option>URGENT</option></select>",
+          "target": [
+            "#queue-it-priority"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"queue-sort\" class=\"form-select\"><option value=\"updatedAt:desc\">Last updated (newest)</option><option value=\"updatedAt:asc\">Last updated (oldest)</option><option value=\"ticketNumber:asc\">Ticket number</option><option value=\"currentStatus:asc\">Status</option></select>",
+                  "target": [
+                    "#queue-sort"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"queue-sort\" class=\"form-select\"><option value=\"updatedAt:desc\">Last updated (newest)</option><option value=\"updatedAt:asc\">Last updated (oldest)</option><option value=\"ticketNumber:asc\">Ticket number</option><option value=\"currentStatus:asc\">Status</option></select>",
+          "target": [
+            "#queue-sort"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        }
+      ]
+    }
+  ],
+  "passes": [
+    "aria-allowed-attr",
+    "aria-conditional-attr",
+    "aria-deprecated-role",
+    "aria-hidden-body",
+    "aria-prohibited-attr",
+    "aria-required-attr",
+    "aria-roles",
+    "aria-valid-attr-value",
+    "aria-valid-attr",
+    "avoid-inline-spacing",
+    "button-name",
+    "bypass",
+    "color-contrast",
+    "document-title",
+    "duplicate-id-aria",
+    "form-field-multiple-labels",
+    "html-has-lang",
+    "html-lang-valid",
+    "label",
+    "link-name",
+    "meta-viewport",
+    "nested-interactive",
+    "role-img-alt",
+    "select-name",
+    "td-headers-attr",
+    "th-has-data-cells"
+  ]
+}

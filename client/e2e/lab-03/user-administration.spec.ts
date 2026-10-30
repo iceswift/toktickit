@@ -2,8 +2,8 @@ import { expect, test } from "@playwright/test";
 import { resetAccount, runDatabase, signIn } from "./helpers.js";
 import { mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-const adminEmail = "narin.admin@example.test"; const managedEmail = "phase8.managed@example.test"; const password = "ManagedInitial!2026"; const replacement = "ManagedReset!2026";
-test.beforeAll(() => { resetAccount(adminEmail); runDatabase(`await p.user.deleteMany({where:{email:'${managedEmail}'}});`); }); test.afterAll(() => { runDatabase(`await p.user.deleteMany({where:{email:'${managedEmail}'}});`); resetAccount(adminEmail, true); });
+const adminEmail = "narin.admin@example.test"; const managedEmail = "p7-managed-"+Date.now()+"@example.test"; const password = "ManagedInitial!2026"; const replacement = "ManagedReset!2026";
+test.beforeAll(() => resetAccount(adminEmail)); test.afterAll(() => resetAccount(adminEmail,true)); // Retain synthetic user/history.
 test("Administrator changes IT Priority without receiving staff-only controls", async ({ page }) => {
   await signIn(page, adminEmail);
   await page.getByRole("button", { name: "Ticket Queue", exact: true }).click();
@@ -11,7 +11,7 @@ test("Administrator changes IT Priority without receiving staff-only controls", 
   await page.getByRole("button", { name: "Open detail" }).click();
   await expect(page.getByLabel("IT Staff Ticket Detail")).toBeVisible();
   await expect(page.getByLabel("IT Priority", { exact: true })).toBeEnabled();
-  await expect(page.getByLabel("Current Status")).toBeDisabled();
+  await expect(page.getByRole('region',{name:'Ticket Workflow'}).getByLabel('New Ticket status')).toBeEnabled();
   await expect(page.getByRole("button", { name: "Claim Ticket" })).toHaveCount(0);
   await expect(page.getByLabel("Add Public Comment")).toHaveCount(0);
   await expect(page.getByLabel("Add Internal Note")).toHaveCount(0);
@@ -20,7 +20,7 @@ test("Administrator changes IT Priority without receiving staff-only controls", 
   try {
     await priority.selectOption(original === "URGENT" ? "LOW" : "URGENT");
     await expect(page.getByRole("status")).toContainText("IT Priority saved");
-    const directory = fileURLToPath(new URL("../../../output/playwright/", import.meta.url));
+    const directory = fileURLToPath(new URL("../../../output/playwright/phase7/regression/", import.meta.url));
     mkdirSync(directory, { recursive: true });
     await page.screenshot({ path: `${directory}admin-priority-correction.png`, fullPage: true });
   } finally {

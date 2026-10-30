@@ -1,5 +1,14 @@
 # Lab 4 Evidence Register
 
+## Current Phase7 QA —30October2026
+
+Phase6 closed at df785a5 after Richy approved/merged PR82; Issue73 Closed/Done.
+Phase7 Issue74 Started: artifacts/lab-04/github/phase7-issue74-started.png.
+Actual regression/dependency/contrast/performance evidence: [phase7-qa.md](phase7-qa.md)
+and current [tests.md](tests.md); phase7 output folder retains failures and passes.
+Final source rechecks/peer review remain pending; no main/CI/PDF claim.
+Earlier checkpoint language below is historical.
+
 ## Latest Phase5 closure —29October2026
 
 Richyboy170 approved final6b12c82 before merging PR81 at aa1f868. Tree match
@@ -267,3 +276,16 @@ closingIssuesReferences; Richyboy170 requested. Issue Open / actual Project PR R
 Inspected phase6/pr82-ready.png and phase6/issue73-pr-review.png; no approval or
 merge claimed. Product/evidence edb2c2a, follow-up records in the same PR. Attached
 checks0 is NOT passing CI. Reviewer approves final head AND merges; author replies.
+
+## Phase6 closure — 30 October 2026
+
+Richyboy170 approved final d64d0e3 then merged PR82 into lab4-staging at df785a5
+(12:01:08 Bangkok). Fetched merge tree equals reviewed head. Author acknowledged
+actual review; no unresolved inline finding. Issue73 acceptance verified then
+Closed at12:03:14 Bangkok; actual Project Done. Lab4 Done6/Backlog2, intermediate
+states0. See [complete closure](phase6-closure.md) for actual links and inspected
+screenshots. Prior PR Review/Started checkpoints are historical and superseded.
+Retained local server267/client82/builds/browser18 + Dashboard6 rerun, NOT new
+staging/main/CI runs. Attached checks0 not a pass. Phase7/8 remain Backlog.
+Post-merge docs/images remain local for the next authorized feature PR; no new
+cleanup PR, direct staging/main push or rewrite of reviewed commits.

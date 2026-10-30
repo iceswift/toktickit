@@ -1,0 +1,30 @@
+{
+  "name": "my-actions-desktop",
+  "url": "http://127.0.0.1:55486/",
+  "violations": [],
+  "incomplete": [],
+  "passes": [
+    "aria-allowed-attr",
+    "aria-conditional-attr",
+    "aria-deprecated-role",
+    "aria-hidden-body",
+    "aria-prohibited-attr",
+    "aria-required-attr",
+    "aria-roles",
+    "aria-valid-attr-value",
+    "aria-valid-attr",
+    "avoid-inline-spacing",
+    "button-name",
+    "bypass",
+    "color-contrast",
+    "document-title",
+    "html-has-lang",
+    "html-lang-valid",
+    "link-name",
+    "list",
+    "listitem",
+    "meta-viewport",
+    "nested-interactive",
+    "role-img-alt"
+  ]
+}

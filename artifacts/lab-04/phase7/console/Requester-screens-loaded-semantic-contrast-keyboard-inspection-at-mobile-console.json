@@ -1,0 +1,22 @@
+{
+  "title": "Requester screens: loaded semantic/contrast/keyboard inspection at mobile",
+  "expected": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    },
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    },
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    },
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    }
+  ],
+  "unexpected": []
+}

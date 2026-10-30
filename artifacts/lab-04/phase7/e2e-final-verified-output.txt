@@ -1,0 +1,60 @@
+
+> toktickit-client@1.0.0 test:e2e
+> playwright test --config playwright.lab4-qa.config.ts
+
+[WebServer] (node:40420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:3692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:49200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:49200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:50148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:6988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 37 tests using 1 worker
+
+(node:29076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\lab-02\requester-ticket-flow.spec.ts:21:1 › Requester creates, finds, and opens an owned Ticket (2.5s)
+  ok  2 e2e\lab-02\requester-ticket-flow.spec.ts:38:1 › cross-owner access is blocked while the owner can upload and remove an Attachment (6.1s)
+  ok  3 e2e\lab-02\responsive.spec.ts:16:1 › My Tickets remains usable without horizontal overflow at desktop, tablet, and mobile widths (3.3s)
+  ok  4 e2e\lab-03\authentication.spec.ts:6:1 › first login requires password change and logout blocks protected access (6.9s)
+  ok  5 e2e\lab-03\authentication.spec.ts:7:1 › invalid and inactive credentials use the same safe failure (2.4s)
+  ok  6 e2e\lab-03\responsive.spec.ts:13:1 › major Lab 3 screens have no horizontal document overflow (26.8s)
+  ok  7 e2e\lab-03\staff-ticket-flow.spec.ts:8:1 › IT Staff operational workflow preserves shared Comments versus private Notes (7.6s)
+  ok  8 e2e\lab-03\user-administration.spec.ts:7:1 › Administrator changes IT Priority without receiving staff-only controls (3.2s)
+  ok  9 e2e\lab-03\user-administration.spec.ts:31:1 › Administrator manages a user and forces password change (8.5s)
+  ok 10 e2e\lab-04\actions-taken-flow.spec.ts:52:1 › real multi-staff lifecycle: create, edit, assign, complete/cancel and owned Requester read-only history (13.4s)
+  ok 11 e2e\lab-04\actions-taken-flow.spec.ts:99:1 › uncertain transport response retains draft/key; real backend replay creates only one record (4.1s)
+  ok 12 e2e\lab-04\actions-taken-flow.spec.ts:119:1 › real inactive-assignee race retains draft and accepts a corrected active selection (4.2s)
+  ok 13 e2e\lab-04\actions-taken-flow.spec.ts:133:1 › real competing edit returns 409; refresh and explicit rebase retain local input (4.7s)
+  ok 14 e2e\lab-04\actions-taken-flow.spec.ts:151:1 › Administrator creation is allowed and follows the same Action policy (3.4s)
+  ok 15 e2e\lab-04\actions-taken-flow.spec.ts:157:1 › fully loaded forms, validation, keyboard focus and responsive layout at three widths (4.1s)
+  ok 16 e2e\lab-04\actions-taken-flow.spec.ts:174:1 › labelled delayed assignee loading and safe forbidden/load retry state (4.0s)
+  ok 17 e2e\lab-04\dashboards.spec.ts:8:1 › Requester counts and exact open drill-down; detail returns to refreshed Dashboard (3.3s)
+  ok 18 e2e\lab-04\dashboards.spec.ts:17:1 › Staff metrics, own-performer work and all status/priority drill-downs retain exact query (9.6s)
+  ok 19 e2e\lab-04\dashboards.spec.ts:28:1 › Administrator Dashboard is available without granting Requester Dashboard access (2.8s)
+  ok 20 e2e\lab-04\dashboards.spec.ts:29:1 › loading, injected failure and forbidden never display stale metrics; deliberate retry works (3.5s)
+  ok 21 e2e\lab-04\dashboards.spec.ts:33:1 › zero owned population is a real API result, not a loading fallback (3.1s)
+  ok 22 e2e\lab-04\dashboards.spec.ts:34:1 › three viewport layouts keep dashboard controls within document width and keyboard focus visible (6.8s)
+  ok 23 e2e\lab-04\responsive.spec.ts:36:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop (11.3s)
+  ok 24 e2e\lab-04\responsive.spec.ts:44:3 › Staff work forms, confirmations and My Actions inspection at desktop (20.7s)
+  ok 25 e2e\lab-04\responsive.spec.ts:54:3 › Administrator directory and edit/reset forms inspection at desktop (7.9s)
+  ok 26 e2e\lab-04\responsive.spec.ts:36:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet (11.2s)
+  ok 27 e2e\lab-04\responsive.spec.ts:44:3 › Staff work forms, confirmations and My Actions inspection at tablet (20.3s)
+  ok 28 e2e\lab-04\responsive.spec.ts:54:3 › Administrator directory and edit/reset forms inspection at tablet (7.7s)
+  ok 29 e2e\lab-04\responsive.spec.ts:36:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile (10.5s)
+  ok 30 e2e\lab-04\responsive.spec.ts:44:3 › Staff work forms, confirmations and My Actions inspection at mobile (19.1s)
+  ok 31 e2e\lab-04\responsive.spec.ts:54:3 › Administrator directory and edit/reset forms inspection at mobile (7.5s)
+  ok 32 e2e\lab-04\responsive.spec.ts:60:1 › real Staff draft survives a labelled injected failure and is posted once after retry (3.4s)
+  ok 33 e2e\lab-04\ticket-resolution.spec.ts:14:1 › real work gate then Resolve, Close, Administrator Reopen and Cancel with ordered history (11.0s)
+  ok 34 e2e\lab-04\ticket-resolution.spec.ts:27:1 › Requester indication remains advisory; own history read-only and formal API403 (4.1s)
+  ok 35 e2e\lab-04\ticket-resolution.spec.ts:33:1 › real competing Ticket write409 preserves selection until refresh and explicit rebase (4.4s)
+  ok 36 e2e\lab-04\ticket-resolution.spec.ts:39:1 › injected recoverable failure retains selection/version and succeeds on deliberate retry (3.7s)
+  ok 37 e2e\lab-04\ticket-resolution.spec.ts:45:1 › workflow confirmation and gate remain readable with keyboard focus at all three widths (3.7s)
+
+  37 passed (5.1m)

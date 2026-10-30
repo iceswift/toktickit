@@ -1,4 +1,4 @@
-"""Read-only Phase 1 contract/report checks; not product test results."""
+"""Read-only current contract/report checks; not product test results."""
 from pathlib import Path
 from html.parser import HTMLParser
 import re
@@ -13,7 +13,19 @@ spec = (DOCS / 'specification.md').read_text(encoding='utf-8')
 plan = (DOCS / 'tests.md').read_text(encoding='utf-8')
 assert {f'AC-{i:02}' for i in range(1, 14)} <= set(re.findall(r'AC-\d{2}', spec))
 assert {f'AC-{i:02}' for i in range(1, 14)} <= set(re.findall(r'AC-\d{2}', plan))
-assert 'not yet exist' in plan
+for test_path in [
+    'server/tests/lab-04/requester-dashboard.api.test.ts',
+    'server/tests/lab-04/staff-dashboard.api.test.ts',
+    'client/tests/lab-04/RequesterDashboard.test.tsx',
+    'client/tests/lab-04/StaffDashboard.test.tsx',
+    'client/tests/lab-04/ActionsTaken.test.tsx',
+    'client/tests/lab-04/TicketWorkflow.test.tsx',
+    'client/e2e/lab-04/actions-taken-flow.spec.ts',
+    'client/e2e/lab-04/ticket-resolution.spec.ts',
+    'client/e2e/lab-04/dashboards.spec.ts',
+]:
+    assert (ROOT / test_path).is_file(), f'Missing implemented test: {test_path}'
+    assert Path(test_path).name in plan, f'Test traceability missing: {test_path}'
 
 # Contract regression check: mixed baseline prefixes are deliberate. These are
 # source/contract checks only, not evidence that proposed endpoints run.
@@ -43,6 +55,7 @@ class ReportCheck(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if 'id' in attrs:
+            assert attrs['id'] not in self.ids, f'Duplicate report id {attrs["id"]}'
             self.ids.add(attrs['id'])
         if tag == 'a' and 'href' in attrs:
             self.refs.append(attrs['href'])

@@ -1,0 +1,1576 @@
+
+> toktickit-client@1.0.0 test
+> vitest run tests/lab-02/MyTickets.test.tsx --reporter=verbose
+
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+ × tests/lab-02/MyTickets.test.tsx > My Tickets > shows owned Ticket data and sends search/filter query controls 239ms
+   → Unable to find an accessible element with the role "navigation" and name "Ticket pagination"
+
+Here are the accessible roles:
+
+  region:
+
+  Name "My Tickets":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"my-tickets-heading"[39m
+  [36m/>[39m
+
+  Name "Ticket filters":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Ticket filters"[39m
+    [33mclass[39m=[32m"card shadow-sm mb-4"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "My Tickets":
+  [36m<h1[39m
+    [33mclass[39m=[32m"h3 mb-1"[39m
+    [33mid[39m=[32m"my-tickets-heading"[39m
+  [36m/>[39m
+
+  Name "VPN disconnects during online exam":
+  [36m<h2[39m
+    [33mclass[39m=[32m"h6 mt-2"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"text-secondary mb-0"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"mb-2 text-secondary"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Create Ticket":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-success"[39m
+  [36m/>[39m
+
+  Name "Clear filters":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-outline-success w-100"[39m
+    [33mdisabled[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "View details":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-sm btn-outline-success"[39m
+  [36m/>[39m
+
+  Name "View details":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-outline-success w-100 mt-3"[39m
+  [36m/>[39m
+
+  Name "Previous":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-outline-success"[39m
+    [33mdisabled[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Next":
+  [36m<button[39m
+    [33mclass[39m=[32m"btn btn-outline-success"[39m
+    [33mdisabled[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search":
+  [36m<input[39m
+    [33mclass[39m=[32m"form-control"[39m
+    [33mid[39m=[32m"ticket-search"[39m
+    [33mplaceholder[39m=[32m"Ticket Number or Summary"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Category":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-category"[39m
+  [36m/>[39m
+
+  Name "Requested Priority":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-priority"[39m
+  [36m/>[39m
+
+  Name "Current Status":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-status"[39m
+  [36m/>[39m
+
+  Name "Sort by":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-sort"[39m
+  [36m/>[39m
+
+  Name "Order":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-order"[39m
+  [36m/>[39m
+
+  Name "Per page":
+  [36m<select[39m
+    [33mclass[39m=[32m"form-select"[39m
+    [33mid[39m=[32m"ticket-page-size"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "All categories":
+  [36m<option[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Network":
+  [36m<option[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "All priorities":
+  [36m<option[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "Low":
+  [36m<option[39m
+    [33mvalue[39m=[32m"LOW"[39m
+  [36m/>[39m
+
+  Name "Medium":
+  [36m<option[39m
+    [33mvalue[39m=[32m"MEDIUM"[39m
+  [36m/>[39m
+
+  Name "High":
+  [36m<option[39m
+    [33mvalue[39m=[32m"HIGH"[39m
+  [36m/>[39m
+
+  Name "All statuses":
+  [36m<option[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  Name "New":
+  [36m<option[39m
+    [33mvalue[39m=[32m"NEW"[39m
+  [36m/>[39m
+
+  Name "Open":
+  [36m<option[39m
+    [33mvalue[39m=[32m"OPEN"[39m
+  [36m/>[39m
+
+  Name "In Progress":
+  [36m<option[39m
+    [33mvalue[39m=[32m"IN_PROGRESS"[39m
+  [36m/>[39m
+
+  Name "Waiting For Requester":
+  [36m<option[39m
+    [33mvalue[39m=[32m"WAITING_FOR_REQUESTER"[39m
+  [36m/>[39m
+
+  Name "Resolved":
+  [36m<option[39m
+    [33mvalue[39m=[32m"RESOLVED"[39m
+  [36m/>[39m
+
+  Name "Closed":
+  [36m<option[39m
+    [33mvalue[39m=[32m"CLOSED"[39m
+  [36m/>[39m
+
+  Name "Reopened":
+  [36m<option[39m
+    [33mvalue[39m=[32m"REOPENED"[39m
+  [36m/>[39m
+
+  Name "Cancelled":
+  [36m<option[39m
+    [33mvalue[39m=[32m"CANCELLED"[39m
+  [36m/>[39m
+
+  Name "Created date":
+  [36m<option[39m
+    [33mvalue[39m=[32m"createdAt"[39m
+  [36m/>[39m
+
+  Name "Last updated":
+  [36m<option[39m
+    [33mvalue[39m=[32m"updatedAt"[39m
+  [36m/>[39m
+
+  Name "Ticket Number":
+  [36m<option[39m
+    [33mvalue[39m=[32m"ticketNumber"[39m
+  [36m/>[39m
+
+  Name "Requested Priority":
+  [36m<option[39m
+    [33mvalue[39m=[32m"requestedPriority"[39m
+  [36m/>[39m
+
+  Name "Descending":
+  [36m<option[39m
+    [33mvalue[39m=[32m"desc"[39m
+  [36m/>[39m
+
+  Name "Ascending":
+  [36m<option[39m
+    [33mvalue[39m=[32m"asc"[39m
+  [36m/>[39m
+
+  Name "10":
+  [36m<option[39m
+    [33mvalue[39m=[32m"10"[39m
+  [36m/>[39m
+
+  Name "20":
+  [36m<option[39m
+    [33mvalue[39m=[32m"20"[39m
+  [36m/>[39m
+
+  Name "50":
+  [36m<option[39m
+    [33mvalue[39m=[32m"50"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "":
+  [36m<table[39m
+    [33mclass[39m=[32m"table align-middle"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Ticket Number Summary Category Requested Priority Current Status Last Updated Actions":
+  [36m<tr />[39m
+
+  Name "TKT-20260830-AB12CD34 VPN disconnects during online exam Network High New 30 Aug 2026, 17:30 View details":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Ticket Number":
+  [36m<th />[39m
+
+  Name "Summary":
+  [36m<th />[39m
+
+  Name "Category":
+  [36m<th />[39m
+
+  Name "Requested Priority":
+  [36m<th />[39m
+
+  Name "Current Status":
+  [36m<th />[39m
+
+  Name "Last Updated":
+  [36m<th />[39m
+
+  Name "Actions":
+  [36m<th />[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "TKT-20260830-AB12CD34":
+  [36m<td[39m
+    [33mclass[39m=[32m"fw-semibold"[39m
+  [36m/>[39m
+
+  Name "VPN disconnects during online exam":
+  [36m<td />[39m
+
+  Name "Network":
+  [36m<td />[39m
+
+  Name "High":
+  [36m<td />[39m
+
+  Name "New":
+  [36m<td />[39m
+
+  Name "30 Aug 2026, 17:30":
+  [36m<td />[39m
+
+  Name "View details":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  article:
+
+  Name "":
+  [36m<article[39m
+    [33mclass[39m=[32m"card mb-3"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-labelledby[39m=[32m"my-tickets-heading"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4"[39m
+      [36m>[39m
+        [36m<div>[39m
+          [36m<h1[39m
+            [33mclass[39m=[32m"h3 mb-1"[39m
+            [33mid[39m=[32m"my-tickets-heading"[39m
+          [36m>[39m
+            [0mMy Tickets[0m
+          [36m</h1>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"text-secondary mb-0"[39m
+          [36m>[39m
+            [0mTickets submitted by [0m
+            [0mAmina Rahman[0m
+            [0m.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"btn btn-success"[39m
+        [36m>[39m
+          [0mCreate Ticket[0m
+        [36m</button>[39m
+      [36m</div>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Ticket filters"[39m
+        [33mclass[39m=[32m"card shadow-sm mb-4"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"card-body"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"row g-3"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-md-6"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-search"[39m
+              [36m>[39m
+                [0mSearch[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-control"[39m
+                [33mid[39m=[32m"ticket-search"[39m
+                [33mplaceholder[39m=[32m"Ticket Number or Summary"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-category"[39m
+              [36m>[39m
+                [0mCategory[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-category"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll categories[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"1"[39m
+                [36m>[39m
+                  [0mNetwork[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-priority"[39m
+              [36m>[39m
+                [0mRequested Priority[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-priority"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll priorities[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"LOW"[39m
+                [36m>[39m
+                  [0mLow[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"MEDIUM"[39m
+                [36m>[39m
+                  [0mMedium[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"HIGH"[39m
+                [36m>[39m
+                  [0mHigh[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-status"[39m
+              [36m>[39m
+                [0mCurrent Status[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-status"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m""[39m
+                [36m>[39m
+                  [0mAll statuses[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"NEW"[39m
+                [36m>[39m
+                  [0mNew[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"OPEN"[39m
+                [36m>[39m
+                  [0mOpen[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"IN_PROGRESS"[39m
+                [36m>[39m
+                  [0mIn Progress[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"WAITING_FOR_REQUESTER"[39m
+                [36m>[39m
+                  [0mWaiting For Requester[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"RESOLVED"[39m
+                [36m>[39m
+                  [0mResolved[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"CLOSED"[39m
+                [36m>[39m
+                  [0mClosed[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"REOPENED"[39m
+                [36m>[39m
+                  [0mReopened[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"CANCELLED"[39m
+                [36m>[39m
+                  [0mCancelled[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-sort"[39m
+              [36m>[39m
+                [0mSort by[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-sort"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"createdAt"[39m
+                [36m>[39m
+                  [0mCreated date[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"updatedAt"[39m
+                [36m>[39m
+                  [0mLast updated[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"ticketNumber"[39m
+                [36m>[39m
+                  [0mTicket Number[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"requestedPriority"[39m
+                [36m>[39m
+                  [0mRequested Priority[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-order"[39m
+              [36m>[39m
+                [0mOrder[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-order"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"desc"[39m
+                [36m>[39m
+                  [0mDescending[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"asc"[39m
+                [36m>[39m
+                  [0mAscending[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-sm-6 col-md-3"[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"ticket-page-size"[39m
+              [36m>[39m
+                [0mPer page[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"ticket-page-size"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"10"[39m
+                [36m>[39m
+                  [0m10[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"20"[39m
+                [36m>[39m
+                  [0m20[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"50"[39m
+                [36m>[39m
+                  [0m50[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"col-12 col-md-3 d-flex align-items-end"[39m
+            [36m>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"btn btn-outline-success w-100"[39m
+                [33mdisabled[39m=[32m""[39m
+              [36m>[39m
+                [0mClear filters[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"table-responsive d-none d-md-block"[39m
+      [36m>[39m
+        [36m<table[39m
+          [33mclass[39m=[32m"table align-middle"[39m
+        [36m>[39m
+          [36m<thead>[39m
+            [36m<tr>[39m
+              [36m<th>[39m
+                [0mTicket Number[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mSummary[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mCategory[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mRequested Priority[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mCurrent Status[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [0mLast Updated[0m
+              [36m</th>[39m
+              [36m<th>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"visually-hidden"[39m
+                [36m>[39m
+                  [0mActions[0m
+                [36m</span>[39m
+              [36m</th>[39m
+            [36m</tr>[39m
+          [36m</thead>[39m
+          [36m<tbody>[39m
+            [36m<tr>[39m
+              [36m<td[39m
+                [33mclass[39m=[32m"fw-semibold"[39m
+              [36m>[39m
+                [0mTKT-20260830-AB12CD34[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mVPN disconnects during online exam[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0mNetwork[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"badge text-bg-secondary"[39m
+                [36m>[39m
+                  [0mHigh[0m
+                [36m</span>[39m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"badge text-bg-success"[39m
+                [36m>[39m
+                  [0mNew[0m
+                [36m</span>[39m
+              [36m</td>[39m
+              [36m<td>[39m
+                [0m30 Aug 2026, 17:30[0m
+              [36m</td>[39m
+              [36m<td>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"btn btn-sm btn-outline-success"[39m
+                [36m>[39m
+                  [0mView details[0m
+                [36m</button>[39m
+              [36m</td>[39m
+            [36m</tr>[39m
+          [36m</tbody>[39m
+        [36m</table>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"d-md-none"[39m
+      [36m>[39m
+        [36m<article[39m
+          [33mclass[39m=[32m"card mb-3"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"card-body"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"fw-semibold"[39m
+            [36m>[39m
+              [0mTKT-20260830-AB12CD34[0m
+            [36m</div>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"h6 mt-2"[39m
+            [36m>[39m
+              [0mVPN disconnects during online exam[0m
+            [36m</h2>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"mb-2 text-secondary"[39m
+            [36m>[39m
+              [0mNetwork[0m
+              [0m · [0m
+              [0mHigh[0m
+              [0m · [0m
+              [0mNew[0m
+            [36m</p>[39m
+            [36m<small>[39m
+              [0mLast updated [0m
+              [0m30 Aug 2026, 17:30[0m
+            [36m</small>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-outline-success w-100 mt-3"[39m
+            [36m>[39m
+              [0mView details[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</article>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33maria-label[39m=[32m"Ticket pagination"[39m
+        [33mclass[39m=[32m"d-flex justify-content-between align-items-center gap-2"[39m
+      [36m>[39m
+        [36m<span[39m
+          [33mclass[39m=[32m"text-secondary small"[39m
+        [36m>[39m
+          [0m1[0m
+          [0m Ticket[0m
+        [36m</span>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"btn-group"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-outline-success"[39m
+            [33mdisabled[39m=[32m""[39m
+          [36m>[39m
+            [0mPrevious[0m
+          [36m</button>[39m
+          [36m<span[39m
+            [33mclass[39m=[32m"btn btn-outline-secondary disabled"[39m
+          [36m>[39m
+            [0mPage [0m
+            [0m1[0m
+            [0m of [0m
+            [0m1[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-outline-success"[39m
+            [33mdisabled[39m=[32m""[39m
+          [36m>[39m
+            [0mNext[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ✓ tests/lab-02/MyTickets.test.tsx > My Tickets > distinguishes an empty Ticket list from no matching results 189ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-02/MyTickets.test.tsx > My Tickets > shows owned Ticket data and sends search/filter query controls
+TestingLibraryElementError: Unable to find an accessible element with the role "navigation" and name "Ticket pagination"
+
+Here are the accessible roles:
+
+  region:
+
+  Name "My Tickets":
+  <section
+    aria-labelledby="my-tickets-heading"
+  />
+
+  Name "Ticket filters":
+  <section
+    aria-label="Ticket filters"
+    class="card shadow-sm mb-4"
+  />
+
+  --------------------------------------------------
+  heading:
+
+  Name "My Tickets":
+  <h1
+    class="h3 mb-1"
+    id="my-tickets-heading"
+  />
+
+  Name "VPN disconnects during online exam":
+  <h2
+    class="h6 mt-2"
+  />
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  <p
+    class="text-secondary mb-0"
+  />
+
+  Name "":
+  <p
+    class="mb-2 text-secondary"
+  />
+
+  --------------------------------------------------
+  button:
+
+  Name "Create Ticket":
+  <button
+    class="btn btn-success"
+  />
+
+  Name "Clear filters":
+  <button
+    class="btn btn-outline-success w-100"
+    disabled=""
+  />
+
+  Name "View details":
+  <button
+    class="btn btn-sm btn-outline-success"
+  />
+
+  Name "View details":
+  <button
+    class="btn btn-outline-success w-100 mt-3"
+  />
+
+  Name "Previous":
+  <button
+    class="btn btn-outline-success"
+    disabled=""
+  />
+
+  Name "Next":
+  <button
+    class="btn btn-outline-success"
+    disabled=""
+  />
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search":
+  <input
+    class="form-control"
+    id="ticket-search"
+    placeholder="Ticket Number or Summary"
+    value=""
+  />
+
+  --------------------------------------------------
+  combobox:
+
+  Name "Category":
+  <select
+    class="form-select"
+    id="ticket-category"
+  />
+
+  Name "Requested Priority":
+  <select
+    class="form-select"
+    id="ticket-priority"
+  />
+
+  Name "Current Status":
+  <select
+    class="form-select"
+    id="ticket-status"
+  />
+
+  Name "Sort by":
+  <select
+    class="form-select"
+    id="ticket-sort"
+  />
+
+  Name "Order":
+  <select
+    class="form-select"
+    id="ticket-order"
+  />
+
+  Name "Per page":
+  <select
+    class="form-select"
+    id="ticket-page-size"
+  />
+
+  --------------------------------------------------
+  option:
+
+  Name "All categories":
+  <option
+    value=""
+  />
+
+  Name "Network":
+  <option
+    value="1"
+  />
+
+  Name "All priorities":
+  <option
+    value=""
+  />
+
+  Name "Low":
+  <option
+    value="LOW"
+  />
+
+  Name "Medium":
+  <option
+    value="MEDIUM"
+  />
+
+  Name "High":
+  <option
+    value="HIGH"
+  />
+
+  Name "All statuses":
+  <option
+    value=""
+  />
+
+  Name "New":
+  <option
+    value="NEW"
+  />
+
+  Name "Open":
+  <option
+    value="OPEN"
+  />
+
+  Name "In Progress":
+  <option
+    value="IN_PROGRESS"
+  />
+
+  Name "Waiting For Requester":
+  <option
+    value="WAITING_FOR_REQUESTER"
+  />
+
+  Name "Resolved":
+  <option
+    value="RESOLVED"
+  />
+
+  Name "Closed":
+  <option
+    value="CLOSED"
+  />
+
+  Name "Reopened":
+  <option
+    value="REOPENED"
+  />
+
+  Name "Cancelled":
+  <option
+    value="CANCELLED"
+  />
+
+  Name "Created date":
+  <option
+    value="createdAt"
+  />
+
+  Name "Last updated":
+  <option
+    value="updatedAt"
+  />
+
+  Name "Ticket Number":
+  <option
+    value="ticketNumber"
+  />
+
+  Name "Requested Priority":
+  <option
+    value="requestedPriority"
+  />
+
+  Name "Descending":
+  <option
+    value="desc"
+  />
+
+  Name "Ascending":
+  <option
+    value="asc"
+  />
+
+  Name "10":
+  <option
+    value="10"
+  />
+
+  Name "20":
+  <option
+    value="20"
+  />
+
+  Name "50":
+  <option
+    value="50"
+  />
+
+  --------------------------------------------------
+  table:
+
+  Name "":
+  <table
+    class="table align-middle"
+  />
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  <thead />
+
+  Name "":
+  <tbody />
+
+  --------------------------------------------------
+  row:
+
+  Name "Ticket Number Summary Category Requested Priority Current Status Last Updated Actions":
+  <tr />
+
+  Name "TKT-20260830-AB12CD34 VPN disconnects during online exam Network High New 30 Aug 2026, 17:30 View details":
+  <tr />
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Ticket Number":
+  <th />
+
+  Name "Summary":
+  <th />
+
+  Name "Category":
+  <th />
+
+  Name "Requested Priority":
+  <th />
+
+  Name "Current Status":
+  <th />
+
+  Name "Last Updated":
+  <th />
+
+  Name "Actions":
+  <th />
+
+  --------------------------------------------------
+  cell:
+
+  Name "TKT-20260830-AB12CD34":
+  <td
+    class="fw-semibold"
+  />
+
+  Name "VPN disconnects during online exam":
+  <td />
+
+  Name "Network":
+  <td />
+
+  Name "High":
+  <td />
+
+  Name "New":
+  <td />
+
+  Name "30 Aug 2026, 17:30":
+  <td />
+
+  Name "View details":
+  <td />
+
+  --------------------------------------------------
+  article:
+
+  Name "":
+  <article
+    class="card mb-3"
+  />
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <section
+      aria-labelledby="my-tickets-heading"
+    >
+      <div
+        class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4"
+      >
+        <div>
+          <h1
+            class="h3 mb-1"
+            id="my-tickets-heading"
+          >
+            My Tickets
+          </h1>
+          <p
+            class="text-secondary mb-0"
+          >
+            Tickets submitted by
+            Amina Rahman
+            .
+          </p>
+        </div>
+        <button
+          class="btn btn-success"
+        >
+          Create Ticket
+        </button>
+      </div>
+      <section
+        aria-label="Ticket filters"
+        class="card shadow-sm mb-4"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="row g-3"
+          >
+            <div
+              class="col-12 col-md-6"
+            >
+              <label
+                class="form-label"
+                for="ticket-search"
+              >
+                Search
+              </label>
+              <input
+                class="form-control"
+                id="ticket-search"
+                placeholder="Ticket Number or Summary"
+                value=""
+              />
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-category"
+              >
+                Category
+              </label>
+              <select
+                class="form-select"
+                id="ticket-category"
+              >
+                <option
+                  value=""
+                >
+                  All categories
+                </option>
+                <option
+                  value="1"
+                >
+                  Network
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-priority"
+              >
+                Requested Priority
+              </label>
+              <select
+                class="form-select"
+                id="ticket-priority"
+              >
+                <option
+                  value=""
+                >
+                  All priorities
+                </option>
+                <option
+                  value="LOW"
+                >
+                  Low
+                </option>
+                <option
+                  value="MEDIUM"
+                >
+                  Medium
+                </option>
+                <option
+                  value="HIGH"
+                >
+                  High
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-status"
+              >
+                Current Status
+              </label>
+              <select
+                class="form-select"
+                id="ticket-status"
+              >
+                <option
+                  value=""
+                >
+                  All statuses
+                </option>
+                <option
+                  value="NEW"
+                >
+                  New
+                </option>
+                <option
+                  value="OPEN"
+                >
+                  Open
+                </option>
+                <option
+                  value="IN_PROGRESS"
+                >
+                  In Progress
+                </option>
+                <option
+                  value="WAITING_FOR_REQUESTER"
+                >
+                  Waiting For Requester
+                </option>
+                <option
+                  value="RESOLVED"
+                >
+                  Resolved
+                </option>
+                <option
+                  value="CLOSED"
+                >
+                  Closed
+                </option>
+                <option
+                  value="REOPENED"
+                >
+                  Reopened
+                </option>
+                <option
+                  value="CANCELLED"
+                >
+                  Cancelled
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-sort"
+              >
+                Sort by
+              </label>
+              <select
+                class="form-select"
+                id="ticket-sort"
+              >
+                <option
+                  value="createdAt"
+                >
+                  Created date
+                </option>
+                <option
+                  value="updatedAt"
+                >
+                  Last updated
+                </option>
+                <option
+                  value="ticketNumber"
+                >
+                  Ticket Number
+                </option>
+                <option
+                  value="requestedPriority"
+                >
+                  Requested Priority
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-order"
+              >
+                Order
+              </label>
+              <select
+                class="form-select"
+                id="ticket-order"
+              >
+                <option
+                  value="desc"
+                >
+                  Descending
+                </option>
+                <option
+                  value="asc"
+                >
+                  Ascending
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-sm-6 col-md-3"
+            >
+              <label
+                class="form-label"
+                for="ticket-page-size"
+              >
+                Per page
+              </label>
+              <select
+                class="form-select"
+                id="ticket-page-size"
+              >
+                <option
+                  value="10"
+                >
+                  10
+                </option>
+                <option
+                  value="20"
+                >
+                  20
+                </option>
+                <option
+                  value="50"
+                >
+                  50
+                </option>
+              </select>
+            </div>
+            <div
+              class="col-12 col-md-3 d-flex align-items-end"
+            >
+              <button
+                class="btn btn-outline-success w-100"
+                disabled=""
+              >
+                Clear filters
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div
+        class="table-responsive d-none d-md-block"
+      >
+        <table
+          class="table align-middle"
+        >
+          <thead>
+            <tr>
+              <th>
+                Ticket Number
+              </th>
+              <th>
+                Summary
+              </th>
+              <th>
+                Category
+              </th>
+              <th>
+                Requested Priority
+              </th>
+              <th>
+                Current Status
+              </th>
+              <th>
+                Last Updated
+              </th>
+              <th>
+                <span
+                  class="visually-hidden"
+                >
+                  Actions
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="fw-semibold"
+              >
+                TKT-20260830-AB12CD34
+              </td>
+              <td>
+                VPN disconnects during online exam
+              </td>
+              <td>
+                Network
+              </td>
+              <td>
+                <span
+                  class="badge text-bg-secondary"
+                >
+                  High
+                </span>
+              </td>
+              <td>
+                <span
+                  class="badge text-bg-success"
+                >
+                  New
+                </span>
+              </td>
+              <td>
+                30 Aug 2026, 17:30
+              </td>
+              <td>
+                <button
+                  class="btn btn-sm btn-outline-success"
+                >
+                  View details
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="d-md-none"
+      >
+        <article
+          class="card mb-3"
+        >
+          <div
+            class="card-body"
+          >
+            <div
+              class="fw-semibold"
+            >
+              TKT-20260830-AB12CD34
+            </div>
+            <h2
+              class="h6 mt-2"
+            >
+              VPN disconnects during online exam
+            </h2>
+            <p
+              class="mb-2 text-secondary"
+            >
+              Network
+               ·
+              High
+               ·
+              New
+            </p>
+            <small>
+              Last updated
+              30 Aug 2026, 17:30
+            </small>
+            <button
+              class="btn btn-outline-success w-100 mt-3"
+            >
+              View details
+            </button>
+          </div>
+        </article>
+      </div>
+      <div
+        aria-label="Ticket pagination"
+        class="d-flex justify-content-between align-items-center gap-2"
+      >
+        <span
+          class="text-secondary small"
+        >
+          1
+           Ticket
+        </span>
+        <div
+          class="btn-group"
+        >
+          <button
+            class="btn btn-outline-success"
+            disabled=""
+          >
+            Previous
+          </button>
+          <span
+            class="btn btn-outline-secondary disabled"
+          >
+            Page
+            1
+             of
+            1
+          </span>
+          <button
+            class="btn btn-outline-success"
+            disabled=""
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/lab-02/MyTickets.test.tsx:26:19
+     24|
+     25|     expect((await screen.findAllByText(ticket.ticketNumber)).length).t…
+     26|     expect(screen.getByRole('navigation', {name:'Ticket pagination'}))…
+       |                   ^
+     27|     await userEvent.type(screen.getByLabelText("Search"), "VPN");
+     28|     expect((await screen.findAllByText(ticket.ticketNumber)).length).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  17:37:48
+   Duration  1.54s (transform 123ms, setup 107ms, import 244ms, tests 432ms, environment 585ms)

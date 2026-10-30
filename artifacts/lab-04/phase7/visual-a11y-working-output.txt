@@ -1,0 +1,205 @@
+[WebServer] (node:36132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:28276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34044) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:45008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:47968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:28520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop (6.1s)
+  x   2 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop (8.8s)
+(node:30520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  3 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at desktop (4.3s)
+  ok  4 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet (5.8s)
+  x   5 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet (7.8s)
+(node:27952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at tablet (2.9s)
+  ok  7 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile (4.4s)
+  x   8 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile (6.3s)
+(node:42180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at mobile (2.8s)
+  ok 10 e2e\lab-04\responsive.spec.ts:45:1 › real Staff draft survives a labelled injected failure and is posted once after retry (1.6s)
+
+
+  1) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-description-error",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-followUpNote-error",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:35:380
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-description-error",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-followUpNote-error",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:35:380
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-description-error",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-followUpNote-error",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:35:380
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile
+  7 passed (1.2m)

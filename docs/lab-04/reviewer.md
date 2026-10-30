@@ -1,5 +1,13 @@
 # Lab 4 Peer Review Record
 
+## Current Phase7 —30October2026
+
+Issue74 Started, feature/74-lab4-qa-hardening from reviewer merge df785a5.
+QA record: phase7-qa.md. One directly linked feature PR into lab4-staging is being
+prepared for Richyboy170; no review/merge invented. Reviewer approves final head
+AND merges; author replies to feedback. Phase6 details: phase6-closure.md.
+No closure-only PR: those documents are carried in this feature.
+
 ## Latest Phase5 closure —29October2026
 
 Richyboy170 approved final6b12c82 at14:53:30UTC and merged PR81 at14:53:40UTC
@@ -246,3 +254,16 @@ closingIssuesReferences; Richyboy170 requested. Issue Open / actual Project PR R
 Inspected phase6/pr82-ready.png and phase6/issue73-pr-review.png; no approval or
 merge claimed. Product/evidence edb2c2a, follow-up records in the same PR. Attached
 checks0 is NOT passing CI. Reviewer approves final head AND merges; author replies.
+
+## Phase6 closure — 30 October 2026
+
+Richyboy170 approved final d64d0e3 then merged PR82 into lab4-staging at df785a5
+(12:01:08 Bangkok). Fetched merge tree equals reviewed head. Author acknowledged
+actual review; no unresolved inline finding. Issue73 acceptance verified then
+Closed at12:03:14 Bangkok; actual Project Done. Lab4 Done6/Backlog2, intermediate
+states0. See [complete closure](phase6-closure.md) for actual links and inspected
+screenshots. Prior PR Review/Started checkpoints are historical and superseded.
+Retained local server267/client82/builds/browser18 + Dashboard6 rerun, NOT new
+staging/main/CI runs. Attached checks0 not a pass. Phase7/8 remain Backlog.
+Post-merge docs/images remain local for the next authorized feature PR; no new
+cleanup PR, direct staging/main push or rewrite of reviewed commits.

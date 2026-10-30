@@ -1,0 +1,22 @@
+
+added 1 package, removed 6 packages, changed 5 packages, and audited 171 packages in 3s
+
+37 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+qs  2.2.5 - 6.16.0
+Severity: moderate
+qs: Denial of Service via Attacker Controlled isBuffer - https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
+qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS) - https://github.com/advisories/GHSA-6pq8-jhm2-2vcw
+fix available via `npm audit fix`
+node_modules/qs
+  express  4.10.0 - 4.22.2 || 5.0.0-alpha.1 - 5.0.1
+  Depends on vulnerable versions of qs
+  node_modules/express
+
+2 moderate severity vulnerabilities
+
+To address all issues, run:
+  npm audit fix

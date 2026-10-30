@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/client
+
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Public Comment through failure then clears only after confirmed success
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Internal Note through failure then clears only after confirmed success
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > prevents repeated posts and protects input while the original request is pending
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  12:31:25
+   Duration  2.42s (transform 117ms, setup 183ms, collect 249ms, tests 210ms, environment 1.12s, prepare 156ms)

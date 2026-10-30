@@ -10,6 +10,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "tsx prisma/seed.ts",
     "test": "vitest run",
+    "test:lab4-qa": "node scripts/check-lab4-qa-env.mjs && vitest run --reporter=verbose",
     "test:lab4-data": "node scripts/check-lab4-test-env.mjs && vitest run tests/lab-04/data-contract.test.ts tests/lab-04/migration-regression.api.test.ts tests/lab-04/seed-regression.api.test.ts tests/lab-04/versioned-mutations.integration.test.ts --reporter=verbose",
     "test:lab4-actions": "node scripts/check-lab4-test-env.mjs && vitest run tests/lab-04/action-validation.unit.test.ts tests/lab-04/actions-taken.api.test.ts --reporter=verbose"
   },
@@ -33,6 +34,7 @@
     "supertest": "^7.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vite": "6.4.5",
+    "vitest": "4.1.12"
   }
 }

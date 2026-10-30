@@ -1,0 +1,248 @@
+{
+  "name": "my-tickets-tablet",
+  "url": "http://127.0.0.1:55486/",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-category\" class=\"form-select\"><option value=\"\">All categories</option><option value=\"1\">Account and Access</option><option value=\"2\">Hardware</option><option value=\"3\">Software</option><option value=\"4\">Network</option></select>",
+                  "target": [
+                    "#ticket-category"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-category\" class=\"form-select\"><option value=\"\">All categories</option><option value=\"1\">Account and Access</option><option value=\"2\">Hardware</option><option value=\"3\">Software</option><option value=\"4\">Network</option></select>",
+          "target": [
+            "#ticket-category"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-priority\" class=\"form-select\"><option value=\"\">All priorities</option><option value=\"LOW\">Low</option><option value=\"MEDIUM\">Medium</option><option value=\"HIGH\">High</option></select>",
+                  "target": [
+                    "#ticket-priority"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-priority\" class=\"form-select\"><option value=\"\">All priorities</option><option value=\"LOW\">Low</option><option value=\"MEDIUM\">Medium</option><option value=\"HIGH\">High</option></select>",
+          "target": [
+            "#ticket-priority"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-status\" class=\"form-select\">",
+                  "target": [
+                    "#ticket-status"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-status\" class=\"form-select\">",
+          "target": [
+            "#ticket-status"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-sort\" class=\"form-select\"><option value=\"createdAt\">Created date</option><option value=\"updatedAt\">Last updated</option><option value=\"ticketNumber\">Ticket Number</option><option value=\"requestedPriority\">Requested Priority</option></select>",
+                  "target": [
+                    "#ticket-sort"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-sort\" class=\"form-select\"><option value=\"createdAt\">Created date</option><option value=\"updatedAt\">Last updated</option><option value=\"ticketNumber\">Ticket Number</option><option value=\"requestedPriority\">Requested Priority</option></select>",
+          "target": [
+            "#ticket-sort"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-order\" class=\"form-select\"><option value=\"desc\">Descending</option><option value=\"asc\">Ascending</option></select>",
+                  "target": [
+                    "#ticket-order"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-order\" class=\"form-select\"><option value=\"desc\">Descending</option><option value=\"asc\">Ascending</option></select>",
+          "target": [
+            "#ticket-order"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "12.0pt (16px)",
+                "fontWeight": "normal",
+                "messageKey": "bgImage",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<select id=\"ticket-page-size\" class=\"form-select\"><option value=\"10\">10</option><option value=\"20\">20</option><option value=\"50\">50</option></select>",
+                  "target": [
+                    "#ticket-page-size"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element's background color could not be determined due to a background image"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<select id=\"ticket-page-size\" class=\"form-select\"><option value=\"10\">10</option><option value=\"20\">20</option><option value=\"50\">50</option></select>",
+          "target": [
+            "#ticket-page-size"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        }
+      ]
+    }
+  ],
+  "passes": [
+    "aria-allowed-attr",
+    "aria-conditional-attr",
+    "aria-deprecated-role",
+    "aria-hidden-body",
+    "aria-prohibited-attr",
+    "aria-required-attr",
+    "aria-roles",
+    "aria-valid-attr-value",
+    "aria-valid-attr",
+    "avoid-inline-spacing",
+    "button-name",
+    "bypass",
+    "color-contrast",
+    "document-title",
+    "duplicate-id-aria",
+    "form-field-multiple-labels",
+    "html-has-lang",
+    "html-lang-valid",
+    "label",
+    "link-name",
+    "meta-viewport",
+    "nested-interactive",
+    "role-img-alt",
+    "select-name",
+    "td-headers-attr",
+    "th-has-data-cells"
+  ]
+}

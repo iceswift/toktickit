@@ -1,0 +1,154 @@
+
+> toktickit-client@1.0.0 test
+> vitest run tests/lab-03/RoleBadge.test.tsx --reporter=verbose
+
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+ × tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders REQUESTER with a text-bearing badge 66ms
+   → Unable to find an accessible element with the role "img" and name "Role: REQUESTER"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<span[39m
+      [33maria-label[39m=[32m"Role: REQUESTER"[39m
+      [33mclass[39m=[32m"badge text-bg-success"[39m
+    [36m>[39m
+      [0mREQUESTER[0m
+    [36m</span>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ × tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders IT_STAFF with a text-bearing badge 6ms
+   → Unable to find an accessible element with the role "img" and name "Role: IT_STAFF"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<span[39m
+      [33maria-label[39m=[32m"Role: IT_STAFF"[39m
+      [33mclass[39m=[32m"badge text-bg-success"[39m
+    [36m>[39m
+      [0mIT_STAFF[0m
+    [36m</span>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ × tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders ADMINISTRATOR with a text-bearing badge 6ms
+   → Unable to find an accessible element with the role "img" and name "Role: ADMINISTRATOR"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<span[39m
+      [33maria-label[39m=[32m"Role: ADMINISTRATOR"[39m
+      [33mclass[39m=[32m"badge text-bg-success"[39m
+    [36m>[39m
+      [0mADMINISTRATOR[0m
+    [36m</span>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ✓ tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > uses role badges in both the desktop user table and mobile cards 41ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders REQUESTER with a text-bearing badge
+TestingLibraryElementError: Unable to find an accessible element with the role "img" and name "Role: REQUESTER"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <span
+      aria-label="Role: REQUESTER"
+      class="badge text-bg-success"
+    >
+      REQUESTER
+    </span>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/lab-03/RoleBadge.test.tsx:10:19
+      8|   it.each(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"] as const)("render…
+      9|     render(<RoleBadge role={role} />);
+     10|     expect(screen.getByRole('img', {name: `Role: ${role}`})).toHaveTex…
+       |                   ^
+     11|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveClass("badge"…
+     12|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveTextContent(r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders IT_STAFF with a text-bearing badge
+TestingLibraryElementError: Unable to find an accessible element with the role "img" and name "Role: IT_STAFF"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <span
+      aria-label="Role: IT_STAFF"
+      class="badge text-bg-success"
+    >
+      IT_STAFF
+    </span>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/lab-03/RoleBadge.test.tsx:10:19
+      8|   it.each(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"] as const)("render…
+      9|     render(<RoleBadge role={role} />);
+     10|     expect(screen.getByRole('img', {name: `Role: ${role}`})).toHaveTex…
+       |                   ^
+     11|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveClass("badge"…
+     12|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveTextContent(r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/lab-03/RoleBadge.test.tsx > Lab 3 role badges > renders ADMINISTRATOR with a text-bearing badge
+TestingLibraryElementError: Unable to find an accessible element with the role "img" and name "Role: ADMINISTRATOR"
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <span
+      aria-label="Role: ADMINISTRATOR"
+      class="badge text-bg-success"
+    >
+      ADMINISTRATOR
+    </span>
+  </div>
+</body>
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ tests/lab-03/RoleBadge.test.tsx:10:19
+      8|   it.each(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"] as const)("render…
+      9|     render(<RoleBadge role={role} />);
+     10|     expect(screen.getByRole('img', {name: `Role: ${role}`})).toHaveTex…
+       |                   ^
+     11|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveClass("badge"…
+     12|     expect(screen.getByLabelText(`Role: ${role}`)).toHaveTextContent(r…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  17:30:11
+   Duration  1.85s (transform 146ms, setup 208ms, import 254ms, tests 121ms, environment 1.06s)

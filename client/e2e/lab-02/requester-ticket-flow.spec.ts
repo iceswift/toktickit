@@ -2,7 +2,7 @@ import { Buffer } from "node:buffer";
 import { expect, request as playwrightRequest, test } from "@playwright/test";
 import { setRequesterPasswordGate, signInApi, signInRequester } from "../requester-auth.js";
 
-const apiBaseUrl = "http://127.0.0.1:3000/api";
+const apiBaseUrl = "http://127.0.0.1:55485/api";
 
 test.beforeAll(() => setRequesterPasswordGate(false));
 test.afterAll(() => setRequesterPasswordGate(true));

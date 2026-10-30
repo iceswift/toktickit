@@ -1,0 +1,30 @@
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > shows loading, then numeric zeros and explicit empty lists 136ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > passes the exact owned status-group predicate to the list 45ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > shows safe failure rather than fabricated zero totals; retries successfully 22ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > refreshes the snapshot after a new server response 33ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > does not leak counts when access is rejected (401) 2ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > does not leak counts when access is rejected (403) 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination https://evil.test/api/tickets 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination //evil.test/api/tickets 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /staff/tickets?status=OPEN 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets?ownerId=5 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets?status=OPEN&status=CLOSED 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects unsafe requester destination /api/tickets#secret 0ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > maps staff owner, priority and current-performer work without dropping filters 1ms
+ ✓ tests/lab-04/RequesterDashboard.test.tsx > Dashboard UI and safe drill-down > rejects malformed totals rather than displaying partial data 1ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Public Comment through failure then clears only after confirmed success 193ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Internal Note through failure then clears only after confirmed success 45ms
+ ✓ tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > prevents repeated posts and protects input while the original request is pending 31ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > shows correct IT_STAFF heading and zero enum buckets 193ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > shows correct ADMINISTRATOR heading and zero enum buckets 50ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > carries session-owner drill-down and current-performer My Actions as distinct populations 54ms
+ ✓ tests/lab-04/StaffDashboard.test.tsx > does not show cached operational totals on forbidden response 9ms
+ ✓ tests/lab-04/ZenGreenStyle.test.tsx > exposes exactly one current-page navigation action and follows user navigation 142ms
+
+ Test Files  4 passed (4)
+      Tests  22 passed (22)
+   Start at  12:38:05
+   Duration  1.48s (transform 712ms, setup 472ms, import 1.17s, tests 969ms, environment 2.49s)

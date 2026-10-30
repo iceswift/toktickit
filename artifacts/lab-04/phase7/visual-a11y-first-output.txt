@@ -1,0 +1,656 @@
+[WebServer] (node:29128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:36768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:44112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:46900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:13360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop (3.0s)
+(node:3892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   2 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop (2.3s)
+(node:33820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   3 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at desktop (6.6s)
+(node:28212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   4 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet (5.3s)
+(node:38716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   5 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet (3.2s)
+(node:32436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   6 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at tablet (3.5s)
+(node:6624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   7 e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile (3.5s)
+(node:48544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   8 e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile (8.9s)
+(node:35804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at mobile (4.2s)
+  ok 10 e2e\lab-04\responsive.spec.ts:45:1 › real Staff draft survives a labelled injected failure and is posted once after retry (2.1s)
+
+
+  1) e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 43
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(3)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.48 (foreground color: #9fa5ab, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-secondary",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:24:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 36
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(4)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:30:221
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at desktop
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 43
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(4)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(5)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:40:152
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 43
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(3)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.48 (foreground color: #9fa5ab, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-secondary",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:24:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 36
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(4)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:30:221
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at tablet
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 43
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(4)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(5)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:40:152
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 43
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(2)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light:nth-child(3)",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #198754, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-light",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #f8f9fa, background color: #198754, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-light.btn-sm",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 2.48 (foreground color: #9fa5ab, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-secondary",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:24:104
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 50
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.44 (foreground color: #6c757d, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".col-md-6:nth-child(3) > small",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-description-error",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.44 (foreground color: #6c757d, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".col-12:nth-child(6) > small",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.29 (foreground color: #dc3545, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           "#\\:r3\\:-followUpNote-error",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.44 (foreground color: #6c757d, background color: #f8f9fa, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".mt-3.text-secondary.small",
+    +         ],
+    +       },
+    +       Object {
+    +         "failure": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.44 (foreground color: #6c757d, background color: #f8f9fa, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
+    +         "target": Array [
+    +           ".btn-outline-secondary[type=\"button\"]",
+    +         ],
+    +       },
+    +     ],
+    +   },
+    + ]
+
+      15 |   const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();
+      16 |   writeFileSync(shots+'/'+name+'-axe.json',JSON.stringify({name,url:page.url(),violations:audit.violations,incomplete:audit.incomplete.map(x=>({id:x.id,help:x.help})),passes:audit.passes.map(x=>x.id)},null,2));
+    > 17 |   expect(audit.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,failure:n.failureSummary}))}))).toEqual([]);
+         |                                                                                                                                   ^
+      18 | }
+      19 | async function openDetail(page:Page,requester=false){await page.getByLabel('Search',{exact:true}).fill(ticketNumber);await page.getByRole('button',{name:requester?'View details':'Open detail',exact:true}).click();await expect(page.getByRole('heading',{name:ticketNumber,exact:true})).toBeVisible();await expect(page.getByText('Loading Actions...',{exact:true})).toHaveCount(0);await expect(page.getByText('Loading Ticket workflow...',{exact:true})).toHaveCount(0);}
+      20 | for(const [size,width,height]of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]] as const){
+        at inspect (D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:17:131)
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:35:380
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8 failed
+    e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at desktop
+    e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at desktop
+    e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at tablet
+    e2e\lab-04\responsive.spec.ts:39:3 › Administrator directory and edit/reset forms inspection at tablet
+    e2e\lab-04\responsive.spec.ts:21:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile
+    e2e\lab-04\responsive.spec.ts:29:3 › Staff work forms, confirmations and My Actions inspection at mobile
+  2 passed (1.7m)

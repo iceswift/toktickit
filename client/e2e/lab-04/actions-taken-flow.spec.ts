@@ -10,7 +10,7 @@ let number: string;
 test.beforeAll(() => {
   const url = new URL(process.env.DATABASE_URL ?? 'http://invalid');
   if (process.env.LAB4_UI_TEST !== '1' || url.hostname !== '127.0.0.1' || url.port !== '55484' ||
-      !/^\/lab4_p[456]_ui_[a-z0-9_]+$/.test(url.pathname)) throw new Error('Unsafe UI database');
+      !/^\/lab4_p[4567]_ui_[a-z0-9_]+$/.test(url.pathname)) throw new Error('Unsafe UI database');
   mkdirSync(shots, { recursive: true });
   for (const email of [iris, jonas, amina, admin]) resetAccount(email);
 });

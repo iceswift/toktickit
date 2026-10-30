@@ -1,0 +1,35 @@
+/* Shared Zen Green hardening: preserve Bootstrap layout and semantic controls. */
+:focus-visible {
+  outline: 3px solid #0b3d2e !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px #fff !important;
+}
+.container { overflow-wrap: anywhere; }
+/* Bootstrap light (#f8f9fa) on success is only4.29:1 at16px. Pure white
+ * maintains the green theme and meets normal-text contrast in both directions. */
+.navbar .btn-outline-light {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-color: #146c43;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-active-color: #146c43;
+  --bs-btn-active-bg: #fff;
+}
+.navbar .btn-light { --bs-btn-bg: #fff; --bs-btn-hover-bg: #fff; }
+/* This span is a page-number label, not a disabled action. Keep it readable. */
+span.btn.disabled { opacity: 1; color: #495057; }
+/* Secondary text also occurs on bg-light forms; #6c757d there was4.44:1. */
+.text-secondary { color: #59636c !important; }
+/* Validation must remain readable on white and light-gray form panels. */
+.invalid-feedback, .text-danger { color: #b02a37 !important; }
+.btn-outline-secondary {
+  --bs-btn-color: #59636c;
+  --bs-btn-border-color: #59636c;
+  --bs-btn-hover-bg: #59636c;
+  --bs-btn-active-bg: #59636c;
+}
+.form-control[readonly], .form-control:disabled, .form-select:disabled {
+  color: #495057;
+  background-color: #e9ecef;
+  opacity: 1;
+}

@@ -7,6 +7,7 @@ import { UserManagement } from "../../src/UserManagement.js";
 describe("Lab 3 role badges", () => {
   it.each(["REQUESTER", "IT_STAFF", "ADMINISTRATOR"] as const)("renders %s with a text-bearing badge", (role) => {
     render(<RoleBadge role={role} />);
+    expect(screen.getByRole('img', {name: `Role: ${role}`})).toHaveTextContent(role);
     expect(screen.getByLabelText(`Role: ${role}`)).toHaveClass("badge");
     expect(screen.getByLabelText(`Role: ${role}`)).toHaveTextContent(role);
   });
