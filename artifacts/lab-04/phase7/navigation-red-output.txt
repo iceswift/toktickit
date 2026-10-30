@@ -1,0 +1,27 @@
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/client
+
+ × tests/lab-04/ZenGreenStyle.test.tsx > exposes exactly one current-page navigation action and follows user navigation 87ms
+   → expected  to have a length of 1 but got +0
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/ZenGreenStyle.test.tsx > exposes exactly one current-page navigation action and follows user navigation
+AssertionError: expected  to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/lab-04/ZenGreenStyle.test.tsx:11:130
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  12:37:20
+   Duration  1.40s (transform 273ms, setup 121ms, import 393ms, tests 90ms, environment 621ms)

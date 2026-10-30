@@ -1,0 +1,507 @@
+{
+  "capturedAt": "2026-10-30T10:44:24.1012737Z",
+  "branch": "feature/74-lab4-qa-hardening",
+  "baseHead": "df785a5ae7bda71b2f17fcddbc036335e74a7a70",
+  "scope": "Working-tree source fingerprints, not a clean-main or peer-acceptance assertion",
+  "node": "v22.17.0",
+  "npm": "10.9.2",
+  "installNpm": "11.6.2 (npx package, no global update)",
+  "sources": [
+    {
+      "path": "client/e2e/lab-02/requester-ticket-flow.spec.ts",
+      "sha256": "107d8a23cd387f2322cd43850df8d7967006ecdcebef76289e0b6ee1dff741fd"
+    },
+    {
+      "path": "client/e2e/lab-02/responsive.spec.ts",
+      "sha256": "99db83c2815cfa6bf55452fc592558df9a2b73a5f0bdf3ff75396b48305c37d8"
+    },
+    {
+      "path": "client/e2e/lab-03/authentication.spec.ts",
+      "sha256": "b91c69c1b0faf9bb2ddd109cb8d5a9a82809859da1c79d8ead4524df78b5a8c2"
+    },
+    {
+      "path": "client/e2e/lab-03/helpers.ts",
+      "sha256": "fbcbb8f9f25be1ad1ef080cfb38bff74731bc1459830bd70dc2f6fc4af9f59c6"
+    },
+    {
+      "path": "client/e2e/lab-03/responsive.spec.ts",
+      "sha256": "701e6922ad2e725cfe4cac5551955f1b3d7db40926293cc2963688ca457c624d"
+    },
+    {
+      "path": "client/e2e/lab-03/staff-ticket-flow.spec.ts",
+      "sha256": "ffa5f76fe85950549a12952b69f694d69ca5036521ca08c9ecbd6d3aff6371f8"
+    },
+    {
+      "path": "client/e2e/lab-03/user-administration.spec.ts",
+      "sha256": "2f48c4c01054c9dbc68208b7edbf943aac4fd0b0c4932a7373765b838f4aaf0e"
+    },
+    {
+      "path": "client/e2e/lab-04/actions-taken-flow.spec.ts",
+      "sha256": "2dade0508fcaf7e8061639b8c49d3c546be999a355e0e43b798415d9a219f93b"
+    },
+    {
+      "path": "client/e2e/lab-04/dashboards.spec.ts",
+      "sha256": "6e515f9726eea7178c4d991b92934f8d488992e0e0bc5da86bbbeb2e5a96e95e"
+    },
+    {
+      "path": "client/e2e/lab-04/responsive.spec.ts",
+      "sha256": "66095b91c777c0913fb2637dc79753460c79d503cc3cf00272aaf6bde847b607"
+    },
+    {
+      "path": "client/e2e/lab-04/ticket-resolution.spec.ts",
+      "sha256": "894412131cc2e694e813d235d80f6cf16d7be9074831cf0786c0cf1cd131f7a1"
+    },
+    {
+      "path": "client/e2e/requester-auth.ts",
+      "sha256": "1d19bcc2c553c0a54f47d0fe7250829665b3f8349ac9237c176fc8c14c57a8f8"
+    },
+    {
+      "path": "client/e2e/test-environment.ts",
+      "sha256": "870a922662303ddad94b6c63d49274f1a40c4b64e42dad271195798623c0a67f"
+    },
+    {
+      "path": "client/package-lock.json",
+      "sha256": "67122909c0c74aecd97808515c16d8c9176084286a64e8fa309c41de4da05108"
+    },
+    {
+      "path": "client/package.json",
+      "sha256": "6be9122a202ca8309df77c5bf78abde80fdb78573b67e8f2a11725fade942151"
+    },
+    {
+      "path": "client/playwright.lab4-qa.config.ts",
+      "sha256": "4641453a3b5132bc563ba70b8d32f4ee33dc96d66e9be65a535eef6877e05e7a"
+    },
+    {
+      "path": "client/playwright.lab4.config.ts",
+      "sha256": "cc0820450ade2bdcfbfe07d2598efab956b77e87818bd2e46c2df9f7aa00cec4"
+    },
+    {
+      "path": "client/src/actions-api.ts",
+      "sha256": "84baf50ee31293894c4926a28ec67659ee792e187d0d871e7c638c38fc88dda5"
+    },
+    {
+      "path": "client/src/ActionsTaken.tsx",
+      "sha256": "7d81156c17460fb675816144062c6089ded6f040e5f6f5ad647964c211539365"
+    },
+    {
+      "path": "client/src/api.ts",
+      "sha256": "b1148a682b5852baa4a6c5c0b58cedf6ae12fda5f9949c0baf757430592bf659"
+    },
+    {
+      "path": "client/src/app.css",
+      "sha256": "62e47264c32919eb92fc2a2411c492b3cba745c13b031c6080aa4c3c6bd404db"
+    },
+    {
+      "path": "client/src/App.tsx",
+      "sha256": "273e952119c215a5dec15b92759223aa81888b550e851ccca35dc8028fc87a23"
+    },
+    {
+      "path": "client/src/ChangePassword.tsx",
+      "sha256": "1f0837d8d2fc28d419603bb607738df3dbeeb5548071f8fe8cc2019aec621a2e"
+    },
+    {
+      "path": "client/src/CreateTicketForm.tsx",
+      "sha256": "9b6c44232459964a18f1fc40c9465be1cbab1f21b26b66b7ce4ea81cf0912600"
+    },
+    {
+      "path": "client/src/dashboard-api.ts",
+      "sha256": "e2f33f4a249bae26e8d8bbb858beac0e0ecb096094160bdc8add0f4599d01994"
+    },
+    {
+      "path": "client/src/Dashboard.tsx",
+      "sha256": "efb7239f298dd4de7ff7b5840d3eeec968818d6be0a80863c8890e49d8eb68a7"
+    },
+    {
+      "path": "client/src/Login.tsx",
+      "sha256": "5b99a7dca1a48dc08ed4d06d41232b400e8bf45f5399e49229f43d1f3bc476fc"
+    },
+    {
+      "path": "client/src/main.tsx",
+      "sha256": "4c72e97cdd64fc82c0ca078ffb31b70a3914bf5c9fb391af2d74c47e6b794402"
+    },
+    {
+      "path": "client/src/MyTickets.tsx",
+      "sha256": "e5d2c747d5faa392db6a5534bc99d8dfce3f3f745facb1396e6ff14cf497d50d"
+    },
+    {
+      "path": "client/src/RequesterTicketDetail.tsx",
+      "sha256": "33b89a87961378bed7e50b3fe16e1ec9ec307c61d8c22d5a0fcd4945f0c88297"
+    },
+    {
+      "path": "client/src/RoleBadge.tsx",
+      "sha256": "e35be1239dc2204651253701e2a73c02220e76659ef1158c2970aba4d04adb53"
+    },
+    {
+      "path": "client/src/StaffTicketDetail.tsx",
+      "sha256": "183093cd7b4ad86b36fd25e1795e2dec9de943356208ce77b19b100fa7091e8a"
+    },
+    {
+      "path": "client/src/StaffTicketQueue.tsx",
+      "sha256": "924258c2f1a98876834e1af9113c379ad77e1cbca162148f2c336728508d0a06"
+    },
+    {
+      "path": "client/src/TicketWorkflow.tsx",
+      "sha256": "f4148323ac48e3b282b8d4da0ddafb9517a8fea8cb61eb59cb753154968f4033"
+    },
+    {
+      "path": "client/src/UserManagement.tsx",
+      "sha256": "e4c1f8f641bb86466daade17e195928bf4a30fd55e3c7976b0d21e48ebca4332"
+    },
+    {
+      "path": "client/src/vite-env.d.ts",
+      "sha256": "424faf9241dd699dda995b367ed36665732da1e6ec1f33b2fd40394488ecac92"
+    },
+    {
+      "path": "client/src/workflow-api.ts",
+      "sha256": "ec55bb1c38e5c1c2915ef0ae4226b9eb74026d1b175a41af85e38e0d1488395f"
+    },
+    {
+      "path": "client/tests/lab-01/App.test.tsx",
+      "sha256": "0a787f68c06dc452d0f4395616fe8049d7b6a6e6065e297a5c8a7fc179ab9450"
+    },
+    {
+      "path": "client/tests/lab-02/CreateTicket.test.tsx",
+      "sha256": "dd57619d510a3c252b349c2c17fc231158af801d45c96a9dbde93f4b434d376d"
+    },
+    {
+      "path": "client/tests/lab-02/DevelopmentRequester.test.tsx",
+      "sha256": "64fb9e95c70a822ff24b300d2f3fd122700f9bde120a62c6177ab097487ec346"
+    },
+    {
+      "path": "client/tests/lab-02/MyTickets.test.tsx",
+      "sha256": "da6147fb6ee99eea4c7aa28e1ed36f7fc3e1a4bd63d2e2021813adbcc7f4431d"
+    },
+    {
+      "path": "client/tests/lab-02/RequesterTicketDetail.test.tsx",
+      "sha256": "c4321d5b49b0b250fdb2c761421cd0b800f2c24d7a2ce3ad60865911bd69caa6"
+    },
+    {
+      "path": "client/tests/lab-02/ZenGreenStyle.test.tsx",
+      "sha256": "2f9b95ff2d4ab9f8f2ba30797b4ae126edde210e3364a5db1302723155bc86a7"
+    },
+    {
+      "path": "client/tests/lab-03/Authentication.test.tsx",
+      "sha256": "18d35d27ec563bedaf5484ea1d0043d8b3ac1114579b04482a3de5d23affb907"
+    },
+    {
+      "path": "client/tests/lab-03/RoleBadge.test.tsx",
+      "sha256": "5394e296908f6f58f23badc65fb93e9828282046af352b6aa438743fef553527"
+    },
+    {
+      "path": "client/tests/lab-03/StaffTicketDetail.test.tsx",
+      "sha256": "b37a256e978fd6ed0f0ecf4a1fb07b57d6b1cdc27604261819ed118f83c8cec5"
+    },
+    {
+      "path": "client/tests/lab-03/StaffTicketQueue.test.tsx",
+      "sha256": "d76f24c605e2370fd7138690a10adc1a029a0f81068050350f36b591c187eb55"
+    },
+    {
+      "path": "client/tests/lab-03/UserManagement.test.tsx",
+      "sha256": "bf41602f4cff3c061165bc90e970108024e158201367b25b9bed72e14fe5d5a9"
+    },
+    {
+      "path": "client/tests/lab-04/actions-api.test.tsx",
+      "sha256": "0e6b3c5194551941c7078d0e12010c74428dc49d9753f9bf2e2ee2e839595df3"
+    },
+    {
+      "path": "client/tests/lab-04/ActionsTaken.test.tsx",
+      "sha256": "4576b6f205fe00db42b2fefa6c27b6f25dd39820f67a6470eabf316037a0b0a2"
+    },
+    {
+      "path": "client/tests/lab-04/RequesterDashboard.test.tsx",
+      "sha256": "440c24804ed8c9866069c6273f03c182fb4c71f560eddaf5b7f73e1e72cd51bd"
+    },
+    {
+      "path": "client/tests/lab-04/StaffDashboard.test.tsx",
+      "sha256": "636d298823ec6592086250207b9b4af3e771a8f84938ecf951458dcee904aec3"
+    },
+    {
+      "path": "client/tests/lab-04/StaffDraftRecovery.test.tsx",
+      "sha256": "d67bff35ff46a14d2da8971adc7445a63e65529227e43a37ee4b2ad76a31e62b"
+    },
+    {
+      "path": "client/tests/lab-04/TicketWorkflow.test.tsx",
+      "sha256": "041b74f9b2f0351ab1c88a8b8cd26c4541b69756100b7fd9f7f2e1f692669c3f"
+    },
+    {
+      "path": "client/tests/lab-04/workflow-api.test.tsx",
+      "sha256": "7d0b716749b0e5245b4ea63e084d88272fcf0c7991f64ad70de09daa65548921"
+    },
+    {
+      "path": "client/tests/lab-04/ZenGreenStyle.test.tsx",
+      "sha256": "df71112eb9f463c33a6d219edc2a613472dc9b79767167964ecbba37f653bdb0"
+    },
+    {
+      "path": "client/tests/setup.ts",
+      "sha256": "832a7bbd100b2f7248c86069018e38258621b35ed7834e7a89e4a6bebde3ba31"
+    },
+    {
+      "path": "scripts/build_lab3_report.py",
+      "sha256": "c5e7b72e52ad6dcd10578d2edf9f66e85fbf583cda0b45ba0bc9bfa045935386"
+    },
+    {
+      "path": "scripts/check_lab3_report.py",
+      "sha256": "580a323f9719aef46a0f30fbe197b0989b3451422e2e9e69226f98648ff2dbf7"
+    },
+    {
+      "path": "scripts/collect_lab4_qa_evidence.ps1",
+      "sha256": "51c8a38dea7b9b5758e6b54dab535a47d5532168210eefcedbe871a4351b1e14"
+    },
+    {
+      "path": "scripts/finalize_lab4_qa_evidence.ps1",
+      "sha256": "642ff3a54b3e28105d8cfcb32b113b2e9bad4a4484a8d4cf2600501941721b2e"
+    },
+    {
+      "path": "scripts/report_pdf_contact_sheets.py",
+      "sha256": "e6399a79e1d8c8a090220cce17ddc08360cb1d86f6baa7548c17a473d6d5d612"
+    },
+    {
+      "path": "scripts/verify_lab4_contract.py",
+      "sha256": "906276d5cd13df2a51ebc40877482f635cb2cab2391d72b6e52eb65be2e37f66"
+    },
+    {
+      "path": "server/package-lock.json",
+      "sha256": "ae388489d403c97757beff57158a3607c1cd1d06ffa787c1276f8f1ade05a835"
+    },
+    {
+      "path": "server/package.json",
+      "sha256": "29f16e7317b7199c422f669297b3b0b65b1be688c1e00b00f697a3c5ae7f6070"
+    },
+    {
+      "path": "server/prisma/migrations/20260811042726_create_category/migration.sql",
+      "sha256": "c928c6e6a76ba1b9f40922000ce9aee4b9bd066c673500bbbb2e9234dbb447a8"
+    },
+    {
+      "path": "server/prisma/migrations/20260828100000_add_development_requester/migration.sql",
+      "sha256": "b4710e3c5896d72af844f646c8430efdeeaec4d4cf9bda8fed98105b3fc79279"
+    },
+    {
+      "path": "server/prisma/migrations/20260829090000_add_ticket_creation/migration.sql",
+      "sha256": "f004a07108a42c1766f8d180f64b6aab15aca948940b00ac1b9e3b8c70195e3b"
+    },
+    {
+      "path": "server/prisma/migrations/20260916000000_lab3_user_migration/migration.sql",
+      "sha256": "1296c1f7d7a1db87616b1f2fa63f5bbd1662822a044f4cc9db07df5db2b5f4f2"
+    },
+    {
+      "path": "server/prisma/migrations/20260917000000_add_auth_sessions/migration.sql",
+      "sha256": "6a08ad981ca5bb96fe409df4fb27dd7fce0daa1b42552e2d4b8c8157323156a0"
+    },
+    {
+      "path": "server/prisma/migrations/20260920090000_add_staff_ticket_operations/migration.sql",
+      "sha256": "78cdf1cfca96d06b7438cf5b659fca5165d4e19d33bd8071d9d6c041c58b27f4"
+    },
+    {
+      "path": "server/prisma/migrations/20260920143000_add_requester_resolution_indication/migration.sql",
+      "sha256": "1ec58b1e8df909c2ad9dcc356372aa8750a4e2748ec0f0bcbb4f18ba8f1247dd"
+    },
+    {
+      "path": "server/prisma/migrations/20261028070000_lab4_action_foundation/migration.sql",
+      "sha256": "5edca48445600b320439aba4a9f5c59ac5e02a220cbc3ac60e46770f7516d28f"
+    },
+    {
+      "path": "server/prisma/migrations/migration_lock.toml",
+      "sha256": "74a9137885ce73d3ff088d79d658f8066e05e680fb51c0800a290c91c0c01d48"
+    },
+    {
+      "path": "server/prisma/schema.prisma",
+      "sha256": "2a9abf1bc6124ee0b120b5adb65dfb767c14d3f9107b534d59f7482969ebc3a1"
+    },
+    {
+      "path": "server/prisma/seed.ts",
+      "sha256": "87340725a37eb7bfc63b0cccdf4bb131710028a73c5389d87e02292b34389107"
+    },
+    {
+      "path": "server/scripts/check-lab4-qa-env.mjs",
+      "sha256": "7d9b10f7ec1ac6ea7c54053ffee922c197ea338f8ef4831335b203b84d3afb7b"
+    },
+    {
+      "path": "server/scripts/check-lab4-test-env.mjs",
+      "sha256": "579c153b21538d7428192fd7cf8a5487ab0f2c891e42ae8e27bc6f120a6f6a21"
+    },
+    {
+      "path": "server/src/app.ts",
+      "sha256": "ff8193cac65fe9c00c0a0b01f2d244d5ec2c334fbdd00dae05eb838535aa702d"
+    },
+    {
+      "path": "server/src/attachment-storage.ts",
+      "sha256": "99bef35f9c75aa1621df07a1dcb33a223ceb5579f5a270556b6353808b748f42"
+    },
+    {
+      "path": "server/src/auth.ts",
+      "sha256": "c89ac5bbb8d3a4b81dc5ae30a1102ef86cab2308160da1889e3f6ea2cc41fb8c"
+    },
+    {
+      "path": "server/src/index.ts",
+      "sha256": "8f33f280e319b4b32e68d42c0bca0e81c83c3cb4cfbba80727b74e2b13548f1b"
+    },
+    {
+      "path": "server/src/lab4/action-validation.ts",
+      "sha256": "7bbe8f8dd1229663b5e66bf899a0054f8c8325b963c0eb58ee81f7fa478cd2a3"
+    },
+    {
+      "path": "server/src/lab4/actions-router.ts",
+      "sha256": "4a72a7ace2e0a7b183b09685d18b551cdb6be3f88ba25c94c959625e878707cd"
+    },
+    {
+      "path": "server/src/lab4/dashboard-policy.ts",
+      "sha256": "cc03090b618e78c303f17645bf3ef123f0d407372bff8f23cb1be77f98030e4f"
+    },
+    {
+      "path": "server/src/lab4/dashboards-router.ts",
+      "sha256": "2851ad80d0b34bcc21b80e21904ccc27b8964c782d63ee308bf9be2aca0f5fc7"
+    },
+    {
+      "path": "server/src/lab4/legacy-workflow.ts",
+      "sha256": "eb75b4829ad7b1d1d840ae1eda5afedf328d6fc8cfe21e9a34b2a9bdcc18e4bb"
+    },
+    {
+      "path": "server/src/lab4/ticket-workflow.ts",
+      "sha256": "f70a1705b64c710499b2ea05ef85ce851f48f102c8f6acf3d4f63ca910a1659f"
+    },
+    {
+      "path": "server/src/lab4/versioned-mutations.ts",
+      "sha256": "195f051266752c6bb64332454c297535e5fefca8afd18f3dc2a1abceed4a299e"
+    },
+    {
+      "path": "server/src/prisma.ts",
+      "sha256": "6d18b4a39509efc4c5eca05012503c46ac5b1d174513e58356dd71b844df4c29"
+    },
+    {
+      "path": "server/src/requester-session.ts",
+      "sha256": "09d43c615efcd1efccd2f776fd3983e785d3094c5055805cdc6a300c92173697"
+    },
+    {
+      "path": "server/src/ticket-number.ts",
+      "sha256": "647bde7f35c15ce9e1ae0c4d5c29372d433edbb728c384195e0f4ad45bb3ef8e"
+    },
+    {
+      "path": "server/tests/lab-01/categories.test.ts",
+      "sha256": "8a1a50df2c636b4e19b3d9acec4c26771a8fc45a677abbf4f9177637cad2b3c9"
+    },
+    {
+      "path": "server/tests/lab-01/health.test.ts",
+      "sha256": "6c23747fedff84f7b19eaa257990d5e01ca1db31855336721c478792551c1b60"
+    },
+    {
+      "path": "server/tests/lab-02/attachments.api.test.ts",
+      "sha256": "403bb00df3f5d8b31a034e64967ab022983223c64116b005b520da54c4ccfd4b"
+    },
+    {
+      "path": "server/tests/lab-02/create-ticket.api.test.ts",
+      "sha256": "bb92a1bf543bc11e61ee59532430b94d1e6e4e9de22da827402c392e2f87fa2d"
+    },
+    {
+      "path": "server/tests/lab-02/development-requesters.api.test.ts",
+      "sha256": "ea44605947783c27262d338565756e3379c7ef058344c62e0f5f57a9e9689ea1"
+    },
+    {
+      "path": "server/tests/lab-02/my-tickets.api.test.ts",
+      "sha256": "62824feb0c30e70c98b669ab44b866e19470e58f7ff412a7f81849991e86d60e"
+    },
+    {
+      "path": "server/tests/lab-02/ticket-detail.api.test.ts",
+      "sha256": "92da8df03406295cd90ca154327f86f3332839465ba4df290c3fc81b4c5734aa"
+    },
+    {
+      "path": "server/tests/lab-02/ticket-number.test.ts",
+      "sha256": "98e118b63adaa8bc6438c5a108d4afd4e5882fe890084cf0263cf7799847b292"
+    },
+    {
+      "path": "server/tests/lab-03/auth.api.test.ts",
+      "sha256": "862486093d10e706680b2b3a98a8bc4e58d2c624ed8ef40a0fe8e67447730d4b"
+    },
+    {
+      "path": "server/tests/lab-03/migration-regression.api.test.ts",
+      "sha256": "ded00569796a0c128a6f9cd669fbdf2132ff6a9cdb85a52ccee9a4f308bb4fdc"
+    },
+    {
+      "path": "server/tests/lab-03/requester-authorization.api.test.ts",
+      "sha256": "dd90bdb46c8c550b78456dcdfa99c6630b94a57f1a0ad55b7abdedbe23cd7a6c"
+    },
+    {
+      "path": "server/tests/lab-03/requester-session.test.ts",
+      "sha256": "08f640c52ceb7359016c394c9550766b27dffa3aba2987d1b44ba1986c1da49e"
+    },
+    {
+      "path": "server/tests/lab-03/requester-session.ts",
+      "sha256": "b9c590b8a7dd832d5b1e3cb58b298e5822c1d86ea080df0f000cdec524a1dc9c"
+    },
+    {
+      "path": "server/tests/lab-03/seed-ticket-examples.api.test.ts",
+      "sha256": "50b8efd636d3a81f3bff2e36aa832d96977830d1711c78a155da677be1df414b"
+    },
+    {
+      "path": "server/tests/lab-03/staff-queue.api.test.ts",
+      "sha256": "46a2e528bea3f616855a55813f8c364fa05da065b93695f86f0e66434445fb4a"
+    },
+    {
+      "path": "server/tests/lab-03/staff-ticket-detail.api.test.ts",
+      "sha256": "a6c9ca5489905f12e17b0764197dd8b8814af1be2180f117ce1cb089e0d0cdec"
+    },
+    {
+      "path": "server/tests/lab-03/users-admin.api.test.ts",
+      "sha256": "60a14c860966df118b4a8ff564977fbf0eb9299f0045fd9b395171bca3d6feab"
+    },
+    {
+      "path": "server/tests/lab-04/action-validation.unit.test.ts",
+      "sha256": "9820863e94ce6ad4e0ba8523db2d5f86f855036d8beefa2f94127f61413f3323"
+    },
+    {
+      "path": "server/tests/lab-04/actions-taken.api.test.ts",
+      "sha256": "bb09664f1604790800abaec60025c2048f9bb86c8c8258849060ffa43bec79c3"
+    },
+    {
+      "path": "server/tests/lab-04/dashboard-performance.test.ts",
+      "sha256": "79c9c19ed79d02bd597fa2ecee8d636c90f217c6396a20e2f78c9b2202950ac5"
+    },
+    {
+      "path": "server/tests/lab-04/dashboard-policy.unit.test.ts",
+      "sha256": "03b2cd2dd77f6af73c799945e15eb9056a9a7e7a29d3e41bfdcc4a01d655ed45"
+    },
+    {
+      "path": "server/tests/lab-04/dashboard-role-fixture.ts",
+      "sha256": "1435fe6e3cb3ac7f1ae78a487123a9ffa500d5ec2a457ba9a90c2f27bc09bbc5"
+    },
+    {
+      "path": "server/tests/lab-04/dashboards.api.test.ts",
+      "sha256": "00b1aacec7a781bf09b7e1ca3b5366427cc5af9732957b5307e731a47c977174"
+    },
+    {
+      "path": "server/tests/lab-04/data-contract.test.ts",
+      "sha256": "b236c97ce189d343ecf5a4610df4039c295bd1b1e47ca56498205f6b3b06d376"
+    },
+    {
+      "path": "server/tests/lab-04/database-fixture.ts",
+      "sha256": "4db565b89c0153babb3a6dd323f5cd55c2836d5d2ce3921991d96b2432828b98"
+    },
+    {
+      "path": "server/tests/lab-04/migration-regression.api.test.ts",
+      "sha256": "c79381058e61987c235a8f5dc7021ed1d2d6784a2c93fe9ce49ec0f7625f5ac3"
+    },
+    {
+      "path": "server/tests/lab-04/requester-dashboard.api.test.ts",
+      "sha256": "bc29cc507c2ed02ff8f376c9663c892bb9f47ff71d368b142c1584d781823433"
+    },
+    {
+      "path": "server/tests/lab-04/seed-regression.api.test.ts",
+      "sha256": "b24f11e59c1e5fab8df4984d425b1961baa90825a9cef7336d5b6c7a79fff4c4"
+    },
+    {
+      "path": "server/tests/lab-04/staff-dashboard.api.test.ts",
+      "sha256": "5f6b17c13db2bc07717951bb34a3ddc9788cd8033811113b5a6450ccebee5e2f"
+    },
+    {
+      "path": "server/tests/lab-04/ticket-workflow.api.test.ts",
+      "sha256": "bc517b39c55e4fb2c036688aad80fa320c3c80c77296f35940099deab52a9b98"
+    },
+    {
+      "path": "server/tests/lab-04/ticket-workflow.unit.test.ts",
+      "sha256": "fd1ac877dbf3a410d8b83625bc9d24db1d67b1ea0e48cc8d34dc41ace8895516"
+    },
+    {
+      "path": "server/tests/lab-04/versioned-mutations.integration.test.ts",
+      "sha256": "7a62ddf15f5b9b3e524198a1f41eccfc7d0362e7d8fa9c7beabb9fffdc972530"
+    }
+  ]
+}

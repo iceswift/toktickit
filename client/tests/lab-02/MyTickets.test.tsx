@@ -23,6 +23,7 @@ describe("My Tickets", () => {
     render(<MyTickets requester={requester} onCreateTicket={vi.fn()} onOpenTicket={vi.fn()} />);
 
     expect((await screen.findAllByText(ticket.ticketNumber)).length).toBeGreaterThan(0);
+    expect(screen.getByRole('navigation', {name:'Ticket pagination'})).toBeInTheDocument();
     await userEvent.type(screen.getByLabelText("Search"), "VPN");
     expect((await screen.findAllByText(ticket.ticketNumber)).length).toBeGreaterThan(0);
     expect(listSpy).toHaveBeenLastCalledWith(expect.objectContaining({ search: "VPN", page: 1 }));

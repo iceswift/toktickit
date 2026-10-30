@@ -1,0 +1,51 @@
+
+ RUN  v2.1.9 D:/Chat/cpe/lab4/client
+
+ × tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Public Comment through failure then clears only after confirmed success 559ms
+   → expect(element).toHaveValue(Keep my draft)
+
+Expected the element to have value:
+  Keep my draft
+Received:
+
+ × tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Internal Note through failure then clears only after confirmed success
+   → expect(element).toHaveValue(Keep my draft)
+
+Expected the element to have value:
+  Keep my draft
+Received:
+
+ × tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > prevents repeated posts and protects input while the original request is pending
+   → expected "addStaffPublicComment" to be called 1 times, but got 2 times
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Public Comment through failure then clears only after confirmed success
+ FAIL  tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > retains Add Internal Note through failure then clears only after confirmed success
+Error: expect(element).toHaveValue(Keep my draft)
+
+Expected the element to have value:
+  Keep my draft
+Received:
+
+ ❯ tests/lab-04/StaffDraftRecovery.test.tsx:19:76
+     17|     render(<StaffTicketDetail ticketId={7} user={user} onBack={vi.fn()…
+     18|     const input=await screen.findByLabelText(label);fireEvent.change(i…
+     19|     await screen.findByText('Unable to save. Retry safely.');expect(in…
+       |                                                                            ^
+     20|     fireEvent.click(screen.getByRole('button',{name:button}));await wa…
+     21|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/lab-04/StaffDraftRecovery.test.tsx > Staff communication draft safety > prevents repeated posts and protects input while the original request is pending
+AssertionError: expected "addStaffPublicComment" to be called 1 times, but got 2 times
+ ❯ tests/lab-04/StaffDraftRecovery.test.tsx:25:135
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  12:28:57
+   Duration  38.07s (transform 502ms, setup 6.04s, collect 5.43s, tests 839ms, environment 24.53s, prepare 679ms)

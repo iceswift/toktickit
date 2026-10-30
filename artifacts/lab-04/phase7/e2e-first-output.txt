@@ -1,0 +1,28 @@
+[WebServer] (node:31004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:21284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:35612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:35612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:10628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:45084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+SyntaxError: D:\Chat\cpe\lab4\client\e2e\lab-03\user-administration.spec.ts: Unexpected token (29:0)
+
+  27 |     await expect(page.getByRole("status")).toContainText("IT Priority saved");
+  28 |   }
+> 29 | });
+     | ^
+  30 | test("Administrator manages a user and forces password change", async ({ page, browser }) => { await signIn(page, adminEmail); await expect(page.getByRole("heading", { name: "User Management" })).toBeVisible(); await page.locator("#create-name").fill("Phase Eight User"); await page.locator("#create-email").fill(managedEmail); await page.locator("#create-role").selectOption("IT_STAFF"); await page.locator("#create-password").fill(password); await page.getByRole("button", { name: "Create user" }).click(); await expect(page.getByText(/User created/)).toBeVisible(); await page.getByLabel("Search users").fill(managedEmail); let row = page.getByRole("row").filter({ hasText: managedEmail }); await row.getByRole("button", { name: "Edit" }).click(); await page.locator("#edit-role").selectOption("REQUESTER"); await page.getByRole("button", { name: "Save changes" }).click(); await expect(page.getByText("User details updated.")).toBeVisible(); row = page.getByRole("row").filter({ hasText: managedEmail }); await row.getByRole("button", { name: "Reset password" }).click(); await page.getByLabel("New initial password").fill(replacement); await page.getByRole("button", { name: "Reset initial password" }).click(); await expect(page.getByText(/Initial password reset/)).toBeVisible(); const context = await browser.newContext(); const managed = await context.newPage(); await signIn(managed, managedEmail, replacement); await expect(managed.getByRole("heading", { name: "Change password" })).toBeVisible(); await context.close(); });
+  31 |
+
+   at lab-03\user-administration.spec.ts:29
+
+  27 |     await expect(page.getByRole("status")).toContainText("IT Priority saved");
+  28 |   }
+> 29 | });
+  30 | test("Administrator manages a user and forces password change", async ({ page, browser }) => { await signIn(page, adminEmail); await expect(page.getByRole("heading", { name: "User Management" })).toBeVisible(); await page.locator("#create-name").fill("Phase Eight User"); await page.locator("#create-email").fill(managedEmail); await page.locator("#create-role").selectOption("IT_STAFF"); await page.locator("#create-password").fill(password); await page.getByRole("button", { name: "Create user" }).click(); await expect(page.getByText(/User created/)).toBeVisible(); await page.getByLabel("Search users").fill(managedEmail); let row = page.getByRole("row").filter({ hasText: managedEmail }); await row.getByRole("button", { name: "Edit" }).click(); await page.locator("#edit-role").selectOption("REQUESTER"); await page.getByRole("button", { name: "Save changes" }).click(); await expect(page.getByText("User details updated.")).toBeVisible(); row = page.getByRole("row").filter({ hasText: managedEmail }); await row.getByRole("button", { name: "Reset password" }).click(); await page.getByLabel("New initial password").fill(replacement); await page.getByRole("button", { name: "Reset initial password" }).click(); await expect(page.getByText(/Initial password reset/)).toBeVisible(); const context = await browser.newContext(); const managed = await context.newPage(); await signIn(managed, managedEmail, replacement); await expect(managed.getByRole("heading", { name: "Change password" })).toBeVisible(); await context.close(); });
+  31 |

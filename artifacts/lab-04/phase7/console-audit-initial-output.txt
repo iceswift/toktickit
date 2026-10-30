@@ -1,0 +1,444 @@
+[WebServer] (node:30868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:45536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:49276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:49276) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:29256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:49900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:48124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop (13.4s)
+(node:48176) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   2 e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at desktop (24.4s)
+(node:33304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   3 e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at desktop (8.6s)
+(node:48864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   4 e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet (13.3s)
+(node:48760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   5 e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at tablet (23.4s)
+(node:49976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   6 e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at tablet (8.6s)
+(node:21944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   7 e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile (12.5s)
+(node:24152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   8 e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at mobile (23.4s)
+(node:36328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   9 e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at mobile (9.1s)
+(node:26036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  10 e2e\lab-04\responsive.spec.ts:52:1 › real Staff draft survives a labelled injected failure and is posted once after retry (5.1s)
+
+
+  1) e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 6
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,string[]>();
+      10 | test.beforeEach(({page})=>{const errors:string[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push(e.message));page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});});
+    > 11 | test.afterEach(({page},info)=>{const errors=browserErrors.get(page)??[];const unexpected=info.title.startsWith('real Staff draft')?errors.filter(message=>!/^Failed to load resource:.*503/.test(message)):errors;expect(unexpected,'unexpected browser runtime/console errors').toEqual([]);});
+         |                                                                                                                                                                                                                                                                                  ^
+      12 | test.beforeAll(()=>{assertSyntheticDatabase();mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);ticketNumber='TKT-P7-VISUAL-'+Date.now();runDatabase(`const u=await p.user.findUniqueOrThrow({where:{email:'${owner}'}});const s=await p.user.findUniqueOrThrow({where:{email:'${staff}'}});const c=await p.category.findFirstOrThrow();const r=await p.relatedSystem.findFirstOrThrow();const t=await p.ticket.create({data:{ticketNumber:'${ticketNumber}',requesterId:u.developmentRequesterId,requesterUserId:u.id,categoryId:c.id,relatedSystemId:r.id,summary:'Phase7 accessible service workflow',description:'Synthetic fixture for loaded visual and keyboard inspection. '+ 'long-unbroken-'.repeat(15),requestedPriority:'HIGH',currentStatus:'OPEN',itPriority:'URGENT',version:2,createdAt:new Date(Date.now()-86400000)}});const a=await p.actionTaken.create({data:{ticketId:t.id,performedByUserId:s.id,assigneeUserId:s.id,actionDateTime:new Date(),description:'Review VPN connectivity; retain clear work history.',result:'Waiting for user confirmation',followUpRequired:true,followUpNote:'Confirm connection',attachmentNotes:'Look for the diagnostic screenshot'}});await p.actionEvent.create({data:{actionId:a.id,ticketId:t.id,actorId:s.id,type:'CREATED',version:1,changes:{syntheticVisualFixture:true}}});`);});
+      13 | async function inspect(page:Page,name:string){
+      14 |   await expectNoHorizontalOverflow(page);
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-3552a-board-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at desktop
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,string[]>();
+      10 | test.beforeEach(({page})=>{const errors:string[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push(e.message));page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});});
+    > 11 | test.afterEach(({page},info)=>{const errors=browserErrors.get(page)??[];const unexpected=info.title.startsWith('real Staff draft')?errors.filter(message=>!/^Failed to load resource:.*503/.test(message)):errors;expect(unexpected,'unexpected browser runtime/console errors').toEqual([]);});
+         |                                                                                                                                                                                                                                                                                  ^
+      12 | test.beforeAll(()=>{assertSyntheticDatabase();mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);ticketNumber='TKT-P7-VISUAL-'+Date.now();runDatabase(`const u=await p.user.findUniqueOrThrow({where:{email:'${owner}'}});const s=await p.user.findUniqueOrThrow({where:{email:'${staff}'}});const c=await p.category.findFirstOrThrow();const r=await p.relatedSystem.findFirstOrThrow();const t=await p.ticket.create({data:{ticketNumber:'${ticketNumber}',requesterId:u.developmentRequesterId,requesterUserId:u.id,categoryId:c.id,relatedSystemId:r.id,summary:'Phase7 accessible service workflow',description:'Synthetic fixture for loaded visual and keyboard inspection. '+ 'long-unbroken-'.repeat(15),requestedPriority:'HIGH',currentStatus:'OPEN',itPriority:'URGENT',version:2,createdAt:new Date(Date.now()-86400000)}});const a=await p.actionTaken.create({data:{ticketId:t.id,performedByUserId:s.id,assigneeUserId:s.id,actionDateTime:new Date(),description:'Review VPN connectivity; retain clear work history.',result:'Waiting for user confirmation',followUpRequired:true,followUpNote:'Confirm connection',attachmentNotes:'Look for the diagnostic screenshot'}});await p.actionEvent.create({data:{actionId:a.id,ticketId:t.id,actorId:s.id,type:'CREATED',version:1,changes:{syntheticVisualFixture:true}}});`);});
+      13 | async function inspect(page:Page,name:string){
+      14 |   await expectNoHorizontalOverflow(page);
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-7f923-tions-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at desktop
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,string[]>();
+      10 | test.beforeEach(({page})=>{const errors:string[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push(e.message));page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});});
+    > 11 | test.afterEach(({page},info)=>{const errors=browserErrors.get(page)??[];const unexpected=info.title.startsWith('real Staff draft')?errors.filter(message=>!/^Failed to load resource:.*503/.test(message)):errors;expect(unexpected,'unexpected browser runtime/console errors').toEqual([]);});
+         |                                                                                                                                                                                                                                                                                  ^
+      12 | test.beforeAll(()=>{assertSyntheticDatabase();mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);ticketNumber='TKT-P7-VISUAL-'+Date.now();runDatabase(`const u=await p.user.findUniqueOrThrow({where:{email:'${owner}'}});const s=await p.user.findUniqueOrThrow({where:{email:'${staff}'}});const c=await p.category.findFirstOrThrow();const r=await p.relatedSystem.findFirstOrThrow();const t=await p.ticket.create({data:{ticketNumber:'${ticketNumber}',requesterId:u.developmentRequesterId,requesterUserId:u.id,categoryId:c.id,relatedSystemId:r.id,summary:'Phase7 accessible service workflow',description:'Synthetic fixture for loaded visual and keyboard inspection. '+ 'long-unbroken-'.repeat(15),requestedPriority:'HIGH',currentStatus:'OPEN',itPriority:'URGENT',version:2,createdAt:new Date(Date.now()-86400000)}});const a=await p.actionTaken.create({data:{ticketId:t.id,performedByUserId:s.id,assigneeUserId:s.id,actionDateTime:new Date(),description:'Review VPN connectivity; retain clear work history.',result:'Waiting for user confirmation',followUpRequired:true,followUpNote:'Confirm connection',attachmentNotes:'Look for the diagnostic screenshot'}});await p.actionEvent.create({data:{actionId:a.id,ticketId:t.id,actorId:s.id,type:'CREATED',version:1,changes:{syntheticVisualFixture:true}}});`);});
+      13 | async function inspect(page:Page,name:string){
+      14 |   await expectNoHorizontalOverflow(page);
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Administ-d93ef-forms-inspection-at-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 6
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,string[]>();
+      10 | test.beforeEach(({page})=>{const errors:string[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push(e.message));page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});});
+    > 11 | test.afterEach(({page},info)=>{const errors=browserErrors.get(page)??[];const unexpected=info.title.startsWith('real Staff draft')?errors.filter(message=>!/^Failed to load resource:.*503/.test(message)):errors;expect(unexpected,'unexpected browser runtime/console errors').toEqual([]);});
+         |                                                                                                                                                                                                                                                                                  ^
+      12 | test.beforeAll(()=>{assertSyntheticDatabase();mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);ticketNumber='TKT-P7-VISUAL-'+Date.now();runDatabase(`const u=await p.user.findUniqueOrThrow({where:{email:'${owner}'}});const s=await p.user.findUniqueOrThrow({where:{email:'${staff}'}});const c=await p.category.findFirstOrThrow();const r=await p.relatedSystem.findFirstOrThrow();const t=await p.ticket.create({data:{ticketNumber:'${ticketNumber}',requesterId:u.developmentRequesterId,requesterUserId:u.id,categoryId:c.id,relatedSystemId:r.id,summary:'Phase7 accessible service workflow',description:'Synthetic fixture for loaded visual and keyboard inspection. '+ 'long-unbroken-'.repeat(15),requestedPriority:'HIGH',currentStatus:'OPEN',itPriority:'URGENT',version:2,createdAt:new Date(Date.now()-86400000)}});const a=await p.actionTaken.create({data:{ticketId:t.id,performedByUserId:s.id,assigneeUserId:s.id,actionDateTime:new Date(),description:'Review VPN connectivity; retain clear work history.',result:'Waiting for user confirmation',followUpRequired:true,followUpNote:'Confirm connection',attachmentNotes:'Look for the diagnostic screenshot'}});await p.actionEvent.create({data:{actionId:a.id,ticketId:t.id,actorId:s.id,type:'CREATED',version:1,changes:{syntheticVisualFixture:true}}});`);});
+      13 | async function inspect(page:Page,name:string){
+      14 |   await expectNoHorizontalOverflow(page);
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-7cf8a-yboard-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at tablet
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-72e85-ctions-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at tablet
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Administ-8287d--forms-inspection-at-tablet\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 6
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Requeste-5e9d8-yboard-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at mobile
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Staff-wo-a0b8f-ctions-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at mobile
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-03791--forms-inspection-at-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-Administ-03791--forms-inspection-at-mobile\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-Administ-03791--forms-inspection-at-mobile\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-Administ-03791--forms-inspection-at-mobile\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) e2e\lab-04\responsive.spec.ts:52:1 › real Staff draft survives a labelled injected failure and is posted once after retry
+
+    Error: unexpected browser runtime/console errors
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    +   "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+    + ]
+
+       9 | const browserErrors=new WeakMap<Page,{message:string;url:string}[]>();
+      10 | test.beforeEach(({page})=>{const errors:{message:string;url:string}[]=[];browserErrors.set(page,errors);page.on('pageerror',e=>errors.push({message:e.message,url:'runtime'}));page.on('console',message=>{if(message.type()==='error')errors.push({message:message.text(),url:message.location().url});});});
+    > 11 | test.afterEach(({page},info)=>{
+         |                                ^
+      12 |   const errors=browserErrors.get(page)??[];
+      13 |   const expected=(entry:{message:string;url:string})=>
+      14 |     (entry.url===api+'/auth/me'&&/^Failed to load resource:.*401/.test(entry.message))||
+        at D:\Chat\cpe\lab4\client\e2e\lab-04\responsive.spec.ts:11:274
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-real-Sta-e77e3--is-posted-once-after-retry\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\lab4\lab-04-responsive-real-Sta-e77e3--is-posted-once-after-retry\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\lab4\lab-04-responsive-real-Sta-e77e3--is-posted-once-after-retry\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\lab4\lab-04-responsive-real-Sta-e77e3--is-posted-once-after-retry\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10 failed
+    e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at desktop
+    e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at desktop
+    e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at desktop
+    e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at tablet
+    e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at tablet
+    e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at tablet
+    e2e\lab-04\responsive.spec.ts:28:3 › Requester screens: loaded semantic/contrast/keyboard inspection at mobile
+    e2e\lab-04\responsive.spec.ts:36:3 › Staff work forms, confirmations and My Actions inspection at mobile
+    e2e\lab-04\responsive.spec.ts:46:3 › Administrator directory and edit/reset forms inspection at mobile
+    e2e\lab-04\responsive.spec.ts:52:1 › real Staff draft survives a labelled injected failure and is posted once after retry

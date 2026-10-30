@@ -5,8 +5,8 @@ import { defineConfig } from '@playwright/test';
 const database = process.env.LAB4_UI_DATABASE_URL;
 const parsed = database ? new URL(database) : null;
 if (process.env.LAB4_UI_TEST !== '1' || !parsed || parsed.hostname !== '127.0.0.1' ||
-    parsed.port !== '55484' || !/^\/lab4_p[456]_ui_[a-z0-9_]+$/.test(parsed.pathname)) {
-  throw new Error('Opt in with LAB4_UI_TEST=1 and a fresh loopback:55484/lab4_p4_ui_* or lab4_p5_ui_* database.');
+    parsed.port !== '55484' || !/^\/lab4_p[4567]_ui_[a-z0-9_]+$/.test(parsed.pathname)) {
+  throw new Error('Opt in with LAB4_UI_TEST=1 and a fresh loopback:55484/lab4_p[4567]_ui_* database.');
 }
 process.env.DATABASE_URL = database;
 export default defineConfig({

@@ -3,7 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { resetAccount,signIn,runDatabase,expectNoHorizontalOverflow } from '../lab-03/helpers.js';
 const api='http://127.0.0.1:55485',shots='../output/playwright/phase6';
 const owner='amina.rahman@example.test',staff='iris.nattapong@example.test',admin='narin.admin@example.test';
-test.beforeAll(()=>{const u=new URL(process.env.DATABASE_URL??'http://invalid');if(process.env.LAB4_UI_TEST!=='1'||u.hostname!=='127.0.0.1'||u.port!=='55484'||!/^\/lab4_p6_ui_[a-z0-9_]+$/.test(u.pathname))throw new Error('Phase6 requires isolated p6 UI fixture');mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);});
+test.beforeAll(()=>{const u=new URL(process.env.DATABASE_URL??'http://invalid');if(process.env.LAB4_UI_TEST!=='1'||u.hostname!=='127.0.0.1'||u.port!=='55484'||!/^\/lab4_p[67]_ui_[a-z0-9_]+$/.test(u.pathname))throw new Error('Phase6 requires isolated p6 UI fixture');mkdirSync(shots,{recursive:true});for(const email of [owner,staff,admin])resetAccount(email);});
 async function open(page:import('@playwright/test').Page,email=owner){await signIn(page,email);await page.getByRole('button',{name:'Dashboard',exact:true}).click();await expect(page.getByText(/Asia\/Bangkok · Backend snapshot/)).toBeVisible();}
 test('Requester counts and exact open drill-down; detail returns to refreshed Dashboard',async({page})=>{
   await open(page);const response=await page.request.get(api+'/api/tickets/dashboard');const d=await response.json();expect(response.status()).toBe(200);

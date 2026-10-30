@@ -1,5 +1,10 @@
 # Lab 4 UI Specification - prepared for peer review
 
+Current30October Phase7: major screens implemented and inspected at three widths;
+current checklist below supersedes historical phase-only pending notices. Actual
+captures/automated and manual limits: phase7-visual-evidence.md and phase7-qa.md.
+Independent review and final release/PDF inspection are separate pending gates.
+
 Phase5 local checkpoint: Ticket Workflow gate/confirmation/history and Requester
 read-only view implemented; three-width captures/focus/overflow checks inspected.
 See phase5-ticket-workflow.md and report Part7/Part9 continuation. Below old
@@ -34,13 +39,13 @@ overlap and horizontal overflow. Screenshot only fully loaded readable content.
 
 | Visual/accessibility check | Current status |
 |---|---|
-| Zen Green design consistency and role navigation | Not implemented |
-| Dashboard cards, current-user Actions and drill-down | Not implemented |
-| Action list/forms/status/read-only visibility | Not implemented |
-| Editable/read-only fields and validation placement | Not implemented |
-| Button hierarchy, loading and recoverable feedback | Not implemented |
-| Keyboard/focus/semantic labels/non-color cues/contrast | Not verified |
-| Clipping, overlap and horizontal overflow | Not verified |
+| Zen Green design consistency and role navigation | Implemented; current nav semantics and skip link verified in Phase7 |
+| Dashboard cards, current-user Actions and drill-down | Actual DB/API/component/browser evidence in Phase6/7 |
+| Action list/forms/status/read-only visibility | Loaded desktop/tablet/mobile captures and role tests |
+| Editable/read-only fields and validation placement | Gray read-only fields, near-field text/aria errors; three-width inspection |
+| Button hierarchy, loading and recoverable feedback | Primary/secondary controls; retained drafts/retries; confirmed writes clear input |
+| Keyboard/focus/semantic labels/non-color cues/contrast | Selected keyboard paths and axe automated scans pass after measured contrast fixes; not full assistive-tech certification |
+| Clipping, overlap and horizontal overflow | Loaded screenshots inspected, document-width assertions pass; normal vertical scroll |
 
 No checkbox is marked complete before actual inspection.
 

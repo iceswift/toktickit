@@ -1,0 +1,21 @@
+{
+  "name": "login-mobile",
+  "url": "http://127.0.0.1:55486/",
+  "violations": [],
+  "incomplete": [],
+  "passes": [
+    "aria-hidden-body",
+    "autocomplete-valid",
+    "avoid-inline-spacing",
+    "button-name",
+    "color-contrast",
+    "document-title",
+    "duplicate-id-aria",
+    "form-field-multiple-labels",
+    "html-has-lang",
+    "html-lang-valid",
+    "label",
+    "meta-viewport",
+    "nested-interactive"
+  ]
+}

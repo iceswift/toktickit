@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-30T10:44:23.9030199Z",
+  "scope": "LOCAL Phase7 feature-tree verification, not final main/CI/peer acceptance",
+  "serverTests": 272,
+  "clientTests": 90,
+  "browserScenarios": 37,
+  "selectedOutputs": {
+    "browser": "e2e-final-verified-output.txt",
+    "server": "server-final-consistent-fixture-output.txt",
+    "client": "client-final-output.txt"
+  },
+  "screenshots": 64,
+  "axeScreens": 48,
+  "axeViolations": 0,
+  "incompleteRules": [
+    "color-contrast"
+  ],
+  "manualReview": "Native select SVG background: checked text colors and rendered captures; not complete screen-reader certification",
+  "consoleScenarios": 10,
+  "unexpectedConsoleOrRuntimeErrors": 0,
+  "expectedConsole": "Exact auth/me401 before login, and explicitly injected internal-notes503 only; raw records retained",
+  "dependencyAdvisories": {
+    "server": 0,
+    "client": 0
+  }
+}

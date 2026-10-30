@@ -1,0 +1,60 @@
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/server
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_ENV {"node":"v22.17.0","platform":"win32","arch":"x64","cpu":"Intel(R) Core(TM) i7-14650HX","logicalCpus":24,"totalMemoryGB":24,"postgres":"dedicated loopback55484","database":"/lab4_p2_perf_7741b1c72c624c3c83e52daf89a0ece3","warmup":5,"samples":20,"tickets":10000,"actions":20000,"limitMs":1000}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"REQUESTER","path":"/api/tickets/dashboard","timesMs":[50.27,49.38,50.29,55.99,50.1,44.89,46.08,44.44,39,39.06,35.53,41.23,44.02,44.85,47.57,46.14,42.57,45.51,45.41,45.08],"p95Ms":50.29,"maxMs":55.99,"responseBytes":2362}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"IT_STAFF","path":"/staff/dashboard","timesMs":[106.31,110.75,112.45,119.17,110.1,113.69,106.81,105.97,111.57,107.12,105.33,110.98,108.45,114.15,110.27,114.34,105.93,106.96,110.84,103.86],"p95Ms":114.34,"maxMs":119.17,"responseBytes":3894,"myActions":20000}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"ADMINISTRATOR","path":"/staff/dashboard","timesMs":[73.76,71.54,79.63,78.17,73.98,72.48,73.43,76.85,81.52,79.54,77.99,77.77,73.89,74.94,68.78,72.1,72.44,78.67,78.64,76.94],"p95Ms":79.63,"maxMs":81.52,"responseBytes":3096,"myActions":0}
+PERF_EXPLAIN SELECT "currentStatus",count(*) FROM "Ticket" GROUP BY "currentStatus"
+HashAggregate  (cost=350.00..350.08 rows=8 width=12) (actual time=2.423..2.425 rows=8.00 loops=1)
+  Group Key: "currentStatus"
+  Batches: 1  Memory Usage: 32kB
+  Buffers: shared hit=200
+  ->  Seq Scan on "Ticket"  (cost=0.00..300.00 rows=10000 width=4) (actual time=0.017..1.440 rows=10000.00 loops=1)
+        Buffers: shared hit=200
+Planning:
+  Buffers: shared hit=215
+Planning Time: 4.467 ms
+Execution Time: 2.479 ms
+PERF_EXPLAIN SELECT id FROM "Ticket" WHERE "requesterUserId"=1 ORDER BY "updatedAt" DESC,id DESC LIMIT 5
+Limit  (cost=491.10..491.11 rows=5 width=12) (actual time=4.190..4.192 rows=5.00 loops=1)
+  Buffers: shared hit=206
+  ->  Sort  (cost=491.10..516.10 rows=10000 width=12) (actual time=4.189..4.190 rows=5.00 loops=1)
+        Sort Key: "updatedAt" DESC, id DESC
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=206
+        ->  Seq Scan on "Ticket"  (cost=0.00..325.00 rows=10000 width=12) (actual time=0.023..2.265 rows=10000.00 loops=1)
+              Filter: ("requesterUserId" = 1)
+              Buffers: shared hit=200
+Planning:
+  Buffers: shared hit=213
+Planning Time: 5.870 ms
+Execution Time: 4.222 ms
+PERF_EXPLAIN SELECT id FROM "ActionTaken" WHERE "performedByUserId"=2 ORDER BY "createdAt" DESC,id DESC LIMIT 5
+Limit  (cost=868.19..868.21 rows=5 width=12) (actual time=6.809..6.811 rows=5.00 loops=1)
+  Buffers: shared hit=292
+  ->  Sort  (cost=868.19..918.19 rows=20000 width=12) (actual time=6.808..6.809 rows=5.00 loops=1)
+        Sort Key: "createdAt" DESC, id DESC
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=292
+        ->  Seq Scan on "ActionTaken"  (cost=0.00..536.00 rows=20000 width=12) (actual time=0.016..3.625 rows=20000.00 loops=1)
+              Filter: ("performedByUserId" = 2)
+              Buffers: shared hit=286
+Planning:
+  Buffers: shared hit=156
+Planning Time: 3.199 ms
+Execution Time: 6.831 ms
+
+ ✓ tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans 20260ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:35:46
+   Duration  28.51s (transform 764ms, setup 0ms, import 8.00s, tests 20.27s, environment 0ms)

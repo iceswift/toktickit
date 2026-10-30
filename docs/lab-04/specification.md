@@ -1,5 +1,11 @@
 # Sprint 4 Engineering Contract - prepared for peer review
 
+Current30October: Phase6 independently merged/accepted at df785a5 (PR82,
+Issue73 Closed/Done). Phase7 QA is Issue74/feature74, not Phase8. Current test
+mapping is tests.md and actual local evidence phase7-qa.md. Full final-main tests,
+peer acceptance, release and final rendered PDF remain separate gates; earlier
+phase-specific pending/planned notices below are historical checkpoints.
+
 Latest29October closure: Phase5 accepted after Richyboy170 approved final6b12c82
 then merged PR81 at aa1f868; trees match. Issue72 Closed/Project Done verified.
 See phase5-closure.md. No new main/CI, dashboard/hardening/release completion.
@@ -249,3 +255,16 @@ Phase6 implementation checkpoint (30 October 2026): section8 populations remain
 unchanged; exact19 card/list mappings now pass real-DB checks on the feature tree.
 267server/82client tests/builds passed locally. Browser/peer acceptance recorded
 separately; Phase7/8 remain Backlog. See phase6-dashboards.md.
+
+## Phase6 closure — 30 October 2026
+
+Richyboy170 approved final d64d0e3 then merged PR82 into lab4-staging at df785a5
+(12:01:08 Bangkok). Fetched merge tree equals reviewed head. Author acknowledged
+actual review; no unresolved inline finding. Issue73 acceptance verified then
+Closed at12:03:14 Bangkok; actual Project Done. Lab4 Done6/Backlog2, intermediate
+states0. See [complete closure](phase6-closure.md) for actual links and inspected
+screenshots. Prior PR Review/Started checkpoints are historical and superseded.
+Retained local server267/client82/builds/browser18 + Dashboard6 rerun, NOT new
+staging/main/CI runs. Attached checks0 not a pass. Phase7/8 remain Backlog.
+Post-merge docs/images remain local for the next authorized feature PR; no new
+cleanup PR, direct staging/main push or rewrite of reviewed commits.

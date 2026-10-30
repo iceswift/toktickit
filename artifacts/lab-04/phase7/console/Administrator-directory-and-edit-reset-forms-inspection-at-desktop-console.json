@@ -1,0 +1,14 @@
+{
+  "title": "Administrator directory and edit/reset forms inspection at desktop",
+  "expected": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    },
+    {
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "url": "http://127.0.0.1:55485/auth/me"
+    }
+  ],
+  "unexpected": []
+}
