@@ -35,7 +35,9 @@ record dates. Commands to proceed do not themselves prove successful completion.
 
 ## My Reflection
 
-DRAFT - awaiting the student's explicit confirmation; not a confirmed submission.
+Confirmed by the student on30October2026 (Asia/Bangkok). In response to the exact
+three-sentence draft below, the student answered: "ตรงกับประสบการณ์ของฉัน"
+(it matches my experience). This confirmation applies to Lab4, not Lab3.
 
 Using an AI specification agent helped me turn a broad lab request into explicit
 rules and acceptance criteria. With the coding agent, I learned to check real test
@@ -43,7 +45,6 @@ output and evidence rather than assume that generated code or a working screen
 meant the whole task was complete. The work also reinforced that peer review
 requires replies and a reviewer-performed merge, not just an approval button.
 
-This draft must be confirmed or corrected by the student before final PDF release.
 Actual executed results and limitations are in tests.md/phase7-qa.md; injected
 failure demonstrations, local runs, peer acceptance and final-main proof remain
 distinct. No invented dialogue or personal experience is attributed.

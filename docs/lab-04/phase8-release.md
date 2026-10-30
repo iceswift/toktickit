@@ -3,7 +3,8 @@
 Started30October2026, Issue75, docs/lab4-release-report from reviewed b887994.
 No new product scope. Full11-page Lab4 handout and20-page workflow guide reread;
 requirements are assessment constraints, not independent permission. Model supplied
-by student: GPT-6.1 Sol (medium). Personal reflection confirmation pending.
+by student: GPT-6.1 Sol (medium). The student explicitly confirmed the proposed
+Lab4 personal reflection on30October2026: "ตรงกับประสบการณ์ของฉัน".
 
 ## Fixed completion gates
 
@@ -36,7 +37,7 @@ outputs. Never backdate review dialogue, fabricate Done, or label a draft final.
 |1 Git Use with Engineering Workflow|Feature commits/merges through83, review/replies, README and ignore file|Curate rendered reviewer.md without contradictory old pending notices; actual graph including release into main; rendered README/ignore/tree; final all-Done board|
 |2 Spec DD|Numbered FR/BR/AC, transitions/gates, metric queries, migration decisions and DoD; contract753ddeb predates implementation|Render concise current specification.md, preserve/link earlier contract/history; mark real completion only after release gates|
 |3 Test DD and Traceability|AC01..13 matrix, real named files; feature272/90/37, builds/audit/performance|Render current tests.md and complete passing output FROM MAIN, with commands/source/env; no relabelling feature logs|
-|4 AI Use with Reflection|Curated10 authentic selected prompts; student model GPT-6.1 Sol (medium), contemporaneous history preserved|Student confirmation/correction of the personal reflection and its final rendering; no Lab3 transfer or invented prompts|
+|4 AI Use with Reflection|Curated10 authentic selected prompts; student model GPT-6.1 Sol (medium); specific Lab4 reflection confirmed by student30October2026, history preserved|Final readable rendering of ai-use.md and confirmed reflection; no Lab3 transfer or invented prompts|
 |5 Working IT Staff Dashboard UI|Metrics, real SQL/count comparison, all drill-downs, own performer,3widths|Select readable figures; Staff-specific loading/empty/forbidden/failure image proof needs supplementation rather than substituting Requester screenshots silently|
 |6 Working Actions Taken UI|List/create/assign/edit/complete/cancel, validation/inactive/roles, retry/conflict,3widths; required screenshot directories/provenance now verified|Select compact readable panels and lifecycle proof from actual scenarios for the final PDF|
 |7 Working Ticket Workflow|Full matrix/gates; Resolve/Close/AdminReopen/Cancel, ordered immutable history, Requester read-only/advisory|Curate proof and link actual negative outputs; distinguish injected failures from real API responses|
