@@ -1,20 +1,8 @@
-# Lab 4 UI Specification - prepared for peer review
+# Lab 4 UI Specification and Inspection
 
-Current30October Phase7: major screens implemented and inspected at three widths;
-current checklist below supersedes historical phase-only pending notices. Actual
-captures/automated and manual limits: phase7-visual-evidence.md and phase7-qa.md.
-Independent review and final release/PDF inspection are separate pending gates.
-
-Phase5 local checkpoint: Ticket Workflow gate/confirmation/history and Requester
-read-only view implemented; three-width captures/focus/overflow checks inspected.
-See phase5-ticket-workflow.md and report Part7/Part9 continuation. Below old
-not-implemented table is historical; dashboards/app-wide final QA still pending.
-
-29October2026 implementation note: Phase4 Actions-only forms/list/history are
-implemented and locally verified; below “Not implemented” table remains the
-historical plan for the full sprint. See phase4-actions-ui.md and report Part6/9
-for inspected three-width screenshots, semantic validation/focus, field-state
-and safe-error proof. Dashboard/final-workflow/app-wide checks remain pending.
+Current30October2026: product Phases1-7 accepted at staging b887994.
+[Historical notes](ui-spec-history.md) preserve earlier implementation states.
+This checklist records actual local inspection, not final release/main/PDF QA.
 
 Reuse existing Zen Green conventions; no replacement design or new shell framework.
 Requester Dashboard and Staff/Admin Dashboard lead to detailed lists/Tickets.
@@ -32,7 +20,7 @@ not-found, stale-conflict and API-failure feedback. Field errors are near fields
 semantically associated. Busy submits prevent duplicate clicks. Recoverable failures
 retain input; conflicts require deliberate refresh/reconciliation, not silent overwrite.
 
-Proposed inspection viewports: desktop 1440x900, tablet 768x1024, mobile 390x844.
+Verified inspection viewports: desktop 1440x900, tablet 768x1024, mobile 390x844.
 Inspect all major screens at all three; additionally keyboard traversal, visible
 focus, semantic labels/headings, non-color cues, readable contrast, dialogs, clipping,
 overlap and horizontal overflow. Screenshot only fully loaded readable content.
@@ -61,12 +49,25 @@ One idempotency key per logical create, retained with input through retry/failur
 version/status, Action/history and dashboard. Semantic labels, keyboard focus,
 textual statuses/priorities and field-associated errors required at all viewports.
 
-## Phase6 working UI checkpoint
 
-Explicit Dashboard navigation preserves legacy landing pages. Server filters
-are retained in list search/sort/pagination; scope is visible and clearable.
-Back from Detail returns to its source; Dashboard remount and explicit Refresh
-re-fetch. Loading, zero,403 and failure differ; old counts clear on fetch/error.
-My Actions lists current-performer work, not assignments. Whole-app final QA
-checkboxes above remain pending. Actual targeted browser evidence is recorded in
-[Phase6](phase6-dashboards.md), not inferred from component tests.
+## Navigation, data refresh and evidence limits
+
+Explicit Dashboard navigation preserves legacy landing pages. One current nav
+destination, skip link and visible focus are semantic, not color-only cues.
+Dashboard filters persist into list search/sort/pagination; source context is clearable.
+Back from Detail returns to its source. Remount/Refresh re-fetch; errors clear stale
+metrics. My Actions means performedBy, not assignments. Requester/shared Actions
+and private Internal Notes remain distinct and backend protected.
+
+Phase7:64 inspected images,48 automatic axe reports with zero violations and10
+console records with zero unexpected errors. Exact expected unauthenticated auth/me401
+and injected Note503 retained. Native select SVG backgrounds make some contrast
+checks incomplete; actual text color pairs checked manually. Not screen-reader or
+WCAG certification. Phase8 Staff-specific delayed request, injected503/403, real
+zero-personal-work and retry captures supplement earlier Requester state images.
+All injections explicitly labelled; real API authorization tests remain separate.
+
+Color fixes preserve Zen Green: navbar pure white on #198754 is4.53:1;
+validation #b02a37 on #f8f9fa is6.16:1; read-only #495057/#e9ecef is6.90:1.
+Role badges have a supported accessible name, pagination a navigation landmark.
+Source facts and loaded screenshot inventory: [phase7-visual-evidence.md](phase7-visual-evidence.md).

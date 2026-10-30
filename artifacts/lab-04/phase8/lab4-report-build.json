@@ -1,0 +1,19 @@
+{
+  "status": "REVIEW COPY - release, fresh main verification and final Done board pending",
+  "scope": "local review copy, NOT final released main",
+  "pages": 48,
+  "figures": 32,
+  "section_pages": {
+    "part1": 3,
+    "part2": 9,
+    "part3": 14,
+    "part4": 22,
+    "part5": 24,
+    "part6": 28,
+    "part7": 36,
+    "part8": 41,
+    "part9": 45
+  },
+  "pdf": "D:\\Chat\\cpe\\lab4\\output\\pdf\\report_lab04_67070503444.pdf",
+  "html": "D:\\Chat\\cpe\\lab4\\docs\\lab-04\\report.html"
+}

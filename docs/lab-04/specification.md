@@ -1,42 +1,11 @@
-# Sprint 4 Engineering Contract - prepared for peer review
+# Sprint 4 Engineering Contract
 
-Current30October: Phase6 independently merged/accepted at df785a5 (PR82,
-Issue73 Closed/Done). Phase7 QA is Issue74/feature74, not Phase8. Current test
-mapping is tests.md and actual local evidence phase7-qa.md. Full final-main tests,
-peer acceptance, release and final rendered PDF remain separate gates; earlier
-phase-specific pending/planned notices below are historical checkpoints.
-
-Latest29October closure: Phase5 accepted after Richyboy170 approved final6b12c82
-then merged PR81 at aa1f868; trees match. Issue72 Closed/Project Done verified.
-See phase5-closure.md. No new main/CI, dashboard/hardening/release completion.
-Prior pending-peer-review checkpoints below are historical, not current state.
-
-Latest29October implementation: Phase4 reviewer-merged PR80 at ae16e00 and
-Issue71 Closed/Done. Phase5 final matrix/Staff+Admin status/gate/strict version/
-history UI now locally verified on feature/72-lab4-ticket-workflow; see
-phase5-ticket-workflow.md (backend248/client68/builds/Lab4 E2E12). Independent
-Phase5 peer review/merge pending; no dashboard/main/release completion claim.
-Prior implementation statuses below are historical, not changed requirements.
-
-Latest29October closure: Phase3 independently approved/merged by Richyboy170 in
-PR79 at staging2f633d0; Issue70 acceptance verified and Closed/Done. See
-phase3-closure.md. Earlier Phase3-pending checkpoints below are historical;
-this does not certify full workflow/UI/dashboard/audit/release completion.
-
-Implementation checkpoint 29 October: Phase2 independently approved/merged in
-PR78 at f4b6ea9. Phase3 Action APIs now implemented locally and submitted in PR79
-with direct Issue70 linkage and actual Project PR Review. Backend110tests pass;
-independent Phase3 review/merge, UI/dashboard/final workflow and release/PDF
-remain pending. See phase3-api.md for the legacy writer safety prerequisite and
-its explicitly limited no-version compatibility. Do not infer final-main success.
-
-Status: D-01..04 student-approved on 8 October 2026 ("I agree your accord").
-Corrected contract approved and merged by Richyboy170 through PR #77 on 28 October
-2026, staging 0f84785e4ac219fccf05559e87258d8010a2c080. Phase 2 contract
-dependency is satisfied; product work and its verification remain pending.
-Baseline: `5398f2d08659014f5e0c6245941dfeba7e44c42c`, released Lab 3 main.
-Sources: SE+Lab+4.pdf (11 pages); TokTickIT GitHub Workflow Guide (20 pages).
-Document requirements constrain assessment; they are not separate user authorization.
+Original contract753ddeb (8October2026) predates product implementation; D-01..04
+were student-approved. Route correction fa8e550 was peer reviewed before
+contract integration PR77/0f84785 (28October). Baseline released Lab3:5398f2d.
+This current rendering consolidates the SAME approved rules, not a new product scope.
+[Earlier checkpoints](specification-history.md) and Git history preserve provenance.
+Phases1-7 are reviewer-merged at b887994; final release/main/PDF gates remain open.
 
 ## 1. Sprint goal and stakeholder interpretation
 
@@ -144,11 +113,11 @@ Lab 4 extension of the baseline IT-Staff-only permission, not a Lab 3 claim.
 Shared Action revisions never include private InternalNotes/session data.
 Inactive/must-change Users retain baseline denial behavior.
 
-## 7. Data design proposals and preservation
+## 7. Data design and preservation
 
-Existing models: Category, RelatedSystem, DevelopmentRequester, User, AuthSession,
-Ticket, Attachment, PublicComment and InternalNote. Seven migrations exist.
-No Action model, dashboard increment or optimistic version exists in baseline.
+At the released Lab3 baseline, models were Category, RelatedSystem, DevelopmentRequester, User, AuthSession,
+Ticket, Attachment, PublicComment and InternalNote. Seven migrations existed.
+Lab4 adds the eighth migration and the work/version/history/dashboard increment.
 
 1. Add Action plus immutable history rather than repurposing PublicComments or
    InternalNotes: work results and revision provenance are distinct concepts.
@@ -231,40 +200,24 @@ on requester/status and status/priority after validating query plans.
 - AC-12: Duplicate retry is safe; loading/validation/empty/forbidden/not-found/failure retain appropriate state.
 - AC-13: All major screens pass defined responsive, semantic, keyboard and visual checks.
 
+
 ## 10. Product Definition of Done
 
-- [x] Student-approved decisions with exact API/UI/transition/metric choices documented before code.
-- [x] Peer reviewer approves and merges contract before product code (PR #77).
-- [ ] Every AC has planned tests and real implemented test-file paths.
-- [x] Populated migration, recovery and repeated seeds verified (Phase2, PR78).
-- [ ] Unit/API/UI/style/auth/workflow/regression/E2E, builds and performance smoke pass.
-- [ ] Complete passing output from final main retained with SHA/environment.
-- [ ] Actual role/negative API proofs and all required screenshots visually inspected.
-- [ ] Issue-linked feature PRs into lab4-staging, replies to all review comments,
-      reviewer approvals AND reviewer merges; reviewed release into main.
-- [ ] All sprint Issues Done; README current; authentic AI prompts and confirmed reflection.
-- [ ] Nine ordered report Parts, working links, readable evidence, clickable numbered contents,
-      authored page numbers; final one-PDF page-by-page QA and no browser print headers.
+- [x] Student-approved decisions, FR/BR/AC and exact role/transition/metric choices before code.
+- [x] Corrected contract peer-approved/merged before implementation (PR77).
+- [x] All ACs mapped to real unit/API/UI/style/auth/workflow/migration/E2E files (tests.md).
+- [x] Populated migration, backup/restore recovery and repeated seeds verified.
+- [x] Phase7 local backend272/client90/browser37, builds, dependency audit and performance pass.
+- [x] Version/role/ownership/retry/concurrency and inspected three-width evidence retained.
+- [x] Feature integrations through83 reviewer-approved/merged; comments answered.
+- [x] Current README, ten authentic selected prompts, student-confirmed Lab4 reflection.
+- [ ] Phase8 report changes independently reviewed/integrated and release merged into main.
+- [ ] Complete fresh passing output from released main with exact source/environment.
+- [ ] Final all-sprint-Issues Done screenshot and release observation verified.
+- [ ] One concise PDF, nine ordered Parts, working links, page-numbered clickable contents,
+      readable evidence, every-page render QA and no browser print headers.
 
-See api-spec.md, ui-spec.md, tests.md and evidence-matrix.md. The local Phase 2
-data models/migration/seeds and isolated data tests now exist; see
-database-runbook.md. They are not yet peer-reviewed/merged or final-main results.
-No Phase 3+ Action API, dashboard endpoint or UI completion is claimed.
-
-Phase6 implementation checkpoint (30 October 2026): section8 populations remain
-unchanged; exact19 card/list mappings now pass real-DB checks on the feature tree.
-267server/82client tests/builds passed locally. Browser/peer acceptance recorded
-separately; Phase7/8 remain Backlog. See phase6-dashboards.md.
-
-## Phase6 closure — 30 October 2026
-
-Richyboy170 approved final d64d0e3 then merged PR82 into lab4-staging at df785a5
-(12:01:08 Bangkok). Fetched merge tree equals reviewed head. Author acknowledged
-actual review; no unresolved inline finding. Issue73 acceptance verified then
-Closed at12:03:14 Bangkok; actual Project Done. Lab4 Done6/Backlog2, intermediate
-states0. See [complete closure](phase6-closure.md) for actual links and inspected
-screenshots. Prior PR Review/Started checkpoints are historical and superseded.
-Retained local server267/client82/builds/browser18 + Dashboard6 rerun, NOT new
-staging/main/CI runs. Attached checks0 not a pass. Phase7/8 remain Backlog.
-Post-merge docs/images remain local for the next authorized feature PR; no new
-cleanup PR, direct staging/main push or rewrite of reviewed commits.
+UI controls/modes/feedback are defined in [ui-spec.md](ui-spec.md); exact HTTP
+paths/payloads/safe status codes in [api-spec.md](api-spec.md). Data recovery:
+[database-runbook.md](database-runbook.md). Implemented coverage: [tests.md](tests.md).
+Local feature verification is not silently relabelled final main/CI evidence.

@@ -1,0 +1,740 @@
+[
+  {
+    "figure": 1,
+    "source": "artifacts/lab-04/github/phase2-pr78-version-review-reply.png",
+    "sha256": "56150fd0d87429d6fd3eacdd615015144b3973a4f30e053cdcb88684efde5d4b",
+    "crop": [
+      0,
+      0,
+      1211,
+      718
+    ],
+    "viewport": [
+      0,
+      0,
+      1211,
+      718
+    ],
+    "generated": "lab4-figure-01-1.png"
+  },
+  {
+    "figure": 2,
+    "source": "artifacts/lab-04/github/phase7-pr83-approved-merged.png",
+    "sha256": "b10f675ed164bd2aa931e2a940acaf0d004f3ffdb116e31d00006b221f92d9a0",
+    "crop": [
+      0,
+      0,
+      1265,
+      712
+    ],
+    "viewport": [
+      0,
+      0,
+      1265,
+      712
+    ],
+    "generated": "lab4-figure-02-1.png"
+  },
+  {
+    "figure": 3,
+    "source": "artifacts/lab-04/github/phase8-issue75-started.png",
+    "sha256": "818ee0ff61caca26af8905d76f7583d64a7402dc84bfcf6efb6c69d2021f0daa",
+    "crop": [
+      0,
+      0,
+      1265,
+      712
+    ],
+    "viewport": [
+      0,
+      0,
+      1265,
+      712
+    ],
+    "generated": "lab4-figure-03-1.png"
+  },
+  {
+    "figure": 4,
+    "source": "artifacts/lab-04/phase7/screenshots/staff-dashboard-tablet.png",
+    "sha256": "a786f9a7381a5aecc01c0b92fce3cbea09cdd91418e35dc3ac76cb4633aed2f4",
+    "crop": [
+      0,
+      0,
+      768,
+      839
+    ],
+    "viewport": [
+      0,
+      0,
+      768,
+      839
+    ],
+    "generated": "lab4-figure-04-1.png"
+  },
+  {
+    "figure": 5,
+    "source": "artifacts/lab-04/phase6/screenshots/my-actions.png",
+    "sha256": "f306e84eff6d8ce4768e244c2d8444926357b7d5d301e422e20c7b73217f3840",
+    "crop": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "generated": "lab4-figure-05-1.png"
+  },
+  {
+    "figure": 6,
+    "source": "artifacts/lab-04/phase8/screenshots/staff-real-empty-panel.png",
+    "sha256": "6421664c03c5e97871de24ca29b07a09a57d77db5e33634f19fbf18e96ea97af",
+    "crop": [
+      0,
+      0,
+      742,
+      142
+    ],
+    "viewport": [
+      0,
+      0,
+      742,
+      142
+    ],
+    "generated": "lab4-figure-06-1.png"
+  },
+  {
+    "figure": 7,
+    "source": "artifacts/lab-04/phase8/screenshots/staff-controlled-loading.png",
+    "sha256": "16d8b5d4d7228dd588c6d9673f753491aff040ecfc4b836f05ee8ec8dbe3695b",
+    "crop": [
+      0,
+      0,
+      744,
+      122
+    ],
+    "viewport": [
+      0,
+      0,
+      744,
+      122
+    ],
+    "generated": "lab4-figure-07-1.png"
+  },
+  {
+    "figure": 8,
+    "source": "artifacts/lab-04/phase8/screenshots/staff-injected-503.png",
+    "sha256": "ba6ad64d20b5fad04a86bd3a7983e092569d5c3c39f75ed351e442f8c6c05e2a",
+    "crop": [
+      0,
+      0,
+      744,
+      202
+    ],
+    "viewport": [
+      0,
+      0,
+      744,
+      202
+    ],
+    "generated": "lab4-figure-08-1.png"
+  },
+  {
+    "figure": 9,
+    "source": "artifacts/lab-04/phase8/screenshots/staff-injected-403.png",
+    "sha256": "57b7cd7d3c52454a220b082e79d44c8a495143f8327c537e63ad5f9de136131e",
+    "crop": [
+      0,
+      0,
+      744,
+      202
+    ],
+    "viewport": [
+      0,
+      0,
+      744,
+      202
+    ],
+    "generated": "lab4-figure-09-1.png"
+  },
+  {
+    "figure": 10,
+    "source": "artifacts/lab-04/phase8/screenshots/staff-recovered.png",
+    "sha256": "a8ef9821775a54c9368363f534f0f7ff5ca52fe46d47cbc0afe05dd6a76c4dd8",
+    "crop": [
+      0,
+      0,
+      744,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      744,
+      850
+    ],
+    "generated": "lab4-figure-10-1.png"
+  },
+  {
+    "figure": 11,
+    "source": "artifacts/lab-04/phase7/screenshots/action-validation-tablet-panel.png",
+    "sha256": "9bd4b2b51af035d1bd5813927b6c7e6d732227e1bdb5a9fd4dd2a5af9d0c64ab",
+    "crop": [
+      0,
+      512,
+      744,
+      1476
+    ],
+    "viewport": [
+      0,
+      512,
+      744,
+      1476
+    ],
+    "generated": "lab4-figure-11-1.png"
+  },
+  {
+    "figure": 12,
+    "source": "artifacts/lab-04/phase4/screenshots/lifecycle-history.png",
+    "sha256": "7a790b7dacc68a806752db5d5cb5dd3667e71a0e8c6c9ad7a3de4c4521868f71",
+    "crop": [
+      0,
+      0,
+      1074,
+      1247
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      2030
+    ],
+    "generated": "lab4-figure-12-1.png"
+  },
+  {
+    "figure": 12,
+    "source": "artifacts/lab-04/phase4/screenshots/lifecycle-history.png",
+    "sha256": "7a790b7dacc68a806752db5d5cb5dd3667e71a0e8c6c9ad7a3de4c4521868f71",
+    "crop": [
+      0,
+      1247,
+      1074,
+      2030
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      2030
+    ],
+    "generated": "lab4-figure-12-2.png"
+  },
+  {
+    "figure": 13,
+    "source": "artifacts/lab-04/phase4/screenshots/multiple-staff.png",
+    "sha256": "afded1f758a59ffd93bcfc4501c9d56504ea3dabca47c120eae9f94ee1e21378",
+    "crop": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "generated": "lab4-figure-13-1.png"
+  },
+  {
+    "figure": 14,
+    "source": "artifacts/lab-04/phase4/screenshots/inactive-assignee.png",
+    "sha256": "ab32cfe380d8299e53ecbd520d73decc0b1ff831147c0ce4576b137efbc5a9b2",
+    "crop": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "generated": "lab4-figure-14-1.png"
+  },
+  {
+    "figure": 15,
+    "source": "artifacts/lab-04/phase4/screenshots/injected-lost-response.png",
+    "sha256": "5a5daa173db0ca702d3534d67b1cad41a183cf297554409521860f8c2756fe66",
+    "crop": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "generated": "lab4-figure-15-1.png"
+  },
+  {
+    "figure": 16,
+    "source": "artifacts/lab-04/phase4/screenshots/stale-draft.png",
+    "sha256": "c9bbbabafe184fb561ec51920b24e2e638a8e1f439445b269c818c98b835f97f",
+    "crop": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1074,
+      850
+    ],
+    "generated": "lab4-figure-16-1.png"
+  },
+  {
+    "figure": 17,
+    "source": "artifacts/lab-04/phase4/screenshots/requester-read-only.png",
+    "sha256": "56c2f40762e5ce59813cd3deb69a792bb534589a3b654bbd44897812ba4baaa8",
+    "crop": [
+      0,
+      0,
+      874,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      874,
+      850
+    ],
+    "generated": "lab4-figure-17-1.png"
+  },
+  {
+    "figure": 18,
+    "source": "artifacts/lab-04/phase5/screenshots/no-completed-gate.png",
+    "sha256": "fb974f2b76b0bb1e8d7286c23b293683bd848c4439ca9f586f9d447a60c8c5f4",
+    "crop": [
+      0,
+      0,
+      1076,
+      583
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      583
+    ],
+    "generated": "lab4-figure-18-1.png"
+  },
+  {
+    "figure": 19,
+    "source": "artifacts/lab-04/phase5/screenshots/open-actions-gate.png",
+    "sha256": "cb3ab0da42dcf0a8eccaba69afd2a5ffad9fd8fb127f6c4c11b3b52f819e042b",
+    "crop": [
+      0,
+      0,
+      1076,
+      753
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      753
+    ],
+    "generated": "lab4-figure-19-1.png"
+  },
+  {
+    "figure": 20,
+    "source": "artifacts/lab-04/phase5/screenshots/follow-up-gate.png",
+    "sha256": "27b4e465fd6560b12532fa399300c6711218b1d2e18246a00a2e253e6b45be42",
+    "crop": [
+      0,
+      0,
+      1076,
+      673
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      673
+    ],
+    "generated": "lab4-figure-20-1.png"
+  },
+  {
+    "figure": 21,
+    "source": "artifacts/lab-04/phase5/screenshots/resolved.png",
+    "sha256": "ddfbe2873cb8bd53ca80ecc617b41c947016ecb6c1b9ca305f9c4bb1d065bab0",
+    "crop": [
+      0,
+      0,
+      1076,
+      572
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      572
+    ],
+    "generated": "lab4-figure-21-1.png"
+  },
+  {
+    "figure": 22,
+    "source": "artifacts/lab-04/phase5/screenshots/closed-history.png",
+    "sha256": "20b1613d25a2e7562821c022422791e3d12d83efe84aa27ed5757955f0dd25b9",
+    "crop": [
+      0,
+      0,
+      1076,
+      604
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      604
+    ],
+    "generated": "lab4-figure-22-1.png"
+  },
+  {
+    "figure": 23,
+    "source": "artifacts/lab-04/phase5/screenshots/administrator-reopened.png",
+    "sha256": "4a33fb2b9d6c7d8051f93c688b4e3c7a094f19afc541cb30bc8ec4b99d7b868a",
+    "crop": [
+      0,
+      0,
+      1076,
+      636
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      636
+    ],
+    "generated": "lab4-figure-23-1.png"
+  },
+  {
+    "figure": 24,
+    "source": "artifacts/lab-04/phase5/screenshots/requester-indication.png",
+    "sha256": "38f332f19a8659a3fdcbe20aea6785a6af09fed4f99228d5908ea59ccc4e6379",
+    "crop": [
+      0,
+      0,
+      876,
+      185
+    ],
+    "viewport": [
+      0,
+      0,
+      876,
+      185
+    ],
+    "generated": "lab4-figure-24-1.png"
+  },
+  {
+    "figure": 25,
+    "source": "artifacts/lab-04/phase5/screenshots/injected-save-failure.png",
+    "sha256": "aba49a76a3b483d03c35c483074d709163737ee3d33ed9b5d3738f34846d43cf",
+    "crop": [
+      0,
+      0,
+      1076,
+      617
+    ],
+    "viewport": [
+      0,
+      0,
+      1076,
+      617
+    ],
+    "generated": "lab4-figure-25-1.png"
+  },
+  {
+    "figure": 26,
+    "source": "artifacts/lab-04/phase7/screenshots/requester-dashboard-tablet.png",
+    "sha256": "472019ada9c467d963891b4fbac3b3728c95e8c6249629fc2bbbebe3bd6fcbf2",
+    "crop": [
+      0,
+      0,
+      768,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      768,
+      850
+    ],
+    "generated": "lab4-figure-26-1.png"
+  },
+  {
+    "figure": 27,
+    "source": "artifacts/lab-04/phase6/screenshots/requester-drilldown.png",
+    "sha256": "41a0ea8ae1c839a0096756fa39287405ffc01bbfb1182b870bbae38336cb365c",
+    "crop": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "generated": "lab4-figure-27-1.png"
+  },
+  {
+    "figure": 28,
+    "source": "artifacts/lab-04/phase6/screenshots/zero-requester.png",
+    "sha256": "5f203e80065cc01288fa94cea30153f36284e216bbabdf8a296c9a369a3e96d2",
+    "crop": [
+      0,
+      0,
+      1280,
+      757
+    ],
+    "viewport": [
+      0,
+      0,
+      1280,
+      757
+    ],
+    "generated": "lab4-figure-28-1.png"
+  },
+  {
+    "figure": 29,
+    "source": "artifacts/lab-04/phase8/regression/requester-shared-no-private-notes.png",
+    "sha256": "5cda1e40c7312acdfa9c5e8fa296dd4f7bc63e5699fc7a8a213c667084942286",
+    "crop": [
+      202,
+      915,
+      1078,
+      1453
+    ],
+    "viewport": [
+      202,
+      915,
+      1078,
+      1453
+    ],
+    "generated": "lab4-figure-29-1.png"
+  },
+  {
+    "figure": 30,
+    "source": "artifacts/lab-04/phase8/regression/staff-comments-private-notes.png",
+    "sha256": "1c2cedd60b237fd2e19391b18e3adb95f38c20754a90cc4942472196d0de90f9",
+    "crop": [
+      102,
+      925,
+      1178,
+      1550
+    ],
+    "viewport": [
+      102,
+      925,
+      1178,
+      1550
+    ],
+    "generated": "lab4-figure-30-1.png"
+  },
+  {
+    "figure": 31,
+    "source": "artifacts/lab-04/phase8/regression/admin-priority-correction.png",
+    "sha256": "2a9979cc390747bf541504b6639b5b334082848be8326da640a8931b8618169a",
+    "crop": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "viewport": [
+      0,
+      0,
+      1280,
+      850
+    ],
+    "generated": "lab4-figure-31-1.png"
+  },
+  {
+    "figure": 32,
+    "source": "artifacts/lab-04/phase7/screenshots/change-password-tablet.png",
+    "sha256": "451f62e6e01836bfd638c84747d9e20e7e3859c218abb641f9303a8c09da8452",
+    "crop": [
+      126,
+      38,
+      642,
+      515
+    ],
+    "viewport": [
+      126,
+      38,
+      642,
+      515
+    ],
+    "generated": "lab4-figure-32-1.png"
+  },
+  {
+    "responsive": "staff-dashboard",
+    "device": "desktop",
+    "source": "artifacts/lab-04/phase7/screenshots/staff-dashboard-desktop.png",
+    "sha256": "b62e0556cdf4994ac06670ebf75c76617a9cd8682ef3c2121ceeb92081ed6c7d",
+    "crop": [
+      0,
+      0,
+      1440,
+      900
+    ]
+  },
+  {
+    "responsive": "staff-dashboard",
+    "device": "tablet",
+    "source": "artifacts/lab-04/phase7/screenshots/staff-dashboard-tablet.png",
+    "sha256": "a786f9a7381a5aecc01c0b92fce3cbea09cdd91418e35dc3ac76cb4633aed2f4",
+    "crop": [
+      0,
+      0,
+      768,
+      1024
+    ]
+  },
+  {
+    "responsive": "staff-dashboard",
+    "device": "mobile",
+    "source": "artifacts/lab-04/phase7/screenshots/staff-dashboard-mobile.png",
+    "sha256": "4bb3252d39efffe717dddbac5a51c9523bada8050b8b6f357a88ac71e8806b89",
+    "crop": [
+      0,
+      0,
+      390,
+      844
+    ]
+  },
+  {
+    "responsive": "requester-dashboard",
+    "device": "desktop",
+    "source": "artifacts/lab-04/phase7/screenshots/requester-dashboard-desktop.png",
+    "sha256": "0aa3e750834201e4e79898ce8d4ce9f3a7fa00be094f85aff0a8c7a91a132ec4",
+    "crop": [
+      0,
+      0,
+      1440,
+      900
+    ]
+  },
+  {
+    "responsive": "requester-dashboard",
+    "device": "tablet",
+    "source": "artifacts/lab-04/phase7/screenshots/requester-dashboard-tablet.png",
+    "sha256": "472019ada9c467d963891b4fbac3b3728c95e8c6249629fc2bbbebe3bd6fcbf2",
+    "crop": [
+      0,
+      0,
+      768,
+      1024
+    ]
+  },
+  {
+    "responsive": "requester-dashboard",
+    "device": "mobile",
+    "source": "artifacts/lab-04/phase7/screenshots/requester-dashboard-mobile.png",
+    "sha256": "7db1be31991421e68b705881075c7fa55a76161555c7dec4d78a1c172a340b9f",
+    "crop": [
+      0,
+      0,
+      390,
+      844
+    ]
+  },
+  {
+    "responsive": "action-validation",
+    "device": "desktop",
+    "source": "artifacts/lab-04/phase7/screenshots/action-validation-desktop-panel.png",
+    "sha256": "39d2d07346e48f79f8a4628cd247ea5a14311380b4c3ff443c788cbea349fc9b",
+    "crop": [
+      0,
+      490,
+      1076,
+      1455
+    ]
+  },
+  {
+    "responsive": "action-validation",
+    "device": "tablet",
+    "source": "artifacts/lab-04/phase7/screenshots/action-validation-tablet-panel.png",
+    "sha256": "9bd4b2b51af035d1bd5813927b6c7e6d732227e1bdb5a9fd4dd2a5af9d0c64ab",
+    "crop": [
+      0,
+      512,
+      744,
+      1476
+    ]
+  },
+  {
+    "responsive": "action-validation",
+    "device": "mobile",
+    "source": "artifacts/lab-04/phase7/screenshots/action-validation-mobile-panel.png",
+    "sha256": "33a02f9e8e8f09a995d210a46c338d8dc9fefda1de7dff3e11a44a353ee6cacb",
+    "crop": [
+      0,
+      828,
+      366,
+      2027
+    ]
+  },
+  {
+    "responsive": "workflow-confirm",
+    "device": "desktop",
+    "source": "artifacts/lab-04/phase7/screenshots/workflow-confirm-desktop-panel.png",
+    "sha256": "795ad73eba6a9d46e7627951dc7c4da800064b1006717874f4e3a286ac501ac7",
+    "crop": [
+      0,
+      0,
+      1076,
+      778
+    ]
+  },
+  {
+    "responsive": "workflow-confirm",
+    "device": "tablet",
+    "source": "artifacts/lab-04/phase7/screenshots/workflow-confirm-tablet-panel.png",
+    "sha256": "8418d1718d585177f284fc0c3a46368b84e89840073bb0a61021627ac754253e",
+    "crop": [
+      0,
+      0,
+      744,
+      799
+    ]
+  },
+  {
+    "responsive": "workflow-confirm",
+    "device": "mobile",
+    "source": "artifacts/lab-04/phase7/screenshots/workflow-confirm-mobile-panel.png",
+    "sha256": "960474e59b3611361421b86a8a4beb287267b44b851e02697f8015c0be1937bd",
+    "crop": [
+      0,
+      0,
+      366,
+      844
+    ]
+  }
+]

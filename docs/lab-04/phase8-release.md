@@ -38,7 +38,7 @@ outputs. Never backdate review dialogue, fabricate Done, or label a draft final.
 |2 Spec DD|Numbered FR/BR/AC, transitions/gates, metric queries, migration decisions and DoD; contract753ddeb predates implementation|Render concise current specification.md, preserve/link earlier contract/history; mark real completion only after release gates|
 |3 Test DD and Traceability|AC01..13 matrix, real named files; feature272/90/37, builds/audit/performance|Render current tests.md and complete passing output FROM MAIN, with commands/source/env; no relabelling feature logs|
 |4 AI Use with Reflection|Curated10 authentic selected prompts; student model GPT-6.1 Sol (medium); specific Lab4 reflection confirmed by student30October2026, history preserved|Final readable rendering of ai-use.md and confirmed reflection; no Lab3 transfer or invented prompts|
-|5 Working IT Staff Dashboard UI|Metrics, real SQL/count comparison, all drill-downs, own performer,3widths|Select readable figures; Staff-specific loading/empty/forbidden/failure image proof needs supplementation rather than substituting Requester screenshots silently|
+|5 Working IT Staff Dashboard UI|Metrics, real SQL/count comparison, all drill-downs, own performer,3widths; Phase8 real personal-empty/held-loading/injected403+503/retry screenshots inspected|Render readable selected figures; do not relabel injected errors as actual authorization or server outage|
 |6 Working Actions Taken UI|List/create/assign/edit/complete/cancel, validation/inactive/roles, retry/conflict,3widths; required screenshot directories/provenance now verified|Select compact readable panels and lifecycle proof from actual scenarios for the final PDF|
 |7 Working Ticket Workflow|Full matrix/gates; Resolve/Close/AdminReopen/Cancel, ordered immutable history, Requester read-only/advisory|Curate proof and link actual negative outputs; distinguish injected failures from real API responses|
 |8 Working Requester Dashboard and Final Regression UI|Owned metrics/attention/recents/drill-down; auth/Comments/Notes/Admin/Attachment regression37|Select all representative real baseline captures; final-main rerun and complete output; do not substitute old Lab3 proof|
@@ -51,6 +51,7 @@ now contain9 byte-identical copies of real inspected Phase7 captures, with SHA25
 provenance.json. This corrects directory structure only; no new main run inferred.
 
 No Phase8 PR, release approval/merge, fresh final-main run, final all-Done screenshot
-or final PDF exists yet. Current report.html is a continuous working report, not the
-concise release deliverable. Runtime-generated final outputs must cite their source
+or final submission PDF exists yet. The report builder now consolidates the nine
+Parts into matching HTML/PDF REVIEW COPY with page-numbered linked contents;
+every-page visual inspection is required before publication. Runtime-generated final outputs must cite their source
 commit/observation time; they must not silently rewrite committed reviewer history.

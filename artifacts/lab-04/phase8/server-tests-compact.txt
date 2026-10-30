@@ -1,0 +1,177 @@
+
+ RUN  v4.1.12 D:/Chat/cpe/lab4/server
+
+stdout | tests/lab-04/seed-regression.api.test.ts > SEED-01: migration deployment, constraints and repeated seeds > deploys again without pending migrations and exposes expected indexes
+SEED-01 PASS: all eight migrations deploy; repeated seed preserves work/history; statuses/priorities and zero/one/multiple Actions covered.
+
+ ✓ tests/lab-04/seed-regression.api.test.ts (6 tests) 18921ms
+     ✓ reruns without duplicates, resetting user changes, passwords or Action history  11245ms
+     ✓ deploys again without pending migrations and exposes expected indexes  802ms
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"NO_COMPLETED_ACTION","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"NO_COMPLETED_ACTION","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"FOLLOW_UP_PENDING","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"FOLLOW_UP_PENDING"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > rejects all three Resolve gate reasons and Cancel with open work without partial changes
+WORKFLOW_GATE_PROOF {"reason":"OPEN_ACTIONS","resolve":{"status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"OPEN_ACTIONS"}}},"cancel":{"status":409,"body":{"error":"Unable to complete this Action request.","code":"OPEN_ACTIONS"}}}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against create without bypass
+WORKFLOW_RACE_PROOF {"kind":"create","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against follow-up without bypass
+WORKFLOW_RACE_PROOF {"kind":"follow-up","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":0,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":1,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+stdout | tests/lab-04/ticket-workflow.api.test.ts > Phase5 real Ticket workflow HTTP > serializes actual HTTP Resolve against transition without bypass
+WORKFLOW_RACE_PROOF {"kind":"transition","round":2,"statuses":[200,409],"final":"RESOLVED","version":3}
+
+ ✓ tests/lab-04/ticket-workflow.api.test.ts (73 tests) 15509ms
+     ✓ rejects all three Resolve gate reasons and Cancel with open work without partial changes  369ms
+     ✓ keeps Requester indication advisory and scopes immutable status history to owned Tickets  351ms
+     ✓ serializes actual HTTP Resolve against create without bypass  383ms
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/actions","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/actions/14/events","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > allows only owned Requester reads and never shares Notes, credentials or other-parent history
+NEGATIVE_API_PROOF {"case":"cross-requester","pathSuffix":"/workflow-events","status":404,"body":{"error":"Unable to complete this Action request.","code":"NOT_FOUND"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > replays a persistent normalized payload before stale checks with no duplicate work/history
+NEGATIVE_API_PROOF {"case":"idempotency-payload-mismatch","status":409,"body":{"error":"Unable to complete this Action request.","code":"IDEMPOTENCY_CONFLICT"}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > prevents the legacy status writer bypassing Action gates or shared versions
+NEGATIVE_API_PROOF {"case":"legacy-resolution-bypass","status":409,"body":{"error":"Unable to complete this Action request.","code":"RESOLUTION_GATE","fields":{"reason":"NO_COMPLETED_ACTION"}}}
+
+stdout | tests/lab-04/actions-taken.api.test.ts > Lab4 real Action API / authentication / history / replay > serializes actual HTTP Resolve vs Action creation, then retains immutable workflow history
+CONCURRENCY_API_PROOF {"case":"Resolve-vs-Action","statuses":[200,409],"finalStatus":"RESOLVED","version":6}
+
+ ✓ tests/lab-04/actions-taken.api.test.ts (14 tests) 11049ms
+     ✓ edits, assigns and transitions atomically, retaining before/after audit and terminal rules  506ms
+     ✓ enforces merged follow-up/result values and stale edit checks without bumping versions  349ms
+     ✓ returns stable paginated lists, safe own-created work, and rejects invalid paging  803ms
+     ✓ serializes actual HTTP Resolve vs Action creation, then retains immutable workflow history  410ms
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_ENV {"node":"v22.17.0","platform":"win32","arch":"x64","cpu":"Intel(R) Core(TM) i7-14650HX","logicalCpus":24,"totalMemoryGB":24,"postgres":"dedicated loopback55484","database":"/lab4_p2_perf_4a4ed978bc404017a79f208f1b1309e3","warmup":5,"samples":20,"tickets":10000,"actions":20000,"limitMs":1000}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"REQUESTER","path":"/api/tickets/dashboard","timesMs":[44.62,42.62,43.03,60.91,52.07,53.81,42.73,45.15,43.81,48.78,45.97,43.26,44.28,45.49,48.73,43.26,46.57,45.07,37.58,52.12],"p95Ms":53.81,"maxMs":60.91,"transactionModelOperations":[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],"responseBytes":2362}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"IT_STAFF","path":"/staff/dashboard","timesMs":[113.27,116.03,112.69,116.06,113.42,115.49,115.09,113,113.17,113.75,109.38,119.59,114.56,114.81,113.74,114.92,113.2,118.79,107.2,110.39],"p95Ms":118.79,"maxMs":119.59,"transactionModelOperations":[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],"responseBytes":3894,"myActions":20000}
+
+stdout | tests/lab-04/dashboard-performance.test.ts > PERF-01 isolated 10k Tickets /20k Actions smoke > measures real authorized dashboards, fixed query work and query plans
+PERF_RESULT {"role":"ADMINISTRATOR","path":"/staff/dashboard","timesMs":[80.08,79.43,91.85,80.14,78.96,93.28,75.11,79.95,82.93,80,80.3,77.87,79.13,89.36,79.86,83.58,85.83,80.8,81.43,75.57],"p95Ms":91.85,"maxMs":93.28,"transactionModelOperations":[10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],"responseBytes":3096,"myActions":0}
+PERF_EXPLAIN SELECT "currentStatus",count(*) FROM "Ticket" GROUP BY "currentStatus" 
+HashAggregate  (cost=350.00..350.08 rows=8 width=12) (actual time=5.304..5.308 rows=8.00 loops=1)
+  Group Key: "currentStatus"
+  Batches: 1  Memory Usage: 32kB
+  Buffers: shared hit=200
+  ->  Seq Scan on "Ticket"  (cost=0.00..300.00 rows=10000 width=4) (actual time=0.039..3.236 rows=10000.00 loops=1)
+        Buffers: shared hit=200
+Planning:
+  Buffers: shared hit=215
+Planning Time: 8.140 ms
+Execution Time: 5.424 ms
+PERF_EXPLAIN SELECT id FROM "Ticket" WHERE "requesterUserId"=1 ORDER BY "updatedAt" DESC,id DESC LIMIT 5 
+Limit  (cost=491.10..491.11 rows=5 width=12) (actual time=3.558..3.559 rows=5.00 loops=1)
+  Buffers: shared hit=206
+  ->  Sort  (cost=491.10..516.10 rows=10000 width=12) (actual time=3.556..3.556 rows=5.00 loops=1)
+        Sort Key: "updatedAt" DESC, id DESC
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=206
+        ->  Seq Scan on "Ticket"  (cost=0.00..325.00 rows=10000 width=12) (actual time=0.027..1.997 rows=10000.00 loops=1)
+              Filter: ("requesterUserId" = 1)
+              Buffers: shared hit=200
+Planning:
+  Buffers: shared hit=213
+Planning Time: 4.827 ms
+Execution Time: 3.589 ms
+PERF_EXPLAIN SELECT id FROM "ActionTaken" WHERE "performedByUserId"=2 ORDER BY "createdAt" DESC,id DESC LIMIT 5 
+Limit  (cost=868.19..868.21 rows=5 width=12) (actual time=6.677..6.679 rows=5.00 loops=1)
+  Buffers: shared hit=292
+  ->  Sort  (cost=868.19..918.19 rows=20000 width=12) (actual time=6.675..6.676 rows=5.00 loops=1)
+        Sort Key: "createdAt" DESC, id DESC
+        Sort Method: top-N heapsort  Memory: 25kB
+        Buffers: shared hit=292
+        ->  Seq Scan on "ActionTaken"  (cost=0.00..536.00 rows=20000 width=12) (actual time=0.017..3.589 rows=20000.00 loops=1)
+              Filter: ("performedByUserId" = 2)
+              Buffers: shared hit=286
+Planning:
+  Buffers: shared hit=156
+Planning Time: 3.187 ms
+Execution Time: 6.704 ms
+
+ ✓ tests/lab-04/dashboard-performance.test.ts (1 test) 9079ms
+     ✓ measures real authorized dashboards, fixed query work and query plans  9072ms
+ ✓ tests/lab-04/versioned-mutations.integration.test.ts (14 tests) 7630ms
+stdout | tests/lab-04/migration-regression.api.test.ts > MIG-01: populated Lab3 upgrade and recovery on isolated PostgreSQL > restores the pre-upgrade backup into another fresh database with exact equality
+MIG-01 PASS: exact nine-table equality, legacy zero-Action/NULL resolution, separate-database pg_dump/pg_restore recovery.
+
+ ✓ tests/lab-04/migration-regression.api.test.ts (3 tests) 4994ms
+     ✓ preserves every existing field/ID/relationship in all nine tables  871ms
+     ✓ restores the pre-upgrade backup into another fresh database with exact equality  1689ms
+ ✓ tests/lab-03/auth.api.test.ts (3 tests) 3003ms
+     ✓ creates a session for a valid active User and revokes it on logout  441ms
+     ✓ uses the same safe response for invalid credentials and inactive accounts  319ms
+     ✓ requires the current password, clears first-login state, and revokes the old session  2238ms
+stdout | tests/lab-04/dashboards.api.test.ts > Phase6 real dashboard metrics, identity and drill-down > returns numeric zeros, every enum bucket and empty lists before fixtures exist
+DASHBOARD_ZERO_PROOF {"requester":{"openTickets":0,"waitingTickets":0,"recentlyResolvedTickets":0},"staff":{"unassignedOpenTickets":0,"myOpenTickets":0,"ticketsByStatus":{"NEW":0,"OPEN":0,"IN_PROGRESS":0,"WAITING_FOR_REQUESTER":0,"RESOLVED":0,"CLOSED":0,"REOPENED":0,"CANCELLED":0},"openTicketsByPriority":{"NOT_SET":0,"LOW":0,"MEDIUM":0,"HIGH":0,"URGENT":0},"myActions":0}}
+
+stdout | tests/lab-04/dashboards.api.test.ts > Phase6 real dashboard metrics, identity and drill-down > computes exact populations and matches every published drill-down against independent fixture predicates
+DASHBOARD_QUERY_PROOF {"asOf":"2026-10-29T17:00:00.000Z","window":{"start":"2026-10-23T17:00:00.000Z","end":"2026-10-29T17:00:00.000Z"},"requester":{"openTickets":7,"waitingTickets":1,"recentlyResolvedTickets":2},"staff":{"unassignedOpenTickets":5,"myOpenTickets":2,"ticketsByStatus":{"NEW":1,"OPEN":2,"IN_PROGRESS":1,"WAITING_FOR_REQUESTER":2,"RESOLVED":3,"CLOSED":2,"REOPENED":2,"CANCELLED":1},"openTicketsByPriority":{"NOT_SET":2,"LOW":1,"MEDIUM":1,"HIGH":1,"URGENT":3},"myActions":1},"allDrillDownCountsMatch":true}
+
+ ✓ tests/lab-04/dashboards.api.test.ts (7 tests) 1860ms
+ ✓ tests/lab-04/requester-dashboard.api.test.ts (2 tests) 1492ms
+ ✓ tests/lab-03/users-admin.api.test.ts (5 tests) 1493ms
+     ✓ creates, searches, edits, and resets a managed user  664ms
+ ✓ tests/lab-03/requester-authorization.api.test.ts (4 tests) 1358ms
+     ✓ requires a session and rejects staff or first-login Requesters  373ms
+ ✓ tests/lab-04/staff-dashboard.api.test.ts (2 tests) 1425ms
+ ✓ tests/lab-03/staff-ticket-detail.api.test.ts (4 tests) 1379ms
+ ✓ tests/lab-03/staff-queue.api.test.ts (3 tests) 1240ms
+ ✓ tests/lab-02/attachments.api.test.ts (5 tests) 998ms
+ ✓ tests/lab-02/ticket-detail.api.test.ts (3 tests) 899ms
+ ✓ tests/lab-03/migration-regression.api.test.ts (3 tests) 747ms
+     ✓ dual-writes a legacy requester Ticket to its migrated User during the transition  554ms
+ ✓ tests/lab-02/create-ticket.api.test.ts (2 tests) 534ms
+ ✓ tests/lab-02/my-tickets.api.test.ts (2 tests) 470ms
+ ✓ tests/lab-03/requester-session.test.ts (1 test) 455ms
+     ✓ revokes only the sessions created by the test helper  454ms
+ ✓ tests/lab-03/seed-ticket-examples.api.test.ts (2 tests) 290ms
+ ✓ tests/lab-01/categories.test.ts (1 test) 73ms
+ ✓ tests/lab-02/development-requesters.api.test.ts (1 test) 22ms
+ ✓ tests/lab-01/health.test.ts (1 test) 30ms
+ ✓ tests/lab-04/dashboard-policy.unit.test.ts (12 tests) 11ms
+ ✓ tests/lab-04/ticket-workflow.unit.test.ts (65 tests) 9ms
+ ✓ tests/lab-04/action-validation.unit.test.ts (30 tests) 13ms
+ ✓ tests/lab-04/data-contract.test.ts (1 test) 5ms
+ ✓ tests/lab-02/ticket-number.test.ts (2 tests) 5ms
+
+ Test Files  29 passed (29)
+      Tests  272 passed (272)
+   Start at  22:52:32
+   Duration  99.04s (transform 1.44s, setup 0ms, import 8.31s, tests 84.99s, environment 3ms)
+
