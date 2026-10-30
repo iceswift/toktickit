@@ -70,3 +70,12 @@ or product completion is inferred from changing reviewer.
 
 Not yet supplied or confirmed by the student for Lab 4. Draft assistance may be
 offered later; it must reflect their actual experience and be explicitly confirmed.
+
+## Phase6 assistance record — 30 October 2026
+
+Actual student prompts: "ไปทำขั้นต่อไปกันต่อเลย" and "Continue".
+Assistance: implement approved dashboard contract, preserve role boundaries and
+legacy landing pages, independently compare real fixture DB counts to every
+server drill-down, test client failure/zero/filter handling and inspect browser
+captures. Synthetic fixtures only; no invented peer approval or student reflection.
+Initial missing-module failure is not presented as behavioral TDD evidence.

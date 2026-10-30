@@ -1,5 +1,18 @@
 # Lab 4 Peer Review Record
 
+## Latest Phase5 closure —29October2026
+
+Richyboy170 approved final6b12c82 at14:53:30UTC and merged PR81 at14:53:40UTC
+(21:53:30/40 Bangkok), staging aa1f868ec0d74b8143848471955e3e40d963e47b.
+Reviewed/merged trees match; no author merge. Actual approval:
+https://github.com/iceswift/toktickit/pull/81#pullrequestreview-5699803846.
+Review “Good, well done”; no inline comments/unresolved findings. Author reply:
+https://github.com/iceswift/toktickit/pull/81#issuecomment-6500866421.
+Issue72 accepted/Closed and actual Project Done verified in Issue/board.
+See phase5-closure.md. No additional PR/merge; post-merge report/docs/images are
+local updates to carry with next authorized feature. Earlier review-pending
+checkpoints are historical; no new main/CI test result claimed.
+
 ## Latest Phase5 ready for peer review —29October2026
 
 [PR81](https://github.com/iceswift/toktickit/pull/81) Open/Ready into lab4-staging,
@@ -209,3 +222,27 @@ Do not fabricate dialogue or pre-fill successful reviews.
 - Project CLI cannot move Issue #68 to Fixing: current token lacks read:project
   scope. No board transition or new screenshot is claimed for this correction.
   Existing 8 October screenshots remain historical, not current-state evidence.
+
+## Phase6 review preparation — Issue73
+
+Branch feature/73-lab4-dashboards from reviewer-merged aa1f868. Local server267,
+client82 and builds passed. Check exact card/list populations, Requester ownership,
+Staff sibling auth, performedBy versus assignedTo, half-open Bangkok window,
+legacy null dates, loading/error/zero and responsive drill-down. Browser acceptance18 passed; Dashboard6 rerun passed. PR82 is Open/Ready, directly linked to Issue73; Richyboy170 review requested. No approval/merge yet; reviewer Richyboy170 must
+approve final head and merge, author replies to feedback. No Phase7 work started.
+
+Phase6 browser checkpoint: 18 scenarios passed (12 prior Lab4 +6 Dashboard).
+Dashboard6 rerun after expanded Requester viewport coverage also passed; not24
+unique tests. Inspected15 screenshots: actual metrics/drill-down/zero plus labelled
+delayed/injected503/injected403 states, both roles at1440×900/768×1024/390×844.
+Initial17pass/1fail was a fixture assumption: Darin actually had a Waiting Ticket;
+kept failure log and replaced zero scenario with a newly created synthetic owner,
+not deleted history. All19 API counts still pass; recent work length160 asserted.
+Report Parts5/8/9 updated; structural document/asset check passed, not rendered QA.
+
+Current GitHub checkpoint: [PR82](https://github.com/iceswift/toktickit/pull/82)
+Open/Ready into lab4-staging. Direct Issue73 Development link confirmed through
+closingIssuesReferences; Richyboy170 requested. Issue Open / actual Project PR Review.
+Inspected phase6/pr82-ready.png and phase6/issue73-pr-review.png; no approval or
+merge claimed. Product/evidence edb2c2a, follow-up records in the same PR. Attached
+checks0 is NOT passing CI. Reviewer approves final head AND merges; author replies.

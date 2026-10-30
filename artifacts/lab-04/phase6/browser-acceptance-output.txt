@@ -1,0 +1,37 @@
+[WebServer] (node:8704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:41844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:23464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:23464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:40444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:3812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:37564) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\lab-04\actions-taken-flow.spec.ts:52:1 › real multi-staff lifecycle: create, edit, assign, complete/cancel and owned Requester read-only history (12.1s)
+  ok  2 e2e\lab-04\actions-taken-flow.spec.ts:99:1 › uncertain transport response retains draft/key; real backend replay creates only one record (3.6s)
+  ok  3 e2e\lab-04\actions-taken-flow.spec.ts:119:1 › real inactive-assignee race retains draft and accepts a corrected active selection (4.0s)
+  ok  4 e2e\lab-04\actions-taken-flow.spec.ts:133:1 › real competing edit returns 409; refresh and explicit rebase retain local input (4.3s)
+  ok  5 e2e\lab-04\actions-taken-flow.spec.ts:151:1 › Administrator creation is allowed and follows the same Action policy (3.2s)
+  ok  6 e2e\lab-04\actions-taken-flow.spec.ts:157:1 › fully loaded forms, validation, keyboard focus and responsive layout at three widths (3.9s)
+  ok  7 e2e\lab-04\actions-taken-flow.spec.ts:174:1 › labelled delayed assignee loading and safe forbidden/load retry state (2.4s)
+  ok  8 e2e\lab-04\dashboards.spec.ts:8:1 › Requester counts and exact open drill-down; detail returns to refreshed Dashboard (2.1s)
+  ok  9 e2e\lab-04\dashboards.spec.ts:17:1 › Staff metrics, own-performer work and all status/priority drill-downs retain exact query (3.6s)
+  ok 10 e2e\lab-04\dashboards.spec.ts:28:1 › Administrator Dashboard is available without granting Requester Dashboard access (1.4s)
+  ok 11 e2e\lab-04\dashboards.spec.ts:29:1 › loading, injected failure and forbidden never display stale metrics; deliberate retry works (1.9s)
+  ok 12 e2e\lab-04\dashboards.spec.ts:33:1 › zero owned population is a real API result, not a loading fallback (3.0s)
+  ok 13 e2e\lab-04\dashboards.spec.ts:34:1 › three viewport layouts keep dashboard controls within document width and keyboard focus visible (3.5s)
+  ok 14 e2e\lab-04\ticket-resolution.spec.ts:14:1 › real work gate then Resolve, Close, Administrator Reopen and Cancel with ordered history (10.1s)
+  ok 15 e2e\lab-04\ticket-resolution.spec.ts:27:1 › Requester indication remains advisory; own history read-only and formal API403 (3.1s)
+  ok 16 e2e\lab-04\ticket-resolution.spec.ts:33:1 › real competing Ticket write409 preserves selection until refresh and explicit rebase (3.7s)
+  ok 17 e2e\lab-04\ticket-resolution.spec.ts:39:1 › injected recoverable failure retains selection/version and succeeds on deliberate retry (3.3s)
+  ok 18 e2e\lab-04\ticket-resolution.spec.ts:45:1 › workflow confirmation and gate remain readable with keyboard focus at all three widths (3.4s)
+
+  18 passed (1.4m)

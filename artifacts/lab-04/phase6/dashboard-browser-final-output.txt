@@ -1,0 +1,25 @@
+[WebServer] (node:32236) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:14820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:11932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:11932) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:41416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:17204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\lab-04\dashboards.spec.ts:8:1 › Requester counts and exact open drill-down; detail returns to refreshed Dashboard (2.6s)
+  ok 2 e2e\lab-04\dashboards.spec.ts:17:1 › Staff metrics, own-performer work and all status/priority drill-downs retain exact query (7.5s)
+  ok 3 e2e\lab-04\dashboards.spec.ts:28:1 › Administrator Dashboard is available without granting Requester Dashboard access (2.7s)
+  ok 4 e2e\lab-04\dashboards.spec.ts:29:1 › loading, injected failure and forbidden never display stale metrics; deliberate retry works (3.7s)
+  ok 5 e2e\lab-04\dashboards.spec.ts:33:1 › zero owned population is a real API result, not a loading fallback (3.1s)
+  ok 6 e2e\lab-04\dashboards.spec.ts:34:1 › three viewport layouts keep dashboard controls within document width and keyboard focus visible (6.5s)
+
+  6 passed (34.5s)

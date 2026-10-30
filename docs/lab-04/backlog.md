@@ -9,8 +9,8 @@ Phase count is a planning choice, separate from nine submission Parts.
 | 2 | [#69](https://github.com/iceswift/toktickit/issues/69) Data/migration/seeds | #68 | Done; Richy approved/merged #78 at f4b6ea9; Issue closed after AC verification |
 | 3 | [#70](https://github.com/iceswift/toktickit/issues/70) Action API | #69 | Done; Richy approved/merged [#79](https://github.com/iceswift/toktickit/pull/79) at2f633d0; acceptance verified and Issue closed |
 | 4 | [#71](https://github.com/iceswift/toktickit/issues/71) Action UI | #70 | Done; Richy approved final60c20d4 then merged [PR80](https://github.com/iceswift/toktickit/pull/80) at ae16e00; acceptance checked, Issue Closed/Project Done |
-| 5 | [#72](https://github.com/iceswift/toktickit/issues/72) Ticket workflow | #70/#71 | PR Review; [PR81](https://github.com/iceswift/toktickit/pull/81) Ready/directly linked; Richyboy170 requested, approval/merge pending |
-| 6 | [#73](https://github.com/iceswift/toktickit/issues/73) Dashboards | #69/#70/#72 | Backlog |
+| 5 | [#72](https://github.com/iceswift/toktickit/issues/72) Ticket workflow | #70/#71 | Done; Richy approved final6b12c82 then merged [PR81](https://github.com/iceswift/toktickit/pull/81) at aa1f868; acceptance verified, Issue Closed/Project Done |
+| 6 | [#73](https://github.com/iceswift/toktickit/issues/73) Dashboards | #69/#70/#72 | PR Review; Ready [PR82](https://github.com/iceswift/toktickit/pull/82) directly linked; Richyboy170 requested; local267/82/browser18 passed, Issue Open pending reviewer acceptance/merge |
 | 7 | [#74](https://github.com/iceswift/toktickit/issues/74) QA/hardening | #71/#72/#73 | Backlog |
 | 8 | [#75](https://github.com/iceswift/toktickit/issues/75) Release/report | #74 | Backlog |
 

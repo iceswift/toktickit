@@ -1,0 +1,130 @@
+[
+  {
+    "path": "artifacts/lab-04/phase6/browser-acceptance-output.txt",
+    "sha256": "6ca658ada81a44656644e653d43228ffe09cbdd3c65dd110a7fbd2fc12999c78"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/browser-first-fixture-failure.txt",
+    "sha256": "addf00b3e39e38f881a191817bdbd3de5bf4598b5cd3d7fcc7bca9c64a744329"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/client-build-output.txt",
+    "sha256": "58b67fa73ff52d6dd1b80fa72bb57153e07df4523fe087b0c262ac472af9adb5"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/client-final-output.txt",
+    "sha256": "531bef54a4d07616027c687627bd69814aa5c78b9214e3b7827b501a80e9837b"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/client-regression-output.txt",
+    "sha256": "4bdf3634f42f15b4b5320cde7bf97c85b1b2a4166edfd08942f8e136439c10bb"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/dashboard-browser-final-output.txt",
+    "sha256": "380b3a2db389e897e2b94f15a96bbfe67d979fed388c4f914300688087ff0a4f"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/dashboard-final-output.txt",
+    "sha256": "404c3d9261e49dbc3ec61a222f11d529d8db1800e69c077b8e8ddbdca0884d7f"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/dashboard-working-output.txt",
+    "sha256": "37644f487bb4aa15c8c5533f40d3872487d02c7be5b347d39f3dbe2833a41ae0"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/issue73-pr-review.png",
+    "sha256": "4f950bbedf08b2e2c72d919646361104181a8d6f84a11090fc5f367219163ddc"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/issue73-started.png",
+    "sha256": "dd345a74fa0054f86a79c2bccc8f43cfd117c4629943b487146139c7c54c2599"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/policy-red-output.txt",
+    "sha256": "930d1960e06eb774d7f2d910c254acc04d5e24d43d87bc8f5d9851675983471f"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/pr82-ready-record.json",
+    "sha256": "2ba5c47c603a5bad47ada4c875194e6b08c90d0df29dad03d547a5a4125192a5"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/pr82-ready.png",
+    "sha256": "ae0782e78caa8a6c4e37f04a1ff0cc1e45c9b797413d46cfd3329904e129bcea"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/server-build-output.txt",
+    "sha256": "1b599cb12dd98cd38ffc9f62d77a9494144a16af2c807685a60a47e26fa29701"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/server-regression-output.txt",
+    "sha256": "80fff3c81a625cd83726e8449ad387238318d926d393b3e435fa0d7a4b82ad8f"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/structural-check-output.txt",
+    "sha256": "15533b87df0bea4fc6c2e7508a65ec50e5976214fe64d5d3740f11b14f787298"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/verification.md",
+    "sha256": "4476cbdc489bf38000fb3c8cb39f74735fbb1a2a7fb9daa640736c7e5a15f1c0"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/administrator.png",
+    "sha256": "2a1ab3f755fe69bb361148d916ce9e70e7490ed6859959b216682bf5a8eda73d"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/injected-403.png",
+    "sha256": "53b68b2556021e1fe1f0a50cc96c54a2f4f51c02bbfc08ef4bc26bc0c74a929d"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/injected-503.png",
+    "sha256": "7c6a713f1d16319f3f924479b6a9c10db063669bdbb26094400efc0172c62e4d"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/loading.png",
+    "sha256": "345efda5c633b304327eb6a67f93e8487cfc5867dab2b4c84559c60bb9df4f3a"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/my-actions.png",
+    "sha256": "f306e84eff6d8ce4768e244c2d8444926357b7d5d301e422e20c7b73217f3840"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/requester-desktop-responsive.png",
+    "sha256": "370ad2a4ebd9005d73960a96bf2925178de06f4c68cafdec46baf43c3d0f0c73"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/requester-desktop.png",
+    "sha256": "c64b1b0c04c1c619c7d9c10cc149f2eec4bcaf0ef7b4b9ed202bc3e0b7b3397c"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/requester-drilldown.png",
+    "sha256": "41a0ea8ae1c839a0096756fa39287405ffc01bbfb1182b870bbae38336cb365c"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/requester-mobile-responsive.png",
+    "sha256": "8f3cc9fe4d77d3ad10732564553c0663367139a8a3376d51032af0da75f81de3"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/requester-tablet-responsive.png",
+    "sha256": "45c72e1201f3954ef11bfd5260374c54f4a3844592c96f30dff6c9879cb2c791"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/responsive-desktop.png",
+    "sha256": "3f94050a61c48fee595a04997147ddf3125f5914779f65c8315a8aa26a443db1"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/responsive-mobile.png",
+    "sha256": "717bd8ab5cfe4c129cf40e1561120eceececd208be28f9202ee330c44f78e309"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/responsive-tablet.png",
+    "sha256": "495c9439ae56f384749758ca0efcba028035703d197d7666820fc6ac36fb9718"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/staff-desktop.png",
+    "sha256": "c950974a022686e11e319d6f16ad9bceae8ab5a1bda7ef62305ffa65beee55c8"
+  },
+  {
+    "path": "artifacts/lab-04/phase6/screenshots/zero-requester.png",
+    "sha256": "5f203e80065cc01288fa94cea30153f36284e216bbabdf8a296c9a369a3e96d2"
+  }
+]

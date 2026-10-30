@@ -16,9 +16,9 @@ function priorityLabel(priority: RequestedPriority) {
   return priority.charAt(0) + priority.slice(1).toLowerCase();
 }
 
-export function MyTickets({ requester, onCreateTicket, onOpenTicket }: { requester: AuthUser; onCreateTicket: () => void; onOpenTicket: (ticketId: number) => void }) {
+export function MyTickets({ requester, onCreateTicket, onOpenTicket,initialQuery }: { requester: AuthUser; onCreateTicket: () => void; onOpenTicket: (ticketId: number) => void;initialQuery?:MyTicketsQuery }) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [query, setQuery] = useState<MyTicketsQuery>(defaultQuery);
+  const [query, setQuery] = useState<MyTicketsQuery>({...defaultQuery,...initialQuery});
   const [result, setResult] = useState<TicketListResult | null>(null);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
 
@@ -38,15 +38,16 @@ export function MyTickets({ requester, onCreateTicket, onOpenTicket }: { request
   }, [query]);
 
   function update<K extends keyof MyTicketsQuery>(key: K, value: MyTicketsQuery[K]) {
-    setQuery((current) => ({ ...current, [key]: value, page: 1 }));
+    setQuery((current) => ({ ...current,...(key==='currentStatus'?{statusGroup:undefined,resolvedSince:undefined,resolvedBefore:undefined}:{}), [key]: value, page: 1 }));
   }
 
   function clearFilters() { setQuery(defaultQuery); }
-  const hasFilters = Boolean(query.search || query.categoryId || query.requestedPriority || query.currentStatus || query.sortBy !== "createdAt" || query.sortOrder !== "desc" || query.pageSize !== 10);
+  const hasFilters = Boolean(query.statusGroup||query.resolvedSince||query.search || query.categoryId || query.requestedPriority || query.currentStatus || query.sortBy !== "createdAt" || query.sortOrder !== "desc" || query.pageSize !== 10);
   const noResults = state === "ready" && result?.items.length === 0 && hasFilters;
   const empty = state === "ready" && result?.items.length === 0 && !hasFilters;
 
   return <section aria-labelledby="my-tickets-heading">
+    {query.statusGroup&&<div className="alert alert-info">Dashboard scope: {query.statusGroup} Tickets{query.resolvedSince&&` · ${query.resolvedSince} inclusive to ${query.resolvedBefore} exclusive`}. {result&&`${result.totalItems} matching Tickets.`} Clear filters to leave this scope.</div>}
     <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
       <div><h1 className="h3 mb-1" id="my-tickets-heading">My Tickets</h1><p className="text-secondary mb-0">Tickets submitted by {requester.name}.</p></div>
       <button className="btn btn-success" onClick={onCreateTicket}>Create Ticket</button>

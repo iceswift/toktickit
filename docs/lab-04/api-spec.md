@@ -136,3 +136,13 @@ All future Action writers and the extended legacy Ticket status writer MUST use
 this protocol and real policy checks before being exposed. SQL uniqueness alone
 does not enforce this property. Workflow-event versions can have legitimate gaps
 because Action writes also consume shared Ticket versions; Action events cannot.
+
+## Phase6 implementation checkpoint — 30 October 2026
+
+Dashboard routes/list query extensions are implemented on the feature branch,
+not yet accepted at staging/main. Repeatable Read, server-derived asOf, explicit
+Staff sibling-route session/role checks. Recent work descriptions truncated to160
+characters; no private Notes/files/full Ticket descriptions. My Actions remains
+separately paginated. See [Phase6](phase6-dashboards.md) for exact populations,
+UTC/Bangkok boundaries and all19 real-DB drill-down checks. Earlier Phase2 warnings
+are historical; Phase3–6 implemented routes supersede the unimplemented checkpoint.
