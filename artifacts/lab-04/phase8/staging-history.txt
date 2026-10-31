@@ -1,0 +1,39 @@
+*   b887994 Merge pull request #83 from iceswift/feature/74-lab4-qa-hardening
+|\  
+| * bb8f60b docs(lab4): record Phase7 linked peer-review handoff
+| * 174bd18 feat(lab4): complete Phase7 regression and accessibility hardening
+|/  
+*   df785a5 Merge pull request #82 from iceswift/feature/73-lab4-dashboards
+|\  
+| * d64d0e3 docs(lab4): record Phase6 PR82 direct linkage and review evidence
+| * edb2c2a feat(lab4): add authoritative role dashboards and verified drill-down
+|/  
+*   aa1f868 Merge pull request #81 from iceswift/feature/72-lab4-ticket-workflow
+|\  
+| * 6b12c82 docs(lab4): retain Phase 5 linked PR and peer-review checkpoint
+| * 213df6e feat(lab4): enforce final Ticket workflow with audited gate and UI recovery
+|/  
+*   ae16e00 Merge pull request #80 from iceswift/feature/71-lab4-actions-ui
+|\  
+| * 60c20d4 docs(lab4): record Phase 4 linked PR and inspected review checkpoint
+| * 4820ce3 feat(lab4): implement role-safe Actions Taken UI with verified evidence
+|/  
+*   2f633d0 Merge pull request #79 from iceswift/feature/70-lab4-actions
+|\  
+| * cc479b2 docs(lab4): verify linked ready Phase3 PR and actual review state
+| * bfd2089 feat(lab4): add authorized versioned Action APIs and durable retries
+|/  
+*   f4b6ea9 Merge pull request #78 from iceswift/feature/69-lab4-data
+|\  
+| * c2d7027 docs(lab4): retain reviewer reply and actual correction proof
+| * c031106 fix(lab4): enforce atomic versioned history before API exposure
+| * e17403f docs(lab4): verify linked ready PR and in-app Kanban evidence
+| * 2192131 docs(lab4): record phase2 draft submission and normalize log whitespace
+| * 0ad56c4 feat(lab4): add preserving Action data migration and repeat-safe seeds
+|/  
+* 0f84785 Merge pull request #77 from iceswift/docs/lab4-contract-richy
+* c0c9ba9 docs(lab4): record student-requested reviewer handover
+* 9e24106 docs(lab4): retain actual route review response evidence
+* fa8e550 docs(lab4): resolve requester HTTP paths from peer review
+* fc1cdfa docs(lab4): record linked phase1 PR and inspected review evidence
+* 753ddeb docs(lab4): establish approved engineering contract before implementation

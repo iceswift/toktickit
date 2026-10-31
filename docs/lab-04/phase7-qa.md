@@ -1,5 +1,10 @@
 # Phase 7 QA / hardening — working record
 
+Accepted at staging30October2026: Richy approved final bb8f60b and merged PR83 at
+b887994. Actual Issue74 Closed/Done verified after acceptance; see phase7-closure.md.
+Earlier peer-pending/publication text below is historical. Retained tests are not
+a new staging/main run. Closure evidence carries into Phase8, no cleanup-only PR.
+
 Started30 October2026 from reviewer-merged staging df785a5 on
 feature/74-lab4-qa-hardening, Issue74. Phase6 closure docs/screenshots carried here.
 Reread complete11-page Lab4 handout and20-page GitHub workflow guide. PDF rules

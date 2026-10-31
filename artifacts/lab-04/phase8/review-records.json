@@ -1,0 +1,586 @@
+[
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV0TgDA",
+        "number": 68,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/68"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABcnS8nA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "@jarbbie Thank you; the route mismatch was a real error in my contract. Corrected on this same PR/branch:\n\n- Requester endpoints, event routes, dashboard route ordering and drill-down examples now use actual `/api/tickets/...` HTTP paths; existing `/api/attachments` is preserved.\n- `/auth`, `/staff` and `/admin` remain unchanged. Paths are relative to the server origin, not an implicit `/api` base. Staff event paths are written explicitly.\n- Documented explicit Staff/Admin guards for new `/staff/dashboard` and `/staff/actions` sibling routes, which the existing `/staff/tickets` middleware would not cover.\n- Verified against baseline `server/src/app.ts` and `client/src/api.ts`. Added structural regression checks for mixed baseline prefixes, resolved Requester/Staff paths and accidental bare `/tickets` endpoints.\n- `python scripts/verify_lab4_contract.py` and `git diff --check` pass. Updated reviewer/evidence registers and report Part 2. No product code, migration, or product test result is claimed.\n\nPlease re-review the corrected contract and, if acceptable, approve and merge into `lab4-staging`. I will not self-merge or start Phase 2 before peer merge. The Project CLI token lacks `read:project`, so I cannot currently verify/update the Fixing -> PR Review board transition; I am not claiming that transition happened.\n",
+        "createdAt": "2026-10-16T12:11:10Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/76#issuecomment-6215220380",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "9e24106ab9fe0eaecc65231530bc37929d18a4b4",
+    "mergeCommit": {
+      "oid": "9e24106ab9fe0eaecc65231530bc37929d18a4b4"
+    },
+    "mergedAt": "2026-10-28T06:34:48Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 76,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABRW7_mA",
+        "author": {
+          "login": "jarbbie"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Request changes\n\nThe route contract is ambiguous and currently inconsistent with the released baseline. In the baseline server/src/app.ts, requester Ticket and attachment routes are mounted as /api/tickets and /api/attachments, while Staff, Admin, and authentication routes are mounted as /staff, /admin, and /auth. The baseline client also calls requester endpoints with the /api prefix.\n\nHowever, docs/lab-04/api-spec.md says to preserve /auth, /tickets, /staff, /admin and only references /api, then defines the new requester action, dashboard, workflow-event, and drill-down paths as /tickets... and /tickets?... . If these are implemented literally, they will not match the existing requester routes or their authentication middleware; if they are logical paths relative to an API base, that mapping is not stated.\n\nPlease revise the API table and the metric drill-down examples to use the actual HTTP paths, especially /api/tickets... for requester routes, or explicitly define the notation as relative paths and provide the resolved endpoint mapping. This must be settled in the contract before Phase 2 implementation.\n\nOther checks passed: PR #76 is documentation-only, directly linked to Issue #68, the planned Issues #69-#75 match the backlog dependencies, the structural checker passes, and no Lab 4 product tests or completion claims are being presented.",
+        "submittedAt": "2026-10-08T16:33:57Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "CHANGES_REQUESTED",
+        "commit": {
+          "oid": "fc1cdfaf5e8e007cd2f2a6ac12b81b00256c34ac"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/76"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABgTJJyA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "@Richyboy170 Thank you for reviewing and merging the corrected Phase 1 contract. Verified your approval and merge into `lab4-staging` at `0f84785e4ac219fccf05559e87258d8010a2c080`.\n\nTracking Issue: #68. The original #76 remains the direct Development-linked record and contains the actual route feedback and correction response; GitHub now marks #76 merged as its history is included in #77. #77 itself has no direct Development Issue link, and I am not claiming otherwise. The Issue closure record preserves both PRs and this limitation. No further PR or merge is being created for this bookkeeping. Product work and final report remain pending.\n",
+        "createdAt": "2026-10-28T06:41:43Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/77#issuecomment-6462523848",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "c0c9ba910341b22d5cc78ff4e8251153a54669e1",
+    "mergeCommit": {
+      "oid": "0f84785e4ac219fccf05559e87258d8010a2c080"
+    },
+    "mergedAt": "2026-10-28T06:34:46Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 77,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABUnpMvQ",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "looks good to go, approve",
+        "submittedAt": "2026-10-28T06:34:37Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "c0c9ba910341b22d5cc78ff4e8251153a54669e1"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/77"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KDMw",
+        "number": 69,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/69"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABgauEsA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "@Richyboy170 Thank you. Both findings are valid: unique positive event versions alone do not make current rows and history advance atomically. Addressed in **c031106** using your proposed **mutation-layer-before-API-exposure** option, not a claim of stronger SQL constraints.\n\n### 1. TicketWorkflowEvent / Ticket version integrity\n\nAdded `server/src/lab4/versioned-mutations.ts`. Every mutation first conditionally increments and locks its parent Ticket using the expected Ticket version. A workflow transition then updates the status and inserts its from/to event with the **server-derived new Ticket version in the same transaction**. Stale preconditions, caller-supplied event versions, corrupt workflow history, failed policy or failed event insertion roll back the entire transaction. There is no exposed standalone append-event operation.\n\nImportant shared-sequence detail: Action writes also increment Ticket.version, so workflow-only event numbers may legitimately have gaps. The test demonstrates Action writes occupying parent versions 2/3/4 followed by a real workflow event at 5. It must not insert an arbitrary 99 or an independent workflow-only counter.\n\n### 2. ActionEvent / Action version integrity\n\nCreation persists version 1 plus one CREATED event. Updates require both expected Action and Ticket versions, check existing history is contiguous and in insertion order (CREATED at 1, then 2..current), increment exactly one and insert exactly one matching event with old/new field values. Missing, skipped, out-of-order or corrupt history is rejected. Failed event insertion rolls back both Action changes and the shared parent bump. The repeat-seed test now performs its user edit through this protocol rather than separate update/event calls.\n\n### Actual verification\n\n- New internal PostgreSQL transaction suite: **14 cases passed** (stale/spoofed versions, parent mismatch, history corruption, event/policy failure rollback, competing Action writers, competing Action vs Ticket writes).\n- Full backend regression: **20 files / 66 tests passed, no skips**, including original populated migration preservation/recovery and repeated-seed tests.\n- Explicit `npm run test:lab4-data`: **4 files / 24 tests passed, no skips**.\n- TypeScript build, Prisma schema validation, structural contract/report checks and `git diff --check`: passed.\n- Complete outputs and source fingerprints: `artifacts/lab-04/phase2/review-*`; protocol and integration gates: `docs/lab-04/version-protocol.md`. Report/Test DD/review register updated with the same scope.\n\nThese are actual **local isolated PostgreSQL18** results on loopback55484, not CI/main results. No Docker/application database was reset or migrated. Existing migration SQL was not rewritten. The temporary cluster is stopped after testing; synthetic databases are retained.\n\n### Explicit remaining boundary\n\nRaw ORM/SQL can still bypass this application protocol; the negative tests deliberately demonstrate that distinction. The new module is **not wired to HTTP routes**, and its default policy denies writes. A real policy callback must run **inside the parent-locked transaction** before any Phase3/4 endpoint is enabled. Synthetic no-op test policies are not role/ownership/transition/Resolve-gate verification. The legacy Lab3 status writer must be converted before enabling the final Lab4 workflow; idempotency must join the same transaction later. Those API integration gates are explicit, not marked complete by this correction.\n\nPlease re-review both fixes in **this same PR #78**. If satisfactory, please Approve and merge into `lab4-staging` as the reviewer. I have not self-merged or opened another PR; Issue #69 remains open pending your review/integration.\n",
+        "createdAt": "2026-10-28T13:36:39Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/78#issuecomment-6470468784",
+        "viewerDidAuthor": true
+      },
+      {
+        "id": "IC_kwDOT0B_PM8AAAABgs45XA",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for re-reviewing both version-integrity fixes and approving/merging the final head into lab4-staging. Verified merge f4b6ea9 and exact tree equality with reviewed head c2d7027. Phase 2 AC-09/10 evidence was checked; Issue #69 is now closed and its Project card is Done. Actual approval/merge, closed Issue and Done-card screenshots are retained in the local report. This is Phase 2 closure only, not final-main/API/UI acceptance. No new PR or author merge was created for closure.",
+        "createdAt": "2026-10-29T06:19:53Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/78#issuecomment-6489520476",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "c2d70270350cc0dfae6ace8986909e68319b570e",
+    "mergeCommit": {
+      "oid": "f4b6ea9d108fe7de14a4856f4b78c75ca2c6cc32"
+    },
+    "mergedAt": "2026-10-28T22:23:32Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 78,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABUoauUg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "1. Workflow-event version integrity\nFile: server/prisma/migrations/20261028070000_lab4_action_foundation/migration.sql\nLines: 47–57\n\nThe unique `(ticketId, version)` index only prevents duplicate event versions; it does not ensure that this version matches `Ticket.version` or is advanced atomically with the Ticket update. A caller can currently insert version 99, insert versions out of order, or create a workflow event without changing the Ticket version. Since later phases rely on `Ticket.version` for optimistic concurrency and ordered history, please add an explicit transaction-level invariant/test that updates the Ticket and inserts the event together, and reject stale or non-sequential versions—or document and enforce this contract in the mutation layer before exposing these tables.\n\nWhy this matters\n\nThe migration establishes the schema foundation for workflow history, but the current constraints only guarantee uniqueness and positivity. Without an atomic version protocol, history can diverge from the Ticket state and concurrent updates may appear valid while recording inconsistent audit data.\n\n2. Action-event version integrity\nFile: server/prisma/migrations/20261028070000_lab4_action_foundation/migration.sql\nLines: 33–45\n\nThe unique `(actionId, version)` index does not ensure that an ActionEvent version matches the parent Action's current version or that both records are advanced atomically. This permits version 99 to be inserted first, version 1 to be inserted later, or an Action to be updated without a corresponding event. Please add a transaction-level test and enforce the expected Action/version transition in the mutation layer so every versioned Action change has a consistent, ordered audit record before treating this as the concurrency foundation for Phase 3.\n\nWhy this matters\n\nThe current design prevents duplicate event versions but not missing, skipped, or out-of-order versions. That makes replay and optimistic-concurrency behavior ambiguous and could leave the audit trail inconsistent with the mutable Action row.\n\n",
+        "submittedAt": "2026-10-28T08:04:31Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "COMMENTED",
+        "commit": {
+          "oid": "e17403fdbb26055157a7910f864bacc5c921e389"
+        }
+      },
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABUy3Edg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Changes looks good, approve",
+        "submittedAt": "2026-10-28T22:23:23Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "c2d70270350cc0dfae6ace8986909e68319b570e"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/78"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KHoQ",
+        "number": 70,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/70"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABg0B6Nw",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for approving the final head and merging PR #79 into lab4-staging. Verified merge 2f633d0 and exact tree equality with reviewed head cc479b2. Phase3 Action API acceptance was checked against the merged implementation and retained local110-test evidence; Issue #70 is now closed. This is not final-main/CI or UI acceptance. Closure screenshots/report updates will be carried with the next authorized feature work, with no additional cleanup PR or author merge.",
+        "createdAt": "2026-10-29T12:44:03Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/79#issuecomment-6497008183",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "cc479b2a9dee7cbf09f031f11b07d3620437fc4c",
+    "mergeCommit": {
+      "oid": "2f633d0ae78195bbd721ad958f2795323a89cf23"
+    },
+    "mergedAt": "2026-10-29T11:36:31Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 79,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABU5HK2g",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Good, approve",
+        "submittedAt": "2026-10-29T11:36:21Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "cc479b2a9dee7cbf09f031f11b07d3620437fc4c"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/79"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KKYw",
+        "number": 71,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/71"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABg1de9w",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for reviewing and merging the final head 60c20d4. Verified staging ae16e00 exactly matches the reviewed tree. Phase 4 acceptance and retained local client52/build/E2E7 evidence are checked; no new CI/main result is claimed. I will close Issue #71 and retain the closure evidence with the next feature work, without another cleanup PR.",
+        "createdAt": "2026-10-29T13:51:15Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/80#issuecomment-6498508535",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "60c20d482a0deb9bcd5b8a1ccfbf10ecf7042d3d",
+    "mergeCommit": {
+      "oid": "ae16e0049b089c6ad935eeb04cbc3d370c8c7c97"
+    },
+    "mergedAt": "2026-10-29T13:49:29Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 80,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABU6x4xQ",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Look good",
+        "submittedAt": "2026-10-29T13:49:21Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "60c20d482a0deb9bcd5b8a1ccfbf10ecf7042d3d"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/80"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KNRA",
+        "number": 72,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/72"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABg3tZdQ",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for reviewing and merging final head 6b12c82. Verified staging aa1f868 exactly matches the reviewed tree. Phase 5 acceptance and retained local backend248/client68/builds/E2E12 evidence are checked; no new staging/main CI result is claimed. Closing Issue #72 and retaining closure evidence for the next authorized feature work, without a cleanup PR or another merge.",
+        "createdAt": "2026-10-29T15:26:00Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/81#issuecomment-6500866421",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "6b12c82213f436a08abfdeaf8c000aaffbb96818",
+    "mergeCommit": {
+      "oid": "aa1f868ec0d74b8143848471955e3e40d963e47b"
+    },
+    "mergedAt": "2026-10-29T14:53:40Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 81,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABU7waxg",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Good, well done",
+        "submittedAt": "2026-10-29T14:53:30Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "6b12c82213f436a08abfdeaf8c000aaffbb96818"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/81"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KQIQ",
+        "number": 73,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/73"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABhFlCgg",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for reviewing and merging. Your approval covers final head d64d0e3; verified reviewer merge df785a5 into lab4-staging has the identical tree. No requested changes or unresolved inline findings remain. Retained local evidence: server267/client82, both builds, Lab4 browser18 and enhanced Dashboard6 rerun. These are not new staging/main/CI test runs; attached checks0 is not a pass. I am completing Issue73 acceptance and Project Done with closure evidence; no author merge.",
+        "createdAt": "2026-10-30T05:03:12Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/82#issuecomment-6515409538",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "d64d0e3d527852155c1e5849790e10afbe17610e",
+    "mergeCommit": {
+      "oid": "df785a5ae7bda71b2f17fcddbc036335e74a7a70"
+    },
+    "mergedAt": "2026-10-30T05:01:08Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 82,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABVD1GwQ",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Good",
+        "submittedAt": "2026-10-30T05:01:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "d64d0e3d527852155c1e5849790e10afbe17610e"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/82"
+  },
+  {
+    "author": {
+      "id": "U_kgDOCYT0rg",
+      "is_bot": false,
+      "login": "iceswift",
+      "name": "Suwiwat Sinsomboon"
+    },
+    "closingIssuesReferences": [
+      {
+        "id": "I_kwDOT0B_PM8AAAABV5KTsQ",
+        "number": 74,
+        "repository": {
+          "id": "R_kgDOT0B_PA",
+          "name": "toktickit",
+          "owner": {
+            "id": "U_kgDOCYT0rg",
+            "login": "iceswift"
+          }
+        },
+        "url": "https://github.com/iceswift/toktickit/issues/74"
+      }
+    ],
+    "comments": [
+      {
+        "id": "IC_kwDOT0B_PM8AAAABhLbr-Q",
+        "author": {
+          "login": "iceswift"
+        },
+        "authorAssociation": "OWNER",
+        "body": "Thank you @Richyboy170 for reviewing and merging the final head bb8f60b. I verified the approval precedes your merge, the merged tree b887994 matches the reviewed tree exactly, and there are no unresolved inline findings. Retained local regression is server272/client90/browser37 and both builds; this acknowledgement does not claim a fresh main or CI run. Phase7 acceptance is verified; I will close Issue74 and carry closure evidence into Phase8, without opening a cleanup PR.",
+        "createdAt": "2026-10-30T11:28:23Z",
+        "includesCreatedEdit": false,
+        "isMinimized": false,
+        "minimizedReason": "",
+        "reactionGroups": [],
+        "url": "https://github.com/iceswift/toktickit/pull/83#issuecomment-6521547769",
+        "viewerDidAuthor": true
+      }
+    ],
+    "headRefOid": "bb8f60be53b2c403244011537548decdbf843434",
+    "mergeCommit": {
+      "oid": "b88799436f11b7fe901f72e873c3f29b534e1a19"
+    },
+    "mergedAt": "2026-10-30T11:03:36Z",
+    "mergedBy": {
+      "id": "U_kgDOCCWJUw",
+      "is_bot": false,
+      "login": "Richyboy170",
+      "name": "Patiharn Liangkobkit"
+    },
+    "number": 83,
+    "reviews": [
+      {
+        "id": "PRR_kwDOT0B_PM8AAAABVGvqEw",
+        "author": {
+          "login": "Richyboy170"
+        },
+        "authorAssociation": "COLLABORATOR",
+        "body": "Looks good, approve",
+        "submittedAt": "2026-10-30T11:03:27Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED",
+        "commit": {
+          "oid": "bb8f60be53b2c403244011537548decdbf843434"
+        }
+      }
+    ],
+    "state": "MERGED",
+    "url": "https://github.com/iceswift/toktickit/pull/83"
+  }
+]

@@ -6,7 +6,7 @@ if (-not (Test-Path -LiteralPath $destination -PathType Container)) { throw 'Evi
 # Read only selected public source paths; never enumerate .env or credentials.
 Push-Location $repo
 try {
-    $paths = @('client/src','client/tests','client/e2e','client/package.json',
+    $paths = @('client/src','client/public','client/index.html','client/tests','client/e2e','client/package.json',
         'client/package-lock.json','client/playwright.lab4.config.ts',
         'client/playwright.lab4-qa.config.ts','server/src','server/tests',
         'server/scripts','server/prisma/migrations','server/prisma/schema.prisma',

@@ -1,9 +1,10 @@
-# Lab 4 Test DD and traceability — Phase7 working verification
+# Lab 4 Test DD and traceability - accepted feature verification
 
 30 October 2026. Current matrix supersedes earlier planning-only tables.
 Historical red/green results and closures remain in phase2..6 records and Git.
 Base: reviewer-merged staging df785a5. Results are LOCAL feature-tree runs,
-not final main, CI or independent peer acceptance.
+not final main or CI. Phase7 was subsequently approved/merged by Richyboy170 in
+PR83; that acceptance does not turn earlier local output into a fresh main run.
 
 ## Actual implemented paths
 
@@ -54,6 +55,21 @@ BEGIN/COMMIT. Bulk synthetic fixture insertion is not API execution proof.
 Axe plus selected keyboard checks is not screen-reader certification. All captures
 require visual inspection before selecting report figures; current inventory and
 manual inspection notes are in phase7-visual-evidence.md and phase7-qa.md.
-Clean lockfile reproducibility is documented above. Peer merge, fresh final-main
+Clean lockfile reproducibility is documented above. Fresh final-main
 output and rendered PDF pagination are separate pending gates; no unexecuted or
 skipped suite is represented as passing.
+
+## Phase8 supplementary proof and reproduction
+
+Staff-specific real empty-personal-work, held-request loading, labelled injected
+503/403 and actual200 retry captures are under artifacts/lab-04/phase8/screenshots.
+They supplement, not relabel, earlier Requester state proof. The capture CLI script
+rejects non-reserved UI origins; a new synthetic Staff account has no personal work.
+The working Docker database and append-only histories are untouched.
+
+Installed Chrome exposed a missing favicon request not requested by the earlier
+headless run. A native SVG favicon/reference fixes that concrete404. Actual GET
+on the reserved UI origin returns200/image-svg; the Phase8 client/build/full-browser
+rerun is retained separately under artifacts/lab-04/phase8, never called main/CI.
+The complete compact backend rerun uses the same environment guard and full test
+set with the default reporter; verbosity is presentation, not test exclusion.

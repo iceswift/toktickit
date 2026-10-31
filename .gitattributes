@@ -1,0 +1,2 @@
+# Preserve the reviewed PDF byte-for-byte, including on Windows autocrlf clones.
+artifacts/lab-04/phase8/*.pdf -text -diff

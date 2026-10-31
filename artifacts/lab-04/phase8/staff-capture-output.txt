@@ -1,0 +1,48 @@
+### Result
+{"scope":"Phase8 local synthetic capture, not final main","role":"IT_STAFF","asOf":"2026-10-30T13:11:55.128Z","realResponse":200,"myActions":0,"myOpenTickets":0,"globalUnassigned":100,"states":[{"state":"loading","method":"Held genuine request; no fabricated response"},{"state":503,"injected":true,"staleMetricsCleared":true},{"state":403,"injected":true,"staleMetricsCleared":true},{"state":"recovered","realResponse":true}]}
+### Ran Playwright code
+```js
+await (// Playwright CLI run-code function; not a new test runner or product module.
+async (page) => {
+  if (new URL(page.url()).origin !== 'http://127.0.0.1:55486') throw new Error('Unexpected evidence app');
+  await page.setViewportSize({width:768,height:1024});
+  const dashboard=page.getByRole('region',{name:'Staff Dashboard',exact:true});
+  const ready=()=>page.getByText(/Asia\/Bangkok · Backend snapshot/).waitFor();
+  await ready();
+  const response=await page.request.get('http://127.0.0.1:55485/staff/dashboard');
+  const data=await response.json();
+  if(response.status()!==200||data.metrics.myActions!==0||data.metrics.myOpenTickets!==0||data.recentMyActions.length!==0)throw new Error('Synthetic performer is not empty');
+  await page.getByText('No recorded work by you.',{exact:true}).waitFor();
+  await page.screenshot({path:'output/playwright/phase8/staff-real-empty-full.png',fullPage:true,animations:'disabled'});
+  await page.getByRole('heading',{name:'Recent work recorded by you',exact:true}).locator('..').screenshot({path:'output/playwright/phase8/staff-real-empty-panel.png',animations:'disabled'});
+  const proof={scope:'Phase8 local synthetic capture, not final main',role:'IT_STAFF',asOf:data.asOf,realResponse:response.status(),myActions:data.metrics.myActions,myOpenTickets:data.metrics.myOpenTickets,globalUnassigned:data.metrics.unassignedOpenTickets,states:[]};
+  let release;
+  const gate=new Promise(resolve=>{release=resolve;});
+  await page.route('**/staff/dashboard',async route=>{await gate;await route.continue();});
+  await page.getByRole('button',{name:'Refresh dashboard',exact:true}).click();
+  await page.getByRole('status').filter({hasText:'Loading dashboard...'}).waitFor();
+  await dashboard.screenshot({path:'output/playwright/phase8/staff-controlled-loading.png',animations:'disabled'});
+  proof.states.push({state:'loading',method:'Held genuine request; no fabricated response'});
+  release();await ready();await page.unroute('**/staff/dashboard');
+  for(const status of [503,403]){
+    await page.route('**/staff/dashboard',route=>route.fulfill({status,contentType:'application/json',body:JSON.stringify({error:'INJECTED private diagnostic must not leak'})}));
+    await page.getByRole('button',{name:'Refresh dashboard',exact:true}).click();
+    await page.getByRole('alert').waitFor();
+    if(await page.getByRole('button',{name:/Unassigned Open \d/}).count())throw new Error('Stale metrics leaked into error state');
+    if((await dashboard.innerText()).includes('private diagnostic'))throw new Error('Private injected message leaked');
+    await dashboard.screenshot({path:'output/playwright/phase8/staff-injected-'+status+'.png',animations:'disabled'});
+    proof.states.push({state:status,injected:true,staleMetricsCleared:true});
+    await page.unroute('**/staff/dashboard');await page.getByRole('button',{name:'Retry dashboard',exact:true}).click();await ready();
+  }
+  await dashboard.screenshot({path:'output/playwright/phase8/staff-recovered.png',animations:'disabled'});
+  proof.states.push({state:'recovered',realResponse:true});
+  return proof;
+}
+)(page);
+```
+### Page
+- Page URL: http://127.0.0.1:55486/
+- Page Title: TokTickIT
+- Console: 2 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli\console-2026-10-30T13-07-49-317Z.log#L6-L7
